@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\vendor_npc\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ENT.Base        = "base_entity";
 ENT.PrintName	= "Vendor NPC"
 ENT.Author		= "urf.im Beelzebub"

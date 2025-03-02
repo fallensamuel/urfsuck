@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\items\\base\\sh_ingridient.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ITEM.name = "Pizza Ingridient"
 ITEM.model = "models/Items/BoxSRounds.mdl"
 ITEM.width = 1
@@ -17,8 +19,9 @@ local CustomUseFunc = function(self, ply)
 	if ing.EatHunger then
 		ply:AddHunger(ing.EatHunger)
 	end
-	if ing.EatHealth then
-		ply:SetHealth( math.Clamp(ply:Health() + ing.EatHealth, 0, ply:GetMaxHealth()) )
+	local health = ing.EatHealth or ing.ConsumHealth
+	if health then
+		ply:SetHealth( math.Clamp(ply:Health() + health, 0, ply:GetMaxHealth()) )
 	end
 
 	if zpiz.IngridientEatSound then
@@ -28,7 +31,7 @@ local CustomUseFunc = function(self, ply)
 	SafeRemoveEntity(self)
 end
 
-ITEM.functions.use = { 
+ITEM.functions.use = {
 	name = translates.Get("Скушать"),
 	tip = "useTip",
 	icon = "icon16/lightning.png",
@@ -39,19 +42,22 @@ ITEM.functions.use = {
 			CustomUseFunc(item.entity, item.player)
 			return false
 		else
+			hook.Run("Inventory::ItemUse", item.player, item)
+
 			local ent = item:transfer()
-			
+			print( SysTime(), ent );
+
 			if not isbool(ent) and IsValid(ent) then
 				--ent:Use(item.player, item.player, USE_ON, 1)
-				CustomUseFunc(item.entity, item.player)
-				
+				CustomUseFunc(ent, item.player)
+
 			elseif ent then
 				local ply = item.player
 				local steamid = ply:SteamID()
 				hook.Add('Inventory.OnItemDrop', 'Inventory.OnItemDrop.Use' .. steamid, function(item_t, client, entity)
 					if IsValid(ply) and ply == client then
 						hook.Remove('Inventory.OnItemDrop', 'Inventory.OnItemDrop.Use' .. steamid)
-						
+
 						if item_t.uniqueID == item.uniqueID then
 							--entity:Use(ply, ply, USE_ON, 1)
 							CustomUseFunc(entity, ply)
@@ -59,7 +65,7 @@ ITEM.functions.use = {
 					end
 				end)
 			end
-			
+
 			return false
 		end
 	end

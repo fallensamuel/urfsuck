@@ -1,4 +1,11 @@
+-- "gamemodes\\rp_base\\entities\\entities\\vendor_npc\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include("shared.lua")
+
+hook.Add( "InitPostEntity", "rp.VendorsNPCs::StockSync", function()
+    hook.Remove( "InitPostEntity", "rp.VendorsNPCs::StockSync" );
+    net.Start( "VendorNpc_StockSync" ); net.SendToServer();
+end );
 
 surface.CreateFont("VendorNpc_Name", {
     font = "Montserrat",
@@ -491,7 +498,7 @@ function PANEL:CreateSizeInfo()
         --end
         local _w = draw_SimpleText("1", "rpui.Fonts.VendorNpc_Count", 0, 16, col, TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP)
         draw_RoundedBox(0, _w/2, 10, 2, 6, col)
-        
+
         local _w, tall = draw_SimpleText(self:GetMax(), "rpui.Fonts.VendorNpc_Count", w, 16, col, TEXT_ALIGN_RIGHT, TEXT_ALIGN_TOP)
         draw_RoundedBox(0, w - _w/2, 10, 2, 6, col)
     end
@@ -734,9 +741,26 @@ function PANEL:SetItemClickFunc(func)
     self.item_doclick_func = func
 end
 
-function PANEL:AddItem(category, uid, name, price, mdl, count, is_player_inventory, isnt_vendor, override_mat)
+function PANEL:AddItem(category, uid, name, price, mdl, count, is_player_inventory, isnt_vendor, override_mat, override_count, experience)
     local already = self:GetItem(uid)
     if IsValid(already) then return end
+
+    if not isnt_vendor and not experience then
+        local exp, vendor_id = 0, self:GetParent().VendorEnt:GetVendorName();
+
+        local et = (LocalPlayer():GetJobTable() or {}).experience;
+        if et and et.actions then
+            if et.actions["sell_vendor"] and et.actions["sell_vendor"][vendor_id] then
+                exp = exp + et.actions["sell_vendor"][vendor_id];
+            end
+
+            if et.actions["sell_item"] and et.actions["sell_item"][uid] then
+                exp = exp + et.actions["sell_item"][uid];
+            end
+        end
+
+        if exp > 0 then experience = exp; end
+    end
 
     self.Items[uid] = {
         ["uid"] = uid,
@@ -745,9 +769,10 @@ function PANEL:AddItem(category, uid, name, price, mdl, count, is_player_invento
         ["override_mat"] = override_mat,
         ["mdl"] = mdl or "models/props_borealis/bluebarrel001.mdl",
         ["count"] = count,
-        ["category"] = category, 
-        ["isnt_vendor"] = isnt_vendor, 
-
+        ["category"] = category,
+        ["isnt_vendor"] = isnt_vendor,
+        ["override_count"] = override_count,
+        ["experience"] = experience,
     }
 
     local parent = self:GetPlace4Items()
@@ -782,23 +807,42 @@ function PANEL:AddItemButton(parent, data)
     item_btn.AddCount = function(this, toadd)
         item_btn.data_table["count"] = item_btn.data_table["count"] + toadd
     end
-    
+
     local utf8_sub = utf8.sub
 
     item_btn.Paint = function(that, w, h)
         if not IsValid(self) then return end
 
         local baseColor = self.GetPaintStyle(that, STYLE_TRANSPARENT_SELECTABLE)
+        local stock_cooldown;
 
-        local cnt = 0
-        local items = LocalPlayer():getInv():getItemsByUniqueID(data.uid)
-        for k, item in pairs(items) do
-            cnt = cnt + item:getCount() * (item.ammoAmount or 1)
-        end
+		if not data.override_count then
+			local cnt = 0
+			local items = LocalPlayer():getInv():getItemsByUniqueID(data.uid)
+			for k, item in pairs(items) do
+				cnt = cnt + item:getCount() * (item.ammoAmount or 1)
+			end
 
-        that.realcount = cnt
+			that.realcount = cnt
 
-        if (that.CustomRedCheck and that.CustomRedCheck()) or (not is_vendor() and (that.realcount < 1 or LocalPlayer():GetMoney() < that.data_table["price"])  or data.isnt_vendor and LocalPlayer():GetMoney() < data.price) then
+			if is_vendor() then
+				if not that.vendor_id then
+					that.vendor_id = self:GetParent().VendorEnt:GetVendorName();
+				end
+
+				if rp.VendorsNPCsStock then
+					stock_cooldown = (rp.VendorsNPCsStock[that.vendor_id] or {})[that.data_table["uid"]];
+
+					if stock_cooldown and (stock_cooldown < CurTime()) then
+						stock_cooldown = nil;
+					end
+				end
+			end
+		else
+			that.realcount = data.count
+		end
+
+        if ((stock_cooldown) or (that.CustomRedCheck and that.CustomRedCheck()) or (not is_vendor() and (that.realcount < 1 or LocalPlayer():GetMoney() < that.data_table["price"])  or data.isnt_vendor and LocalPlayer():GetMoney() < data.price)) and not data.override_count then
             baseColor = Color(125, 0, 0, that._alpha)
         end
 
@@ -806,7 +850,7 @@ function PANEL:AddItemButton(parent, data)
         surface_DrawRect(h, 0, w, h)
         surface_SetDrawColor(self.UIColors.Black)
         surface_DrawRect(0, 0, h, h)
-        
+
         local txt = that._CurText or that.data_table["name"]
 
         local a, b = string_len(txt), utf8_len(txt)
@@ -830,7 +874,18 @@ function PANEL:AddItemButton(parent, data)
             draw_SimpleText(txt, "rpui.Fonts.VendorNpc_Price", w - 12, h - 8, rpui.UIColors.White, TEXT_ALIGN_RIGHT, TEXT_ALIGN_BOTTOM)
         elseif that.data_table["price"] then
             local better_price = is_vendor() and rp.FormatMoney(that.data_table["price"])
-            better_price = better_price or that:IsHovered() and that.realcount and (translates and translates.Get("%s за %i шт.", rp.FormatMoney(that.data_table["price"] * that.realcount), that.realcount) or (rp.FormatMoney(that.data_table["price"] * that.realcount) .. " за " .. that.realcount .. "шт.")) or rp.FormatMoney(that.data_table["price"])
+
+            if stock_cooldown then
+                better_price = string.FormattedTime( math.ceil(stock_cooldown - CurTime()), "%02i:%02i" );
+            else
+                local exp = (that.data_table["experience"] or 0) * that.realcount;
+                local money = translates.Get( "%s за %i шт.", rp.FormatMoney(that.data_table["price"] * that.realcount), that.realcount )
+
+				better_price = better_price or that:IsHovered() and that.realcount
+                    and (exp > 0 and translates.Get("%i опыта, %s", exp, money) or money)
+                    or rp.FormatMoney(that.data_table["price"])
+			end
+
             draw_SimpleText(better_price, "rpui.Fonts.VendorNpc_Price", w - 12, h - 8, rpui.UIColors.White, TEXT_ALIGN_RIGHT, TEXT_ALIGN_BOTTOM)
         end
     end
@@ -866,7 +921,7 @@ function PANEL:AddItemButton(parent, data)
     item_btn.lbl:SetMouseInputEnabled(false)
 
     item_btn.lbl.Paint = function(this, w, h)
-        if not is_vendor() then 
+        if not is_vendor() then
 			draw_SimpleText(item_btn.realcount, "rpui.Fonts.VendorNpc_Count", w - 4, h - 6, rpui.UIColors.White, TEXT_ALIGN_RIGHT, TEXT_ALIGN_BOTTOM)
 		elseif data.isnt_vendor then
 			draw_SimpleText(data.count, "rpui.Fonts.VendorNpc_Count", w - 4, h - 6, rpui.UIColors.White, TEXT_ALIGN_RIGHT, TEXT_ALIGN_BOTTOM)
@@ -949,11 +1004,11 @@ function PANEL:Init()
     self.tabsshop:SetItemClickFunc(function(pnl)
         local data = pnl.data_table
 
-		if data.isnt_vendor and data.price > LocalPlayer():GetMoney() then
+		if data.isnt_vendor and not data.override_count and data.price > LocalPlayer():GetMoney() then
 			rp.Notify(NOTIFY_ERROR, 'У вас недостаточно денег!')
 			return
 		end
-		
+
         local data_table = {
             name = data["name"],
             price = data["price"],
@@ -991,7 +1046,7 @@ function PANEL:Init()
 
         local buy_txt = translates and translates.Get("Купить") or "Купить"
         local sll_txt = translates and translates.Get("Продать") or "Продать"
-        
+
         self.slider_menu = vgui.Create("rpui_numslider_menu")
         self.slider_menu:SetBtnText(self.is_vendor_iventory and buy_txt or sll_txt)
         self.slider_menu:SetDecimals(0)
@@ -1017,12 +1072,16 @@ function PANEL:Init()
 
         self.slider_menu:SetButtonClick(1, function(this, cur, max)
             hook.Run("VendorNPC_TradeHook", self, data["uid"], cur, pnl, data_table)
-            self.slider_menu:Close()
+            if IsValid(self) and IsValid(self.slider_menu) then
+                self.slider_menu:Close()
+            end
         end)
 
         self.slider_menu:SetButtonClick(2, function(this, cur, max)
             hook.Run("VendorNPC_TradeHook", self, data["uid"], max, pnl, data_table)
-            self.slider_menu:Close()
+            if IsValid(self) and IsValid(self.slider_menu) then
+                self.slider_menu:Close()
+            end
         end)
     end)
 end
@@ -1049,7 +1108,8 @@ function PANEL:InsertItems(items_tab)
 
             local _price = self.is_vendor_iventory and item.buyPrice or item.sellPrice
             if not _price then continue end
-            self.tabsshop:AddItem(category, item.uid, item.name, _price, item.mdl, not self.is_vendor_iventory and 0 or item.is_vendor == false and item.amount, nil, item.is_vendor == false)
+
+            self.tabsshop:AddItem(category, item.uid, item.name, _price, item.mdl, (not self.is_vendor_iventory and not item.override_count and 0) or (item.is_vendor == false and item.amount), nil, item.is_vendor == false, nil, item.override_count, item.experience)
         end
     end
 end
@@ -1204,7 +1264,7 @@ function rp.item.openVendorMenu(net_index, is_vendor, custom_items)
     local wi, he = 290, 400
     wi = math.max(wi, MenuSize.w * scale)
     he = math.max(he, MenuSize.h * scale)
-	
+
     main_pnl = vgui.Create("Urf_VendorNpc_Menu")
     main_pnl:SetSize2(wi, he)
     main_pnl:SetPos(ScrW()*0.9 - main_pnl:GetWide(), ScrH() / 2 - main_pnl:GetTall() / 2)
@@ -1213,7 +1273,7 @@ function rp.item.openVendorMenu(net_index, is_vendor, custom_items)
     main_pnl:SetVendor(self)
     main_pnl.VendorIndex = net_index
     --main_pnl:ParentToHUD()
-	
+
     buy_pnl = vgui.Create("Urf_VendorNpc_Menu")
     buy_pnl:SetSize2(wi, he)
     --buy_pnl:SetPos(ScrW() / 2 - buy_pnl:GetWide() - 30, ScrH() / 2 - buy_pnl:GetTall() / 2)
@@ -1240,25 +1300,25 @@ function rp.item.openVendorMenu(net_index, is_vendor, custom_items)
         sell = {},
         buy = {}
     }
-	
+
     local all_vendoritems
-	
+
 	if is_vendor then
 		all_vendoritems = rp.VendorsNPCs[self:GetVendorName()].items
-		
+
 	else
 		--local inv = rp.item.inventories[self.GetInvID and self:GetInvID() or -1]
-		
+
 		all_vendoritems = {}
-		
+
 		if custom_items then
 			--local item
-			
+
 			for k, v in pairs(custom_items) do
 				--item = rp.item.list[v.uniqueID] or rp.item.base[v.uniqueID]
-				
+
 				--print(item.uniqueID, v.uniqueID)
-				
+
 				--if v:getData('price') then
 					--[[
 					all_vendoritems[v.uniqueID] = table.Copy(v)
@@ -1269,9 +1329,9 @@ function rp.item.openVendorMenu(net_index, is_vendor, custom_items)
 					all_vendoritems[v.uniqueID].mdl = v.model
 					all_vendoritems[v.uniqueID].count = v:getData('count')
 					]]
-					
+
 					local item_t = rp.item.list[v.uniqueID]
-					
+
 					all_vendoritems[v.uniqueID] = {}
 					all_vendoritems[v.uniqueID].price = v.price
 					all_vendoritems[v.uniqueID].buyPrice = v.price
@@ -1280,12 +1340,12 @@ function rp.item.openVendorMenu(net_index, is_vendor, custom_items)
 					all_vendoritems[v.uniqueID].is_vendor = false
 					all_vendoritems[v.uniqueID].mdl = item_t.model --v.model
 					all_vendoritems[v.uniqueID].count = v.count
-					
+
 				--end
 			end
 		end
 	end
-	
+
     for name, tab in pairs(all_vendoritems) do
         if tab["buyPrice"] then
             items.buy[name] = tab
@@ -1336,10 +1396,11 @@ function rp.item.openVendorMenu(net_index, is_vendor, custom_items)
 
     hook.Add("VendorNPC_TradeHook", "_hi_", function(pnl, uid, amount, item_btn, dt)
 		amount = amount or 1
-		
+
 		if amount <= 0 then return end
-		
+
 		if is_vendor then
+            if (!IsValid(pnl) or !IsValid(pnl.VendorEnt)) then return end
 			local item_tab = table.Copy(rp.VendorsNPCs[pnl.VendorEnt:GetVendorName()].items)
 			local item = item_tab[uid]
 			if not item then return end
@@ -1350,28 +1411,28 @@ function rp.item.openVendorMenu(net_index, is_vendor, custom_items)
 			net.SendToServer()
 		else
 			if buy_pnl.tabsshop.Items[dt.uid].count < amount then return end
-			
+
 			buy_pnl.tabsshop.Items[dt.uid].count = buy_pnl.tabsshop.Items[dt.uid].count - amount
 			item_btn.data_table.count = item_btn.data_table.count - amount
-			
-			custom_items[dt.uid].count = custom_items[dt.uid].count - amount 
-			
+
+			custom_items[dt.uid].count = custom_items[dt.uid].count - amount
+
 			if custom_items[dt.uid].count <= 0 then
 				custom_items[dt.uid] = nil
 			end
-			
+
 			net.Start('ShopEnt::BuyItem')
 				net.WriteString(dt.uid)
 				net.WriteUInt(net_index, 16)
 				net.WriteUInt(amount, 8)
 			net.SendToServer()
-			
+
 			if buy_pnl.tabsshop.Items[dt.uid].count <= 0 then
 				--timer.Simple(0.2, function()
 					--buy_pnl:Remove()
 					--rp.item.openVendorMenu(net_index, is_vendor, custom_items)
 					item_btn:Remove()
-					
+
 					if table.Count(custom_items) == 0 then
 						buy_pnl:Remove()
 					end
@@ -1384,13 +1445,25 @@ end
 net.Receive("VendorNpc_OpenMenu", function()
     local net_index = net.ReadInt(32)
 	local is_vendor = net.ReadBool()
-	
+
     rp.item.openVendorMenu(net_index, is_vendor)
 end)
 
 function rp.OpenVendorNpcMenu(ent)
     rp.item.openVendorMenu(ent:EntIndex(), true)
 end
+
+--————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+rp.VendorsNPCsStock = {};
+
+net.Receive( "VendorNpc_StockCooldown", function()
+    local vendor_id = net.ReadString();
+    local item_id   = net.ReadString();
+    local stock_cd  = net.ReadFloat();
+
+    rp.VendorsNPCsStock[vendor_id]          = rp.VendorsNPCsStock[vendor_id] or {};
+    rp.VendorsNPCsStock[vendor_id][item_id] = stock_cd;
+end );
 
 --————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 if not ENT then return end -- Что-бы я мог подгружать код с помощью lua_openscript_cl без удаления куска кода связанного с энтитёй.
@@ -1413,7 +1486,7 @@ local tr = translates
 local cached
 local function check_cached_string()
     if cached then return end
-    
+
     if tr then
         cached = tr.Get( "[E] Открыть Магазин" )
     else

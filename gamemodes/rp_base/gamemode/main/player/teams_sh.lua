@@ -1,9 +1,23 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\player\\teams_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 function team.GetModel(t)
 	if not t then
 		t = 1
 	end
 
 	return (istable(rp.teams[t].model) and rp.teams[t].model[math.random(1, #rp.teams[t].model)] or rp.teams[t].model)
+end
+
+function team.NumNonAfkPlayers(team_id)
+	local real_num = 0
+	
+	for k, v in pairs(player.GetAll()) do
+		if IsValid(v) and v:Team() == team_id and not v:GetNetVar("IsAFK") then
+			real_num = real_num + 1
+		end
+	end
+	
+	return real_num
 end
 
 function PLAYER:GetJobTable()
@@ -19,7 +33,7 @@ function PLAYER:IsDisguised()
 end
 
 function PLAYER:JobIsReversed()
-	return (self:IsDisguised() and self:GetDisguiseJobTable().reversed or self:GetJobTable().reversed)
+	return ((self:IsDisguised() and self:GetDisguiseJobTable()) and self:GetDisguiseJobTable().reversed or self:GetJobTable().reversed)
 end
 
 function PLAYER:GetDisguiseJobTable()

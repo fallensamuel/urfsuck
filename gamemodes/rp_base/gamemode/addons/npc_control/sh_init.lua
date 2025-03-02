@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\npc_control\\sh_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 rp.npc = rp.npc or {
 	Templates = {},

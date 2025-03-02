@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\supervisor\\cl_job_supervisor.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 /* ---- Variables: -------------------------- */
 rp.SupervisorStatus = rp.SupervisorStatus or {};
 
@@ -117,13 +119,13 @@ local function rpSupervisor_Controls( cmd )
     if rpSupervisor.ID == 0                 then return end
     if rpSupervisor.CMDCooldown > CurTime() then return end
 
-    if IsValid(rpSupervisor.UI.Panels.Base) and ply:KeyPressed(IN_MOVELEFT) then
+    if IsValid(rpSupervisor.UI.Panels.Base) and LocalPlayer():KeyPressed(IN_MOVELEFT) then
         rpSupervisor.UI.Panels.Base.NextSelect:DoClick();
         rpSupervisor.CMDCooldown = CurTime() + 0.1;
-    elseif IsValid(rpSupervisor.UI.Panels.Base) and ply:KeyPressed(IN_MOVERIGHT) then
+    elseif IsValid(rpSupervisor.UI.Panels.Base) and LocalPlayer():KeyPressed(IN_MOVERIGHT) then
         rpSupervisor.UI.Panels.Base.PrevSelect:DoClick();
         rpSupervisor.CMDCooldown = CurTime() + 0.1;
-    elseif ply:KeyPressed(IN_DUCK) then
+    elseif LocalPlayer():KeyPressed(IN_DUCK) then
         rpSupervisor.ObserverMode = !rpSupervisor.ObserverMode;
         LocalPlayer():SetObserverMode( rpSupervisor.ObserverMode and OBS_MODE_IN_EYE or OBS_MODE_CHASE );
         rpSupervisor.CMDCooldown = CurTime() + 0.1;
@@ -134,17 +136,18 @@ end
 /* --- Actions: ----------------------------- */
 rp.AddContextCategory( cached[1], function()
     if rpSupervisor.ID == 0 then return false end
-
     return true
 end );
 
+--[[
 if rpSupervisor.ID ~= 0 then
-    for ActionID in pairs(rp.cfg.Supervisors.List[rpSupervisor.ID].Actions) do
-        rp.AddContextCommand( cached[1], rp.cfg.Supervisors.Actions[ActionID].Name, function()
+    for ActionID, Action in pairs( rp.cfg.Supervisors.List[rpSupervisor.ID].Actions ) do
+        rp.AddContextCommand( cached[1], Action.Name, function()
             rpSupervisor.sendAction( ActionID );
-        end, nil, 'cmenu/dispatch' );
+        end, Action.Check, "cmenu/dispatch" );
     end
 end
+]]--
 
 
 /* ---- Networking: ------------------------- */
@@ -178,9 +181,12 @@ net.Receive( "rp.job.supervisor", function()
         hook.Add( "HUDShouldDraw", "rpSupervisor::HidePlayerDisplay",        rpSupervisor_HidePlayerDisplay );
 
         for ActionID in pairs(rp.cfg.Supervisors.List[id].Actions) do
-            rp.AddContextCommand( cached[1], rp.cfg.Supervisors.Actions[ActionID].Name, function()
+            local Action = rp.cfg.Supervisors.Actions[ActionID];
+            if not Action then continue end
+            
+            rp.AddContextCommand( cached[1], Action.Name, function()
                 rpSupervisor.sendAction( ActionID );
-            end, nil, 'cmenu/dispatch' );
+            end, Action.Check, "cmenu/dispatch" );
         end
 
         rpSupervisor.createInterface();
@@ -192,6 +198,8 @@ net.Receive( "rp.job.supervisor", function()
         local slave = net.ReadEntity();
         
         rpSupervisor.Slave = slave;
+
+        rp.RefreshContextCommands();
     elseif cmd == SUPERVISOR_CMD_ACTION then
         local action_id = net.ReadUInt(6);
         local cd        = net.ReadFloat();
@@ -389,6 +397,115 @@ rpSupervisor.createInterface = function()
         m:SizeToChildren( false, true );
 
         m:Open();
+    end
+
+    -- context menu
+
+    local ctxcategories = {
+        [cached[1]]                 = true,
+        [rp.cfg.MenuCategoryPolice] = true,
+        [tr.Get("Управление")]      = true,
+        ["Командование"]            = true,
+    };
+
+    rpSupervisor.UI.Panels.SupervisorCtx = vgui.Create( "Panel", vgui.GetWorldPanel() );
+    local SupervisorCtx = rpSupervisor.UI.Panels.SupervisorCtx;
+
+    SupervisorCtx:SetWide( ScrW() * 0.4 );
+    SupervisorCtx.frameSpacing = ScrH() * 0.5 * 0.01;
+    SupervisorCtx.cmdMinWidth  = SupervisorCtx:GetWide() * 0.085;
+    SupervisorCtx.Think = function( this )
+        if rpSupervisor.ID == 0 then this:Remove(); end
+
+        if this.CommandsView then
+            if rpSupervisor.Slave ~= this.Slave then
+                this.CommandsView:Rebuild();
+                this.Slave = rpSupervisor.Slave;
+            end
+        end
+            
+        if g_ContextMenu:IsVisible() and not this.IsHiding then
+            this:SetAlpha( 0 );
+            this.IsHiding = true;
+        end
+        
+        if not g_ContextMenu:IsVisible() and this.IsHiding then
+            this:SetAlpha( 255 );
+            this.IsHiding = false;
+        end
+    end
+
+    SupervisorCtx.CommandsView = vgui.Create( "rpui.RowView", SupervisorCtx );
+    SupervisorCtx.CommandsView:Dock( TOP );
+    SupervisorCtx.CommandsView:SetCategoryTitleFont( "CommandCategory" );
+    SupervisorCtx.CommandsView:InvalidateParent( true );
+    SupervisorCtx.CommandsView:SetSpacingX( SupervisorCtx.frameSpacing );
+    SupervisorCtx.CommandsView:SetSpacingY( SupervisorCtx.frameSpacing );
+    SupervisorCtx.CommandsView.PaintCategoryTitle = function( this, w, h )
+        local x, y = this:GetTextInset();
+        draw.SimpleTextOutlined( this:GetText(), this:GetFont(), x, y, rpui.UIColors.White, TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP, 1, Color(0,0,0,128) );
+        return true
+    end
+
+    SupervisorCtx.CommandsView.Rebuild = function( this )
+        this:Clear();
+
+        for c in pairs( ctxcategories ) do
+            local category = rp.ContextMenu.Categories[c];
+            if not category then continue end
+
+            if category.Check then
+                if not category.Check() then continue end
+            end
+
+            for _, cmd in ipairs( category.Commands ) do
+                if not cmd.Check() then continue end
+
+                local CommandButton = vgui.Create( "DButton" );
+                CommandButton:SetFont( "CommandButton" );
+                CommandButton:SetText( string.utf8upper(cmd.Name) );
+                CommandButton:SizeToContentsY( SupervisorCtx.frameSpacing );
+                CommandButton:SizeToContentsX( CommandButton:GetTall() + SupervisorCtx.frameSpacing * 2 );
+                CommandButton:SetWide( math.max( CommandButton:GetWide(), SupervisorCtx.cmdMinWidth ) );
+                CommandButton.Paint = function( me, w, h )
+                    local baseColor, textColor = rpui.GetPaintStyle( me, STYLE_SOLID );
+                    surface.SetDrawColor( rp.cfg.UIColor.SubHeader );
+                    surface.DrawRect( 0, 0, w, h );
+
+                    surface.SetDrawColor( rp.cfg.UIColor.BlockHeader );
+                    surface.DrawRect( 0, 0, h, h );
+                    
+                    if cmd.Icon then
+                        surface.SetDrawColor( rpui.UIColors.White );
+                        surface.SetMaterial(cmd.Icon)
+                        surface.DrawTexturedRect( h * 0.1, h * 0.1, h * 0.8, h * 0.8 );
+                    end
+                    
+                    surface.SetDrawColor( Color(0,0,0,me._grayscale or 0) );
+                    local p = h * 0.1;
+                    surface.DrawLine( h, p, h, h - p );
+
+                    draw.SimpleText( me:GetText(), me:GetFont(), h + (w-h) * 0.5, h * 0.5, rpui.UIColors.Black, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER );
+                    return true
+                end
+
+                CommandButton.PerformLayout = function( me )
+                    me:SizeToContentsY( SupervisorCtx.frameSpacing );
+                    me:SizeToContentsX( me:GetTall() + SupervisorCtx.frameSpacing * 2 );
+                    me:SetWide( math.max( me:GetWide(), SupervisorCtx.cmdMinWidth ) );
+                end
+
+                CommandButton.DoClick = cmd.Action;
+
+                this:AddItem( CommandButton, string.utf8upper(c) );
+            end
+        end
+
+        SupervisorCtx:InvalidateLayout( true );
+        SupervisorCtx:SizeToChildren( false, true );
+
+        SupervisorCtx:CenterHorizontal();
+        SupervisorCtx.y = ScrH() * 0.01;
     end
 end
 

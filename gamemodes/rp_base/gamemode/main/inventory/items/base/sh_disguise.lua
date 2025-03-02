@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\items\\base\\sh_disguise.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ITEM.name = "Disguise"
 ITEM.desc = "Briefcase to disguise to jobs."
 ITEM.model = "models/props_c17/suitcase001a.mdl"

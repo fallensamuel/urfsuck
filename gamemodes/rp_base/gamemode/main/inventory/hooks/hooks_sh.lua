@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\hooks\\hooks_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 hook.Add("CanItemBeTransfered","CanItemBeTransfered", function(itemObject, curInv, inventory)
 	if (itemObject and itemObject.isBag) then
 		if (inventory.id != 0 and curInv.id != inventory.id) then
@@ -25,6 +27,9 @@ hook.Add("CanPlayerInteractItem","CanPlayerInteractItem", function(client, actio
 	-- if (client:getNetVar("restricted")) then
 	-- 	return false
 	-- end
+	if client:IsInDeathMechanics() then
+		return false
+	end
 
 	if (action == "drop" and hook.Run("CanPlayerDropItem", client, item) == false) then
 		return false
@@ -44,8 +49,10 @@ ba.cmd.Create('Giveitem', function(pl, args)
 	local count = tonumber(args.count)
 
 	local result, msg = inv:add(args.uniqueID, count)
-
+	
 	if result then
+		ba.logAction(pl, args.target, 'giveitem', args.uniqueID .. ':' .. count)
+		
 		ba.notify(pl, translates.Get("Игроку %s выдан предмет %s в количестве %i штук", args.target:GetName(), args.uniqueID, count))
 		ba.notify(args.target, translates.Get("Вам был выдан предмет: %s в количестве %i штук", args.uniqueID, count))
 	else
@@ -160,3 +167,61 @@ end)
 :AddParam('player_entity', 'target')
 :SetFlag('*')
 :SetHelp('Delete player inventory.')
+
+ba.cmd.Create( "viewinv", function( ply, args )
+	if not IsValid(args.target) then return end
+
+	args.target:getInv():sync( ply, true );
+end )
+:RunOnClient( function( args )
+	if not IsValid(args.target) then return end
+
+	surface.CreateFont( "rpui.Fonts.ViewInventory", {
+		font     = "Montserrat",
+		extended = true,
+		weight   = 0,
+		size     = ScrH() * 0.04,
+	} );
+	
+	local menu = vgui.Create( "ui_frame" );
+	menu:SetTitle( translates.Get("Инвентарь игрока: %s", args.target:GetName()) );
+	menu:SetSize( ScrH() * 0.35, ScrH() * 0.35 );
+	menu:Center();
+	menu:MakePopup();
+	menu.PaintOver = function( self, w, h )
+		draw.SimpleText( translates.Get("Загрузка инвентаря..."), "rpui.Fonts.ViewInventory", w * 0.5, h * 0.5, Color(255,255,255,128 + math.sin(CurTime()*3) * 127), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER );
+	
+		self.inv = args.target:getInv();
+		if self.inv then
+			if self.inv.slots then
+				menu.InventoryScroll = vgui.Create( "rpui.ScrollPanel", menu );
+				menu.InventoryScroll:SetScrollbarMargin( 4 );
+				menu.InventoryScroll:DockMargin( 0, 4, 0, 0 );
+				menu.InventoryScroll:Dock( FILL );
+				menu:InvalidateLayout( true );
+	
+				menu.Inventory = vgui.Create( "rpui.Inventory" );
+				menu.Inventory.widthFrame = menu.InventoryScroll:GetWide() * 0.2 - 6;
+				menu.Inventory.heightFrame = menu.Inventory.widthFrame;
+				menu.Inventory.spacingFrame = 4;
+				menu.Inventory:setInventory( self.inv );
+				
+				menu.InventoryScroll:AddItem( menu.Inventory );
+	
+				for k, v in pairs( menu.Inventory.panels ) do
+					v.move = nil; v.OnMouseReleased = nil; v.OnMousePressed = nil; v.doRightClick = nil; v.actionsMenu = nil;
+				end
+	
+				menu.PaintOver = nil;
+			end
+		end
+	end
+	menu.OnClose = function( self )
+		if self.inv then return end
+		if self.inv == LocalPlayer():getInv() then return end
+		
+		rp.item.inventories[self.inv.id] = nil;
+	end
+end )
+:AddParam( "player_entity", "target" )
+:SetFlag( "*" );

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\ents\\sh_urf_craftable.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local function CraftTimeFormula(recipe) -- формула времени крафта.
 	local out = 1
 
@@ -10,11 +12,16 @@ end
 
 rp.CraftTableItems = {}
 rp.CraftTableItemsIndexes = {}
+rp.CraftTableCategoryName = translates.Get("Разное")
 
-function rp.AddToCraftTable(result, recipe, customAng, customCheck, customCraftTime, PosOffset) -- функция для добавления предметов в верстак
+function rp.CraftTableCategory(cat)
+	rp.CraftTableCategoryName = cat
+end
+
+function rp.AddToCraftTable(result, recipe, customAng, customCheck, customCraftTime, PosOffset, customID) -- функция для добавления предметов в верстак
 	if rp.CraftTableItemsIndexes[result] then
 		rp.CraftTableItems[ rp.CraftTableItemsIndexes[result] ] = nil
-		rp.CraftTableItemsIndexes[result] = nil	
+		rp.CraftTableItemsIndexes[result] = nil
 	end
 
 	local result_tab = rp.item.list[result]
@@ -33,6 +40,8 @@ function rp.AddToCraftTable(result, recipe, customAng, customCheck, customCraftT
 	params["customCheck"] 	= customCheck -- args: ply, selfent
 	params["MaterialPath"]  = rp.item.icons[result]
 	params["PosOffset"] 	= PosOffset
+	params["customID"] 		= customID
+	params["category"]      = rp.CraftTableCategoryName
 
 	local index = table.insert(rp.CraftTableItems, params)
 	rp.CraftTableItems[index]["index"] = index

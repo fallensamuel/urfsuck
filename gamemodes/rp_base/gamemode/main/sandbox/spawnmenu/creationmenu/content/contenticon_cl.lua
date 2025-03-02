@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\sandbox\\spawnmenu\\creationmenu\\content\\contenticon_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 local PANEL = {}
 local matOverlay_Normal = Material("gui/ContentIcon-normal.png")
@@ -153,7 +155,7 @@ spawnmenu.AddContentType("entity", function(container, obj)
 	icon.DoClick = function()
 		surface.PlaySound("ui/buttonclickrelease.wav")
 		
-		if not obj.admin or rp.QObjects and rp.QObjects[obj.spawnname] or LocalPlayer():IsRoot() or LocalPlayer():HasFlag("e") or LocalPlayer():HasFlag("f") or rp.IsEntSpawnAcceptable(LocalPlayer(), obj.spawnname) then
+		if not obj.admin or rp.QObjects and rp.QObjects[obj.spawnname] or LocalPlayer():IsRoot() or LocalPlayer():HasFlag("e") or LocalPlayer():HasFlag("f") or rp.IsEntSpawnAcceptable(LocalPlayer(), obj.spawnname) or rp.HasENTSpawnPermission(LocalPlayer()) then
 			RunConsoleCommand("gm_spawnsent", obj.spawnname)
 		end
 	end
@@ -203,7 +205,7 @@ spawnmenu.AddContentType("vehicle", function(container, obj)
 	icon.DoClick = function()
 		surface.PlaySound("ui/buttonclickrelease.wav")
 		
-		if not obj.admin or rp.QObjects and rp.QObjects[obj.spawnname] or LocalPlayer():IsRoot() or LocalPlayer():HasFlag("e") or LocalPlayer():HasFlag("f") or rp.IsEntSpawnAcceptable(LocalPlayer(), obj.spawnname) then
+		if not obj.admin or rp.QObjects and rp.QObjects[obj.spawnname] or LocalPlayer():IsRoot() or LocalPlayer():HasFlag("e") or LocalPlayer():HasFlag("f") or rp.IsEntSpawnAcceptable(LocalPlayer(), obj.spawnname) or rp.HasENTSpawnPermission(LocalPlayer()) then
 			RunConsoleCommand("gm_spawnvehicle", obj.spawnname)
 		end
 	end
@@ -267,7 +269,7 @@ spawnmenu.AddContentType("npc", function(container, obj)
 		
 		surface.PlaySound("ui/buttonclickrelease.wav")
 
-		if not obj.admin or rp.QObjects and rp.QObjects[obj.spawnname] or LocalPlayer():IsRoot() or LocalPlayer():HasFlag("e") or LocalPlayer():HasFlag("f") or rp.IsEntSpawnAcceptable(LocalPlayer(), obj.spawnname) then
+		if not obj.admin or rp.QObjects and rp.QObjects[obj.spawnname] or LocalPlayer():IsRoot() or LocalPlayer():HasFlag("e") or LocalPlayer():HasFlag("f") or rp.IsEntSpawnAcceptable(LocalPlayer(), obj.spawnname) or rp.HasENTSpawnPermission(LocalPlayer()) then
 			RunConsoleCommand("gmod_spawnnpc", obj.spawnname, weapon)
 		end
 	end
@@ -323,7 +325,7 @@ spawnmenu.AddContentType("weapon", function(container, obj)
 	icon.DoClick = function()
 		surface.PlaySound("ui/buttonclickrelease.wav")
 		
-		if not obj.admin or rp.QObjects and rp.QObjects[obj.spawnname] or LocalPlayer():IsRoot() or LocalPlayer():HasFlag("e") or LocalPlayer():HasFlag("f") or rp.IsSwepSpawnAcceptable(LocalPlayer(), obj.spawnname) then
+		if not obj.admin or rp.QObjects and rp.QObjects[obj.spawnname] or LocalPlayer():IsRoot() or LocalPlayer():HasFlag("e") or LocalPlayer():HasFlag("f") or rp.IsSwepSpawnAcceptable(LocalPlayer(), obj.spawnname) or rp.HasSWEPSpawnPermission(LocalPlayer()) then
 			RunConsoleCommand("gm_giveswep", obj.spawnname)
 		end
 	end

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stools\\urf_keypad.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 TOOL.Category = "Roleplay"
 TOOL.Name = translates.Get("Специальный Кейпад")
 TOOL.Command = nil
@@ -113,20 +115,22 @@ function TOOL:LeftClick(tr)
 	self:SetupKeypad(ent)
 
 	undo.Create("Keypad")
-		if(util.tobool(self:GetClientNumber("freeze"))) then
-			phys:EnableMotion(false)
-		end
+		local phys = ent:GetPhysicsObject();
 
-		if(util.tobool(self:GetClientNumber("weld"))) then
-			phys:EnableMotion(false) -- The timer allows the keypad to fall slightly, no thanks
+		phys:EnableCollisions( false );
+		phys:EnableMotion( false );
 
-			timer.Simple(0, function()
-				if(IsValid(ent) and IsValid(trace_ent)) then
-					local weld = constraint.Weld(ent, trace_ent)
+		if tobool( self:GetClientNumber("weld") ) then
+			timer.Simple( FrameTime(), function()
+				if IsValid(ent) and IsValid(trace_ent) then
+					local weld = constraint.Weld( ent, trace_ent, 0, tr.PhysicsBone, 0, true, true );
+
+					if weld then
+						ent:SetMoveType( MOVETYPE_VPHYSICS );
+						phys:EnableMotion( true );
+					end
 				end
-			end)
-
-			ent:GetPhysicsObject():EnableCollisions(false)
+			end );
 		end
 
 		undo.AddEntity(ent)

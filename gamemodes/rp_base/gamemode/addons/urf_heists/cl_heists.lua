@@ -1,9 +1,17 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\urf_heists\\cl_heists.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 rp.Heists.LootbagMdlRenderOffset = { pos = Vector(-2,-6,0), ang = Angle(-90,5,90) };
 
 
 rp.Heists.LootbagMdl = rp.Heists.LootbagMdl or ClientsideModel( "models/jessev92/payday2/item_bag_loot_jb.mdl", RENDERGROUP_OPAQUE );
 rp.Heists.LootbagMdl:SetModelScale( 1 );
 rp.Heists.LootbagMdl:SetNoDraw( true );
+
+
+local heist_materials = {
+    blue = Material("bubble_hints/heist_blue.png", "smooth noclamp"),
+    red = Material("bubble_hints/heist_red.png", "smooth noclamp"),
+}
 
 
 hook.Add( "PostDrawTranslucentRenderables", "rp.Heists.RenderLootbags", function()
@@ -73,14 +81,28 @@ hook.Add( "HUDPaint", "rp.Heists.HUD", function()
         end
 
         local f = LocalPlayer():GetFaction();
-
-        if f == FACTION_POLICE or f == FACTION_SPEC then
+        if rp.cfg.Heists.IsGoodGuy(f) then
             local mp = rp.cfg.Heists.MarkerPos[game.GetMap()];
             
             mp = mp:ToScreen();
             if mp.visible then
-                local b = math.cos(CurTime()*3)*155;
-                draw.SimpleText( heist_txt, rp.cfg.Heists.Fonts.WorldHint, mp.x, mp.y, Color(255,100+b,100+b,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER );
+                local heist_ico = math.Round(SysTime() % 2) == 0 and heist_materials.blue or heist_materials.red;
+                --draw.SimpleText( heist_txt, rp.cfg.Heists.Fonts.WorldHint, mp.x, mp.y, Color(255,100+b,100+b,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER );
+                rp.DrawInfoBubble(
+                    100,
+                    heist_ico,
+                    nil,
+                    nil,
+                    color_white,
+                    false,
+                    nil,
+                    nil,
+                    mp,
+                    nil,
+                    nil,
+                    false,
+                    true
+                );
             end
         end
     end

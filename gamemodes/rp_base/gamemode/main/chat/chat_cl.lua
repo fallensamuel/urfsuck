@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\chat\\chat_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include('chat_sh.lua')
 local color_white = Color(235, 235, 235)
 
@@ -28,14 +30,16 @@ local chatHandlers = {
 			wasteUInt()
 			local text = net.ReadString()
 
-			if (IsValid(CHATBOX)) then
-				CHATBOX.DoEmotes = pl:IsVIP()
-			end
+			if IsValid(pl) then
+				if (IsValid(CHATBOX)) then
+					CHATBOX.DoEmotes = pl:IsVIP()
+				end
 
-			local emoji = pl.GetNickEmoji and pl:GetNickEmoji()
-			chat.AddText(team.GetColor(pl:GetJob()), emoji and (':' .. emoji .. ': ' .. pl:Name()) or pl:Name(), color_white, ': ', text)
-			
-			hook.Call("ChatRoomMessage", GAMEMODE, CHAT_LOCAL, pl, text)
+				local emoji = pl.GetNickEmoji and pl:GetNickEmoji()
+				chat.AddText(team.GetColor(pl:Team()), emoji and (':' .. emoji .. ': ' .. pl:Name()) or pl:Name(), color_white, ': ', text)
+
+				hook.Call("ChatRoomMessage", GAMEMODE, CHAT_LOCAL, pl, text)
+			end
 		else
 			-- whisper, yell, me
 			wasteUInt()
@@ -54,7 +58,7 @@ local chatHandlers = {
 
 				local emoji = pl.GetNickEmoji and pl:GetNickEmoji()
 				chat.AddText(prefixCol, prefix, pl:GetJobColor(), emoji and (':' .. emoji .. ': ' .. pl:Name()) or pl:Name(), color_white, ': ', text)
-				
+
 				hook.Call("ChatRoomMessage", GAMEMODE, CHAT_LOCAL, pl, prefix .. text)
 			end
 		end -- normal
@@ -72,16 +76,16 @@ local chatHandlers = {
 		if (not IsValid(plFrom) or not IsValid(plTo)) then return end
 		local prefix
 		local space = " "
-		
+
 		--local plFromEmoji = plFrom.GetNickEmoji and plFrom:GetNickEmoji()
 		--local plToEmoji = plTo.GetNickEmoji and plTo:GetNickEmoji()
-		
+
 		--local plFromName = plFromEmoji and (':' .. plFromEmoji .. ': ' .. plFrom:Name()) or plFrom:Name()
 		--local plToName = plToEmoji and (':' .. plToEmoji .. ': ' .. plTo:Name()) or plTo:Name()
-		
+
 		local plFromName = plFrom:Name()
 		local plToName = plTo:Name()
-		
+
 		if CHATBOX and CHATBOX.IsNewChatbox then
 			prefix = ((plTo == LocalPlayer()) and "pm_from " or "pm_to ") --.. plToName
 			space = plToName
@@ -92,7 +96,7 @@ local chatHandlers = {
 		if (IsValid(CHATBOX)) then
 			CHATBOX.DoEmotes = plFrom:IsVIP()
 		end
-		
+
 		chat.AddText(prefixCol, prefix, space, plFrom:GetJobColor(), plFromName, color_white, ': ', msg)
 		hook.Call("ChatRoomMessage", GAMEMODE, CHAT_PM, plFrom, plTo, msg)
 	end,
@@ -228,12 +232,12 @@ end)
 
 local last_command
 function rp.RunCommand(...)
-	if last_command and last_command > CurTime() then 
+	if last_command and last_command > CurTime() then
 		return rp.Notify(NOTIFY_ERROR, rp.Term('DontUseCommandsSoFast'))
 	end
-	
+
 	last_command = CurTime() + 0.5
-	
+
 	local args = {...}
 	net.Start('rp.RunCommand')
 	net.WriteUInt(#args, 4)
@@ -245,13 +249,92 @@ function rp.RunCommand(...)
 	net.SendToServer()
 end
 
-function rp.PlayerSay(text, teamonly)
-	if utf8.len(text) > 512 then 
-		text = utf8.sub(text, 1, 512)
+function rp.PlayerSay( text, teamonly )
+	local len = utf8.len( text );
+
+	if not len then
+		text = utf8.force( text );
+		len = utf8.len( text );
 	end
-	
-	net.Start('rp.PlayerSay') 
-		net.WriteString(text) 
-		net.WriteBool(teamonly)
-	net.SendToServer()
+
+	if len > CHAT_MAX_CHARACTERS then
+		text = utf8.sub( text, 1, CHAT_MAX_CHARACTERS );
+	end
+
+	net.Start( "rp.PlayerSay" );
+		net.WriteString( text );
+		net.WriteBool( teamonly );
+	net.SendToServer();
 end
+
+local say_team = {
+	["chatbox_say"] = false,
+	["chatbox_say_team"] = true
+};
+
+local function say( ply, cmd, args )
+	local message, idx, bytes, total = {}, 0, {}, #args;
+
+	repeat
+		idx = idx + 1;
+
+		local arg = args[idx];
+
+		if pcall( utf8.codepoint, arg, 1, -1 ) then
+			message[#message + 1] = arg;
+			message[#message + 1] = " ";
+		else
+			bytes[#bytes + 1] = string.byte( arg );
+
+			local char = string.char( unpack(bytes) );
+
+			if pcall( utf8.codepoint, char ) then
+				message[#message + 1], bytes = char, {};
+			end
+		end
+	until idx >= total;
+
+	local text = string.Trim( table.concat(message, "") );
+	local bTeam = say_team[string.lower(cmd)];
+
+	rp.PlayerSay( text, bTeam );
+end
+
+concommand.Add( "chatbox_say", say );
+concommand.Add( "chatbox_say_team", say );
+
+--[[
+local function CommandBindToTable( bind, output )
+	output = output or {};
+
+	for n, b in ipairs( string.Explode(";", bind) ) do
+		b = string.Trim( b );
+
+		local alias = input.TranslateAlias( b );
+		if alias then
+			CommandBindToTable( alias, output );
+			continue
+		end
+
+		table.insert( output, b );
+	end
+
+	return output;
+end
+
+local replacements = {
+	["say"] = "chatbox_say",
+	["say_team"] = "chatbox_say_team"
+};
+
+hook.Add( "PlayerBindPress", "rp.Chat::TranslateBinds", function( ply, bind, pressed )
+	if not pressed then return end
+
+	for n, b in ipairs( CommandBindToTable(bind) ) do
+		local cmd = string.gsub( b, "^%w+", replacements );
+		ply:ConCommand( cmd );
+	end
+
+	return true
+end );
+]]--

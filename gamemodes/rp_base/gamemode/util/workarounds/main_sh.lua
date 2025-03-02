@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\util\\workarounds\\main_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 function GetPly(num)
 	return player.GetAll()[num]
 end
@@ -74,7 +76,7 @@ Sound crash glitch
 ---------------------------------------------------------------------------*/
 local EmitSound = ENTITY.EmitSound
 function ENTITY:EmitSound(sound, ...)
-	if string.find(sound, '??', 0, true) then return end
+	if not sound or string.find(sound, '??', 0, true) then return end
 	return EmitSound(self, sound, ...)
 end
 

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stools\\textscreen.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 TOOL.Category		= "Roleplay"
 TOOL.Name			= "#Textscreen"
 TOOL.Command		= nil
@@ -22,7 +24,8 @@ local allowablefonts = {
 	"Freestyle Script",
 	"Bradley Hand ITC",
 	"Stencil",
-	"Shrek"
+	"Shrek", 
+	"RUSBoycott"
 }
 
 local createdfonts = {
@@ -316,12 +319,15 @@ if CLIENT then
 	local math_Clamp                 = math.Clamp;
 	local cam_Start3D2D, cam_End3D2D = cam.Start3D2D, cam.End3D2D;
 	local draw_SimpleTextOutlined    = draw.SimpleTextOutlined;
-	local allowablefonts             = { "Open Sans Light", "Tahoma", "Helvetica", "Trebuchet MS", "Comic Sans MS", "Segoe UI", "Impact", "Broadway", "Webdings", "Snap ITC", "Papyrus", "Old English Text MT", "Mistral", "Lucida Handwriting", "Jokerman", "Freestyle Script", "Bradley Hand ITC", "Stencil", "Shrek" };
+	local draw_TextTexture			 = draw.TextTexture;
+	local allowablefonts             = { "Open Sans Light", "Tahoma", "Helvetica", "Trebuchet MS", "Comic Sans MS", "Segoe UI", "Impact", "Broadway", "Webdings", "Snap ITC", "Papyrus", "Old English Text MT", "Mistral", "Lucida Handwriting", "Jokerman", "Freestyle Script", "Bradley Hand ITC", "Stencil", "Shrek", "RUSBoycott" };
 	local createdfonts               = {};
 
 	local function getFont( name, size )
-		if not createdfonts[name] or not createdfonts[name][size] then
-			local fd = {
+		local fontname = "CV" .. name .. size;
+	
+		if not surface.RegistredFonts[fontname] then
+			surface.CreateFont( fontname, {
 				font      = name,
 				size      = size,
 				weight    = 1500,
@@ -329,17 +335,13 @@ if CLIENT then
 				antialias = true,
 				symbol    = (name == "Webdings"),
 				extended  = true,
-			}
-
-			surface.CreateFont( "CV" .. name .. size, fd );  
-			createdfonts[name]       = createdfonts[name] or {}
-			createdfonts[name][size] = true
+			} );
 		end
-
-		return ( "CV" .. name .. size );
+	
+		return fontname
 	end
 
-	rp_TextScreens = {};
+	rp_TextScreens = rp_TextScreens or {};
 	hook.Add( "PostDrawTranslucentRenderables", "rp.TextScreen.Render", function()
 		local cvar = cvar_Get("enable_textscreens_render")
 		if not cvar or not cvar.Value then return end
@@ -350,57 +352,52 @@ if CLIENT then
 				continue
 			end
 
-			if ent:GetPos():Distance( LocalPlayer():GetPos() ) > 750 then continue end
+			local origin, eye = ent:GetPos(), EyePos();
 
-			local ang      = ent:GetAngles();
-			local pos      = ent:GetPos() + ang:Up();
-			local camangle = Angle(ang.p, ang.y, ang.r);
+			if origin:DistToSqr(eye) > 562500 --[[750]] then
+				continue
+			end
 
+			ent.modelradius = ent.modelradius or ent:GetModelRadius() or 0
 			ent.lines = ent.lines or {}
 
 			for i = 1, 3 do
 				if ent:GetNetVar( "Text" .. i ) ~= "" then
 					ent.lines[i]          = ent.lines[i] or {};
-
 					ent.lines[i].font     = allowablefonts[ent:GetNetVar("Font" .. i) or 1];
 					ent.lines[i].text     = ent:GetNetVar("Text" .. i) or "";
-
 					ent.lines[i].r        = ent:GetNetVar("r" .. i) or 255;
 					ent.lines[i].g        = ent:GetNetVar("g" .. i) or 255;
 					ent.lines[i].b        = ent:GetNetVar("b" .. i) or 255;
 					ent.lines[i].a        = ent:GetNetVar("a" .. i) or 255;
-
-					ent.lines[i].size     = math_Clamp(ent:GetNetVar("size" .. i) or 100, 1, 100);
-
+					ent.lines[i].color    = Color(ent.lines[i].r, ent.lines[i].g, ent.lines[i].b, ent.lines[i].a)
+					ent.lines[i].size     = math_Clamp(ent:GetNetVar("size" .. i) or 100, 1, 100)
 					ent.lines[i].fontname = getFont(ent.lines[i].font, ent.lines[i].size);
 				else
 					ent.lines[i] = nil;
 				end
 			end
 
-			cam_Start3D2D( pos, camangle, .25 );
-			render.PushFilterMin( TEXFILTER.ANISOTROPIC );
-				local x, y = 0, 0;
+			local dir = ent:GetUp():Dot( (origin - eye):GetNormalized() ) > 0;
+			local angles = ent:GetAngles();
+			local scale = 0.25;
 
-				for k, v in ipairs( ent.lines ) do
-					local w, h = draw_SimpleTextOutlined( v.text, v.fontname, x, y, Color(v.r, v.g, v.b), 1, 1, 1, color_black );
-					y = y + h;
-				end
-			render.PopFilterMin();
-			cam_End3D2D();
+			if dir then
+				angles:RotateAroundAxis( angles:Right(), 180 );
+			end
 
-			camangle:RotateAroundAxis( camangle:Right(), 180 );
+			origin = origin + angles:Up();
 
-			cam_Start3D2D (pos, camangle, .25 );
-			render.PushFilterMin( TEXFILTER.ANISOTROPIC );
-				local x, y = 0, 0;
-
-				for k, v in ipairs( ent.lines ) do
-					local w, h = draw_SimpleTextOutlined( v.text, v.fontname, x, y, Color(v.r, v.g, v.b), 1, 1, 1, color_black );
-					y = y + h;
-				end
-			render.PopFilterMin();
-			cam_End3D2D();
+			cam_Start3D2D( origin, angles, scale );
+				render.PushFilterMin( TEXFILTER.ANISOTROPIC );
+					local x, y = 0, -(ent.modelradius * (1/scale)) * 0.5;
+					
+					for k, v in ipairs( ent.lines ) do
+						local w, h = draw_TextTexture( v.text, v.fontname, x, y, v.color, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP, 1, color_black );
+						y = y + (h or 0);
+					end
+				render.PopFilterMin();
+			cam_End3D2D()
 		end
 	end );
 end

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\ent_licence\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include('shared.lua')
 local color_black = Color(0, 0, 0)
 

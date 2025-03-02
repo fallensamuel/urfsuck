@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\weapon_taser.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 SWEP.Base = "weapon_rp_base"
 
 if CLIENT then
@@ -27,7 +29,7 @@ local HookCable = Material("sprites/physbeama")
 SWEP.AdminOnly = true
 
 function SWEP:Deploy()
-	NextThink = CurTime()
+	self.TNextThink = CurTime()
 end
 
 if CLIENT then
@@ -42,20 +44,20 @@ if CLIENT then
 		local w, h = 150, 25
 		local x, y = ScrW() - w - 30, ScrH() - h - 30
 		rp.ui.DrawProgress(x, y, w, h, self:GetCharge() / 100)
+
+		if LocalPlayer():ShouldDrawLocalPlayer() then return end
+
 		local vm = self.Owner:GetViewModel()
 		if (not IsValid(vm)) then return end
-		render.SetMaterial(HookCable)
-		--render.DrawSprite( self.StartPos, self.size or 60, self.size or 60, Color(180,180,255))
-		att = vm:GetAttachment(1)
+
 		cam.Start3D()
-
-		if IsValid(self:GetBolt()) then
-			--render.DrawBeam( self:GetBolt():GetPos(), vm:GetPos() + Vector( -1, 0, -1 ), 1, 0, 2, Color(255,255,255,255) ) -- Find bone pos
-			render.DrawBeam(att and att.Pos + Vector(2.5, 0, 3) or self.Owner:GetShootPos(), self:GetBolt():GetPos(), 3, 0, 2, Color(0, 255, 255, 255))
-		else
-			render.DrawBeam(self:GetPos(), self:GetPos(), 1, 0, 2, Color(255, 255, 255, 255))
-		end
-
+			--render.DrawSprite( self.StartPos, self.size or 60, self.size or 60, Color(180,180,255))
+			if IsValid(self:GetBolt()) then
+				--render.DrawBeam( self:GetBolt():GetPos(), vm:GetPos() + Vector( -1, 0, -1 ), 1, 0, 2, Color(255,255,255,255) ) -- Find bone pos
+				att = vm:GetAttachment(1)
+				render.SetMaterial(HookCable)
+				render.DrawBeam(att and att.Pos + Vector(2.5, 0, 3) or self.Owner:GetShootPos(), self:GetBolt():GetPos(), 3, 0, 2, Color(0, 255, 255, 255))
+			end
 		cam.End3D()
 	end
 end
@@ -73,10 +75,10 @@ function SWEP:FireTaser(DoDmg)
 
 	if IsValid(tsr) then
 		local trace = self:GetOwner():GetEyeTrace()
-		local sparkfx = EffectData()
-		sparkfx:SetOrigin(trace.HitPos)
-		util.Effect("Sparks", sparkfx)
-		--tsr:SetParent( self, 1 )
+		-- local sparkfx = EffectData()
+		-- sparkfx:SetOrigin(trace.HitPos)
+		-- util.Effect("cball_explode", sparkfx)
+		-- tsr:SetParent( self, 1 )
 		tsr:SetPos(self.Owner:GetShootPos() - self.Owner:GetAimVector() * 10)
 		tsr:SetAngles(self.Owner:EyeAngles())
 		tsr:SetOwner(self.Owner)
@@ -107,14 +109,14 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:Think()
-	if CurTime() < NextThink then return end
+	if self.TNextThink and (CurTime() < self.TNextThink) then return end
 	local charge = self:GetCharge()
 
 	if charge < 100 then
 		self:SetCharge(charge + 1)
 	end
 
-	NextThink = CurTime() + Rate
+	self.TNextThink = CurTime() + Rate
 end
 
 function SWEP:Holster()

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\items\\base\\sh_bags.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ITEM.name = "Bag"
 ITEM.desc = "A bag to hold items."
 ITEM.model = "models/props_c17/suitcase001a.mdl"
@@ -18,7 +20,7 @@ ITEM.functions.View = {
             local panel = rp.gui["inv"..index]
             local parent = item.invID and rp.gui["inv"..item.invID] or nil
             local inventory = rp.item.inventories[index]
-            
+
             if (IsValid(panel)) then
                 panel:Remove()
             end
@@ -48,11 +50,14 @@ ITEM.functions.Open = {
     icon = "icon16/cup.png",
     sound = "buttons/lever8.wav",
     onRun = function(item)
-		
+        hook.Run( "Inv::GenerateAdditionalLoot", item );
+
         local index = item:getData("id")
         netstream.Start(item.player, "rpOpenBag", index)
         --net.Start("rp.OpenInventory")
         --net.Send(item.player)
+
+		hook.Run("Inv::OpenBag", item.player)
 
         return false
     end,
@@ -67,14 +72,17 @@ function ITEM:onInstanced(invID, x, y)
     local inventory = rp.item.inventories[invID]
 
     rp.item.newInv(0, self.uniqueID, self.invWidth, self.invHeight, function(inventory)
-        inventory.entity = self.entity
         inventory.vars.isBag = self.uniqueID
         self:setData("id", inventory:getID())
-		self.entity.inventory = inventory
-		
+
         if self.accessCallback then
             self:accessCallback()
         end
+
+		if not IsValid(self.entity) then return end
+
+        inventory.entity = self.entity
+		self.entity.inventory = inventory
     end)
 
     self.isCreatedInv = true
@@ -90,7 +98,7 @@ end
 -- Called when the item first appears for a client.
 function ITEM:onSendData()
     local index = self:getData("id")
-    
+
     if (index) then
         local inventory = rp.item.inventories[index]
 
@@ -112,12 +120,12 @@ function ITEM:onSendData()
         --local inventory = rp.item.inventories[self.invID]
         --local oldInvID = self:getData("id")
         local owner = self.player
-		
+
 		--print('Creating new inv!', owner)
-		
+
         rp.item.newInv(owner:getID(), self.uniqueID, self.invWidth, self.invHeight, function(inv1)
 			--print('Inv created!', inv1:getID())
-			
+
             self:setData("id", inv1:getID())
             inv1:setOwner(owner, true)
             --if oldInvID == nil then return end
@@ -157,7 +165,7 @@ if CLIENT then
             panel = vgui.Create("Inventory")
             panel:setInventory(inventory)
             panel:ShowCloseButton(true)
-            panel:SetTitle(customData.name or translates.Get("Сумка"))
+            panel:SetTitle(customData.name or translates.Get("Ящик"))
             panel.btnMaxim:Hide()
             panel.btnMinim:Hide()
             panel:SetPos(ScrW() / 2 + 15, ScrH() / 2 - panel:GetTall() / 2)
@@ -295,12 +303,12 @@ if CLIENT then
         rp.LootInventory.Panels.InventoryMenu.Title = vgui.Create("DLabel", rp.LootInventory.Panels.InventoryMenu)
         rp.LootInventory.Panels.InventoryMenu.Title:Dock(TOP)
         rp.LootInventory.Panels.InventoryMenu.Title:InvalidateParent(true)
-        rp.LootInventory.Panels.InventoryMenu.Title:SetText(customData.name or translates.Get("СУМКА"))
+        rp.LootInventory.Panels.InventoryMenu.Title:SetText(customData.name or translates.Get("ЯЩИК"))
 
         rp.LootInventory.Panels.InventoryMenu.Title.Paint = function(this, w, h)
             surface.SetDrawColor(rpui.UIColors.Shading)
             surface.DrawRect(0, 0, w, h)
-            draw.SimpleText(this:GetText(), this:GetFont(), w * 0.05, h * 0.5, color_white, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
+            draw.SimpleText(this:GetText(), this:GetFont(), h * 0.275, h * 0.5, color_white, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
 
             return true
         end
@@ -473,7 +481,7 @@ if CLIENT then
 
         if IsValid(rp.LootInventory.Panels.MoveAllBtn) then rp.LootInventory.Panels.MoveAllBtn:Remove() end
         if IsValid(rp.LootInventory.Panels.MoveAllLbl) then rp.LootInventory.Panels.MoveAllLbl:Remove() end
-		
+
 		if not customData.disableTakeAll and rp.cfg.TakeAllFromBags then
 			local btn = vgui.Create("DButton")
 			btn:SetText("")
@@ -559,11 +567,11 @@ if CLIENT then
 			if IsValid(rp.Inventory.Panels.InventoryMenu) then
 				rp.Inventory.Panels.InventoryMenu:SetPos(ScrW()/2 - rp.Inventory.Panels.InventoryMenu:GetWide() - 32, ScrH()/2 - rp.Inventory.Panels.InventoryMenu:GetTall()/2)
 			end
-			
+
 			rp.LootInventory.Panels.InventoryMenu:SetPos(ScrW()/2 + 32, ScrH()/2 - rp.LootInventory.Panels.InventoryMenu:GetTall()/2)
-			
+
 			--local px, py = rp.LootInventory.Panels.InventoryMenu:GetPos()
-			
+
 			--rp.LootInventory.Panels.InventoryMenu:SetPos(px - rp.LootInventory.Panels.InventoryMenu:GetWide() / 2 - 48, py)
 		end
     end
@@ -573,7 +581,7 @@ if CLIENT then
         if not rp.Inventory or not IsValid(rp.Inventory.Panels.InventoryMenu) or not IsValid(rp.LootInventory.Panels.MoveAllLbl) then return end
 
         rp.Inventory.Panels.InventoryMenu:SetPos(ScrW()/2 - rp.Inventory.Panels.InventoryMenu:GetWide() - 16 - rp.LootInventory.Panels.MoveAllLbl:GetWide()/2, ScrH()/2 - rp.Inventory.Panels.InventoryMenu:GetTall()/2)
-        
+
         if IsValid(rp.Inventory.Panels.CloseButton) then
             rp.Inventory.Panels.CloseButton.DoClick = function(self)
                 if self.Closing then return end
@@ -610,31 +618,48 @@ if CLIENT then
         end
     end)
 
-    netstream.Hook("rpOpenBag", function(index, isShop)
-        if LocalPlayer():CantDoAfterNoclip(true) then return end
+    netstream.Hook( "rpOpenBag", function( index, isShop )
+        if LocalPlayer():CantDoAfterNoclip( true ) then return end
 
-        if (index) then
-            local inventory = rp.item.inventories[index]
-            
-            if (inventory and inventory.slots) then
-                hook.Run("rp.OpenInventory")
-                rp.item.CreateInventory(nil, inventory, index, isShop and {
-					name = 'Ваш магазин', 
-					disableTakeAll = true,
-				} or {})
-				
-				hook.Run('Inventory::OpenBag')
+        if index then
+            local inventory = rp.item.inventories[index];
+
+            if inventory and inventory.slots then
+                hook.Run( "rp.OpenInventory" );
+
+                local customData = {};
+
+                if isShop then
+                    customData.name = "Ваш магазин";
+                    customData.disableTakeAll = true;
+                else
+                    if inventory.vars then
+                        -- maybe generate in hook?
+
+                        if inventory.vars.UI_Name then
+                            customData.name = inventory.vars.UI_Name;
+                        end
+
+                        if inventory.vars.UI_DisableTakeAll then
+                            customData.disableTakeAll = true;
+                        end
+                    end
+                end
+
+                rp.item.CreateInventory( nil, inventory, index, customData );
+
+				hook.Run( "Inventory::OpenBag" )
             else
                 --ErrorNoHalt("Attempt to view an uninitialized inventory 2 '"..index.."'\n")
             end
         end
-    end)
+    end );
 else
     util.AddNetworkString( "rp.TakeAllItems" );
     net.Receive( "rp.TakeAllItems", function( len, ply )
         if ply:CantDoAfterNoclip(true) then return end
 		if not rp.cfg.TakeAllFromBags then return end
-		
+
         local index            = net.ReadUInt(32);
         local inventory        = rp.item.inventories[index];
         local inventory_entity = inventory.entity;
@@ -643,21 +668,21 @@ else
             if ply:GetPos():DistToSqr(inventory_entity:GetPos()) > 250000 then return end
 
 			rp.item.RunGesture(ply, ACT_GMOD_GESTURE_ITEM_GIVE)
-            
+
 			local moved = {} --table.Copy(inventory:getItems() or {});
-			
+
 			local playerinventory = ply:getInv():getID();
 			local item_before_cleanup
-			
+
             for k, v in pairs( inventory:getItems() ) do
 				item_before_cleanup = table.Copy(v)
                 local result = v:transfer( playerinventory, nil, nil, nil, nil, nil, true );
-				
+
 				if result then
 					table.insert(moved, item_before_cleanup)
 				end
             end
-			
+
 			hook.Call('Bag.OnTakeAllItems', nil, ply, inventory, inventory_entity, moved);
         end
     end );
@@ -693,7 +718,7 @@ function ITEM:onCanBeTransfered(oldInventory, newInventory)
             end
         end
     end
-    
+
     return !newInventory or newInventory:getID() != oldInventory:getID() or newInventory.vars.isBag
 end
 

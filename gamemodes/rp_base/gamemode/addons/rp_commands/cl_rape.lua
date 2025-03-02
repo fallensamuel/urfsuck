@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\rp_commands\\cl_rape.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local w, h = surface.GetTextureSize(surface.GetTextureID('effects/blood_core'))
 local size = math.random(3, 10)
 w, h = w * size, h * size

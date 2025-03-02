@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\items\\base\\sh_ammo.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ITEM.name = "Ammo Base"
 ITEM.model = "models/Items/BoxSRounds.mdl"
 ITEM.width = 1
@@ -19,7 +21,8 @@ ITEM.BubbleHint = {
 
 if (CLIENT) then
 	function ITEM:paintOver(item, w, h)
-		draw.SimpleText(item.ammoAmount, "DermaDefault", w , h - 5, color_white, TEXT_ALIGN_RIGHT, TEXT_ALIGN_BOTTOM, 1, color_black)
+		-- draw.SimpleText(item.ammoAmount, "DermaDefault", w , h - 5, color_white, TEXT_ALIGN_RIGHT, TEXT_ALIGN_BOTTOM, 1, color_black)
+		draw.SimpleText( "X"..item.ammoAmount, "rpui.Fonts.ItemIcon", w - h*0.05, h*0.025, rp.col.White, TEXT_ALIGN_RIGHT, TEXT_ALIGN_TOP )
 	end
 end
 
@@ -28,10 +31,11 @@ ITEM.functions.use = { -- sorry, for name order.
 	name = translates.Get("Зарядить"),
 	tip = "useTip",
 	icon = "icon16/add.png",
+	radial = false,
 	onRun = function(item)
 		item.player:GiveAmmo(item.ammoAmount, item.ammo)
 		item.player:EmitSound("items/ammo_pickup.wav", 110)
-		
+
 		return true
 	end,
 }

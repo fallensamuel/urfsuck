@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\climb_swep.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 SWEP.Distance = 75
 SWEP.Count = 5
 SWEP.RefreshRate = 2
@@ -51,7 +53,7 @@ if (CLIENT) then
 	local lasttime = os.time()
 
 	function SWEP:DrawHUD()
-		local count = self.Owner:GetNetVar('Jumps', 0)
+		local count = self.Owner:GetNetVar('Jumps', 0) or 0
 		surface.SetDrawColor(Color(255, 255, 255))
 		surface.SetMaterial(Material('materials/sup/jump.png'))
 		local m = self.Count * 64 --max width, so we can just subtract #yolo
@@ -127,6 +129,7 @@ if (CLIENT) then
 	end)
 else
 	function SWEP:ResetVelocity()
+		self.Owner:SetCollisionGroup(COLLISION_GROUP_PLAYER)
 		self.Owner:SetLocalVelocity(Vector(0, 0, 0))
 	end
 
@@ -166,6 +169,11 @@ else
 
 				if (self.Owner:GetNetVar('IsHolding') ~= 0) then
 					self.Owner:SetNetVar('IsHolding', 0)
+				end
+
+				if (self.Owner.LastCustomCollisionCheck) then
+					self.Owner:SetCustomCollisionCheck(self.Owner.LastCustomCollisionCheck)
+					self.Owner.LastCustomCollisionCheck = nil
 				end
 
 				self.Owner:SetMoveType(MOVETYPE_WALK)
@@ -234,6 +242,11 @@ else
 			ply:SetNetVar('IsHolding', 0)
 		end
 
+		if (ply.LastCustomCollisionCheck) then
+			ply:SetCustomCollisionCheck(ply.LastCustomCollisionCheck)
+			ply.LastCustomCollisionCheck = nil
+		end
+
 		ply:SetMoveType(MOVETYPE_WALK)
 	end)
 
@@ -251,13 +264,14 @@ else
 				ply:SetNetVar('IsHolding', 0)
 			end
 
-			ply:SetMoveType(MOVETYPE_WALK)
-		end
-	end)
+			if (ply.LastCustomCollisionCheck) then
+				ply:SetCustomCollisionCheck(ply.LastCustomCollisionCheck)
+				ply.LastCustomCollisionCheck = nil
+			end
 
-	--self:ResetVelocity()
-	hook.Add('ShouldCollide', 'CHeckIfPlayerIsBeingAWhoreAndHOldingTHemselves', function(ent1, ent2)
-		if (ent1:IsPlayer() and ent1.IsHolding and ent2:GetClass() == 'prop_physics' or ent2:IsPlayer() and ent2.IsHolding and ent1:GetClass() == 'prop_physics') then return false end
+			ply:SetMoveType(MOVETYPE_WALK)
+			ply:SetCollisionGroup(COLLISION_GROUP_PLAYER)
+		end
 	end)
 end
 
@@ -292,6 +306,12 @@ function SWEP:PrimaryAttack()
 		if (tr.Entity and tr.Entity:IsPlayer() and tr.Entity.IsHolding and (tr.Entity:GetPos():DistToSqr(self.Owner:GetPos()) <= math.pow(self.PushDistance, 2))) then
 			tr.Entity:SetNetVar('IsHolding', 0)
 			tr.Entity.IsHolding = false
+
+			if (self.Owner.LastCustomCollisionCheck) then
+				self.Owner:SetCustomCollisionCheck(self.Owner.LastCustomCollisionCheck)
+				self.Owner.LastCustomCollisionCheck = nil
+			end
+
 			self.Owner:SetMoveType(MOVETYPE_WALK)
 			self:ResetVelocity()
 
@@ -304,6 +324,10 @@ function SWEP:PrimaryAttack()
 		self.Owner:SetNetVar('Jumps', self.Owner.Count)
 		self.Owner.IsHolding = false
 		self.Owner:SetNetVar('IsHolding', 0)
+		if (self.Owner.LastCustomCollisionCheck) then
+			self.Owner:SetCustomCollisionCheck(self.Owner.LastCustomCollisionCheck)
+			self.Owner.LastCustomCollisionCheck = nil
+		end
 		self.Owner:SetMoveType(MOVETYPE_WALK)
 		self:ResetVelocity()
 		self.Owner:EmitSound(Sound('npc/combine_soldier/gear4.wav'), 75, 100)
@@ -331,8 +355,11 @@ function SWEP:SecondaryAttack()
 
 		if (int == 1) then
 			self.Owner:ViewPunch(Angle(10, 0, 0))
-			self.Owner:SetCustomCollisionCheck(true)
+
+			self.Owner.LastCustomCollisionCheck = self.Owner:GetCustomCollisionCheck()
 			self.Owner.MoveType = self.Owner:GetMoveType()
+
+			self.Owner:SetCustomCollisionCheck(true)
 			self.Owner:SetMoveType(MOVETYPE_NONE)
 
 			if (IsValid(tr.Entity) and tr.Entity:GetClass() == 'prop_physics') then
@@ -340,9 +367,13 @@ function SWEP:SecondaryAttack()
 				self.Owner.LastEntityPos = tr.Entity:GetPos()
 			end
 		else
+			if (self.Owner.LastCustomCollisionCheck) then
+				self.Owner:SetCustomCollisionCheck(self.Owner.LastCustomCollisionCheck)
+				self.Owner.LastCustomCollisionCheck = nil
+			end
+
 			self.Owner:SetMoveType(MOVETYPE_WALK)
 			self:ResetVelocity()
-			self.Owner:SetCustomCollisionCheck(false)
 		end
 
 		--self.Owner:SetNetVar('IsHolding', int)
@@ -388,9 +419,9 @@ end
 end)
 ]]
 hook.Add('PlayerSwitchWeapon', 'AllowSwitchingWhenOnLedge', function(ply, wep1, wep2)
-	if (ply.IsHolding and (wep1:GetClass() == 'weapon_climb')) then
+	if ply.IsHolding and IsValid(wep1) and wep1:GetClass() == 'weapon_climb' then
 		local type = wep2:GetHoldType() or 'normal'
-		if (not wep1.AllowedWeaponTypes[type]) then return true end
+		if not wep1.AllowedWeaponTypes[type] then return true end
 	end
 end)
 

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\operator_rtcameraprop\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ENT.Type = "anim"
 ENT.PrintName = "Камера"
 ENT.Author = ""

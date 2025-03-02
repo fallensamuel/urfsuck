@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\player\\government\\police\\faction_wanted\\z_crime_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 if not rp.cfg.NewWanted then return end
 
@@ -13,7 +15,7 @@ function rp.police.AddCrime(name)
 	
 	local t = { Name = name }
 	
-	t.ID = table.insert(t, rp.crimes.Table)
+	t.ID = table.insert(rp.crimes.Table, t)
 	rp.crimes.Map[t.Name] = t
 	
 	setmetatable(t, rp.meta.crime)

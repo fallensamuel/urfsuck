@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\orgs\\init_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include('painter_cl.lua')
 
 rp.orgs = rp.orgs or {}
@@ -27,12 +29,12 @@ net('rp.OrgsMenu', function()
 	if IsValid(fr) then fr:Close() end
 
 	local w, h = ScrW() * 0.55, ScrH() * 0.525
-	
+
 	local orgdata 	= LocalPlayer():GetOrgData()
 	local rank 		= orgdata.Rank -- TODO: FIX
 	local motd 		= orgdata.MoTD
 	local perms 	= orgdata.Perms
-	
+
 	local orgmembers 	= {}
 	local orgranks 		= {}
 	local orgrankref 	= {}
@@ -44,8 +46,9 @@ net('rp.OrgsMenu', function()
 		local kick 			= net.ReadBool()
 		local rank 			= net.ReadBool() -- TODO: FIX
 		local motd 			= net.ReadBool() -- TODO: FIX
-		local ccapture 		= net.ReadBool() 
-		local cdiplomacy 	= net.ReadBool() 
+		local ccapture 		= net.ReadBool()
+		local cdiplomacy 	= net.ReadBool()
+		local cstorage      = net.ReadBool()
 
 		orgranks[#orgranks + 1] = {
 			Name = rankname,
@@ -53,9 +56,10 @@ net('rp.OrgsMenu', function()
 			Invite = invite,
 			Kick = kick,
 			Rank = rank,
-			MoTD = motd, 
-			CanCapture = ccapture, 
-			CanDiplomacy = cdiplomacy
+			MoTD = motd,
+			CanCapture = ccapture,
+			CanDiplomacy = cdiplomacy,
+			CanStorage = cstorage
 		}
 
 		orgrankref[rankname] = orgranks[#orgranks]
@@ -133,7 +137,7 @@ net('rp.OrgsMenu', function()
 		self.Paint = function(s, w, h)
 			surface.SetDrawColor(rp.col.Outline)
 			surface.DrawOutlinedRect(0, 0, w, h)
-			
+
 			local mat = rp.orgs.GetBanner(LocalPlayer():GetOrg())
 			if (mat) then
 				surface.SetMaterial(mat)
@@ -204,26 +208,26 @@ net('rp.OrgsMenu', function()
 			end
 
 			-- Context menu
-			function btn:OnMousePressed(keyCode) 
+			function btn:OnMousePressed(keyCode)
 				if(keyCode == MOUSE_LEFT) then
 					self:DoClick()
 					return
-					
-				elseif(keyCode == MOUSE_RIGHT) then 
+
+				elseif(keyCode == MOUSE_RIGHT) then
 					local m = ui.DermaMenu(p)
-					
+
 					m:AddOption('Профиль Steam', function()
 						gui.OpenURL('https://steamcommunity.com/profiles/' .. v.SteamID)
 					end)
-					
+
 					m:AddOption('Копировать SteamID', function()
 						SetClipboardText(util.SteamIDFrom64(tostring(v.SteamID)))
 					end)
-					
+
 					m:Open()
 				end
 			end
-			
+
 			if (tosel == v.SteamID) then
 				btn:DoClick()
 			end
@@ -437,7 +441,7 @@ net('rp.OrgsMenu', function()
 						chk:Dock(TOP)
 						fr.overRankNew:AddItem(chk)
 					end)
-					
+
 					local btnSubmit = ui.Create('DButton', function(btn)
 						btn:SetTall(25)
 						btn:SetText("Готово")
@@ -462,8 +466,8 @@ net('rp.OrgsMenu', function()
 									Invite = invite,
 									Kick = kick,
 									Rank = canrank,
-									MoTD = motd, 
-									CanCapture = ccapture, 
+									MoTD = motd,
+									CanCapture = ccapture,
 									CanDiplomacy = cdiplomacy
 								})]
 							end
@@ -639,7 +643,7 @@ net('rp.OrgsMenu', function()
 							chk:SetMouseInputEnabled(false)
 						end
 					end)
-					
+
 					fr.overRankEdit.chkCDipl = ui.Create('DCheckBoxLabel', function(chk)
 						chk:SetText("Дипломатия")
 						chk:SetTextColor(rp.col.Black)
@@ -650,7 +654,7 @@ net('rp.OrgsMenu', function()
 							chk:SetMouseInputEnabled(false)
 						end
 					end)
-					
+
 					ui.Create('DButton', function(btn)
 						btn:SetText('Удалить')
 						btn:SetTall(25)
@@ -860,7 +864,7 @@ net('rp.OrgsMenu', function()
 										if IsValid(fr.btnEdit) then
 											fr.btnEdit:DoClick()
 										end
-										
+
 										sel:Remove()
 									end
 								end
@@ -947,11 +951,11 @@ net('rp.OrgsMenu', function()
 		self:SetTall(25)
 		self:DockMargin(0, 5, 0, 0)
 		self:Dock(BOTTOM)
-		
+
 		self.OnEnter = function(s)
 			local children 	= fr.listMem:GetChildren()[1]:GetChildren()
 			local steamid 	= util.SteamIDTo64(self:GetValue())
-			
+
 			for _, line in pairs(children) do
 				if line.Player and line.Player.SteamID == steamid then
 					line.DoClick()
@@ -960,7 +964,7 @@ net('rp.OrgsMenu', function()
 			end
 		end
 	end, fr.colLeft)
-	
+
 	--------------------------------------------
 	-- Patented quit button
 	--------------------------------------------
@@ -1018,32 +1022,32 @@ local function url_encode(data)
 		local nstr = string.format("%X", string.byte(str))
 		return "%" .. ((string.len(nstr) == 1) and "0" or "") .. nstr
 	end)
-	
+
 	return string.gsub(ndata, " ", "+")
 end
 
 function rp.orgs.LoadBanner(orgName, options)
 	if not orgName then return end
 	wmat.Delete('OrgBanner.' .. orgName)
-	
+
 	http.Fetch(rp.cfg.OrgBannerUrl .. '&org=' .. url_encode(orgName), function(data)
 		if not data or string.find(data, 'DOCTYPE HTML') or data == 'https://urf.im/urflogo.png' then
 			data = rp.cfg.DefaultOrgBanners[1]
 		end
-		
+
 		options = options or {}
-		
+
 		options.URL = data
 		options.W = 128
 		options.H = 128
 		options.Timeout = 60
-		
+
 		wmat.Create('OrgBanner.' .. orgName, options, function(material)
 			rp.orgs.Banners[orgName] = 2
 		end, function()
 			rp.orgs.Banners[orgName] = nil
 		end)
-		
+
 	end, function()
 		rp.orgs.Banners[orgName] = nil
 	end)

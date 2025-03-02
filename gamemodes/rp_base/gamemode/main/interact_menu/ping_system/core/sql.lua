@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\interact_menu\\ping_system\\core\\sql.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 if (SERVER) then return end
 
 function PIS:GetServerID()

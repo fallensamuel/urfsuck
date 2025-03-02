@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stools\\stacker.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local bit = bit
 local util = util
 local math = math

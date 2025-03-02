@@ -1,14 +1,39 @@
+-- "gamemodes\\rp_base\\gamemode\\translations\\french.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 local tr = translates
 local lang = "fr"
 
+tr.Add("Вы получили %s час(а) за игру на %s", lang, "Vous avez reçu %s heure(s) pour avoir jouer sur %s")
+tr.Add("Поздравляем!", lang, "Félicitations!")
+tr.Add("УВЕДОМЛЕНИЕ", lang, "NOTIFICATION")
+tr.Add("Отлично!", lang, "Excellent!")
+tr.Add("50%% от наигранного времени - до %s часов.", lang, "50%% du temps de jeu - jusqu'à %s heures.")
+
+-- Job Whitelist:
+
+tr.Add('Игрок уже покинул сервер.', lang, 'Le joueur a quitté le serveur.')
+tr.Add('WHITELIST - ИГРОКИ', lang, 'WHITELIST - JOUEURS')
+tr.Add('НАЙТИ ОФФЛАЙН ИГРОКА', lang, 'TROUVEZ UN JOUEUR HORS LIGNE')
+tr.Add('Введите steamid64 или steamid32:', lang, 'Entrez le steamid64 ou steamid32:')
+tr.Add('Загрузка данных игрока...', lang, 'Chargement des données du lecteur ...')
+tr.Add('У вас нет доступа к этой команде.', lang, "Vous n'avez pas accès à cette commande.")
+tr.Add("ВЕРНУТЬСЯ", lang, "REVENIR")
+
+tr.Add( "ПОДАТЬ ЗАЯВКУ", lang, "Faire une demande" )
+tr.Add( "Это whitelist профессия, для её получение необходимо заполнить заявку", lang, "Ce métier est whitelist. Déposez votre candidature sur le discord" )
+tr.Add( "Доступно при наличие whitelist'a", lang, "Réservé au whitelist" )
+
+
 -- Weapons
+tr.Add( "Руки | Ключи", lang, "Mains | Clefs" )
 tr.Add( "Инвентарь", lang, "Inventaire" )
 tr.Add( "Взломщик", lang, "Cracker" )
 tr.Add( "Отмычка", lang, "Crochet" )
 tr.Add( "Птица", lang, "Oiseau" )
 tr.Add( "Лапы", lang, "Pattes" )
 tr.Add( "Сумка", lang, "Sac" )
+tr.Add( "Сумка (база)", lang, "Sac (base)" )
 tr.Add( "Сумка (база)", lang, "Sac (base)" )
 tr.Add( "Сумка (обычная)", lang, "Sac (courant)" )
 tr.Add( "Арестовать", lang, "Arrestation" )
@@ -30,6 +55,12 @@ tr.Add( "Шокер", lang, "Taser" )
 tr.Add( "Целительная монтировка", lang, "Guérisseur" )
 tr.Add( "Веревка", lang, "Corde" )
 
+tr.Add( "Portal Туллган", lang, "Portal Toolgun" )
+tr.Add( "Туллган-Арбалет", lang, "Toolgun-Crossbow" )
+tr.Add( "Desert Туллган Eagle", lang, "Desert Eagle Toolgun" )
+tr.Add( "Colt Туллган Python", lang, "Colt Python Toolgun" )
+tr.Add( "Noir Neon Туллган", lang, "Noir Neon Toolgun" )
+
 
 -- Weapon Instructions & Purposes
 tr.Add( "ПКМ открыть инвентарь", lang, "Inventaire ouvert RMB" )
@@ -40,7 +71,7 @@ tr.Add( "ЛКМ - кусать / ПКМ - лаять.", lang, "LMB - mordre / RM
 tr.Add( "ПОДЫМИМ БЛЯТЬ!\nПравая конпка - менять цвет.", lang, "RISE TO FUCK!\nBouton droit - changer de couleur." )
 tr.Add( "Он крутится, больше тебе знать нечего.", lang, "Il tourne, tu ne sais rien de plus." )
 tr.Add( "ЛКП - Закрыть дверь/Постучать \nПКМ - Открыть дверь/Позвонить в дверь\nR - Продать", lang, "LKP - Fermez la porte / Frappez \nRMB - Ouvrir la porte / Sonner la porte\nR - Vendre" )
-tr.Add( "Принимай наркотики у игроков и получай деньги. Прибыль игрока увеличивается на 30%. Чтобы принять товар игрок должен держать его в руках.", lang, "Prenez de la drogue aux joueurs et gagnez de l'argent. Le bénéfice des joueurs augmente de 30%. Pour accepter la marchandise, le joueur doit la tenir entre ses mains." )
+tr.Add( "Принимай наркотики у игроков и получай деньги. Прибыль игрока увеличивается на 30 процентов. Чтобы принять товар игрок должен держать его в руках.", lang, "Prenez de la drogue aux joueurs et gagnez de l'argent. Le bénéfice des joueurs augmente de 30 percentage. Pour accepter la marchandise, le joueur doit la tenir entre ses mains." )
 tr.Add( "Левая кнопка мыши - вылечить игрока, правая мыши - себя.", lang, "Bouton gauche de la souris - soigner le joueur, bouton droit de la souris - vous-même." )
 tr.Add( "Вызывает контейнер с тремя обычными хедкрабами.", lang, "Appelle un conteneur avec trois crabes expérimentés." )
 tr.Add( "МОЗГИИИИИИИИИ.", lang, "CERVEAUUUUXXXXX." )
@@ -74,6 +105,7 @@ tr.Add( "Медиа-Плеер", lang, "Lecteur multimédia" )
 tr.Add( "Заглушить Медиа-Плеер при сворачивании игры", lang, "Désactiver le lecteur multimédia lors de la réduction du jeu" )
 tr.Add( "Медиа-Плеер звук", lang, "Son du lecteur multimédia" )
 tr.Add( "Выключить дым от электронный сигареты (повышает FPS)", lang, "Éteignez la fumée de la cigarette électronique (augmente les FPS)" )
+tr.Add( "Выключить дым от курительной трубки (повышает FPS)", lang, "Éteignez la fumée de la cigarette (augmente les FPS)" )
 tr.Add( "Покачивание камеры", lang, "Mouvements d'écran (shake effect)" )
 tr.Add( "Смерть от первого лица", lang, "Décès à la première personne" )
 tr.Add( "Включить отображение ног от первого лица", lang, "Activer l'affichage du corps à la première personne" )
@@ -132,6 +164,7 @@ tr.Add( "Имеется регенерация здоровья", lang, "Il y a 
 tr.Add( "Является полицейским", lang, "Est des forces de l'ordre" )
 tr.Add( "Защита от радиации", lang, "Radioprotection" )
 tr.Add( "Торгует товарами", lang, "Commerce de marchandises" )
+tr.Add( "Является офицером снабжения", lang, "Est officier d’approvisionnement" );
 
 tr.Add( "Может выдавать премию подчинённых", lang, "Peut émettre une prime subordonnée" )
 tr.Add( "Может выдавать премию, увольнять и понижать подчинённых", lang, "Peut octroyer un bonus, renvoyer et rétrograder ses subordonnés" )
@@ -168,6 +201,7 @@ tr.Add( "Выдаваемое оружие:", lang, "Armes émises:" )
 tr.Add( "Огнестрельное оружие:", lang, "Armes à feu:" )
 
 tr.Add( "ВОЗРОДИТЕСЬ, ЧТОБЫ СМЕНИТЬ ПРОФЕССИЮ", lang, "A RESPAWN POUR CHANGER DE PROFESSION" )
+tr.Add( "НЕЛЬЗЯ ПЕРЕОДЕТЬСЯ В МАСКИРОВКЕ", lang, "IMPOSSIBLE DE CHANGER DE MASQUE" )
 tr.Add( "ВЫ НАХОДИТЕСЬ В РОЗЫСКЕ", lang, "VOUS ÊTES RECHERCHÉ" )
 tr.Add( "ВЫ АРЕСТОВАНЫ", lang, "VOUS ÊTES ARRÊTÉ" )
 tr.Add( "ДОСТИГНУТ ЛИМИТ ИГРОКОВ НА ПРОФЕССИИ", lang, "LIMITE DE JOUEURS ATTEINTE POUR LA PROFESSION" )
@@ -189,8 +223,8 @@ tr.Add( "Garry's Mod — значит urf.im", lang, "urf.im — innovons le rol
 tr.Add( "Garry's Mod — значит urf.im", lang, "urf.im — innovons le roleplay" )
 
 tr.Add( "ПОПОЛНИТЬ СКИНАМИ", lang, "REMPLIR AVEC DES SKINS" )
-tr.Add( "Есть скины CS:GO, Dota 2, PUBG?", lang, "Vous avez des skins CS:GO, Dota 2 ou encore PUBG?" )
-tr.Add( "Обменяй их на кредиты!", lang, "Échangez-les contre des crédits!" )
+tr.Add( "Есть скины CS:GO, Dota 2, Rust?", lang, "Vous avez des skins CS:GO, Dota 2 ou encore Rust?" )
+tr.Add( "Пополни ими счёт в пару кликов!", lang, "Échangez-les contre des crédits!" )
 
 tr.Add( "Введите сумму пополнения в", lang, "Entrez le montant du dépôt" )
 tr.Add( "форму выше.", lang, "forme ci-dessus." )
@@ -201,7 +235,7 @@ tr.Add( "Сумма пополнения", lang, "Montant du complément" )
 
 tr.Add( "ВКЛЮЧИТЬ ВЫДАЧУ ОРУЖИЯ", lang, "INCLURE LA LIVRAISON D'ARMES" )
 tr.Add( "ВЫКЛЮЧИТЬ ВЫДАЧУ ОРУЖИЯ", lang, "DÉSACTIVER LA LIVRAISON D'ARMES" )
-tr.Add( "СОХРАНЕНИЕ...", lang, "ÉCONOMIE ..." )
+tr.Add( "СОХРАНЕНИЕ...", lang, "MODIFICATION ..." )
 
 tr.Add( "Валюта", lang, "Devise" )
 tr.Add( "Привелегии", lang, "Privilèges" )
@@ -290,12 +324,13 @@ tr.Add( "ПОЛНОМОЧИЯ", lang, "AUTORITÉ" )
 tr.Add( "Приглашать", lang, "Inviter" )
 tr.Add( "Выгонять", lang, "Expulser" )
 tr.Add( "Ред. ранги", lang, "Editer les rangs" )
-tr.Add( "Ред. новости", lang, "Editer les новости" )
+tr.Add( "Ред. новости", lang, "Editer les nouvelles" )
 tr.Add( "Захват точек", lang, "Capturer des points" )
+tr.Add( "Исп. склада", lang, "Gérer le coffre-fort" );
 
 tr.Add( "ДОБАВИТЬ", lang, "AJOUTER" )
 tr.Add( "СОХРАНИТЬ", lang, "SAUVEGARDER" )
-
+tr.Add( "УДАЛИТЬ", lang, "SUPPRIMER" );
 
 -- Other Menues
 tr.Add( "Объявление в розыск игрока %s.", lang, "Declare player %s wanted." )
@@ -316,9 +351,11 @@ tr.Add( " ОСТАЛОСЬ %s", lang, " DURANT %s" )
 tr.Add( "Доступно", lang, "Disponible" )
 tr.Add( "Разрешённые пропы", lang, "Props autorisés" )
 
-tr.Add( "ШАПКИ", lang, "Châpeaux" )
+tr.Add( "ШАПКИ", lang, "Tête" )
 tr.Add( "Куплено", lang, "Acheté" )
 tr.Add( "Сохранить", lang, "Enregistrer" )
+tr.Add( "За деньги", lang, "Pour l'argent" )
+tr.Add( "Не хватает", lang, "Il manque" )
 
 tr.Add( "Замаскироваться", lang, "Me déguiser" )
 
@@ -334,7 +371,7 @@ tr.Add( "ЗАКРЫТЬ", lang, "Fermer" )
 tr.Add( "%s за %i шт.", lang, "%s dans %i pièces." )
 tr.Add( "Купить", lang, "Acheter" )
 tr.Add( "Продать", lang, "Vendre" )
-tr.Add( "Количество", lang, "Quantité" ) 
+tr.Add( "Количество", lang, "Quantité" )
 
 tr.Add( "КУПИТЬ", lang, "ACHETER" )
 tr.Add( "ПРОДАТЬ", lang, "VENDRE" )
@@ -390,8 +427,8 @@ tr.Add( "Отписаться", lang, "Se désabonner" )
 
 tr.Add( "СОХРАНЕНО", lang, "SAUVEGARDÉ" )
 
-tr.Add( "Шапки", lang, "Chapeaux" )
-tr.Add( "Аксессуары", lang, "Chapeaux" )
+tr.Add( "Шапки", lang, "Accessoires" )
+tr.Add( "Аксессуары", lang, "Accessoires" )
 tr.Add( "Купить %s навсегда", lang, "Achetez %s pour toujours" )
 tr.Add( "Она у вас уже есть.", lang, "Vous l'avez déjà." )
 
@@ -441,21 +478,26 @@ tr.Add( "Снять розыск", lang, "Supprimer l'avis de recherche" )
 tr.Add( "Ордер", lang, "Mandat" )
 tr.Add( "Причина для ордера?", lang, "Motif du mandat?" )
 
-tr.Add( "Оружие за спиной", lang, "Weapons on back" )
-tr.Add( "Отображение оружия за спиной включено.", lang, "Drawing weapons on back enabled." )
-tr.Add( "Отображение оружия за спиной выключено.", lang, "Drawing weapons on back disabled." )
+tr.Add( "Оружие за спиной", lang, "Armes dans le dos" )
+tr.Add( "Отображение оружия за спиной включено.", lang, "Affichage des armes dans le dos activé." )
+tr.Add( "Отображение оружия за спиной выключено.", lang, "Affichage des armes dans le dos désactivé." )
 
 tr.Add( "Нет доступных насмешек! :(", lang, "No available Ridicule :(" )
 
 tr.Add( "Действия", lang, "Actions" )
 tr.Add( "Маска", lang, "Masque" )
-tr.Add( "Надеть", lang, "Mettez" )
+tr.Add( "Надеть", lang, "Mettre" )
 tr.Add( "Чаты", lang, "Chats" )
 tr.Add( "Возродиться", lang, "Renaître" )
 tr.Add( "Настроение", lang, "Humeur" )
 tr.Add( "Убрать оружие", lang, "Retirer l'arme" )
 tr.Add( "Анимации сидения", lang, "Animations de siège" )
 tr.Add( "Нет доступных анимаций сидения! :(", lang, "Pas d'animations de sièges disponibles! :(" )
+
+tr.Add( "НАДЕТЬ", lang, "METTRE" )
+tr.Add( "СНЯТЬ", lang, "RETIRER" )
+tr.Add( "ВЫЗВАТЬ", lang, "APPELER" )
+tr.Add( "ОТОЗВАТЬ", lang, "RAPPELER" )
 
 tr.Add( "Эмоции", lang, "Émotions" )
 tr.Add( "Эмоции огранизации", lang, "Émotions de l'organisation" )
@@ -484,6 +526,7 @@ tr.Add( "СУМКА", lang, "SAC" )
 
 tr.Add( "СТОЛ ДЛЯ ПРЕДМЕТОВ", lang, "TABLEAU DES ARTICLES" )
 tr.Add( "СОЗДАТЬ", lang, "CRÉER" )
+tr.Add( "СОЗДАНИЕ..", lang, "CRÉATION.." )
 
 tr.Add( "Стол для предметов", lang, "Table pour objets" )
 tr.Add( "Рецепты", lang, "Recettes" )
@@ -506,8 +549,8 @@ tr.Add( "Ваш инвентарь был удален!", lang, "Votre inventair
 
 tr.Add( "Использовать", lang, "Utiliser" )
 tr.Add( "Установить", lang, "Installer" )
-tr.Add( "Одеть", lang, "Mettez" )
-tr.Add( "Снять", lang, "Décoller" )
+tr.Add( "Одеть", lang, "Mettre" )
+tr.Add( "Снять", lang, "Retirer" )
 tr.Add( "Зарядить", lang, "Recharger" )
 tr.Add( "Открыть", lang, "Ouverte" )
 tr.Add( "Взять всё", lang, "Prenez tout" )
@@ -569,15 +612,22 @@ tr.Add( "Нажмите Е на флаг, чтобы начать захват (
 -- Scoreboard
 tr.Add( "Наш Discord сервер - www.urf.im/discord", lang, "Notre serveur Discord - https://discordapp.com/invite/w3yE2yK" )
 tr.Add( "Онлайн сервера:", lang, "Serveur en ligne depuis:" )
+tr.Add( "Онлайн сервера: %s", lang, "Serveur en ligne depuis: %s" )
 tr.Add( "Администраторы (онлайн):", lang, "Administrateurs (en ligne):" )
+tr.Add( "Администраторы: %i (активные: %i)", lang, "Administrateurs: %i (en ligne: %i)" )
 tr.Add( "активные", lang, "actif" )
 tr.Add( "Игроков (онлайн):", lang, "Joueurs (en ligne):" )
+tr.Add( "Игроки: %i (активные: %i)", lang, "Joueurs: %i (en ligne: %i)" )
+tr.Add( "Игроки: %d", lang, "Joueurs: %d" );
 tr.Add( "Имя", lang, "Prénom" )
 tr.Add( "Профессия", lang, "Métier" )
 tr.Add( "Онлайн", lang, "En ligne" )
 tr.Add( "Игроков: %s (%s Активных)", lang, "Joueurs: %s (%s Actif)" )
 tr.Add( "Администраторы: %s (%s Активных)", lang, "Staffs: %s (%s Actif)" )
-
+tr.Add( "Пинг", lang, "Ping" );
+tr.Add( "Серверное время: %s", lang, "Heure du serveur: %s" );
+tr.Add( "SteamID игрока был скопирован!", lang, "SteamID copié dans le presse-papier!" );
+tr.Add( "Никнейм игрока был скопирован!", lang, "Pseudonyme copié dans le presse-papier!" );
 tr.Add( "Бан", lang, "Interdire" )
 tr.Add( "Введите причину бана", lang, "Entrez la raison de l'interdiction" )
 tr.Add( "Забанить на:", lang, "Interdire:" )
@@ -637,8 +687,8 @@ tr.Add( "Ссылку с YouTube", lang, "Lien YouTube" )
 
 tr.Add( "Инструменты", lang, "Instruments" )
 
-tr.Add( "Оружие", lang, "Arme" )
-tr.Add( "Лапша", lang, "Des nouilles" )
+tr.Add( "Оружие", lang, "Armes" )
+tr.Add( "Лапша", lang, "La Ration" )
 tr.Add( "Деньги", lang, "De l'argent" )
 
 tr.Add( "Заряды", lang, "Charges" )
@@ -692,7 +742,7 @@ tr.Add( "Взлом", lang, "Piratage" )
 tr.Add( "АвтоРозыск", lang, "Recherche automatique" )
 
 tr.Add( "Ограбление банка", lang, "Braquage de banque" )
-tr.Add( "Точка сброса\n(%iм.)", lang, "Point de réinitialisation\n(%iм.)" )
+tr.Add( "Точка сброса\n(%iм.)", lang, "Point de dépôt\n(%im.)" )
 tr.Add( "Денег в сумке:", lang, "Argent dans le sac:" )
 tr.Add( "Нажмите [E] чтобы сдать сумку", lang, "Appuyez sur [E] pour remettre le sac" )
 tr.Add( "Нажмите [ЛКМ] чтобы украсть деньги", lang, "Cliquez sur [LMB] pour voler de l'argent" )
@@ -765,7 +815,7 @@ tr.Add( "Подождите", lang, "Attends" )
 tr.Add( "Недостаточно денег", lang, "Pas assez d'argent" )
 tr.Add( "Попрощайтесь со своими кровными %i$", lang, "Dites adieu à votre durement gagné %i$" )
 tr.Add( "Купить: %i$", lang, "Acheter: %i$" )
-tr.Add( "Кузовные работы", lang, "Travail du corps" )
+tr.Add( "Кузовные работы", lang, "Modifier le véhicule" )
 tr.Add( "Часть", lang, "Partie" )
 tr.Add( "Вариант", lang, "Option" )
 tr.Add( "Покрасочные работы/Скин", lang, "Travaux de peinture/Peau" )
@@ -798,7 +848,7 @@ tr.Add( "Перезарядка", lang, "Cooldown" )
 tr.Add( "СКИДКА", lang, "RÉDUCTION" )
 tr.Add( "НА ВСЁ", lang, "POUR TOUT" )
 
-tr.Add( "Добавляет купон <имя> <действие> <значение> <кол-во> <время в секундах>", lang, "Ajoute un coupon <nom> <action> <valeur> <nombre> <temps en secondes>" )
+tr.Add( "Добавляет купон <имя> <действие> <значение> <кол-во> <время в секундах> <глобальный>", lang, "Ajoute un coupon <nom> <action> <valeur> <nombre> <temps en secondes> <global>" )
 tr.Add( "Удаляет купон где <name> имя купона", lang, "Supprime le coupon où <nom> est le nom du coupon" )
 tr.Add( "Промокод", lang, "Code promotionnel" )
 tr.Add( "Введите промокод", lang, "Entrez le code promotionnel" )
@@ -846,6 +896,11 @@ tr.Add( "Нога на ногу 3", lang, "Pied à pied 3" )
 tr.Add( "Прямая спина", lang, "Dos droit" )
 tr.Add( "За столом (Грусть)", lang, "À table (Tristesse)" )
 
+tr.Add( "Вы забанены!", lang, "Vous êtes bannis!" );
+tr.Add( "Админ: %s", lang, "Staff: %s" );
+tr.Add( "Причина: %s", lang, "Raison: %s" );
+tr.Add( "Ознакомиться с правилами сервера можно нажав [F1]", lang, "Vous pouvez consulter les règles du serveur en cliquant sur [F1]" );
+tr.Add( "Вы должны отбыть свое наказание играя на сервере!", lang, "Vous devez purger votre peine en jouant sur le serveur!" );
 tr.Add( "Вы забанены, ознакомиться с правилами можно нажав F1", lang, "Vous êtes banni, vous pouvez lire les règles en appuyant sur F1" )
 tr.Add( "Время до разбана:", lang, "Il est temps de démêler:" )
 tr.Add( "Повестка дня отсутствует!", lang, "Pas d'agenda!" )
@@ -895,7 +950,8 @@ tr.Add( "Организация", lang, "Organisation" )
 tr.Add( "Хотели бы вы присоединиться к", lang, "Would you like to join" )
 
 tr.Add( "time_customcheck не может быть больше двух недель.", lang, "time_customcheck ne peut pas durer plus de deux semaines." )
-tr.Add( "coupon", lang, "Coupon %s créé (donne %s au montant de %i, valide pour %i jours, activation %s, l'activation nécessite %s de temps)" )
+tr.Add( "coupon", lang, "Coupon %s créé (donne %s au montant de %s, valide pour %s jours, activation %s, l'activation nécessite %s de temps)" )
+tr.Add( "globalcoupon", lang, "Global coupon %s créé (donne %s au montant de %s, valide pour %s jours, activation %s, l'activation nécessite %s de temps)" )
 
 tr.Add( "ИЗМЕНЕНИЕ ЗАКОНОВ", lang, "CHANGEMENT DE LOIS" )
 tr.Add( "Сохранить законы", lang, "Sauvegarder les lois" )
@@ -909,7 +965,7 @@ tr.Add( "Сбросить законы", lang, "Réinitialiser les lois" )
 tr.Add( "Игрок слишком далеко!", lang, "Player is too far!" )
 tr.Add( "Отменить", lang, "Cancel" )
 tr.Add( "Выбрать", lang, "Select" )
-tr.Add( "Взаимодействие с %s", lang, "Interaction with %s" )
+tr.Add( "Взаимодействие с %s", lang, "Interaction avec %s" )
 tr.Add( "выпустить из тюрьмы", lang, "release from jail" )
 tr.Add( "арестовать", lang, "arrest" )
 tr.Add( "объявить в розыск", lang, "wanted" )
@@ -1112,7 +1168,7 @@ tr.Add( "ban_message", lang, [[
 	Staff: %s
 	Raison: %s
 	-------------------------------------
-	http://urfim-forum.fr/  ]] 
+	http://urfim-forum.fr/  ]]
 )
 
 tr.Add( "JailNotSet", lang, "Pas d'endroit de jail configurer!" )
@@ -1129,7 +1185,7 @@ tr.Add( "YouJailReleased", lang, "Vous avez quitté Alcatraz." )
 tr.Add( "JailDisabled", lang, "Alcatraz est désactivé, utilisez !ban." )
 
 tr.Add( "YourVIPRestored", lang, "Votre VIP a été restauré!" )
-tr.Add( "PlayerJoinedSteamGroup", lang, "# a obtenu 30 crédits pour avoir rejoint notre groupe Steam, écrivez !Steam et rejoignez." )
+tr.Add( "PlayerJoinedSteamGroup", lang, "# a obtenu # pour avoir rejoint notre groupe Steam!" )
 tr.Add( "PlayerJoinedVKGroup", lang, "# --" )
 
 tr.Add( "ShopSaleStart", lang, "Soldes à `-#%` dans la Boutique durant  # heures" )
@@ -1619,7 +1675,1059 @@ tr.Add( "WarnSystem.New", "Vous avez reçu un avertissement de #" )
 tr.Add( "ПЕРСОНАЛЬНАЯ СКИДКА", lang, "PERSONAL DISCOUNT" )
 tr.Add( "БОНУС", lang, "BONUS" )
 tr.Add( "ПОПОЛНЕНИЯ", lang, "DONATION" )
+tr.Add( "НА ПОПОЛНЕНИЯ", lang, "DONATION" )
 tr.Add( "ДОНАТ СКИНАМИ", lang, "SKIN DONATION" )
 tr.Add( "ПЕРСОНАЛЬНЫЙ БОНУС", lang, "PERSONAL BONUS" )
 
 tr.Add( "SyncHoursAdd", lang, "# a reçu # heures de jeu pour avoir joué sur le serveur #" )
+
+
+tr.Add( "Включить уведомление о доступных подписках при заходе", lang, "Activer la notification sur les codes promotionnels pour récupérer les bonus disponibles" )
+
+tr.Add( "Получено", lang, "Utiliser" )
+tr.Add( "бонус", lang, "bonus" )
+tr.Add( "Получить бонус", lang, "Obtenez un Bonus" )
+tr.Add( "Подпишитесь на группу и получите бонусный промокод!", lang, "Abonnez-vous au groupe Steam et recevez un code promo bonus!" )
+tr.Add( "Применить", lang, "Activer" )
+tr.Add( "Перейти по ссылке", lang, "Aller à l'URL" )
+tr.Add( "Вы уже получили бонус за вступление в группу!", lang, "Vous avez déjà reçu ce bonus!" )
+tr.Add( "Вы не вступили в нашу группу или ваш профиль Steam приватный!", lang, "Vous n'avez pas rejoint notre groupe ou votre profil Steam est privé!" )
+tr.Add( "кредиты", lang, "credits" )
+tr.Add( "БОНУСЫ", lang, "BONUS" )
+tr.Add( "Подписка", lang, "Abonnement" )
+
+tr.Add( "МАКСИМУМ УДОВОЛЬСТВИЯ ОТ ИГРЫ", lang, "PLAISIR DE JEU MAXIMUM" )
+tr.Add( "На всех серверах URF", lang, "Sur tous les serveurs URF" )
+tr.Add( "Все VIP привилегии", lang, "Tous les privilèges VIP" )
+tr.Add( "Включая эксклюзивные", lang, "Exclusif inclus" )
+tr.Add( "Выбери скин тулгана", lang, "Choisissez le skin du Toolgun" )
+tr.Add( "Выбери скин физгана", lang, "Choisissez le skin du Physgun" )
+tr.Add( "Добавь Emoji к нику", lang, "Ajouter un Emoji à votre nom " )
+tr.Add( "Отказаться от Premium", lang, "Désactiver le Premium" )
+tr.Add( "Авто. продление", lang, "Payement Automatique" )
+tr.Add( "Обычный Toolgun", lang, "Toolgun Standard" )
+tr.Add( "Обычный Physgun", lang, "Physgun Standard" )
+tr.Add( "Premium слоты", lang, "Premium slots" )
+tr.Add( "Скин админа", lang, "Admin skins" )
+tr.Add( "Portal Туллган", lang, "Portal Toolgun" )
+tr.Add( "Туллган-Арбалет", lang, "Toolgun-Crossbow" )
+tr.Add( "Desert Туллган Eagle", lang, "Desert Toolgun Eagle" )
+tr.Add( "Colt Туллган Python", lang, "Colt Toolgun Python" )
+tr.Add( "Noir Neon Туллган", lang, "Noir Neon Toolgun" )
+tr.Add( "Портал Physgun", lang, "Portal Physgun" )
+tr.Add( "Рука Physgun", lang, "Hand Physgun" )
+tr.Add( "Гаусс Physgun", lang, "Gauss Physgun" )
+tr.Add( "Портал Physgun v2", lang, "Portal Physgun v2" )
+
+tr.Add( "ОТПИСАТЬСЯ", lang, "SE DÉSABONNER" )
+tr.Add( "Отписаться", lang, "se désabonner" )
+tr.Add( "Введите причину отказа от Premium:", lang, "Entrez la raison de l'annulation du Premium:" )
+tr.Add( "Подтвердите", lang, "Confirmer" )
+tr.Add( "Минимум 10 символов!", lang, "10 symboles minimum!" )
+
+tr.Add( "Подписка действует везде - вы получите", lang, "L'abonnement fonctionne sur tous nos serveurs" )
+tr.Add( "Premium статус и все его привилегии на", lang, "Vous obtiendrez le statut Premium et tous ses" )
+tr.Add( "всех серверах urf.im и всех, которые", lang, "privilèges sur tous les serveurs urf.im actuels" )
+tr.Add( "будут появляться в будущем!", lang, "et tous nos futurs serveurs!" )
+
+tr.Add( "Как Premium игроку вам будет доступно:", lang, "En tant qu'utilisateur Premium, vous obtiendrez:" )
+tr.Add( " - Особые VIP Профессии", lang, " - Métiers VIP en premier" )
+tr.Add( " - Все профессии бесплатны", lang, " - Tous les métiers sont gratuits" )
+tr.Add( " - 20 дополнитеьных пропов", lang, " - 20 props supplémentaires" )
+tr.Add( " - Отсутсвует лимит на профессии", lang, " - Aucune limite de joueurs pour les JOB" )
+tr.Add( " - Доступна команда /job", lang, " - commande /job" )
+tr.Add( " - VIP статус в Discord", lang, " - Statut VIP sur Discord" )
+
+tr.Add( "Танцуй, Танцуй, Танцуй!", lang, "Danse, Danse, Danse!" )
+tr.Add( "Преимущества подписки", lang, "Avantages de l'abonnement" )
+
+tr.Add( "Играй так как тебе хочется на всех серверах URF с подпиской URF PREMIUM.", lang, "Jouez comme vous le souhaitez sur tous les serveurs URF avec URF PREMIUM" )
+tr.Add( "Более 40 премиум профессий доступны для игры сразу!", lang, "Plus de 40 métiers premium sont disponibles!" )
+tr.Add( "Более", lang, "Plus de" )
+tr.Add( "40 премиум", lang, "40 métiers premium" )
+tr.Add( "профессий доступны для игры сразу!", lang, "sont disponibles!" )
+tr.Add( "Играй так как тебе хочется на всех серверах URF", lang, "Jouez comme vous le souhaitez sur tous les serveurs URF" )
+tr.Add( "с подпиской", lang, "avec" )
+tr.Add( "URF PREMIUM", lang, "URF PREMIUM" )
+
+tr.Add( "Подписка активна", lang, "Abonnement actif" )
+tr.Add( "Р / МЕСЯЦ", lang, "€ / MOIS" )
+tr.Add( "день", lang, "jours" )
+tr.Add( "дня", lang, "jours" )
+tr.Add( "дней", lang, "jours" )
+
+tr.Add( "Глобальный Premium", lang, "Global Premium" )
+
+tr.Add( "ServerRestartSAVE", lang, "Le serveur redémarrera bientôt! Données des joueurs enregistrées!" )
+
+tr.Add( "Обыскиваю", lang, "Inspecter" )
+tr.Add( "КОНФИСКАЦИЯ", lang, "CONFISCATION" )
+tr.Add( "Вы конфисковали", lang, "Vous avez confisqué" )
+tr.Add( "Награда", lang, "Récompense" )
+tr.Add( "Обыскать", lang, "Chercher" )
+
+tr.Add( "из 100", lang, "sur 100" )
+
+tr.Add( "Не так быстро!", lang, "Pas aussi vite!" )
+tr.Add( "Поставить лайк", lang, "Émettre un like" )
+tr.Add( "Отнять лайк", lang, "Retirer un like" )
+tr.Add( "Убрать лайк", lang, "Retirer un like" )
+tr.Add( "# получил от вас лайк :)", lang, "# vous a liké :)" )
+tr.Add( "Вы забрали лайк у # :(", lang, "Vous avez retiré le like de # :(" )
+
+tr.Add( "Изменить флаг организации", lang, "Modifier la bannière de l'organisation" )
+tr.Add( "Выбрать флаг организации", lang, "Sélectionnez la bannière de l'organisation" )
+tr.Add( "Купите \'Крутую Организацию\', чтобы устанавливать собственные уникальные баннеры!", lang, "Achetez\'Organisation Premium\', pour définir vos propres bannières uniques!")
+
+tr.Add( "Расширения .jpg и .png! За нецензуру бан.\nФормат ссылки: http://yourdomain.com/image.png", lang, "L'image format png/jpg! Images NSFW = sanctions\nLe lien devrait-être de la forme: http://yourdomain.com/image.png" )
+
+tr.Add( "Вернуть обратно", lang, "Return" )
+tr.Add( "Прекратить следить", lang, "Stop spectate" )
+tr.Add( "Следить", lang, "Spectate" )
+
+tr.Add( "Отключенный интерфейс", lang, "Interface désactivée" )
+tr.Add( "У вас выключено отображение %s.", lang, "Vous avez désactivé l'affichage de %s." )
+tr.Add( "Зайдите в настройки, чтобы включить его.", lang, "Accédez aux paramètres pour l'activer." )
+tr.Add( "Ок", lang, "Ok" )
+tr.Add( "Не напоминать", lang, "Ne pas rappeler" )
+tr.Add( "Чата", lang, "Tchatter" )
+tr.Add( "Админ Чата", lang, "Chat Admin" )
+
+
+tr.Add( "Вы уверены?", lang, "Êtes-vous certains?" )
+tr.Add( "Вы уверены что хотите сбросить активный рецепт?", lang, "Êtes-vous certains de vouloir annuler cette fabrication?" )
+tr.Add( "КРАФТИНГ", lang, "ARTISANAT" )
+tr.Add( "Верстак", lang, "L'établi" )
+
+tr.Add( "Принять участие в сражении на арене?", lang, "Voulez-vous participez au battleroyal?" )
+
+tr.Add( "Привелегия истечёт через ", lang, "Le privilège expire dans" )
+tr.Add( "Любое ваше пополнение будет потрачено исключительно", lang, "Tout votre don sera dépensé uniquement pour" )
+tr.Add( "на цель сбора средств. Кликните по банеру для получения", lang, "un financement participatif, cliquez ici pour" )
+tr.Add( "более подробной информации.", lang, "plus de détails" )
+tr.Add( "из %s собрано", lang, "%s crédits ont été reçus" )
+tr.Add( "осталось", lang, "reste" )
+tr.Add( "Например `%s` сейчас стоит %s вместо %s!", lang, "Par exemple, %s coûte maintenant %s au lieu de %s!" )
+tr.Add( "Например если вы пожертвуете %s руб, вы получите %s руб на ваш счёт", lang, "Par exemple, si vous donnez %s crédits, vous recevrez %s crédits sur votre compte" )
+tr.Add( "при пожертвовании от %s руб", lang, "à partir de plus de %s crédits de donation" )
+tr.Add( "Например если вы пожертвуете %s руб скинами, вы получите %s руб на ваш счёт", lang, "Par exemple, si vous donnez %s crédits avec des skins, vous sera ajouté %s à votre compte" )
+
+
+tr.Add( "КЕЙСЫ", lang, "CASES" )
+tr.Add( "МОИ КЕЙСЫ", lang, "MES CAISSES" )
+tr.Add( "ЗАБРАТЬ", lang, "PRENDRE" )
+tr.Add( "ПОДТВЕРДИТЕ", lang, "CONFIRMER" )
+tr.Add( "Получи", lang, "Gagnez" )
+tr.Add( "СПАСИБО ЗА ПОКУПКУ!", lang, "MERCI POUR VOTRE ACHAT!" )
+tr.Add( "КЕЙС ДОБАВЛЕН В \"МОИ КЕЙСЫ\"", lang, "CAISSE AJOUTÉE À \"MES CAISSES\"" )
+tr.Add( "ПРЕОБРЕСТИ КЕЙС", lang, "ACHETER UNE CAISSE" )
+tr.Add( "МОЖНО ВО ВКЛАДКЕ \"КЕЙСЫ\"", lang, "ACHETEZ DES CAISSES DANS \"CASES\"" )
+tr.Add( "ОТКРЫВАЕМ...", lang, "OUVERTURE ..." )
+tr.Add( "ОТКРЫТЬ", lang, "OUVRIR" )
+
+tr.Add( 'ЗАГРУЖАЕМ...', lang, 'CHARGEMENT...')
+
+tr.Add( "ПОЗДРАВЛЯЮ!", lang, "FÉLICITATIONS!" )
+tr.Add( "ВЫ ПОЛУЧИЛИ:", lang, "TU AS REÇU:" )
+
+tr.Add( "Lootbox::Rewarded", lang, "# a gagner # dans une caisse!" )
+tr.Add( "Lootbox::PresentSet", lang, "Caisse cadeau effectuée!" )
+tr.Add( "Lootbox::PresentUnset", lang, "La caisse cadeau a été abandonnée!" )
+tr.Add( "Lootbox::PresentGot", lang, "Vous avez reçu une caisse cadeau! Disponible dans le F4 -> BOUTIQUE -> CASES." )
+tr.Add( "Lootbox::PresentInvalidAmount", lang, "Le montant minimum du don ne peut être inférieur à 1 crédit!" )
+tr.Add( "Lootbox::PresentInvalidId", lang, "Cette caisse n'existe pas!" )
+
+
+tr.Add( 'У вас имеется %s %s', lang, 'Vous avez %s %s')
+tr.Add( 'за %s %s', lang, 'Pour %s %s')
+
+tr.Add( 'ОБНОВЛЕНИЕ', lang, 'ANNONCES')
+
+tr.Add( "ВЫБРАТЬ КОМПЛЕКТ", lang, "CHOISISSEZ LE KIT" )
+tr.Add( "КОМПЛЕКТ ВЫБРАН", lang, "KIT SÉLECTIONNÉ" )
+tr.Add( "РАЗБЛОКИРОВАТЬ КОМПЛЕКТ ЗА ", lang, "DÉBLOQUER LE KIT POUR" )
+tr.Add( "СПАСИБО ЗА ПОКУПКУ", lang, "MERCI POUR VOTRE ACHAT" )
+tr.Add( "КОМПЛЕКТ РАЗБЛОКИРОВАН", lang, "KIT DÉVERROUILLÉ" )
+tr.Add( "НЕДОСТАТОЧНО СРЕДСТВ", lang, "FONDS INSUFFISANTS" )
+tr.Add( "ВАМ НЕХВАТАЕТ ", lang, "TU ES ABSENT" )
+
+tr.Add( "Вызвать технику", lang, "Contactez le support" )
+tr.Add( "Скин", lang, "Skin" )
+
+tr.Add( "Анимации", lang, "Animations" )
+tr.Add( "Премиальные", lang, "Prime" )
+tr.Add( "Боевые", lang, "Combat" )
+
+tr.Add( '[E] Взять профессию', lang, '[E] Choisir un métier')
+tr.Add( 'Ограбление: %s', lang, 'Braquage: %s')
+tr.Add( 'Перезарядка: %s', lang, 'Rechargement: %s')
+tr.Add( 'Ограбление', lang, 'Braquage')
+tr.Add( '%s в процессе ограбления', lang, '%s est en cours de pillage')
+tr.Add( 'Подождите чтобы начать ограбление', lang, 'Attendez que le braquage commence')
+
+tr.Add( "`%s` В ПОДАРОК", lang, "`%s` EN CADEAU" )
+tr.Add( "при пополнении от %sр", lang, "à partir de %s cr." )
+tr.Add( "Например, пополнив счёт на %s р, вы получите %s!", lang, "Par exemple, en complétant la facture de %s cr, vous obtiendrez %s!" )
+
+tr.Add( "Вы не можете говорить в рацию!", lang, "Vous n'êtes pas autoriser à utiliser la radio" )
+
+tr.Add( "ХРАНИЛИЩЕ", lang, "DÉPÔT" )
+tr.Add( "Хранилище", lang, "Dépôt" )
+tr.Add( "[Е] Открыть хранилище", lang, "[E] Ouvrir le stockage" )
+
+tr.Add( "Компонент", lang, "Composant" )
+tr.Add( "%s / %s компонентов", lang, "%s / %s de composants" )
+tr.Add( "Поднеси компонент для объединения", lang, "Assemblez les composants" )
+tr.Add( "[Е] Поднять", lang, "[Е] Porter" )
+
+tr.Add( "Завод", lang, "Usine" )
+tr.Add( "[Е] Получить компоненты", lang, "[E] Obtenir des composants" )
+
+tr.Add( "Запасов", lang, "Ressources" )
+tr.Add( "Недостаточно запасов!", lang, "Pas assez de ressources!" )
+tr.Add( "Запасы: %s / %s", lang, "Ressources: %s / %s" )
+
+tr.Add( "Сложность:", lang, "Difficulté:" )
+tr.Add( "Опыт:", lang, "Exp:" )
+tr.Add( "Прогресс:", lang, "Progrès:" )
+tr.Add( "До конца сезона:", lang, "Fin de la saison dans :" )
+tr.Add( "Обновляем...", lang, "..." )
+tr.Add( "Обновить досрочно", lang, "Mettre à jour avant" )
+tr.Add( "за", lang, "pour" )
+tr.Add( "Бесплатно", lang, "gratuitement" )
+tr.Add( "Задания на день", lang, "QUÊTES" )
+tr.Add( "Задания обновятся через:", lang, "Les tâches seront mises à jour dans:" )
+tr.Add( "ОПЫТ:", lang, "EXP :" )
+tr.Add( "УРОВЕНЬ", lang, "NIVEAU" )
+tr.Add( "БАЗОВЫЙ", lang, "BASIQUE" )
+tr.Add( "Забрать", lang, "Récuperer" )
+tr.Add( "ГЛОБАЛЬНЫЙ", lang, "PASS RP" )
+tr.Add( "RP ПРОПУСК", lang, "GLOBAL" )
+tr.Add( "К НАГРАДАМ!", lang, "À MOI LES RÉCOMPENSES" )
+tr.Add( "RP ПРОПУСК открыт", lang, "PASS RP actif" )
+tr.Add( "Спасибо за покупку!", lang, "Merci d'avoir acheté!" )
+tr.Add( "ГЛОБАЛЬНЫЙ RP ПРОПУСК", lang, "PASS ROLEPLAY GLOBAL" )
+tr.Add( "на 1 сезон", lang, "pour 1 saison" )
+tr.Add( "на 3 сезона", lang, "pour 3 saisons" )
+tr.Add( "RP ПРОПУСК позволит вам получать больше наград!", lang, "Le PASS ROLEPLAY vous permettra de recevoir plus de récompenses!" )
+tr.Add( "Покупая пропуск вы получаете его возможности на всех серверах.", lang, "En achetant un pass, vous obtenez ses capacités sur tous les serveurs." )
+tr.Add( "Показывать задачи Season Pass в худе", lang, "Season Pass Hud" )
+tr.Add( "Новый уровнь", lang, "Nouveau niveau du" )
+tr.Add( "SEASON PASS получен", lang, "SEASON PASS reçu" )
+tr.Add( "Глобальный RP ПРОПУСК", lang, "PASS ROLEPLAY GLOBAL" )
+tr.Add( "получен!", lang, "reçu!" )
+tr.Add( "Награда за %s уровень: \n", lang, "Récompense pour le niveau de %s: \n" )
+tr.Add( "Задание SEASON PASS выполнено!", lang, "Vous avez terminé la quête" )
+tr.Add( "Вы получили %s опыта", lang, "et reçu %s d'expérience" )
+tr.Add( "УРОВНЕЙ", lang, "Niveaux" )
+tr.Add( "ВСЁ", lang, "TOUT" )
+tr.Add( "ОТКРЫТЬ УРОВНИ", lang, "Débloquer" )
+tr.Add( "ВЫГОДА", lang, "Profit" )
+tr.Add( "Вы можете мгновенно открыть уровни и получить награды", lang, "Vous pouvez débloquer instantanément des niveaux et obtenir des récompenses" )
+
+
+tr.Add( "д.", lang, "j." )
+
+tr.Add( "час", lang, "heures" )
+tr.Add( "часа", lang, "heures" )
+tr.Add( "часов", lang, "heures" )
+tr.Add( "ч.", lang, "h." )
+
+tr.Add( "минуту", lang, "minutes" )
+tr.Add( "минуты", lang, "minutes" )
+tr.Add( "минут", lang, "minutes" )
+tr.Add( "мин.", lang, "m." )
+
+tr.Add( "за %s₽", lang, "pour %s€" )
+tr.Add( "%s₽", lang, "%s€" )
+
+tr.Add( "профессию %s!", lang, "Profession %s!" )
+tr.Add( "профессию %s на %s!", lang, "Profession %s pendant %s!" )
+tr.Add( "ранг %s на %s!", lang, "Rang %s pendant %s!" )
+tr.Add( "%s часов отыгранного времени!", lang, "%s heures de temps de jeu!" )
+tr.Add( "%s кредитов", lang, "%s crédits" )
+tr.Add( "множитель времени x%s на %s!", lang, "Multiplicateur de temps x%s pendant %s!" )
+tr.Add( "модель %s!", lang, "Skin %s!" )
+tr.Add( "предмет %s!", lang, "Item %s!" )
+tr.Add( "танец %s!", lang, "Danse %s!" )
+tr.Add( "множитель зарплаты x%s на %s!", lang, "Multiplicateur de salaire x%s pendant %s!" )
+
+tr.Add( "СТРОИТЕЛЬСТВО", lang, "CONSTRUCTION" )
+tr.Add( "РОЛЕПЛЕЙ", lang, "ROLEPLAY" )
+tr.Add( "ОРУЖИЕ", lang, "ARME" )
+tr.Add( "ДРУГОЕ", lang, "AUTRE" )
+
+tr.Add( "обьектом", lang, "un objet" )
+
+tr.Add( "[E] Открыть магазин", lang, "[E] Ouvrir la boutique" )
+
+
+tr.Add( "tool.webimage", lang, "Image Web" )
+tr.Add( "Веб-изображение", lang, "Image Web" )
+tr.Add( "Позволяет вам создать изображение из интернета", lang, "Vous permet d'importer une image d'internet" )
+tr.Add( "Создать веб-изображение", lang, "Crée une image" )
+tr.Add( "Обновить веб-изображение", lang, "Update l'image" )
+tr.Add( "Скопировать параметры веб-изображения", lang, "Copier les paramètres de l'image" )
+tr.Add( "URL:", lang, "URL:" )
+tr.Add( "Размер по ширине:", lang, "Largeur:" )
+tr.Add( "Размер по высоте:", lang, "Hauteur:" )
+tr.Add( "Улучшение полупрозрачных краев?", lang, "Bords transparents?" )
+tr.Add( "Смешивание цвета (добавление)?", lang, "Mélange de couleurs (ajout)?" )
+tr.Add( "Отрисовывать обе стороны?", lang, "Dessiner les deux côtés?" )
+tr.Add( "Отзеркалить заднюю сторону?", lang, "Effet miroir?" )
+tr.Add( "Цвет:", lang, "Couleur:" )
+tr.Add( "Предпросмотр:", lang, "Aperçu:" )
+tr.Add( "Веб-изображение убрано", lang, "Image Web annulée" )
+tr.Add( "Веб-изображения", lang, "Images WEB" )
+tr.Add( "Все веб-изображения удалены!", lang, "Toutes les images ont été enlevés!" )
+tr.Add( "Вы достигли лимита веб-изображений!", lang, "Vous avez atteint la limite d'images" )
+tr.Add( "Включить отображение веб-изображений", lang, "Activer l'affichage d'images Web" )
+tr.Add( "Дождитесь загрузки веб-изображения.", lang, "Please wait for web-image to be loaded." )
+tr.Add( "Размер вашего веб-изображения слишком большой.", lang, "Your web-image is too large." )
+tr.Add( "Изображение слишком большое", lang, "Image is too large" )
+
+tr.Add( "Включить", lang, "Activer" )
+tr.Add( "Выключить", lang, "Désactiver" )
+tr.Add( "Поиск youtube...", lang, "Rechercher sur youtube ..." )
+tr.Add( "Введите ссылку на twitch канал...", lang, "Entrez le lien de votre chaîne Twitch ..." )
+tr.Add( "Смените версию игры на Chromium", lang, "Changer la version du jeu en Chromium" )
+tr.Add( "нажмите [E] чтобы узнать как", lang, "Appuyez sur [E] pour découvrir comment" )
+tr.Add( "Нажмите E чтобы запустить видео", lang, "Appuyez sur E pour démarrer la vidéo" )
+tr.Add( "Открыть инструкцию", lang, "Ouvrir l'instruction" )
+tr.Add( "Чтобы видеть видео, необходимо", lang, "Pour voir la vidéo, vous" )
+tr.Add( "переключиться на Chromium версию игры.", lang, "devez passer à Chromium version du jeu." )
+tr.Add( "Перейдите по ссылке, чтобы узнать как", lang, "Cliquez sur le lien pour savoir comment" )
+
+tr.Add( "ОБЫСК", lang, "FOUILLE" )
+tr.Add( "ВЫ НАШЛИ", lang, "VOUS AVEZ TROUVÉ" )
+tr.Add( "Кто-то уже обыскивает это место", lang, "Une personne fouille déjà par ici" )
+tr.Add( "Вы ушли слишком далеко, вашу награду забрал кто-то другой!", lang, "Vous vous êtes trop éloigné, et une autre personne a récupéré le loot" )
+tr.Add( "Ваш инвентарь полон, освободите место", lang, "Votre inventaire est plein" )
+tr.Add( "Вы нашли: #", lang, "Vous avez trouvé #" )
+
+tr.Add( "Стандартное меню выбора оружия", lang, "Weapon Switcher standard" )
+tr.Add( "Включить отображение шапок", lang, "Activer l'affichage des accessoires" )
+
+tr.Add( "Вы вкололи себе что-то странное", lang, "Vous vous êtes vacciné" )
+tr.Add( "Вам вкололи что-то странное!", lang, "Vous avez été vacciné" )
+
+tr.Add( "Ежедневный Кейс", lang, "Caisse quotidienne" )
+tr.Add( "Вы сможете забрать ежедневный кейс через", lang, "Vous pouvez récupérer votre caisse quotidienne dans" )
+
+tr.Add( "Банковская карта, QIWI, Билайн", lang, "Payer avec Robokassa" --[["Carte bancaire, Samsung Pay,"]] )
+tr.Add( "Банковская карта, QIWI", lang, "Payer avec Robokassa" --[["Carte bancaire, Samsung Pay,"]] )
+tr.Add( "Samsung Pay, Google Pay", lang, "(temporarily disabled due to sanctions)" --[["Google Pay"]] )
+tr.Add( "Оплата через PayPal", lang, "Payer avec PayPal" )
+tr.Add( "Оплата через Xsolla", lang, "Payer avec Xsolla" )
+tr.Add( "Оплата через Tebex", lang, "Payer avec Tebex" )
+tr.Add( "Банковская карта, PayPal", lang, "Payer avec Xsolla" )
+tr.Add( "(Для оплаты за пределами РФ)", lang, "" )
+tr.Add( "(временно отключена из-за санкций)", lang, "(temporarily disabled due to sanctions)" );
+tr.Add( "Сумма доната не может быть меньше #€", lang, "Le montant ne peut pas être inférieur à #€" )
+tr.Add( "Введена неверная сумма", lang, "Montant entré invalide" )
+
+tr.Add( "ЗАГРУЗКА...", lang, "CHARGEMENT..." )
+tr.Add( "ПОДОЖДИТЕ...", lang, "ATTENDS..." )
+tr.Add( "ВОЙТИ КАК", lang, "JOUER EN TANT QUE" )
+tr.Add( "РЕГИСТРАЦИЯ", lang, "ENREGISTREMENT" )
+tr.Add( "ИГРАТЬ", lang, "JOUER" )
+tr.Add( "ВЕРНУТЬСЯ", lang, "RETOUR" )
+tr.Add( "ВЫ ХОТИТЕ УДАЛИТЬ", lang, "VOULEZ-VOUS SUPPRIMER" ) -- need more detail about this translation (context)
+tr.Add( "Удалить", lang, "Supprimer" )
+tr.Add( "Отмена", lang, "Annuler" )
+tr.Add( "СОЗДАТЬ НОВОГО ПЕРСОНАЖА", lang, "CRÉE UN NOUVEAU PERSONNAGE" )
+tr.Add( "СОЗДАТЬ ПЕРСОНАЖА", lang, "CRÉE UN PERSONNAGE" )
+tr.Add( "ИМЯ ПЕРСОНАЖА", lang, "PRÉNOM DU PERSONNAGE" )
+tr.Add( "ФАМИЛИЯ ПЕРСОНАЖА", lang, "NOM DU PERSONNAGE" )
+tr.Add( "Введите имя", lang, "Entrez le prénom" )
+tr.Add( "Введите фамилию", lang, "Entrez le nom" )
+tr.Add( "РОСТ", lang, "TAILLE" )
+tr.Add( "СКИН", lang, "SKIN" )
+tr.Add( "МОДЕЛЬ", lang, "MODÈLE" )
+tr.Add( "СЛУЧАЙНЫЙ ВЫБОР", lang, "ALÉATOIRE" )
+tr.Add( "Организация", lang, "Organisation" ) -- faction or organisation ?
+tr.Add( "Неизвестная ошибка, пожалуйста, повторите попытку", lang, "Erreur inconnue, veuillez réessayer" )
+tr.Add( "Вы недавно получали урон", lang, "Vous avez subi des dégâts" )
+tr.Add( "Вы в наручниках", lang, "Vous êtes menotté" )
+tr.Add( "Ваши персонажи имеют общий кошелёк, инвентарь и прочий внутриигровой прогресс\nНовые персонажи нужны для вступления в разные организации\nИзменить никнейм после регистрации невозможно", lang, "Chacun de vos personnages aura le même portefeuille, inventaire et autres progrès en jeu\nDe nouveaux personnages sont nécessaires pour rejoindre plusieurs factions\nVous ne pourrez pas changer le nom de votre personnage une fois crée" )
+tr.Add( "Персонажи", lang, "PERSONNAGE" );
+
+tr.Add( "event.Printer", lang, "Imprimantes x2" );
+tr.Add( "event.VapeWave", lang, "Vapes" );
+tr.Add( "event.SpinnerEvent", lang, "Spinners" );
+tr.Add( "event.VIP", lang, "VIP" );
+tr.Add( "event.Salary", lang, "Salaires x2" );
+tr.Add( "event.Parkour", lang, "Parcours" );
+tr.Add( "event.BURGATRON", lang, "BURGER" );
+tr.Add( "event.DanceEvent", lang, "Danse" );
+
+tr.Add( "У вас есть", lang, "Vous avez" );
+tr.Add( "новых наград", lang, "nouvelles récompenses" );
+tr.Add( "новая награда", lang, "nouvelle récompense" );
+tr.Add( "новые награды", lang, "nouvelles récompenses" );
+tr.Add( "РП Пропуска", lang, "PASS ROLEPLAY" );
+tr.Add( "Награды", lang, "Récompenses" );
+tr.Add( "Ежедневный кейс доступен!", lang, "Caisse quotidienne disponible" );
+
+tr.Add( "Вы выполнили все задания!", lang, "Vous avez terminé toutes les tâches!" );
+tr.Add( "Осталось забрать награду", lang, "Il reste à récolter la récompense" );
+
+tr.Add( "Ошибка сервера, пожалуйста, повторите попытку", lang, "ERREUR SERVEUR, VEUILLEZ RÉESSAYER PLUS TARD" )
+tr.Add( "Имя персонажа слишком короткое (мин. длина - 3 символа)", lang, "Le prénom de votre personnage est trop cour (3 symboles min.)" )
+tr.Add( "Фамилия персонажа слишком короткая (мин. длина - 3 символа)", lang, "Le nom de votre personnage est trop cour (3 symboles min.)" )
+tr.Add( "Имя персонажа слишком длинное (макс. длина - 50 символов)", lang, "Le titre du véhicule est trop long (50 symboles max.)" )
+tr.Add( "В имени присутствуют недопустимые символы", lang, "Votre nom contient des symboles interdits" )
+tr.Add( "Ошибка сервера, пожалуйста, повторите попытку", lang, "ERREUR SERVEUR, VEUILLEZ RÉESSAYER PLUS TARD" )
+tr.Add( "Данное имя уже кем-то занято, выберите другое", lang, "Ce nom est déjà pris" )
+
+tr.Add( "Сменить префикс", lang, "Changer le préfixe" )
+tr.Add( "СМЕНА ПРЕФИКСА", lang, "CHANGER LE PRÉFIXE" )
+tr.Add( "Введите новый префикс:", lang, "Saisissez un nouveau préfixe:" )
+tr.Add( "шаблон", lang, "modèle" )
+tr.Add( "макс. длина", lang, "Longueur max." )
+tr.Add( "Сменить постфикс", lang, "Changer le suffixe" )
+tr.Add( "СМЕНА ПОСТФИКСА", lang, "CHANGER LE SUFFIXE" )
+tr.Add( "Введите новый постфикс:", lang, "Saisissez un nouveau suffixe:" )
+
+tr.Add( "Для Premium игроков зарезервировано", lang, "Pour les joueurs PREMIUM" )
+tr.Add( "25 слотов на сервере - вы всегда", lang, "15 slots reservés seulement pour vous" )
+tr.Add( "сможете зайти!", lang, "afin que vous puissiez jouer !" )
+tr.Add( "term.deblock", lang, "DEBLOQUER" )
+
+tr.Add( "Премиум скин для профессий", lang, "Modèles premium pour les" )
+tr.Add( "администрации.", lang, "métiers des staffs" )
+tr.Add( "У вас есть награды Battlepass!", lang, "Vous avez des récompenses dans le PASS RP!" )
+tr.Add( "Забрать их можно в F4 меню", lang, "Vous pouvez les récupérer dans le menu F4" )
+
+tr.Add( "[E] Начать взаимодействие", lang, "[E] Intéragir" )
+tr.Add( "Прервать анимацию", lang, "Stop animation" )
+
+tr.Add( "Используется для крафта", lang, "Utile pour l'artisanat" )
+tr.Add( "Можно продать", lang, "Peut être vendu" )
+tr.Add( "Восполняет", lang, "Regénére" )
+tr.Add( "прочности", lang, "durabilité" )
+tr.Add( "здоровья", lang, "santé" )
+tr.Add( "брони", lang, "armure" )
+tr.Add( "Количество денег", lang, "Somme d'argent" )
+tr.Add( "Скорость печати", lang, "Vitesse d'impression" )
+tr.Add( "Вместимость денег", lang, "Capacité monétaire" )
+tr.Add( "Урон", lang, "Dommages" )
+tr.Add( "Темп стрельбы", lang, "Cadence de tir" )
+tr.Add( "Точность", lang, "Précision" )
+tr.Add( "Время взлома", lang, "Temps de piratage" )
+tr.Add( "Восполняет голода", lang, "Restaure la faim" )
+tr.Add( "Восполняет здоровья", lang, "Restaure la santé" )
+
+tr.Add( "Включить отображение законов в худе", lang, "Active le HUD des lois" )
+tr.Add( "Включить отображение повестки дня в худе", lang, "Active le HUD de l'agenda" )
+
+tr.Add( "Торговцы подсвечены на экране!", lang, "Les vendeurs sont mis en évidence à l'écran!" )
+tr.Add( "Торговцы не продают данный предмет", lang, "Les vendeurs ne vendent pas cet article" )
+
+tr.Add( "Кинотеатр", lang, "Cinéma" )
+
+tr.Add( "ЯЩИК", lang, "BOÎTE" )
+tr.Add( "Ящик", lang, "Boîte" )
+
+tr.Add( "премиум на %s", lang, "premium pour %s" )
+
+tr.Add( "РАДИО", lang, "RADIO" )
+tr.Add( "Поиск...", lang, "Rechercher ..." )
+tr.Add( "включите во мне что-нибудь :)", lang, "Mettez-moi de la musique :)" )
+tr.Add( "Включите во мне что-нибудь :)", lang, "Mettez-moi de la musique :)" )
+
+tr.Add( "Напряжённый", lang, "Tendu" )
+
+tr.Add( "Устав фракции", lang, "Statuts de la faction" )
+
+tr.Add( "СООБЩИТЬ О БАГЕ", lang, "SIGNALER UN BUG" )
+tr.Add( "ЗАКРЫТЬ СПРАВОЧНИК", lang, "FERMER LE RÉPERTOIRE" )
+tr.Add( "СПРАВОЧНИК", lang, "OUVRAGE DE RÉFÉRENCE" )
+tr.Add( "ИК.", lang, "IC." )
+tr.Add( "Подписка неактивна", lang, "Abonnement non actif" )
+tr.Add( "Нажми, чтобы включить авто-продление!", lang, "Appuyer pour activer l’abonnement automatique!" )
+tr.Add( "Выберите кол-во звёзд", lang, "Choisissez le niveau de recherche" )
+tr.Add( "Покиньте NLR зону", lang, "Quittez la zone NLR" )
+tr.Add( "Мирный сектор", lang, "Ceci est une zone safe" )
+
+tr.Add( "Отключить интерфейс", lang, "Disable User Interface" )
+tr.Add( "Отключить HUD игроков", lang, "Disable Player Info UI" )
+
+tr.Add( "ПРОГРЕСС:", lang, "PROGRÈS:" )
+tr.Add( "УЛУЧШИТЬ НАВЫК", lang, "AMÉLIORER LES COMPÉTENCES" )
+tr.Add( "ДОСТУПНО ОЧКОВ АТРИБУТОВ", lang, "POINTS D'ATTRIBUT DISPONIBLES" )
+tr.Add( "ПОЛУЧИТЬ 1 ОЧКО", lang, "OBTENEZ 1 POINT" )
+tr.Add( "ЧТОБЫ СНОВА ПОЛУЧИТЬ ОЧКО, НУЖНО ПОДОЖДАТЬ", lang, "POUR RECEVOIR LE POINT, VOUS DEVEZ ATTENDRE" )
+tr.Add( "ОТЫГРАНО НЕДОСТАТОЧНО ВРЕМЕНИ", lang, "PAS ASSEZ DE TEMPS JOUÉ" )
+tr.Add( "Текущий прогресс", lang, "Progrès en cours" )
+tr.Add( "ЧЕРЕЗ %s ВЫ СМОЖЕТЕ ПОЛУЧИТЬ ЕЩЁ 1 ОЧКО!", lang, "DANS %s VOUS RECEVREZ UN POINT!" )
+
+tr.Add( "Один из Ваших персонажей уже состоит в этой организации", lang, "Un de vos personnages est déjà dans cette organisation" )
+
+tr.Add( "Спасибо за покупку! %s добавлены на ваш счёт.", lang, "Merci pour votre achat! %s ajouté à votre compte." )
+tr.Add( "Куплено навсегда.", lang, "Acheté pour toujours." )
+tr.Add( "Истекает через %s, продлить за %s.", lang, "Expire dans %s, renouveler pour %s." )
+tr.Add( "Купить за %sр.", lang, "Acheter pour %s." )
+tr.Add( "Сроком на %s за %sр.", lang, "Validité de% s pour %s." )
+tr.Add( "Покупка недоступна, подождите пока %s истечёт.", lang, "Achat non disponible, attendez que %s expire." )
+tr.Add( "%s истек.", lang, "%s expiré." )
+tr.Add( "Устанавливает множитель пополнения скинами", lang, "Définit le multiplicateur pour reconstituer les skins" )
+tr.Add( "Устанавливает множитель пополнения (для любого метода пополнения)", lang, "Définit le multiplicateur de dépôt (pour toute méthode de dépôt)" )
+tr.Add( "Скинами из Dota 2/CS:GO", lang, "Skins de Dota 2/CS:GO" )
+tr.Add( "Спасибо за покупку %s кредитов!", lang, "Merci pour votre achat de %s crédits" ); --"Merci pour votre achat. %s des emprunts!" )
+tr.Add( "Кредиты", lang, "Les prêts" )
+tr.Add( "Подписка", lang, "Premium" )
+tr.Add( "Спасибо за подписку!", lang, "Merci pour votre achat!" )
+tr.Add( "Спасибо за покупку!", lang, "Merci pour votre achat!" )
+
+tr.Add( "Оптимизация текста", lang, "Optimisation du texte" );
+tr.Add( "Админ меню", lang, "Admin Menu" );
+
+tr.Add( " на ", lang, " by " );
+tr.Add( "Понижает наносимый урон", lang, "Decreases damage" );
+tr.Add( "Повышает наносимый урон", lang, "Increases damage" );
+tr.Add( "Повышает отдачу", lang, "Increases recoil" );
+tr.Add( "Понижает отдачу", lang, "Decreases recoil" );
+tr.Add( "Повышает скорострельность", lang, "Increases firerate" );
+tr.Add( "Понижает скорострельность", lang, "Decreases firerate" );
+tr.Add( "Понижает точность от бедра", lang, "Increases hip spread" );
+tr.Add( "Повышает точность от бедра", lang, "Decreases hip spread" );
+tr.Add( "Повышает точность в прицеливании", lang, "Decreases aim spread" );
+tr.Add( "Понижает точность в прицеливании", lang, "Increases aim spread" );
+tr.Add( "Повышает скорость переключения", lang, "Increases deploy speed" );
+tr.Add( "Понижает скорость переключения", lang, "Decreases deploy speed" );
+tr.Add( "Понижает скорость перезарядки", lang, "Decreases reload speed" );
+tr.Add( "Повышает точность перезарядки", lang, "Increases reload speed" );
+tr.Add( "Повышает удобность", lang, "Increases handling" );
+tr.Add( "Снижает удобность", lang, "Decreases handling" );
+tr.Add( "Понижает мобильность", lang, "Decreases mobility" );
+tr.Add( "Повышает мобильность", lang, "Increases mobility" );
+tr.Add( "Повышает разброс за выстрел", lang, "Increases spread per shot" );
+tr.Add( "Понижает разброс за выстрел", lang, "Decreases spread per shot" );
+tr.Add( "Повышает разброс", lang, "Increases accumulative spread" );
+tr.Add( "Понижает разброс", lang, "Decreases accumulative spread" );
+tr.Add( "Понижает скорость передвижения", lang, "Decreases movement speed" );
+tr.Add( "Повышает скорость передвижения", lang, "Increases movement speed" );
+
+tr.Add( "Автоматический Режим", lang, "FULL-AUTO" );
+tr.Add( "Одиночный Режим", lang, "SEMI-AUTO" );
+tr.Add( "Дуплет", lang, "DOUBLE-ACTION" );
+tr.Add( "Очередь из 2-ух", lang, "2-ROUND BURST" );
+tr.Add( "Очередь из 3-ех", lang, "3-ROUND BURST" );
+tr.Add( "На Предохранителе", lang, "SAFE" );
+
+tr.Add( "Красный", lang, "Red" );
+tr.Add( "Зеленый", lang, "Green" );
+tr.Add( "Синий", lang, "Blue" );
+tr.Add( "Желтый", lang, "Gold" );
+tr.Add( "Аква", lang, "Turquoise" );
+tr.Add( "Розовый", lang, "Pink" );
+
+tr.Add( "Метиламин", lang, "Méthylamine" );
+tr.Add( "Аллюминий", lang, "Aluminium" );
+tr.Add( "Процесс готовки...", lang, "Processus de cuisson..." );
+tr.Add( "Подставьте поднос", lang, "Plateau de remplacement" );
+tr.Add( "Очистка Комбайнера", lang, "Nettoyage du combiner" );
+tr.Add( "Подносите бочки с метиламином к", lang, "Apportez les barils de méthylamine au" );
+tr.Add( "комбайнеру, пока шкала метиламина", lang, "combiner jusqu'à que l'échelle de méthylamine" );
+tr.Add( "не заполнится.", lang, "ne soit pas pleine." );
+tr.Add( "Подносите коробки с алюминием к", lang, "Apportez les boîtes en aluminium au" );
+tr.Add( "комбайнеру, пока шкала аллюминия", lang, "combiner jusqu'à que l'échelle d'aluminium" );
+tr.Add( "Подождите, пока алюминий вступит", lang, "Attendez que l'aluminium entre" );
+tr.Add( "в реакцию с метиламином и получится", lang, "mettez en réaction avec la méthylamine et obtenez" );
+tr.Add( "активная смесь.", lang, "un mélange actif." );
+tr.Add( "Подставляйте подносы из холодильника", lang, "Insérez les plateaux du réfrigérateur sous" );
+tr.Add( "под краны Комбайнера, пока не кончится", lang, "les robinets du combinateur jusqu'à épuisement" );
+tr.Add( "активная смесь - затем верните их.", lang, "du mélange actif - puis retournez-les." );
+tr.Add( "Нажимайте [E] на Комбайнере, чтобы", lang, "Appuyez sur [E] sur le combineur pour" );
+tr.Add( "отчистить его от производственной", lang, "le nettoyer de la production" );
+tr.Add( "грязи.", lang, "" );
+
+tr.Add( "Деньги", lang, "Argent" );
+tr.Add( "Передать деньги", lang, "Transférer de l\'argent" );
+tr.Add( "Сколько вы хотите передать?", lang, "Combien voulez-vous transférer?" );
+tr.Add( "Бросить деньги", lang, "Jeter de l\'argent" );
+tr.Add( "Сколько вы хотите бросить?", lang, "Combien voulez-vous transférer?" );
+tr.Add( "Выписать чек", lang, "Faites un chèque" );
+tr.Add( "Чек", lang, "Chèque" );
+tr.Add( "Сколько вы хотите выписать?", lang, "Combien voulez-vous donner?" );
+tr.Add( "Действия", lang, "Actions" );
+tr.Add( "Продать все двери", lang, "Vendre toutes les portes" );
+tr.Add( "Уволить игрока", lang, "Révoquer un joueur" );
+tr.Add( "Причина уольнения?", lang, "Motif de la résiliation:" );
+tr.Add( "Маскироваться", lang, "Se déguiser" );
+tr.Add( "Снять маскировку", lang, "Démasquer" );
+tr.Add( "Сменить ник", lang, "Changer de nom" );
+tr.Add( "Смена ника", lang, "Changement de nom" );
+tr.Add( "Какое имя вы себе хотите?", lang, "Quel nom vous voulez-vous:" );
+tr.Add( "Случайное число", lang, "Numéro aléatoire (roll)" );
+tr.Add( "Бросить кубики", lang, "Jeter les dés" );
+tr.Add( "Вытащить карту", lang, "Sortez une carte" );
+
+tr.Add( "Ограбление", lang, "Braquage" );
+tr.Add( "Перезарядка", lang, "Cooldown" );
+tr.Add( "Банкомат в процессе ограбления", lang, "Braquage en cours..." );
+tr.Add( "Подождите что-бы начать ограбление", lang, "Attendez pour braquer à nouveau" );
+tr.Add( "Нажмите [E] что-бы начать ограбление", lang, "Appuyez sur [E] pour débuter le vol" );
+tr.Add( "[E] Открыть магазин", lang, "[E] Ouvrir la boutique" );
+tr.Add( "[E] Получить подарок", lang, "[E] Get gift" );
+
+tr.Add( "Вертел", lang, "Broche" );
+
+tr.Add( "Настройки графики", lang, "Paramètres graphiques" );
+tr.Add( "Автоматический режим", lang, "Mode automatique" );
+
+tr.Add( "Больше персонажей", lang, "Plus de personnages" );
+tr.Add( "Два дополнительных слота", lang, "Deux slots de personnages" );
+tr.Add( "персонажей!", lang, "supplémentaires" );
+
+tr.Add( "'s ", lang, " de " );
+
+tr.Add( "Seasonpass::GotReward", lang, "# a reçu une récompense du PASS RP: # " );
+tr.Add( "# получил награду BATTLE PASS: # ", lang, "# a reçu une récompense du PASS RP: # " );
+
+tr.Add( "Рейд", lang, "Rade" );
+tr.Add( "Слухи", lang, "Rumeurs" );
+tr.Add( "<Текст для объявления рейда>", lang, "Texte de déclaration de raid" );
+tr.Add( "<Текст для объявления слуха>", lang, "Texte d'annonce auditive" );
+
+tr.Add( "СДАТЬ", lang, "Détention" );
+tr.Add( "[Е] Открыть меню", lang, "[E] Ouvrir" );
+
+tr.Add( "Зажмите [E]", lang, "Maintenez [E]" );
+tr.Add( "чтобы арендовать", lang, "pour louer" );
+tr.Add( "Нельзя выбрать комплект на недоступную профессию", lang, "Vous ne pouvez pas prendre de kit pour une profession que vous n'avez pas débloquée." );
+tr.Add( "Шапка отключена на данной профессии", lang, "Tu ne peux pas utiliser cet accessoire dans cette profession" );
+tr.Add( "Вы не можете снять аксессуар пока в нем есть предметы.", lang, "Tu ne peux pas enlever ton sac/accessoire s’il est rempli." );
+tr.Add( "Правила сервера", lang, "Règles" );
+tr.Add( "Законы", lang, "Lois" );
+tr.Add( "Аксессуар отключен на данной профессии", lang, "Tu ne peux pas utiliser cet accessoire dans cette profession" );
+tr.Add( "Включите во мне что-нибудь ;)", lang, "Mettez-moi de la musique ;)" );
+
+tr.Add( "Групповые", lang, "Groupe" )
+
+tr.Add( "%s В ПОДАРОК", lang, "%s EN CADEAU" )
+tr.Add( "за каждые пополненные %sр", lang, "pour chaque recharge de %s cr" )
+
+tr.Add( "Выключить новое оформление спавн-меню", lang, "Enlever le nouveau menu d’apparition" );
+tr.Add( "Включить отображение аксессуаров", lang, "Enlever les la visibilité des accessoires" );
+tr.Add( "Узнать подробнее", lang, "Learn more" );
+tr.Add( "Чтобы просматривать правила прямо в игре,", lang, "Pour lire les règles directement en jeu," );
+tr.Add( "смените версию игры на Chromium", lang, "vous devez changer votre version en \"Chromium\"" );
+tr.Add( "НЛР", lang, "NLR" );
+tr.Add( "Осн.", lang, "Primary" );
+tr.Add( "Доп.", lang, "Secondary" );
+
+tr.Add( "БОНУС %s", lang, "BONUS %s" );
+tr.Add( "НА ПОПОЛНЕНИЯ СКИНАМИ!", lang, "DE RÉGÉNÉRATION DES SKINS!" );
+tr.Add( "НА ПОПОЛНЕНИЯ!", lang, "DE RÉGÉNÉRATION!" );
+
+tr.Add( "Жесты", lang, "Gestes" );
+tr.Add( "Сдаться", lang, "Lever les mains" );
+tr.Add( "Показать фак", lang, "Doigt d’honneur" );
+tr.Add( "Указать на солнце", lang, "Point up" );
+tr.Add( "Важный", lang, "Important" );
+tr.Add( "Задумчивый", lang, "Pensive" );
+tr.Add( "Сбросить анимацию", lang, "Reset animation" );
+tr.Add( "Остановить звуки", lang, "Stop sound" );
+
+tr.Add( "На вас была активирована способность \"%s\".", lang, "Une compétence a été activée sur toi \"%s\"." );
+tr.Add( "Действие способности \"%s\" закончилось.", lang, "Compétence \"%s\" terminée" );
+
+tr.Add( "Вы можете обыскать данного игрока через %s секунд(ы)", lang, "You can loot this player after % seconds" );
+tr.Add( "Вы находитесь слишком далеко", lang, "You are too far away" );
+tr.Add( "Вы не можете обыскать данного игрока", lang, "You cannot loot this player" );
+tr.Add( "Вы не нашли ничего полезного", lang, "You did not found anything" );
+tr.Add( "В вашем инвентаре нет места", lang, "Not enough space" );
+tr.Add( "Вы нашли \"%s\"!", lang, "You have found \"%s\"!" );
+tr.Add( "У вас украли \"%s\"!", lang, "\"%s\" was stolen from you!" );
+
+tr.Add( "Действие способности \"%s\" закончилось.", lang, "Compétence \"%s\" terminée" );
+
+tr.Add( "Поднять", lang, "Relevé" );
+
+tr.Add( "Реферальный промокод можно менять не чаще чем 1 раз в неделю.", lang, "Le code de parrainage ne peut pas être modifié plus d'une fois par semaine." );
+tr.Add( "Ваш реферальный промокод был обновлен.", lang, "Votre code de parrainage a été mis à jour" );
+tr.Add( "Вы уже использовали реферальный промокод.", lang, "Vous avez déjà utilisé le code de parrainage" );
+tr.Add( "Вы не можете использовать свой реферальный промокод.", lang, "Vous ne pouvez pas utiliser votre propre code de parrainage" );
+tr.Add( "Вы уже наиграли больше 56 часов!", lang, "Tu as déjà joué plus de 56 heures!" );
+tr.Add( "Вы не можете использовать реферальный промокод приглашенного друга.s", lang,"Vous ne pouvez pas utiliser le code d'un ami que vous avez invité" );
+tr.Add( "Вы использовали реферальный промокод игрока %s!", lang, "vous avez utilisé le code de parrainage %s!" );
+tr.Add( "Игрок %s использовал ваш реферальный промокод!", lang, "Le joueur %s a utilisé votre code de parrainage" );
+tr.Add( "Вы получили реферальную награду:", lang, "Récompense de parrainage obtenue" );
+tr.Add( "Промокод должен быть больше 5 символов", lang, "Le code doit être plus long que 5 symboles" );
+tr.Add( "Промокод должен быть меньше 13 символов", lang, "Le code doit être inférieur à 13 symboles" );
+tr.Add( "Только латиница и цифры", lang, "Uniquement alphabet latin et chiffres" );
+tr.Add( "Промокод скопирован!", lang, "Code copié" );
+tr.Add( "Неизвестная награда", lang, "Récompense inconnue" );
+tr.Add( "Ваша награда:", lang, "Votre récompense:" );
+tr.Add( "По промокоду друг получит:", lang, "Votre ami obtiendra:" );
+tr.Add( "Друзей приглашено:", lang, "Amis invités:" );
+tr.Add( "Промокод:", lang, "Code promotionnel:" );
+tr.Add( "ПРИГЛАСИ ДРУГА И ПОЛУЧИ ПОДАРОК", lang, "INVITEZ UN AMI ET OBTENEZ VOTRE RÉCOMPENSE" );
+tr.Add( "Отправь другу промокод", lang, "Envoyer un code à votre ami" );
+tr.Add( "После 4 часов игры вы и ваш друг получите награды", lang, "Après 4h de jeu, vous serez tous les deux récompensés" );
+
+tr.Add( "Пробный", lang, "Essayez" );
+tr.Add( "[E] Откройте кейс и узнайте что может Вам выпасть!", lang, "Appuyez simplement sur [E] et trouvez ce que vous pouvez en obtenir!" );
+tr.Add( "Ближайший NPC профессий был подсвечен", lang, "Le NPC de faction le plus proche de vous a été marquer" );
+tr.Add( "Паки анимаций", lang, "Pack d'animation" );
+tr.Add( "АКТИВНЫЕ ИВЕНТЫ:", lang, "ÉVÉNEMENTS EN COURS:" );
+
+tr.Add( "Магазин ингредиентов", lang, "Magasin d'ingrédients" );
+tr.Add( "Включить отображение общего канала чата", lang, "Activer l'affichage du chat général" );
+tr.Add( "Вам доступно %i очков навыков! Прокачайся в F4 - Навыки!", lang, "Vous avez %i points de compétence disponibles! Utilisez-les dans le menu F4 - Compétences!" );
+tr.Add( "Вы собираетесь отключить интерфейс. Это может привести к ухудшенным удобствам, процессу и удовольствию от игры на сервере.\nДанная настройка сбрасывается при каждом перезаходе на сервер.", lang, "Vous êtes sur le point de désactiver l'interface. Cela peut influencer votre expérience de jeu sur le serveur.\nCe paramètre est réinitialisé chaque fois que vous vous connectez au serveur." );
+tr.Add( "Отображать подсказку кнопки взаимодействий с игроком", lang, "Afficher l'info-bulle du bouton d'interaction avec le joueur" );
+
+tr.Add( "Вайтлист", lang, "Whitelist" );
+tr.Add( "Информация:", lang, "Information:" );
+tr.Add( "Звания:", lang, "Rangs:" );
+tr.Add( "Права:", lang, "Permissions:" );
+tr.Add( "Исключение:", lang, "Exclusion:" );
+tr.Add( "У вас недостаточно прав.", lang, "Vous n'avez pas assez de droits." );
+tr.Add( "Данная фракция не существует.", lang, "Cette fraction n'existe pas." );
+tr.Add( "Данная фракция уже доступна.", lang, "Cette faction est déjà disponible." );
+tr.Add( "Данная фракция уже недоступна.", lang, "Cette faction n'est plus disponible." );
+tr.Add( "Данная профессия не существует.", lang, "Cette profession n'existe pas." );
+tr.Add( "Данная фракция уже доступна.", lang, "Cette faction est déjà disponible." );
+tr.Add( "Данная фракция уже недоступна.", lang, "Cette faction n'est plus disponible." );
+tr.Add( "Текст информации слишком большой.", lang, "Le texte de l'information est trop grand." );
+tr.Add( "Информация игрока была обновлена.", lang, "Les informations du joueur ont été mises à jour." );
+tr.Add( "Выдача лидерства", lang, "Donner du leadership" );
+tr.Add( "Выдача профессий", lang, "Délivrance de professions" );
+tr.Add( "Выдача профессий (временные)", lang, "Délivrance de professions (temporaires)" );
+tr.Add( "Информационная сводка", lang, "Fiche d'information" );
+tr.Add( "Очистка фракции", lang, "Faction cleanup" );
+tr.Add( "Поиск игрока", lang, "Trouver un joueur" );
+tr.Add( "Введите информацию или оставьте поле пустым, чтобы сбросить", lang, "Entrez les informations ou laissez le champ vide pour réinitialiser" );
+tr.Add( "Обновить", lang, "Actualiser" );
+tr.Add( "Редактировать", lang, "Modifier" );
+tr.Add( "Редактирование профессий", lang, "Modifier la profession" );
+tr.Add( "Редактирование званий", lang, "Modifier le rang" );
+tr.Add( "Редактирование информационной сводки", lang, "Modifier les informations" );
+tr.Add( "Исключение", lang, "Exclure" );
+tr.Add( "Исключить", lang, "Exclure" );
+
+tr.Add( "Установка изображения", lang, "Select webimage" );
+tr.Add( "Доступные сервисы: %s. За нецензуру бан.", lang, "Allowed services: %s. NSFW images are prohibited." );
+tr.Add( "Недопустимая ссылка", lang, "Invalid link" );
+tr.Add( "ОШИБКА: Недопустимая ссылка", lang, "ERROR: Invalid link" );
+
+tr.Add( "дн.", lang, "d" );
+tr.Add( "ч.", lang, "h" );
+tr.Add( "м.", lang, "m" );
+tr.Add( "с.", lang, "s" );
+
+tr.Add( "Выдача медалей", lang, "Gérer les médailles" );
+tr.Add( " наградил ", lang, " a décerné une " );
+tr.Add( " лишил ", lang, " a retiré une " );
+tr.Add( "медалью ", lang, "médaille à " );
+tr.Add( "медали ", lang, "médaille à " );
+
+tr.Add( "Сдать всё оружие", lang, "Rendre tout l'équipement" );
+tr.Add( "сдал оружие в арсенал", lang, "a rendu le kit d'arme" );
+tr.Add( "Вы можете сменить комплект только у арсенала профессии!", lang, "Vous ne pouvez changer d'équipement que depuis l'armurerie!" );
+tr.Add( "%s комплект \"%s\"", lang, "%s le kit \"%s\"" );
+tr.Add( "%s оружие \"%s\"", lang, "%s d'arme \"%s\"" );
+tr.Add( "вернул в арсенал", lang, "a rendu le kit d'arme" );
+tr.Add( "взял из арсенала", lang, "a récupéré dans l'arsenal le kit" );
+tr.Add( "Нет доступных комплектов", lang, "Aucun équipement disponible" );
+tr.Add( "Нет доступного оружия", lang, "Aucun équipement disponible" );
+tr.Add( "ВЗЯТЬ", lang, "PRENDRE" );
+tr.Add( "СНЯТЬ", lang, "RENDRE" );
+tr.Add( "Арсенал", lang, "L'arsenal" );
+tr.Add( "Донатное", lang, "Armes permanentes" );
+tr.Add( "Комплекты", lang, "Armurerie" );
+tr.Add( "Доп. оружие", lang, "Armes" );
+tr.Add( "[Е] Открыть арсенал", lang, "[E] Ouvrir l'arsenal" );
+
+tr.Add( "Аукцион", lang, "Enchères" );
+tr.Add( "F4 -> Аукцион", lang, "F4 - Enchères" );
+tr.Add( "До конца торгов:", lang, "Temps avant la fin des enchères:" );
+tr.Add( "Торги завершены", lang, "Les enchères sont terminées!" );
+tr.Add( "Последняя ставка:", lang, "Dernière enchère:" );
+tr.Add( "Текущая цена:", lang, "Prix actuel:" );
+tr.Add( "Баланс:", lang, "Solde:" );
+tr.Add( "СДЕЛАТЬ СТАВКУ", lang, "PLACER UNE ENCHÈRE" );
+tr.Add( "Ставок нет", lang, "Pas d'enchères" );
+tr.Add( "Будьте первым, кто сделает ставку!", lang, "Devenez le premier à placer une enchère!" );
+tr.Add( "ВАША СТАВКА ЛИДИРУЕТ", lang, "VOTRE ENCHÈRE EST EN TÊTE" );
+tr.Add( "Правила аукциона:", lang, "Règles de l'enchère:" );
+tr.Add( "Ставки принимаются игровыми кредитами", lang, "Les enchères sont placées avec les crédits du jeu." );
+tr.Add( "Если вашу ставку перебили, то кредиты мгновенно возвращаются на счет", lang, "Si votre offre est surenchérie, votre mise vous est remboursée instantanément." );
+tr.Add( "Лот разыгрывается определенное время, указанное на таймере", lang, "Le lot peut être enchéri pendant une certaine période, spécifiée par un minuteur." );
+tr.Add( "Побеждает тот, чья ставка является максимальной, к моменту окончания таймера лота", lang, "Le gagnant est celui dont l'offre est la plus élevée à la fin de l'enchère." );
+tr.Add( "Если за 10 минут до окончания таймера будет поставлена новая ставка - к таймеру прибавляется 10 минут", lang, "Si une nouvelle offre est placée 10 minutes avant la fin du minuteur, la durée de l'enchère est augmentée de 10 minutes supplémentaires." );
+tr.Add( "Во время работы аукциона работает межсерверный чат для игроков всех серверов URF.IM", lang, "During the auction, the crossserver chat is available for all players of URF.IM" );
+tr.Add( "В межсерверном чате запрещена реклама, оскорбления, ненормативная лексика и деструктивное поведение", lang, "La publicité, les insultes, les grossièretés sont prohibés dans le chat." );
+tr.Add( "Включить текстовые оповещения и чат аукциона", lang, "Activer les annonces textuelles et le chat pour les ventes aux enchères" );
+tr.Add( "Включить звуковые оповещения аукциона", lang, "Activer les annonces sonores des ventes aux enchères" );
+tr.Add( "Вам было возвращено %s рублей за ставку в аукционе", lang, "Votre enchère de %s crédits a été remboursée!" );
+tr.Add( "Вы можете писать в этот чат только когда доступен аукцион", lang, "Vous ne pouvez parler dans ce chat que lorsque une enchère est disponible." );
+tr.Add( "Вы не можете писать в этот чат еще %s секунд", lang, "Vous ne pouvez pas parler dans ce chat pendant encore %s secondes." );
+tr.Add( "Аукцион недоступен", lang, "L'enchère n'est pas disponible!" );
+tr.Add( "Вы уже поставили ставку на этом аукционе", lang, "Vous avez déjà enchéri sur cette enchère!" );
+tr.Add( "Длительность не должна превышать %s секунд", lang, "La durée doit être inférieure à %s secondes." );
+tr.Add( "Укажите причину", lang, "Précisez la raison!" );
+tr.Add( "Причина должна быть меньше 20 символов", lang, "Le motif doit être inférieur à 20 caractères." );
+tr.Add( "База данных недоступна!", lang, "La base de données des enchères est inaccessible!" );
+tr.Add( "Нет активного аукциона!", lang, "Il n'y a pas d'enchères actives!" );
+tr.Add( "Укажите цель", lang, "Précisez la cible!" );
+tr.Add( "Укажите длительность", lang, "Précisez la durée!" );
+tr.Add( "Аргумент # должен быть числом", lang, "L'argeument # doit être un nombre." );
+tr.Add( "Шаг ставки должен быть больше нуля!", lang, "Le montant de l'offre doit être supérieur à zéro!" );
+tr.Add( "Неизвестный апгрейд: %s!", lang, "Amélioration inconnue: %s!" );
+tr.Add( "Уже есть активный аукцион!", lang, "Une vente aux enchères est déjà en cours!" );
+tr.Add( "Аукцион с наградой #, начальной ценой: # рублей, шагом: # рублей и длительностью: # создается...", lang, "L'enchère avec le lot: #, le prix de départ: # crédits, étape: # crédits et de durée: # est en création..." );
+tr.Add( "Ставка на аукционе сделана (#, #)", lang, "Une enchère a été placée (#, #)" );
+tr.Add( "Аукцион $ начался! Лот: $, начальная стоимость: $ рублей, шаг ставки: $ рублей, длительность: $! Заходите в $ и делайте ставки!", lang, "L'enchère de $ vient de débuter! Lot: $, prix de départ: $ crédits, étape: $ crédits, durée: $! Allez dans $ et placez une enchère!" );
+tr.Add( "Аукцион $ завершился! Лот: $, победитель: $ с сервера $, выигрышная ставка: $ рублей!", lang, "L'enchère de $ s'est terminée! Lot: $, gagnant: $ du serveur $, montant de l'enchère finale: $ crédits!" );
+tr.Add( "Аукцион $ завершился! Никто не поставил ставку :(", lang, "L'enchère de $ s'est terminée! Personne n'a placé d'enchère :(" );
+tr.Add( "Игрок $ с сервера $ получил $ за победу в аукционе $!", lang, "Le joueur $ du serveur $ a remporté $ en gagnant l'enchère de $!" );
+tr.Add( "Администратор $ ($) размутил игрока $", lang, "L'administrateur $ ($) a rendu la parole à $" );
+tr.Add( "Администратор $ ($) замутил игрока $ на $ с причиной: $", lang, "L'administrateur $ ($) a mute $ pour $ avec la raison: $" );
+
+tr.Add( "Данное место выглядит достаточно чистым...", lang, "L'endroit semble suffisamment propre..." );
+tr.Add( "Вы только что тут подмели!", lang, "Vous venez de balayer l'endroit!" );
+
+tr.Add( "Включить нотификацию о большом количестве аддонов", lang, "Activer la notification du nombre d'addons trop important" );
+tr.Add( "Включить отображение нотификаций (сверху)", lang, "Activer l'affichage des notifications (en haut)" );
+tr.Add( "Включить отображение нотификаций (справа)", lang, "Activer l'affichage des notifications (à droite)" );
+tr.Add( "Включить звуковые оповещения аукциона", lang, "Activer les alertes de loterie" );
+tr.Add( "Включить отображение рекламного баннера", lang, "Activer l'affichage de la bannière de streaming" );
+tr.Add( "Включить отображение истории чата", lang, "Activer l'affichage de l'historique du chat" );
+tr.Add( "Включить текстовые оповещения и чат аукциона", lang, "Activer les alertes et les notifications de loterie" );
+tr.Add( "Отключить интерфейс", lang, "Désactiver l'interface" );
+
+tr.Add( "НАЖМИТЕ # ЧТОБЫ ПРЕКРАТИТЬ ПОДНЯТИЕ", lang, "Appuyez sur # pour arrêter de releve" );
+tr.Add( "[Пробел]", lang, "[ESPACE]" );
+
+tr.Add( "AdminAddedExperience", lang, "# has given # # experience points #." );
+tr.Add( "AdminAddedYourExperience", lang, "# has given # experience points # on your account." );
+
+tr.Add( "Улучшенный Кейпад", lang, "Advanced Keypad" );
+tr.Add( "Создает улучшенный кейпад", lang, "Créer un keypad amélioré" );
+tr.Add( "Настройки доступа", lang, "Paramètres d’accès" );
+tr.Add( "Обновить списки", lang, "Actualiser les listes" );
+tr.Add( "Фракции", lang, "Factions" );
+
+tr.Add( "Инструмент для создания и редактирования лутабельных объектов", lang, "Outil de création des lootables" );
+tr.Add( "Типы лута", lang, "Types de butin" );
+tr.Add( "Макс лута в ящике:", lang, "Items maximum dans la lootable" );
+tr.Add( "Скрывать когда пуст", lang, "Disparaît une fois fouillé" );
+
+tr.Add( "Инструмент для создания складов организаций", lang, "Outil de création de coffre-fort d’organisation" );
+-- tr.Add( "Создать склад", lang, "" );
+-- tr.Add( "Удалить склад", lang, "" );
+tr.Add( "Организации:", lang, "Organisations:" );
+tr.Add( "Обновить", lang, "Actualiser les listes" );
+tr.Add( "Поиск:", lang, "Recherche:" );
+tr.Add( "Ширина:", lang, "Largeur" );
+tr.Add( "Высота:", lang, "Hauteur" );
+-- tr.Add( "Это обычный проп", lang, "" );
+-- tr.Add( "Это склад организации", lang, "" );
+-- tr.Add( "Подтвердите удаление склада организации", lang, "" );
+
+tr.Add( "Кнопка лифта", lang, "Bouton d’ascenseur" );
+tr.Add( "Кнопки лифта", lang, "Bouton d’ascenseur" );
+tr.Add( "Инструмент для создания кнопок лифта.", lang, "Outil pour créer des boutons d’ascenseur" );
+tr.Add( "Разместить кнопку лифта", lang, "Placer un bouton d’ascenseur" );
+tr.Add( "Выбрать лифт", lang, "Sélectionner un ascenseur" );
+tr.Add( "Модель", lang, "Modèle" );
+tr.Add( "Эта кнопка будет", lang, "Ce bouton servira à" );
+tr.Add( "Вызывать", lang, "Lever" );
+tr.Add( "Отправлять", lang, "Baisser" );
+tr.Add( "Вызывать / Отправлять", lang, "Lever / Baisser" );
+
+tr.Add( "Лифт", lang, "Ascenseur" );
+tr.Add( "Инструмент для создания лифтов.", lang, "Outil pour créer des ascenseurs" );
+tr.Add( "Создать лифт.", lang, "Créer un ascenseur" );
+tr.Add( "Обновить лифт.", lang, "Mettre à jour l’ascenseur" );
+-- tr.Add( "Сбросить.", lang, "" );
+-- tr.Add( "Отменить действие.", lang, "" );
+-- tr.Add( "Установить позицию лифта по оси X.", lang, "" );
+-- tr.Add( "Установить позицию лифта по оси Y.", lang, "" );
+-- tr.Add( "Установить позицию лифта по оси Z.", lang, "" );
+tr.Add( "Отправка", lang, "Lever" );
+tr.Add( "Возврат", lang, "Baisser" );
+tr.Add( "Звук в движении", lang, "Son en mouvement" );
+tr.Add( "Звук прибытия", lang, "Son d’arrivée" );
+tr.Add( "Скорость", lang, "Vitesse" );
+tr.Add( "Использование на кнопку [E]", lang, "Utilisation du bouton [E]" );
+tr.Add( "Тряска", lang, "Tremblement" );
+
+tr.Add( "Поджигатель", lang, "Feu" );
+tr.Add( "Позволяет поджигать пропы", lang, "Permet de mettre le feu à un objet" );
+tr.Add( "Поджечь проп", lang, "Mettre le feu à un objet" );
+tr.Add( "Потушить проп", lang, "Éteindre le feu" );
+
+tr.Add( "NPC Набора", lang, "PNJ Information" );
+tr.Add( "Создать NPC набора, предлагающего открыть ссылку.", lang, "Créer un PNJ d’informations permettant d’ouvrir des liens." );
+tr.Add( "ЛКМ: создать NPC набора; ПКМ: удалить NPC набора", lang, "LMB: Supprime un PNJ; RMB: Créer un PNJ" );
+-- tr.Add( "NPC набора убран", lang, "" );
+-- tr.Add( "NPC набора", lang, "" );
+-- tr.Add( "Все NPC набора удалены!", lang, "" );
+-- tr.Add( "Вы достигли лимита NPC набора!", lang, "" );
+tr.Add( "Имя NPC", lang, "Nom du PNJ" );
+tr.Add( "Модель NPC", lang, "Modèle du PNJ" );
+tr.Add( "Текст описания", lang, "Description du PNJ" );
+tr.Add( "Ссылка", lang, "Lien du bouton" );
+tr.Add( "Текст кнопки перехода по ссылке", lang, "Texte du bouton" );
+tr.Add( "Поза NPC", lang, "Pose du PNJ" );
+
+tr.Add( "Склад Организации", lang, "Coffre-fort de l'organisation" );
+tr.Add( "[E] Открыть склад", lang, "[E] Ouvrir le coffre" );
+tr.Add( "СКЛАД", lang, "COFFRE-FORT" );
+
+tr.Add( "Звание игрока было обновлено.", lang, "Le titre du joueur a été mis à jour." );
+
+tr.Add( "Восстановление привилегии", lang, "Restaurer les privilèges" );
+tr.Add( "ВОССТАНОВИТЬ", lang, "RESTORE" );
+tr.Add( "ЗАКРЫТЬ", lang, "FERMER" );
+tr.Add( "Предыдущая донатная привилегия игрока %s:", lang, "Voulez-vous restaurer les privilèges de %s:" );
+
+tr.Add( "BannedTimeInfractions", lang, "La sanction a été augmentée de # de part le passé brumeux de cette personne." );
+tr.Add( "ImmunityIsHigher", lang, "# est immunisé puisque son rôle est plus haut que le nouveau. Utilisez: urf setgroupforce afin de bypass la restriction." );
+
+tr.Add( 'Ты успешно посадил семена винограда сорта "%s"', lang, 'Vous avez planté avec succès des "%s"' );
+tr.Add( 'Твой посаженный виноград сорта "%s" созрел и его уже можно собрать!', lang, 'Vos raisins plantés de "%s" sont mûrs et peuvent déjà être récoltés!' );
+tr.Add( 'Твой посаженный виноград сорта "%s" испортился и был удален!', lang, 'Les raisins "%s" que vous aviez plantés se sont abîmés et ont été enlevés!' );
+tr.Add( 'Ты собрал виноград сорта "%s" и он был добавлен в твой инвентарь!', lang, 'Vous avez récolté les raisins de "%s" et ils ont été ajoutés à votre inventaire!' );
+tr.Add( 'Вино сорта "%s" в бочке готово для установки в раздатчик!', lang, 'Вино сорта "%s" в бочке готово для установки в раздатчик!' );
+tr.Add( "СОЗДАНИЕ", lang, "PRESSE" );
+
+tr.Add( "УРОВЕНЬ МАСТЕРСТВА:", lang, "NIVEAU DE COMPÉTENCE:" );
+tr.Add( "Награды %d уровня", lang, "Récompenses de niveau %d" );
+tr.Add( "Вы получили %d опыта за выполнение действия \"%s\"", lang, "Vous avez reçu %d d'expérience pour avoir effectué l'action \"%s\"" );
+tr.Add( "доступно", lang, "jouable à partir" );
+tr.Add( "с %i уровня", lang, "du niveau: %i" );
+tr.Add( "У ВАС НЕДОСТАТОЧНЫЙ УРОВЕНЬ МАСТЕРСТВА", lang, "VOUS N'AVEZ PAS LE NIVEAU DE COMPÉTENCE REQUIS!" );
+tr.Add( "ОСТАЛОСЬ %i ОПЫТА ДО РАЗБЛОКИРОВКИ ПРОФЕССИИ", lang, "IL RESTE %i XP AVANT LE DÉBLOCAGE DE LA PROFESSION" );
+tr.Add( "Поднятие", lang, "Relever" );
+
+tr.Add( "Метла", lang, "Balais" );
+tr.Add( "[ЛКМ] Подмести", lang, "[LMB] Balayer" );
+
+tr.Add( "Вы не можете брать предметы со склада организации!", lang, "Vous n’avez pas les privilèges requis pour récupérer un objet dans le coffre-fort!" );
+tr.Add( "Вы получили %s за промежуточную уборку местности!", lang, "Vous avez obtenu %s en nettoyant cet endroit!" );
+tr.Add( "Вы нашли \"%s\" при уборке местности!", lang, "Vous avez trouvé \"%s\" en nettoyant cet endroit!" );
+
+tr.Add( "Уборка", lang, "Nettoyer" );
+tr.Add( "Работа на фабрике", lang, "Travailler à l’usine" );
+tr.Add( "Поднятие", lang, "Transporter" );
+tr.Add( "Лечение", lang, "Traitement" );
+tr.Add( "Шахтерство", lang, "Miner" );
+tr.Add( "Кладменство", lang, "Extraction minière" );
+tr.Add( "Готовка еды", lang, "Cuisine" );
+tr.Add( "Продажа предмета", lang, "Vendre un item" );
+tr.Add( "Продажа предмета торговцу", lang, "Vendre un item à un marchand" );
+tr.Add( "Продажа разыскиваемых", lang, "Mise aux arrêts" );
+tr.Add( "Ломание пропа", lang, "Casser un props" );
+
+tr.Add( "Включить отображение уведомлений о доступных бонусах", lang, "Activer l’affichage des notifications de bonus" );
+
+tr.Add( "объектом", lang, "rien" );
+tr.Add( "Карта", lang, "Carte" );
+
+tr.Add( "Выдана игроком %s(%s) в %s", lang, "Émis par %s(%s) à %s" );
+
+tr.Add( "Голос", lang, "Voix" );
+tr.Add( "Озвучивать мои сообщения в чате", lang, "Exprimer mes messages dans le chat" );
+tr.Add( "Громкость озвучивания сообщений чата", lang, "Volume vocal des messages de clavardage" );
+tr.Add( "Данный голос недоступен", lang, "Cette voix ñ'est pas disponible" );
+tr.Add( "Вы меняете голоса слишком часто", lang, "Tu changes trop souvent de voix" );
+tr.Add( "Мужской (стандартный)", lang, "Mâle (standard)" );
+tr.Add( "Женский (стандартный)", lang, "Femelle (standard)" );
+tr.Add( "Мужской (Захар)", lang, "Mâle (Zakhar)" );
+tr.Add( "Женский (Оксана)", lang, "Femme (Oksana)" );
+tr.Add( "Женский (Джейн)", lang, "Femme (Jeanne)" );
+tr.Add( "Женский (Омаж)", lang, "Femme (Omazh)" );
+
+tr.Add( "Включить приём рации", lang, "Activer la réception talky-walky" );
+tr.Add( "Выключить приём рации", lang, "Désactiver la réception talky-walky" );
+tr.Add( "Включить передачу рации", lang, "Activer la transmission talky-walky" );
+tr.Add( "Выключить передачу рации", lang, "Désactiver la transmission talky-walky" );
+tr.Add( "Рация", lang, "Talky-walky" );
+tr.Add( "Сменить канал рации", lang, "Changer de chaîne talky-walky" );
+tr.Add( "Выбрать частоту", lang, "Sélectionnez la fréquence" );
+tr.Add( "ВЫБОР ЧАСТОТЫ", lang, "SÉLECTION DE LA FRÉQUENCE" );
+tr.Add( "УКАЖИТЕ ЧАСТОТУ:", lang, "PRÉCISEZ LA FRÉQUENCE :" );
+tr.Add( "Выбрать", lang, "Choisir" );
+tr.Add( "Применить", lang, "Appliquer" );
+tr.Add( "Отмена", lang, "Annuler" );
+tr.Add( "Формат - 000", lang, "Format - 000" );
+tr.Add( "Формат - 0", lang, "Format - 0" );
+tr.Add( "Частота %s", lang, "Fréquence %s" );
+tr.Add( "Неверный формат", lang, "Mauvais format" );
+
+tr.Add( "Начался ивент '%s'", lang, "Début de l’évènement '%s'" );
+tr.Add( "Ивент '%s' окончен", lang, "L’évènement '%s' est terminé" );
+tr.Add( "Чтобы вернуться на основной сервер, поговорите с NPC перехода.", lang, "Pour retourner sur le serveur principal, parlez au NPC de transition!" );
+tr.Add( "Вы не можете выбрать эту сторону, так как в ней слишком много игроков.", lang, "Vous ne pouvez pas choisir ce camp, il y'a trop de joueurs!" );
+tr.Add( "Ивент '%s' окончен, победитель: %s!", lang, "L'évènement '%s' est terminé, le gagnant est: %s!" );
+tr.Add( "Нет доступных ивентов для этой карты!", lang, "Aucun évènement disponible pour cette carte!" );
+tr.Add( "Доступные ивенты:", lang, "Évènements disponibles:" );
+tr.Add( "Введите /autoeventstart ID, чтобы начать ивент.", lang, "Entrez /autoeventstart ID pour démarrer un évènement!" );
+
+tr.Add( "Отключение интерфейса", lang, "Désactiver l’interface" );
+
+tr.Add( "ПРИНЯТЬ", lang, "CONFIRMER" );
+tr.Add( "ОТМЕНА", lang, "ANNULER" );
+tr.Add( "СОЗДАЁМ...", lang, "TRAITEMENT..." );
+tr.Add( "[Е] Взаимодействие", lang, "[E] Intéragir" );
+
+tr.Add( "Например, пополнив счёт на %s р, вы получите два %s!", lang, "Par exemple, avec un dépot de %s crédits vous obtenez 2 %s!" );
+
+tr.Add( "Подключение к экстренному чату...", lang, "Connection au chat de crash en cours…" );
+
+tr.Add( "СМЕНА ИМЕНИ ИГРОКА", lang, "CHANGEMENT DU NOM DU JOUEUR" );
+tr.Add( "Введите имя для игрока %s:", lang, "Changer le nom de %s en:" );
+
+tr.Add( "БЕСПЛАТНАЯ ПРОКРУТКА КОЛЕСА ФОРТУНЫ БУДЕТ ДОСТУПНА ЧЕРЕЗ: %s!", lang, "TOURNER LA ROUE GRATUITEMENT SERA DISPONIBLE DANS: %s!" );
+tr.Add( "БЕСПЛАТНАЯ ПРОКРУТКА КОЛЕСА ФОРТУНЫ ДОСТУПНА | НЕ ЗАБУДЬТЕ ПРОКРУТИТЬ КОЛЕСО ФОРТУНЫ", lang, "LA ROUE DE LA FORTUNE EST DISPONIBLE À LA REICHSBANK | N’HÉSITEZ PAS À ALLER LA FAIRE TOURNER!" );
+
+tr.Add( "Вы не можете маскироваться", lang, "Vous ne pouvez pas vous déguiser." );
+
+tr.Add( "Вы не можете воспользоваться этим арсеналом", lang, "Vous ne pouvez pas utiliser cet arsenal!" );
+
+tr.Add( "Пожалуйста подпишитесь на контент в ESC меню!", lang, "Vous voyez ceci parce que vous avez du contenu manquant! (ECHAP → Contenu du serveur)" );
+tr.Add( "Памятка с информацией по решению проблем: urf.im/page/tech", lang, "Rendez-vous sur urfim.fr/page/tech pour plus d’informations techniques." );
+
+tr.Add( "Вы не можете снять сумку пока в ней есть предметы.", lang, "Vous ne pouvez pas retirer votre sac à dos si il y’a des items à l’intérieur." );
+
+tr.Add( "Нет денег", lang, "Vous n'avez pas les moyens de faire livrer un véhicule!" );
+tr.Add( "Достигнут максимум техники", lang, "Vous avez atteint la limite de véhicules!" );
+tr.Add( "Техника заспавнена", lang, "Véhicule livré!" );
+
+tr.Add( "НАЗВАНИЕ МЕТКИ", lang, "NOM DE L'ÉTIQUETTE" );
+tr.Add( "Введите имя метки:", lang, "Tapez le nom de l'étiquette" );
+tr.Add( "Показать свою позицию", lang, "Affichez votre position" );
+tr.Add( "Показать игроку", lang, "Afficher à un joueur" );
+tr.Add( "Показать игрокам своей организации", lang, "Afficher aux joueurs de votre organisation" );
+tr.Add( "Показать игрокам своей фракции", lang, "Afficher aux joueurs de votre faction" );
+tr.Add( "Я", lang, "Moi" );
+
+tr.Add( "Whispering", lang, "Vous chuchotez" );
+tr.Add( "Talking", lang, "Vous parlez" );
+tr.Add( "Shouting", lang, "Vous criez" );
+
+tr.Add( "Вы не можете положить предмет в чужой склад организации!", lang, "Vous ne pouvez pas mettre d’item dans le coffre fort d’une autre organisation!" );
+tr.Add( "Вы не можете взять предмет из чужого склада организации!", lang, "Vous ne pouvez pas récupérer un item dans le coffre d’une autre organisation!" );
+
+tr.Add( "Посадить семена винограда здесь невозможно!", lang, "Il est impossible de planter une graine ici!" );
+
+tr.Add( "Может получать опыт профессии", lang, "Peut évoluer en gagnant de l’expérience" );
+
+tr.Add( "Здесь недостаточно места, чтобы подняться", lang, "Il n’y a pas suffisamment de place pour se relever ici." );
+tr.Add( "ВАМ НУЖЕН %i УРОВЕНЬ ДЛЯ РАЗБЛОКИРОВКИ ПРОФЕССИИ", lang, "VOUS DEVEZ ÊTRE AU MOINS NIVEAU %i POUR DÉBLOQUER CETTE PROFESSION!" );
+
+tr.Add( "Сторона", lang, "Affiliation" );
+tr.Add( "СТОРОНА: %s", lang, "AFFILIATION: %s" );
+
+tr.Add( "Список лидеров", lang, "Liste des gérants de faction" );
+tr.Add( "Игнорирование конфликтов", lang, "Ignorer les conflits de faction" );
+tr.Add( "FactionConflict", lang, "Un conflit a été trouvé, le joueur est déjà membre de la faction \"%s\"!" );
+tr.Add( "AlreadyConflict", lang, "Un des personnages du joueur ignore déjà les conflits de faction!" );
+tr.Add( "InvalidCharacter", lang, "Personnage inconnu!" );
+tr.Add( "ConflictUpdated", lang, "Le joueur a été mis à jour !" );

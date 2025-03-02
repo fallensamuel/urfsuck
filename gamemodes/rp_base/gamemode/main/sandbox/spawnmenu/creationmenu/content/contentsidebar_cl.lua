@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\sandbox\\spawnmenu\\creationmenu\\content\\contentsidebar_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 CONTENTSEARCHLOAD = true
 local pnlSearch = vgui.RegisterFile("ContentSearch_cl.lua")
 CONTENTSEARCHLOAD = nil

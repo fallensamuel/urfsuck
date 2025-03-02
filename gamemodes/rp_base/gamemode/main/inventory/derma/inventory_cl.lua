@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\derma\\inventory_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 rp.gui = {}
 -- The queue for the rendered icons.
 renderdIcons = renderdIcons or {}

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\prone_mod\\sh_load.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 wOS.AnimExtension.Mounted[ "Prone Mod" ] = true
 MsgC( Color( 255, 255, 255 ), "[wOS] Successfully mounted animation extension: Prone Mod\n" )
 
@@ -134,7 +136,7 @@ function prone.ReadPlayer()
 	return Entity(i)
 end
 
-rp.cfg.DisableProneMod = true
+rp.cfg.DisableProneMod = (rp.cfg.DisableProneMod == nil) or (rp.cfg.DisableProneMod == true)
 hook.Remove("SetupMove", "prone.Handle")
 hook.Remove("UpdateAnimation", "prone.Animations")
 hook.Remove("CalcMainActivity", "prone.Animations")

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\interact_menu\\ping_system\\ping_rendering\\render_input_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 hook.Add("PlayerButtonDown", "PIS.RegisterInput", function(ply, btn)
 	local settings = PIS:GetSettings(ply)
 

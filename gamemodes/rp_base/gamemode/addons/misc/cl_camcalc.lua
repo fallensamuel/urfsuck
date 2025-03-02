@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\misc\\cl_camcalc.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 cvar.Register'camera_calc_enable':SetDefault(true):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Покачивание камеры')
 
 local cvar_Get = cvar.GetValue

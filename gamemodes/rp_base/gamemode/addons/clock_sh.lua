@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\clock_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local TIME_REAL_MINS_IN_GAME_HR = 4
 
 function rp.GetTime()

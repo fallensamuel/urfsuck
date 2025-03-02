@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\backweapons_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 if !(rp.cfg.Backweapons) then return end
 
@@ -20,25 +22,34 @@ RealtimeInventory.Data = RealtimeInventory.Data or {
     LeftLeg = 0,
     RightLeg = 0,
     Spine = 0,
-    MaxHolsted = (rp.cfg.Backweapons and rp.cfg.Backweapons.MaxHolsted) or 2,
-    MaxDraw = (rp.cfg.Backweapons and rp.cfg.Backweapons.MaxDraw) or 2,
+    MaxHolsted = 2,
+    MaxDraw = 2,
     PlayerModelScale = 1,
     Timer = 'RealtimeInventory',
     AdditionalTimer = 'RealtimeInventory_DeathHandler',
     PlayersNear = {}
 };
 
-RealtimeInventory.JBlacklist = rp.cfg.RT_JobBlacklist or {};
-RealtimeInventory.FBlacklist = rp.cfg.RT_FactionBlacklist or {};
-RealtimeInventory.IBlacklist = rp.cfg.RT_WeaponBlacklist or {};
-RealtimeInventory.CPos = rp.cfg.RT_WeaponPos or {};
+RealtimeInventory.JBlacklist = {};
+RealtimeInventory.FBlacklist = {};
+RealtimeInventory.IBlacklist = {};
+RealtimeInventory.CPos = {};
+
+hook.Add( "ConfigLoaded", "SetupRealtimeInventory", function()
+    RealtimeInventory.Data.MaxHolsted = (rp.cfg.Backweapons and rp.cfg.Backweapons.MaxHolsted) or 2;
+    RealtimeInventory.Data.MaxDraw = (rp.cfg.Backweapons and rp.cfg.Backweapons.MaxDraw) or 2;
+    RealtimeInventory.JBlacklist = rp.cfg.RT_JobBlacklist or {};
+    RealtimeInventory.FBlacklist = rp.cfg.RT_FactionBlacklist or {};
+    RealtimeInventory.IBlacklist = rp.cfg.RT_WeaponBlacklist or {};
+    RealtimeInventory.CPos = rp.cfg.RT_WeaponPos or {};
+end );
 
 -- Feature used to work without :Distance (^2)!
 RealtimeInventory.Config.DrawDistance = RealtimeInventory.Config.DrawDistance * RealtimeInventory.Config.DrawDistance;
 
 -- C menu
 cvar.Register'enable_rtinventory':SetDefault(true);
-rp.AddContextCommand(translates and translates.Get('Действия') or 'Действия', translates and translates.Get('Оружие за спиной') or 'Оружие за спиной', function() 
+rp.AddContextCommand(translates and translates.Get('Действия') or 'Действия', translates and translates.Get('Оружие за спиной') or 'Оружие за спиной', function()
     local Value = !cvar.GetValue('enable_rtinventory');
     cvar.SetValue('enable_rtinventory', Value);
     if (Value) then
@@ -50,7 +61,7 @@ end, nil, 'cmenu/weapon.png');
 
 function RealtimeInventory.ComputeBounds(Entity)
     if (!IsValid(Entity) or !Entity:GetModel() or !Entity:GetModelBounds()) then return 0 end
-    
+
     local BoundsMin, BoundsMax = Entity:GetModelBounds();
     return (BoundsMax.z - BoundsMin.z) * (BoundsMax.x - BoundsMin.x) * (BoundsMax.y - BoundsMin.y)
 end
@@ -163,6 +174,7 @@ function RealtimeInventory.ComputeTransform(Player)
         if (IsValid(Weapon) and IsValid(Player:GetActiveWeapon()) and Player:GetActiveWeapon():GetModel()) then
             if (Player:Alive()) then Weapon:SetNoDraw(IsValid(Player:GetActiveWeapon()) and Weapon:GetModel() == Player:GetActiveWeapon():GetModel()); end
         end
+
         N = N + 1;
     end
 end
@@ -171,20 +183,34 @@ local WeaponTag = RealtimeInventory.Config.WeaponTag;
 local string_find = string.find
 
 function RealtimeInventory.RecomputeWeapon(Player)
+    local SteamID = Player:SteamID();
     local Class;
+
     for _, Weapon in pairs(Player:GetWeapons()) do
-        Class = Weapon:GetClass();
+        Class = Weapon:GetClass() or "?";
 			--print(Player, Class, WeaponTag[string.Split(Class, '_')[1]])
         if (!WeaponTag[string.Split(Class, '_')[1]] or !Weapon:GetModel() or RealtimeInventory.IBlacklist[Class]) then continue end
-        if (IsValid(RealtimeInventory.Buffer[Player:SteamID()][Class]) or !RealtimeInventory.Data.PlayersNear[Player]) then continue end
+        if (IsValid(RealtimeInventory.Buffer[SteamID][Class]) or !RealtimeInventory.Data.PlayersNear[Player]) then continue end
 
-        if (#table_getKeys(RealtimeInventory.Buffer[Player:SteamID()]) >= RealtimeInventory.Data.MaxDraw) then break end
+        if (#table_getKeys(RealtimeInventory.Buffer[SteamID]) >= RealtimeInventory.Data.MaxDraw) then break end
 
-        RealtimeInventory.Buffer[Player:SteamID()][Class or '?'] = RealtimeInventory.Buffer[Player:SteamID()][Class or '?'] or ClientsideModel(Weapon:GetModel()); --ents.CreateClientProp(Weapon:GetModel());
-        if (RealtimeInventory.Buffer[Player:SteamID()][Class or '?']) then
-            RealtimeInventory.Buffer[Player:SteamID()][Class or '?'].TWeaponClass = (IsValid(Weapon) and Weapon:GetClass()) or '?';
+        if not RealtimeInventory.Buffer[SteamID][Class] then
+            local mdl;
+
+            if RealtimeInventory.CPos[Class] and RealtimeInventory.CPos[Class].Model then
+                mdl = RealtimeInventory.CPos[Class].Model;
+            else
+                mdl = Weapon:GetModel();
+            end
+
+            RealtimeInventory.Buffer[SteamID][Class] = ClientsideModel( mdl );
         end
-        --RealtimeInventory.Buffer[Player:SteamID()][Class]:Spawn();
+
+        if (RealtimeInventory.Buffer[SteamID][Class]) then
+            RealtimeInventory.Buffer[SteamID][Class].TWeaponClass = (IsValid(Weapon) and Class) or '?';
+        end
+
+        --RealtimeInventory.Buffer[SteamID][Class]:Spawn();
     end
 end
 
@@ -290,8 +316,8 @@ function RealtimeInventory.DeathHandler(Player)
         timer.Create(RealtimeInventory.Data.AdditionalTimer, 1 / RealtimeInventory.Config.DeathRenderTicks, 0, function()
             if (IsValid(Player) and Player:Alive()) then
                 timer.Remove(RealtimeInventory.Data.AdditionalTimer);
-            else 
-                RealtimeInventory.ComputeTransform(Player); 
+            else
+                RealtimeInventory.ComputeTransform(Player);
             end
         end);
     end
@@ -343,11 +369,11 @@ timer.Create('rp.RealtimeInventory.ClearDisconnected', 1, 0, function()
 	for k, v in pairs(RealtimeInventory.Buffer) do
 		if not player.GetBySteamID(k) then
 			for Class, CSMdl in pairs(v) do
-				if IsValid(CSMdl) then 
+				if IsValid(CSMdl) then
 					CSMdl:Remove()
 				end
 			end
-			
+
 			RealtimeInventory.Buffer[k] = nil;
 		end
 	end
@@ -356,11 +382,13 @@ end)
 hook.Add('PostPlayerDraw', 'RealtimeInventory', RealtimeInventory.ComputeTransform);
 
 hook.Add('PlayerSwitchWeapon', 'RealtimeInventory', function(Player, OldWeapon, NewWeapon)
-    if (!RealtimeInventory.Buffer[Player:SteamID()]) then return end
+    local SteamID = Player:SteamID();
+
+    if (!RealtimeInventory.Buffer[SteamID]) then return end
     if (!IsValid(OldWeapon) or !OldWeapon:GetClass() or !OldWeapon:GetModel()) then return end
 
     local Class = OldWeapon:GetClass();
-    local Keys = table_getKeys(RealtimeInventory.Buffer[Player:SteamID()]);
+    local Keys = table_getKeys(RealtimeInventory.Buffer[SteamID]);
     local Active = Player:GetActiveWeapon();
 
     local NWeapClass = IsValid(NewWeapon) and NewWeapon:GetClass() or '?';
@@ -368,17 +396,30 @@ hook.Add('PlayerSwitchWeapon', 'RealtimeInventory', function(Player, OldWeapon, 
 
     if (!WeaponTag[string.Split(Class, '_')[1]] or RealtimeInventory.IBlacklist[Class]) then return end
 
-    if (!RealtimeInventory.Buffer[Player:SteamID()][Class] and NWeapClass != Active) then
-
+    if (!RealtimeInventory.Buffer[SteamID][Class] and NWeapClass != Active) then
         for Index = RealtimeInventory.Data.MaxDraw - 1, #Keys do
-            if (IsValid(RealtimeInventory.Buffer[Player:SteamID()][Keys[Index]])) then
-                RealtimeInventory.Buffer[Player:SteamID()][Keys[Index]]:Remove();
+            if not Keys[Index] then continue end
+
+            if (IsValid(RealtimeInventory.Buffer[SteamID][Keys[Index]])) then
+                RealtimeInventory.Buffer[SteamID][Keys[Index]]:Remove();
             end
-            RealtimeInventory.Buffer[Player:SteamID()][Keys[Index]] = nil;
+
+            RealtimeInventory.Buffer[SteamID][Keys[Index]] = nil;
         end
 
-        RealtimeInventory.Buffer[Player:SteamID()][Class] = RealtimeInventory.Buffer[Player:SteamID()][Class] or ClientsideModel(OldWeapon:GetModel()); --ents.CreateClientProp(OldWeapon:GetModel());
-        RealtimeInventory.Buffer[Player:SteamID()][Class].TWeaponClass = (IsValid(OldWeapon) and OldWeapon:GetClass()) or '?';
-        --RealtimeInventory.Buffer[Player:SteamID()][Class]:Spawn();
+        if not RealtimeInventory.Buffer[SteamID][Class] then
+            local mdl;
+
+            if RealtimeInventory.CPos[Class] and RealtimeInventory.CPos[Class].Model then
+                mdl = RealtimeInventory.CPos[Class].Model;
+            else
+                mdl = OldWeapon:GetModel();
+            end
+
+            RealtimeInventory.Buffer[SteamID][Class] = ClientsideModel( mdl ); --ents.CreateClientProp(OldWeapon:GetModel());
+            RealtimeInventory.Buffer[SteamID][Class].TWeaponClass = (IsValid(OldWeapon) and Class) or '?';
+        end
+
+        --RealtimeInventory.Buffer[SteamID][Class]:Spawn();
     end
-end);   
+end);

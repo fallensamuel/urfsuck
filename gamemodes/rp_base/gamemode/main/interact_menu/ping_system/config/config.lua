@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\interact_menu\\ping_system\\config\\config.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 -- SCROLL DOWN FOR THE IMPORTANT PART OF CONFIG
 PIS.Config = {}
 PIS.Config.Pings = {}
@@ -68,9 +70,9 @@ PIS.Config.WorldInteractButtons = { }
 	},
 ]]--
 
-local IsLiked = function(ply) 
+local IsLiked = function(ply)
     local reactt = ply:GetReactsTable()
-    return reactt.reacted == 1 
+    return reactt.reacted == 1
 end
 
 local GetCuffsTrace = function(ply)
@@ -108,15 +110,15 @@ PIS.Config.PlayerIteractButtons = {
         end
     },
 ]]--
-    
+
     {
         text = translates.Get("Оседлать") or "Оседлать",
-        material = CahceMaterial("ping_system/mount.png"),
+        material = CahceMaterial("ping_system/med_down.png"), -- ping_system/mount.png
         color = Color(255, 255, 255),
         func = function(ply, pnl)
             local trent = LocalPlayer():GetEyeTrace().Entity
             if trent ~= ply then
-                rp.Notify(NOTIFY_RED, "Вы должны смотреть на животное!")
+                rp.Notify(NOTIFY_RED, translates.Get("Вы должны смотреть на животное!"))
                 return
             end
             RunConsoleCommand("say", "/sit")
@@ -146,6 +148,7 @@ PIS.Config.PlayerIteractButtons = {
         end,
         access = function(self, target) return (self:IsCP() or self:IsCombine() or self:IsMayor()) and target:CanConfiscateBy(self) end
     },
+    --[[
     {
         text = translates.Get("Поднять с земли") or "Поднять с земли",
         material = Material("ping_system/follow.png", "smooth", "noclamp"),
@@ -157,6 +160,7 @@ PIS.Config.PlayerIteractButtons = {
         end,
         access = function(self, target) return target:IsInDeathMechanics() and not self:IsHandcuffed() and IsValid(self:GetWeapon("weapon_cuff_elastic")) end
     },
+    ]]--
     {
         text = translates.Get("Надеть наручники"),
         material = Material("ping_system/addcuffs.png", "smooth", "noclamp"),
@@ -167,7 +171,7 @@ PIS.Config.PlayerIteractButtons = {
             PIS.BlockUseDelay = CurTime() + 0.75
 
             input.SelectWeapon(swep)
-            
+
             timer.Simple(0.15, function()
                 if not LocalPlayer():GetActiveWeapon("weapon_cuff_elastic") then return end
                 net.Start("DoPrimaryAttack")
@@ -192,8 +196,8 @@ PIS.Config.PlayerIteractButtons = {
     {
         text = function(ply)
             local tr, cuff = GetCuffsTrace(LocalPlayer())
-            if not cuff or cuff:GetRopeLength() < 0 or not IsValid(cuff:GetKidnapper()) then return "" end
-            
+            if not cuff or cuff:GetRopeLength() < 0 or not IsValid(cuff:GetKidnapper()) then return translates.Get("Тащить за собой") end
+
             return cuff:GetKidnapper() == LocalPlayer() and translates.Get("Закончить перетаскивание") or translates.Get("Тащить за собой")
         end,
         material = Material("ping_system/follow.png", "smooth", "noclamp"),
@@ -221,14 +225,14 @@ PIS.Config.PlayerIteractButtons = {
     {
         text = function(ply)
             local tr, cuffs = GetCuffsTrace(LocalPlayer())
-            if not tr then return "" end
+            if not cuffs then return translates.Get("Вставить кляп") end
 
             return translates.Get(cuffs:GetIsGagged() and "Вынуть кляп" or "Вставить кляп")
         end,
-        material = Material("ping_system/unmuted.png", "smooth", "noclamp"),
+        material = Material("ping_system/addcuffs.png", "smooth", "noclamp"),
         color = Color(255, 255, 255),
         func = function(ply, pnl)
-            local tr,cuffs = GetCuffsTrace(ply)
+            local tr, cuffs = GetCuffsTrace(ply)
 
             if tr and cuffs:GetCanGag() then
                 PIS.BlockUseDelay = CurTime() + 0.75
@@ -249,11 +253,11 @@ PIS.Config.PlayerIteractButtons = {
     {
         text = function(ply)
             local tr, cuffs = GetCuffsTrace(LocalPlayer())
-            if not tr then return "" end
+            if not tr then return translates.Get("Надеть повязку") end
 
-            return translates.Get(cuff:GetIsBlind() and "Снять повязку" or "Надеть повязку")
+            return translates.Get(cuffs:GetIsBlind() and "Снять повязку" or "Надеть повязку")
         end,
-        material = Material("ping_system/give_money.png", "smooth", "noclamp"),
+        material = Material("ping_system/addcuffs.png", "smooth", "noclamp"),
         color = Color(255, 255, 255),
         func = function(ply, pnl)
            local tr,cuffs = GetCuffsTrace(ply)
@@ -265,7 +269,6 @@ PIS.Config.PlayerIteractButtons = {
                     net.WriteEntity( tr.Entity )
                     net.WriteBit( not cuffs:GetIsBlind() )
                 net.SendToServer()
-                return true
             end
         end,
         access = function(self, target)
@@ -293,7 +296,7 @@ PIS.Config.PlayerIteractButtons = {
         end
     },
 ]]--
-    {   
+    {
         text = function(ply)
             return translates.Get(ply:GetOrg() and ply:GetOrg() == LocalPlayer():GetOrg() and "Выгнать из организации" or "Пригласить в организацию")
         end,
@@ -331,9 +334,9 @@ PIS.Config.PlayerIteractButtons = {
         access = function(self, target)
             local __a = self:GetOrg()
             local orgdata   = self:GetOrgData()
-			
+
 			if not orgdata then return false end
-			
+
             local perms     = orgdata.Perms
             return __a and (not target:GetOrg() or target:GetOrg() == __a) and perms.Invite
         end
@@ -417,7 +420,20 @@ PIS.Config.PlayerIteractButtons = {
         func = function(ply)
             RunConsoleCommand("pushplayer")
         end,
-        access = function(self, target) return target:Alive() and not target:IsInDeathMechanics() end
+        access = function(self, target) return target:Alive() and not target:IsInDeathMechanics() and not self:GetNetVar("Spectating", false) and not (IsValid(target.tazeragdoll) or target:GetNWBool("tazefrozen", false)) end
+    },
+    {
+        text = translates.Get("Присоединиться"),
+        material = Material("ping_system/emotegrab.png", "smooth noclamp"),
+        color = color_white,
+        func = function( ply )
+            net.Start( "EmoteActions.Follow" );
+            net.WriteEntity( ply );
+            net.SendToServer();
+        end,
+        access = function( self, ply )
+            return EmoteActions:GetRawAction( ply:GetEmoteAction() ).Shared;
+        end
     },
 	/*
     {
@@ -479,15 +495,30 @@ PIS.Config.PlayerIteractButtons = {
 
             local sid64 = ply:SteamID()
 
-            StrRequest(translates.Get("Объявление в розыск игрока %s.", ply:Nick()), translates.Get("Напишите причину розыска"), function(s)
-                if string.len(s) < 1 then
-                    rp.Notify(NOTIFY_RED, translates.Get("Укажите причину розыска!"))
+			if rp.cfg.CustomWantedPanel then
+				rp.cfg.CustomWantedPanel(ply)
 
-                    return
-                end
+			else
+				local menu
 
-                RunConsoleCommand("do_wanted", s, sid64)
-            end)()
+				menu = rpui.SliderRequestFree(translates.Get("Выберите кол-во звёзд"), "cmenu/order.png", 1.4, 5, function(val)
+					local val = math.Clamp(tonumber(val), 1, 5)
+
+					if IsValid(menu) then
+						menu:Close()
+					end
+
+					StrRequest(translates.Get("Объявление в розыск игрока %s.", ply:Nick()), translates.Get("Напишите причину розыска"), function(s)
+						if string.len(s) < 1 then
+							rp.Notify(NOTIFY_RED, translates.Get("Укажите причину розыска!"))
+
+							return
+						end
+
+						RunConsoleCommand("do_wanted", s, sid64, val)
+					end)()
+				end)
+			end
         end,
         access = function(self, target) return self:IsCP() and not target:IsCP() end
     },
@@ -497,10 +528,12 @@ PIS.Config.PlayerIteractButtons = {
         	return target:IsArrested() and Material("ping_system/freedom.png", "smooth", "noclamp") or Material("ping_system/arrest.png", "smooth", "noclamp")
         end,
         color = Color(255, 255, 255),
-        func = function(ply)
-            RunConsoleCommand("do_arrest")
+        func = function(ply, pnl)
+            net.Start( "do_arrest" );
+                net.WriteEntity( pnl.SelectedPlayer );
+            net.SendToServer();
         end,
-        access = function(self, target) return self:IsCP() and not target:IsCP() and (target:IsWanted() or target:IsArrested()) end
+        access = function(self, target) return self:IsCP() and not target:IsCP() and (target:IsWanted() or target:IsArrested()) and ((hook.Run("PlayerCanUnArrest", self, target) ~= false) and (hook.Run("PlayerCanArrest", self, target, reason) ~= false)) end
     }
 }
 
@@ -508,7 +541,7 @@ timer.Simple(0, function()
     for k, v in pairs(rp.cfg.AdditionalIteractButtons or {}) do
         table.insert(PIS.Config.PlayerIteractButtons, v);
     end
-	
+
     for k, v in pairs(rp.cfg.AdditionalEntIteractButtons or {}) do
 		if PIS.Config.EntityIteractButtons[k] then
 			for i, j in pairs(v) do
@@ -518,7 +551,7 @@ timer.Simple(0, function()
 			PIS.Config.EntityIteractButtons[k] = v
 		end
     end
-	
+
     rp.cfg.AdditionalIteractButtons = nil;
     rp.cfg.AdditionalEntIteractButtons = nil;
 end);
@@ -537,13 +570,13 @@ PIS.Config.RPTeamViews = {
 
 if SERVER then
 	local GetTracedPlayer = function(ply)
-		local tr = util.TraceLine({ 
+		local tr = util.TraceLine({
 			start = ply:GetShootPos(),
 			endpos = ply:GetShootPos() + ply:GetAimVector() * 100,
 			filter = ply,
 			mask = MASK_SHOT_HULL
 		})
-		
+
 		if ( !IsValid( tr.Entity ) ) then
 			tr = util.TraceHull({
 				start = ply:GetShootPos(),
@@ -554,31 +587,33 @@ if SERVER then
 				mask = MASK_SHOT_HULL
 			})
 		end
-		
+
 		if IsValid(tr.Entity) and tr.Entity:IsPlayer() then
 			return tr.Entity
 		end
 	end
-	
+
 	concommand.Add('pushplayer', function(ply, _, args)
 		local target = GetTracedPlayer(ply)
-		
+
 		if not IsValid(target) then
 			return rp.Notify(ply, NOTIFY_ERROR, rp.Term('MustLookAtPlayer'))
 		end
-		
+
 		if ply.CantPushPlayer then
 			return rp.Notify(ply, NOTIFY_ERROR, rp.Term('FadeDoorCooldown'), 3)
 		end
-		
+
 		local shiftstraight = ply:GetAngles():Forward() * 1500
 		shiftstraight.z = 0
-		
+
 		target:SetVelocity(shiftstraight)
         ply:EmitSound("physics/body/body_medium_impact_soft2.wav")
-		
+
 		ply.CantPushPlayer = true
-		
+
+        hook.Run( "PlayerPushed", target, ply );
+
 		timer.Simple(3, function()
 			if not IsValid(ply) then return end
 			ply.CantPushPlayer = nil
@@ -587,12 +622,18 @@ if SERVER then
 
     local Left, Right, Format = string.Left, string.Right, string.format;
     local CRC, TColor = util.CRC, team.GetColor;
-	
-    concommand.Add('showidcard', function(ply, _, args)
-        if (!IsValid(ply) or !ply:Alive() or ply:IsInDeathMechanics()) then return end
-		
-		if (!IsValid(GetTracedPlayer(ply))) then
-			return rp.Notify(ply, NOTIFY_ERROR, rp.Term('Vendor_far'));
+
+    local showidcard_cd = {};
+    concommand.Add( "showidcard", function( ply, _, args )
+        if not IsValid( ply ) then return end
+        if not ply:Alive() or ply:IsInDeathMechanics() then return end
+
+        local t = CurTime();
+        if (showidcard_cd[ply] or 0) > t then return end
+        showidcard_cd[ply] = t + 5;
+
+		if not IsValid( GetTracedPlayer(ply) ) then
+			return rp.Notify( ply, NOTIFY_ERROR, rp.Term("Vendor_far") );
 		end
 
         local statuses = (rp.cfg.IDCard and rp.cfg.IDCard.statuses) or {};
@@ -600,21 +641,48 @@ if SERVER then
         local status;
 
 		if rp.cfg.IDCard and rp.cfg.IDCard.custom_get_status then
-			status = tostring(rp.cfg.IDCard.custom_get_status(ply))
-			
+			status = tostring( rp.cfg.IDCard.custom_get_status(ply) );
 		else
-			for k, v in pairs(statuses) do
-				if (ply:GetMoney() >= k && saved <= k) then
+			for k, v in pairs( statuses ) do
+				if (ply:GetMoney() >= k and saved <= k) then
 					status, saved = v, k;
 				end
 			end
         end
 
-        local id = Left(CRC(ply:SteamID()), 5);
-        local loyality = ply:GetJobTable().loyalty or 1;
-        id = Left(id, 3) .. ":" .. Right(id, 2);
-        rp.LocalChat(CHAT_NONE, ply, 250, TColor(ply:DisguiseTeam() or ply:Team()), Format((rp.cfg.IDCard and rp.cfg.IDCard.text) or "", ply:Name(), id, rp.GetTerm('loyalty')[loyality], status));
-    end);
+		if rp.cfg.IDCard and rp.cfg.IDCard.custom_notify then
+			rp.cfg.IDCard.custom_notify( ply );
+		else
+			local id = Left( CRC(ply:SteamID()), 5 );
+			local loyality = ply:GetNetVar( "FakedLoyalty" ) or ply:GetJobTable().loyalty or 1;
+			id = Left( id, 3 ) .. ":" .. Right( id, 2 );
+			rp.LocalChat( CHAT_NONE, ply, 250, TColor(ply:DisguiseTeam() or ply:Team()), Format((rp.cfg.IDCard and rp.cfg.IDCard.text) or "", ply:Name(), id, rp.GetTerm('loyalty')[loyality], status) );
+		end
+
+		hook.Run( "CircleMenu::ShowIDCard", ply );
+    end );
+
+    local givelicense_cd = {};
+    concommand.Add( "givelicense", function( ply, _, args )
+        if not IsValid( ply ) then return end
+        if not ply:Alive() or ply:IsInDeathMechanics() then return end
+        if not ply:IsMayor() then return end
+
+        local t = CurTime();
+        if (givelicense_cd[ply] or 0) > t then return end
+        givelicense_cd[ply] = t + 5;
+
+		local tr_ent = GetTracedPlayer( ply );
+
+		if not IsValid( tr_ent ) then
+			return rp.Notify( ply, NOTIFY_ERROR, rp.Term("Vendor_far") );
+		end
+
+		tr_ent:SetNetVar( "HasGunlicense", true );
+
+		rp.Notify( tr_ent, NOTIFY_GREEN, rp.Term("GunLicenseGot"), ply:Name() );
+		rp.Notify( ply, NOTIFY_GREEN, rp.Term("GunLicenseGiven"), tr_ent:Name() );
+    end );
 end
 
 
@@ -723,4 +791,3 @@ PIS.Config:AddPing("going_here", "ping", "GOING HERE", blue)
 PIS.Config:AddPing("defending_this_area", "defending_this_area", "DEFENDING THIS AREA", blue, "DEFEND THIS AREA")
 PIS.Config:AddPing("watching_here", "eye", "WATCHING HERE", blue, "WATCH HERE")
 PIS.Config:AddPing("someones_been_here", "run", "SOMEONE'S BEEN HERE", red)
- 

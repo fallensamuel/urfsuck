@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\util\\rpui_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local PANEL = FindMetaTable("Panel")
 PANEL.OldSetTooltip = PANEL.OldSetTooltip or PANEL.SetTooltip
 
@@ -87,4 +89,35 @@ vgui.Register = function(a, b, c) -- принудительное добавле
 	end
 
 	OldVguiRegister(a, b, c)
+end
+
+local Panel = FindMetaTable("Panel")
+
+function Panel:CenterX(fraction)
+    fraction = fraction or 0.5
+    self.X = self:GetParent():GetWide() * fraction - self:GetWide() * fraction
+end
+
+function Panel:CenterY(fraction)
+    fraction = fraction or 0.5
+    self.Y = self:GetParent():GetTall() * fraction - self:GetTall() * fraction
+end
+
+function draw.LineBetweenPanels(from, to, size)
+	local from_x, from_y = from.X + from:GetWide()*0.5, from.Y + from:GetTall()*0.5
+	local to_x, to_y = to.X + to:GetWide()*0.5, to.Y + to:GetTall()*0.5
+	
+	surface.DrawWideLine(from_x, from_y, to_x, to_y, size)
+end
+
+function surface.DrawWideLine(x1, y1, x2, y2, width)
+    local angle = math.atan2(y2 - y1, x2 - x1) - math.pi / 2;
+    local offset_x, offset_y = width * math.cos(angle), width * math.sin(angle)
+
+    surface.DrawPoly({
+        {x = x1 + offset_x, y = y1 + offset_y},
+        {x = x2 + offset_x, y = y2 + offset_y},
+        {x = x2 - offset_x, y = y2 - offset_y},
+        {x = x1 - offset_x, y = y1 - offset_y},
+    })
 end

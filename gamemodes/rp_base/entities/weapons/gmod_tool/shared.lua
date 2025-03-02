@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile("sh_customtoolguns.lua")
 include("sh_customtoolguns.lua")
 

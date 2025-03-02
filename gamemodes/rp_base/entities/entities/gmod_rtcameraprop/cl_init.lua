@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\gmod_rtcameraprop\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local cl_drawcameras = CreateConVar("cl_drawcameras", "1")
 include('shared.lua')
 ENT.Spawnable = false

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\libs\\item_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 rp.item.list = {}
 rp.item.base = rp.item.base or {}
 rp.item.instances = rp.item.instances or {}
@@ -14,6 +16,16 @@ rp.item.gestures = {
 	[2] = ACT_PICKUP_GROUND,
 	[3] = ACT_GMOD_GESTURE_ITEM_GIVE,
 }
+
+local log = ba.logs.Create( "Props" );
+local term = ba.logs.Term;
+
+ba.logs.AddTerm( "RPItemDropped", "#(#) dropped item '#' (#)", {
+    "Name",
+    "SteamID",
+    "Item",
+	"Item UniqueID"
+} );
 
 rp.include(GM.FolderName.."/gamemode/main/inventory/meta/item_sh.lua")
 
@@ -159,10 +171,21 @@ end
 
 local function getDTVars(ent)
     if not ent.GetNetworkVars then return nil end
-    local name, value = debug.getupvalue(ent.GetNetworkVars, 1)
-    if name ~= "datatable" then
-        ErrorNoHalt("Warning: Datatable cannot be stored properly in inventory. Tell a developer!")
-    end
+    local name, value
+
+	if debug._getupvalue then
+		name, value = debug._getupvalue(ent.GetNetworkVars, 1)
+	else
+		name, value = debug.getupvalue(ent.GetNetworkVars, 1)
+	end
+
+    --if name ~= "datatable" then
+    --    ErrorNoHalt("Warning: Datatable cannot be stored properly in inventory. Tell a developer!")
+    --end
+
+    if istable(value) == false then
+		return {}
+	end
 
     local res = {}
 
@@ -180,7 +203,7 @@ function rp.item.createItem(args)
 		if rp.item.list[args.ent] then
 			ErrorNoHalt("Предмет " .. args.ent .. " добавляется в конфиг дважды! Удалите один из предметов чтобы избежать конфликтов.\n")
 			--debug.Trace()
-			
+
 			return rp.item.list[args.ent]
 		end
 
@@ -191,10 +214,16 @@ function rp.item.createItem(args)
 			ITEM.model = args.model
 			ITEM.icon_override = args.icon_override
 			ITEM.icon = args.icon
+			ITEM.skin = args.skin
 			ITEM.randomModel = args.randomModel
 			ITEM.desc = (args.desc and args.desc or "noDesc")
 			ITEM.uniqueID = args.ent
 			ITEM.ShopToInventory = args.ShopToInventory
+
+			ITEM.rarity = args.rarity
+			ITEM.tooltip_stats = args.tooltip_stats or ITEM.tooltip_stats
+			ITEM.tooltip_icon = args.tooltip_icon
+
 			--ITEM.forceMyClass = args.forceMyClass
 			ITEM.moveCallback = args.moveCallback
 			ITEM.CanTake = args.CanTake or nil
@@ -206,6 +235,9 @@ function rp.item.createItem(args)
 			ITEM.CanUse = args.CanUse
 			ITEM.postHooks = args.postHooks or {}
 			ITEM.notCanGive = args.notCanGive
+			ITEM.canBeConfiscated = args.canBeConfiscated or false
+			ITEM.confiscatedMoney = args.confiscatedMoney
+			ITEM.confiscateCheck = args.confiscateCheck
 			ITEM.functions = args.functions or {}
 			ITEM.functions.drop = ITEM.functions.drop or {
 				name = translates.Get("Выкинуть"),
@@ -215,28 +247,29 @@ function rp.item.createItem(args)
 				onRun = function(item)
 					------ ~~ LIMIT : START ~~ ------
 					if (IsValid(item.player) and type(item.player) == 'Player') then
-						local Count = item.player:GetCount(item.uniqueID); -- + item.player:getInv():getItemCount(item.uniqueID) + 
+						local Count = item.player:GetCount(item.uniqueID); -- + item.player:getInv():getItemCount(item.uniqueID) +
 						local Max = args.max;
 						if (!Max or Max == 0) then Max = rp.cfg.DroppedItemsLimit or 5; end
-						
-						if (Max <= Count) then 
+
+						if (Max <= Count) then
 							item.player:Notify(0, translates.Get("Вы достигли максимума!"));
 							return false
 						end
-						
+
 						--print(item.player:GetCount('rp_item'), rp.cfg.DroppedItemsLimit and (rp.cfg.DroppedItemsLimit * 2) or 10)
-						
+
 						if item.player:GetCount('rp_item') >= (rp.cfg.DroppedItemsLimit and (rp.cfg.DroppedItemsLimit * 2) or 10) then
 							item.player:Notify(0, translates.Get("Вы достигли максимума!"));
 							return false
 						end
 					end
 					------ ~~ LIMIT : END ~~ ------
-					
+
 					if (IsValid(item.player) and item.player:IsPlayer()) then
 						rp.item.RunGesture(item.player, ACT_GMOD_GESTURE_ITEM_DROP)
+						log:PlayerLog( item.player, term("RPItemDropped"), item.player:Name(), item.player:SteamID(), item.name or "?", item.uniqueID );
 					end
-					
+
 					item:transfer()
 
 					return false
@@ -258,13 +291,13 @@ function rp.item.createItem(args)
 				sound = "physics/cardboard/cardboard_box_impact_bullet1.wav",
 				onRun = function(item)
 					if item.entity.TakingItem then return false end
-					
+
 					if item.CanTake then
-						if item.CanTake(item, item.player) == false then return false end 
+						if item.CanTake(item, item.player) == false then return false end
 					end
-					
+
 					item.entity.TakingItem = true
-					
+
 					local status, result = item.player:getInv():add(item.id)
 					if not item.DisableNetVarSave then
 						local dtvars = getDTVars(item.entity)
@@ -281,7 +314,7 @@ function rp.item.createItem(args)
 					--	item.player:ChatPrint("PN: "..item.entity.PrintName)
 					--end
 
-					
+
 
 					if (!status) then
 						item.entity.TakingItem = nil
@@ -294,7 +327,7 @@ function rp.item.createItem(args)
 						end
 
 						rp.item.RunGesture(item.player, ACT_PICKUP_GROUND)
-						
+
 						hook.Run("Inventory.OnItemTake", item)
 					end
 				end,
@@ -307,6 +340,39 @@ function rp.item.createItem(args)
 				--	end
 				--end
 			}
+			ITEM.functions.confiscate = ITEM.functions.confiscate or {
+				name = translates.Get("Конфисковать"),
+				tip = "takeTip",
+				icon = "icon16/box.png",
+				InteractMaterial = "confiscation/act_confiscation_2.png",--"ping_system/apex/box.png",
+				sound = "physics/cardboard/cardboard_box_impact_bullet1.wav",
+				onRun = function(item)
+					if item.entity.TakingItem then return false end
+					item.entity.TakingItem = true
+
+					local status = item.player ~= item.entity:Getowning_ent()
+
+					if item.confiscateCheck then
+						status = item.confiscateCheck(item.player)
+					end
+
+					if (!status) then
+						item.entity.TakingItem = nil
+						return false
+
+					else
+						item.player:AddMoney(item.confiscatedMoney or 5)
+						rp.item.RunGesture(item.player, ACT_PICKUP_GROUND)
+
+						rp.Notify(item.player, NOTIFY_GREEN, rp.Term("ConfiscateItemReward"), rp.FormatMoney(item.confiscatedMoney or 5), item.name)
+
+						item.entity:Remove()
+					end
+				end,
+				onCanRun = function(item)
+					return IsValid(item.entity) and item.entity.Getowning_ent and IsValid(item.entity:Getowning_ent()) and IsValid(item.player) and (item.player ~= item.entity:Getowning_ent()) and item.canBeConfiscated and (not item.confiscateCheck or item.confiscateCheck(item.player)) or false
+				end,
+			}
 			ITEM.functions.drink = ITEM.functions.drink or {
 				name = translates.Get("Употребить"),
 				icon = "icon16/cup.png",
@@ -315,6 +381,10 @@ function rp.item.createItem(args)
 				onRun = function(item)
 					item.player:SetHealth(item.player:Health() + item.healthRestore)
 					item.player:AddHunger(item.foodRestore)
+
+					if not IsValid(item.entity) then
+						hook.Run("Inventory::ItemUse", item.player, item)
+					end
 				end,
 				onCanRun = function(item)
 					return item.isDrink != nil
@@ -324,6 +394,7 @@ function rp.item.createItem(args)
 				name = translates.Get("Удалить"),
 				tip = "deleteTip",
 				icon = "icon16/cancel.png",
+				InteractMaterial = "ping_system/cancel.png",
 				confirm = true,
 				onRun = function(item)
 					item:remove()
@@ -341,14 +412,16 @@ function rp.item.createItem(args)
 				isMulti = true,
 				isSelectPlayers = true,
 				isRequirePlayersNear = 256,
-				onClick = function(ply, targetPly, item)
-					local tbl = {
-						targetPly = targetPly,
-						item = item
-					}
-					net.Start("rp.GiveItem")
-					net.WriteTable(tbl)
-					net.SendToServer()
+				onClick = function(ply, target, item)
+					if (not item) or (not item.id) or (not IsValid(target)) then
+						return false
+					end
+
+					net.Start( "rp.GiveItem" );
+						net.WriteEntity( target );
+						net.WriteUInt( item.id, 24 ); -- 16777215
+					net.SendToServer();
+
 					return false
 				end,
 				onCanRun = function(item)
@@ -360,6 +433,7 @@ function rp.item.createItem(args)
 				icon = "icon16/arrow_right.png",
 				onRun = function(item, data)
 					local item2 = rp.item.instances[data]
+					if not item2 then return false end
 
 					local getItemCount1 = item:getCount()
 					local getItemCount2 = item2:getCount()
@@ -371,15 +445,15 @@ function rp.item.createItem(args)
 					item2:addCount(getItemCount1, item.player)
 
 					--local was_equipped = item:getData("equip")
-					
+
 					--print('equiped', item:getData("equip") or 'false')
-					
-					item:remove()
-					
+
+					item:remove(item.player)
+
 					--if was_equipped then
 					--	item2:setData("equip", true, item.player)
 					--end
-					
+
 					return false
 				end,
 				onCanRun = function(item, data)
@@ -399,23 +473,23 @@ function rp.item.createItem(args)
 					return IsValid(item.entity) && item.entity:GetClass() ~= "rp_item" and not item.noUseFunc
 				end
 			}
-			/*
 			ITEM.functions.sell = ITEM.functions.sell or {
 				name = translates.Get("Продать"),
 				icon = "icon16/money_add.png",
 				InteractMaterial = "ping_system/sell_item.png",
+				radial = false,
 				onRun = function()
 					return false
 				end,
-				onClick = function(item)
-					rp.WhereICanSellThis(item.uniqueID)
-					surface.PlaySound('UI/buttonrollover.wav')
+				onClick = function( item )
+					--rp.WhereICanSellThis( item.uniqueID );
+					rp.HighlightItemNPCVendors( item.uniqueID, 300 );
+					surface.PlaySound( "UI/buttonrollover.wav" );
 				end,
-				onCanRun = function(item)
-					return rp.VendorsNPCsWhatSells[item.uniqueID] != nil
+				onCanRun = function( item )
+					return rp.VendorsNPCsWhatSells[item.uniqueID] ~= nil
 				end
 			}
-			*/
 
 			local oldBase = ITEM.base
 
@@ -466,6 +540,7 @@ function rp.item.createItem(args)
 			ITEM.stackable = args.stackable or nil
 			ITEM.maxStack = args.maxStack or 1
 			ITEM.notCanGive = args.notCanGive or nil
+			ITEM.onInitialize = args.onInitialize or nil
 			ITEM.onSpawn = args.onSpawn or nil
 			ITEM.onInstanced = args.onInstanced or ITEM.onInstanced
 			ITEM.saveData = args.saveData or nil
@@ -485,6 +560,9 @@ function rp.item.createItem(args)
 				ITEM.weaponCategory = args.weaponCategory or "primary"
 				ITEM.onEquipWeapon = args.onEquipWeapon or nil
 				ITEM.class = args.ent or "weapon_pistol"
+			elseif args.base == "loyalty" then
+				ITEM.loyalty = args.loyalty or (#rp.GetTerm('loyalty'))
+				--print("LOYALTY:", ITEM.loyalty)
 			elseif args.base == "attachment" then
 				ITEM.attachment = args.attachment or nil
 			elseif args.base == "disguise" then
@@ -498,6 +576,32 @@ function rp.item.createItem(args)
 			end
 
 			ITEM.itemClass = args.itemClass or ITEM.uniqueID
+
+			if CLIENT then
+				local item_type_uniqueclasses = {
+					["urf_foodsystem"] = "food",
+					["shaurma"]        = "food",
+					["pizza"]          = "food",
+					["durgz"]          = "drug",
+				};
+
+				for c, t in pairs( item_type_uniqueclasses ) do
+					if args.ent:StartWith(c) then args.type = t; end
+				end
+
+				if (not args.disableBubble) and (not args.bubble) and args.type then
+					args.bubble = args.bubble or {
+						centered = true,
+						as_texture = true,
+						ico      = Material( string.format("bubble_hints/hints/%s.png", args.type), "smooth noclamp" ),
+						ico_col  = rp.cfg.UIColor.BubbleItem or rp.cfg.UIColor.White,
+					}
+				end
+
+				if args.bubble then
+					rp.AddBubble("item", ITEM.uniqueID, args.bubble)
+				end
+			end
 
 			if (ITEM.onRegistered) then
 				ITEM:onRegistered(ITEM)
@@ -641,7 +745,7 @@ do
 	function rp.item.setInventoryID(ply, callback)
 		rp._Inventory:Query("SELECT _invID FROM inventories WHERE _charID = "..ply:SteamID64().." AND _invType = 'player';", function(inventory)
 			ply:SetNWInt("InventoryID",inventory[1]["_invID"])
-			
+
 			if callback then
 				callback()
 			end
@@ -651,7 +755,7 @@ do
 	function rp.item.createInv(w, h, id, slots)
 		local inventory = setmetatable({w = w, h = h, id = id, slots = slots or {}, vars = {}}, rp.meta.inventory)
 		rp.item.inventories[id] = inventory
-		
+
 		return inventory
 	end
 
@@ -660,9 +764,9 @@ do
 		rp.item.setInventoryID(ply, function()
 			rp.item.loadInventory(ply, function()
 				print(ply:Name(), 'inventory loaded')
-				
+
 				hook.Run('PlayerInventoryLoaded', ply)
-				
+
 				for k, v in pairs(rp.item.inventories) do
 					if v.vars and v.vars.isBag then
 						v:sync(ply)
@@ -671,16 +775,16 @@ do
 			end)
 		end)
 	end
-	
-	if SERVER then 
+
+	if SERVER then
 		hook.Add("PlayerDataLoaded","rp.LoadInventorySystem",function(ply)
 			--create inventory if not
 			rp._Inventory:Query("SELECT * FROM inventories WHERE _charID = "..ply:SteamID64().." AND _invType = 'player';", function(inventory)
 				if not IsValid(ply) then return end
-				
+
 				if #inventory < 1 then
 					ply.isNewInventory = true
-					
+
 					rp._Inventory:Query("INSERT INTO inventories (_charID, _invType, _width, _height) VALUES(?,'player',?,?);", ply:SteamID64(), rp.cfg.InventoryDefault[1], rp.cfg.InventoryDefault[2], function()
 						if not IsValid(ply) then return end
 						loadPlayer(ply)
@@ -703,15 +807,19 @@ do
 	end
 
 	function rp.item.loadInventory(ply, callback)
+		if not IsValid(ply) then return end
+
 		rp._Inventory:Query("SELECT _invID, _width, _height FROM inventories WHERE _charID =?;", ply:SteamID64(), function(inventory)
+			if not IsValid(ply) then return end
+
 			if inventory then
 				local createInventory = rp.item.createInv(inventory[1]["_width"], inventory[1]["_height"], inventory[1]["_invID"])
 				rp.item.restoreInv(inventory[1]["_invID"], inventory[1]["_width"], inventory[1]["_height"], function()
 					if not IsValid(ply) then return end
-					
+
 					if ply.isNewInventory then
 						local inv = ply:getInv()
-						
+
 						if rp.item.loot["started"] then
 							for k,v in pairs(rp.GenerateLoot(math.random(3,6), "started")) do
 								timer.Simple(k,function()
@@ -719,15 +827,15 @@ do
 								end)
 							end
 						end
-						
-						if callback then 
+
+						if callback then
 							callback()
 						end
-					elseif callback then 
+					elseif callback then
 						callback()
 					end
 				end, createInventory, ply)
-			elseif callback then 
+			elseif callback then
 				callback()
 			end
 		end)
@@ -822,7 +930,7 @@ do
 
 			--print('inv', id, owner)
 			--PrintTable(slots)
-			
+
 			if (character) then
 				local inventory = rp.item.createInv(w, h, id)
 				inventory:setOwner((IsValid(character) and character:getID()) or -1) -- LocalPlayer() doesn't have time to load
@@ -830,14 +938,14 @@ do
 				inventory.vars = vars
 
 				local x, y
-				
+
 				for k, v in ipairs(slots) do
 					x, y = v[1], v[2]
 
 					inventory.slots[x] = inventory.slots[x] or {}
 
 					local item = rp.item.new(v[3], v[4])
-					
+
 					item.data = {}
 					if (v[5]) then
 						item.data = v[5]
@@ -849,7 +957,7 @@ do
 					item.uniqueID = v[3]
 					inventory.slots[x][y] = item
 					--item:setData("count", v[6], false)
-					
+
 					--PrintTable(item)
 				end
 
@@ -859,56 +967,74 @@ do
 
 				if rp.LootInventory.Panels and rp.LootInventory.Panels.InventoryMenu and rp.LootInventory.Panels.InventoryMenu.PlayerInventory and rp.LootInventory.Panels.InventoryMenu.PlayerInventory.invID == id and not (IsValid(rp.Inventory.Panels.CloseButton) and rp.Inventory.Panels.CloseButton.Closing) then
 					local removing_inv
-					
+
 					if IsValid(rp.Inventory.Panels.InventoryMenu) then
 						removing_inv = rp.Inventory.Panels.InventoryMenu.ToDel
 						rp.Inventory.Panels.InventoryMenu.ToDel = true
 					end
-					
+
 					--print('Delete loot 1')
-					
+
 					timer.Simple(0.01, function()
 						rp.LootInventory.Panels.InventoryMenu:Remove()
-						
+
 						if not removing_inv then
 							for k, v in pairs(rp.Inventory.Panels) do
 								if IsValid(v) then
 									v:Remove()
 								end
 							end
-							
+
 							hook.Run("rp.OpenInventory")
 						end
-						
-						rp.item.CreateInventory(true, inventory, id, (inventory.vars.isBag == 'ent_shop') and {
-							name = 'Ваш магазин', 
-							disableTakeAll = true,
-						} or {})
+
+						local customData = {};
+
+						if inventory.vars then
+							-- maybe generate in hook?
+
+							if inventory.vars.isBag == 'ent_shop' then
+								customData.name = "Ваш магазин";
+								customData.disableTakeAll = true;
+							else
+								if inventory.vars.UI_Name then
+									customData.name = inventory.vars.UI_Name;
+								end
+
+								if inventory.vars.UI_DisableTakeAll then
+									customData.disableTakeAll = true;
+								end
+							end
+						end
+
+						rp.item.CreateInventory( true, inventory, id, customData );
 					end)
-					
+
 				elseif IsValid(rp.Inventory.Panels.InventoryMenu) and not rp.Inventory.Panels.InventoryMenu.ToDel and not (IsValid(rp.Inventory.Panels.CloseButton) and rp.Inventory.Panels.CloseButton.Closing) then
 					local saved_x, saved_y = rp.Inventory.Panels.InventoryMenu:GetPos()
 					rp.Inventory.Panels.InventoryMenu.ToDel = true
-					
+
 					--print('Delete inv 1')
-					
+
 					timer.Simple(0.01, function()
 						for k, v in pairs(rp.Inventory.Panels) do
 							if IsValid(v) then
 								v:Remove()
 							end
 						end
-						
+
 						hook.Run("rp.OpenInventory")
-						
-						rp.Inventory.Panels.InventoryMenu:SetPos(saved_x, saved_y)
+
+						if (rp.Inventory.Panels and IsValid(rp.Inventory.Panels.InventoryMenu)) then
+							rp.Inventory.Panels.InventoryMenu:SetPos(saved_x, saved_y)
+						end
 					end)
 				end
-				
+
 				if g_ContextMenu:IsVisible() or rp.Inventory and IsValid(rp.Inventory.Panels.InventoryMenu) then
 					rp.RefreshContextMenu()
 				end
-				
+
 				-- for k, v in ipairs(character:getInv(true)) do
 				-- 	if (v:getID() == id) then
 				-- 		character:getInv(true)[k] = inventory
@@ -945,23 +1071,23 @@ do
 			local character = LocalPlayer()
 			local inventory = invID and rp.item.inventories[invID]
 
+			rp.ProccessVendorsSet(invID, x, y, uniqueID, id, owner, data, a)
+
 			if (owner == -1 and not (inventory and inventory.vars and inventory.vars.isBag)) then return end
 
 			if (owner) then
 				character = rp.char and rp.char.loaded and rp.char.loaded[owner] or LocalPlayer()
 			end
-			
-			--print('Inv set', invID, uniqueID, owner, inventory.owner)
-			
+
 			if (character) then
 				if (inventory) then
-					if rp.Inventory and IsValid(rp.Inventory.Panels.InventoryMenu) and inventory.owner == character:SteamID64() and LocalPlayer():getInv():getID() ~= invID then 
+					if rp.Inventory and IsValid(rp.Inventory.Panels.InventoryMenu) and inventory.owner == character:SteamID64() and LocalPlayer():getInv():getID() ~= invID then
 						return
 					end
-					
+
 					local item = uniqueID and id and rp.item.new(uniqueID, id) or nil
 					item.invID = invID
-					
+
 					item.data = {}
 					-- Let's just be sure about it kk?
 					if (data) then
@@ -994,7 +1120,7 @@ do
 		netstream.Hook("invMv", function(invID, itemID, x, y)
 			local inventory = rp.item.inventories[invID]
 			local panel = IsValid(rp.gui.inv1) and rp.gui.inv1 or rp.Inventory and IsValid(rp.Inventory.Panels.InventoryMenu) and rp.Inventory.Panels.InventoryMenu.PlayerInventory
-			
+
 			if (inventory != nil and panel != nil) then
 				local icon = panel.panels[itemID]
 
@@ -1020,10 +1146,10 @@ do
 					if not (inventory.vars and inventory.vars.isBag) and inventory.owner == character:SteamID64() and (g_ContextMenu:IsVisible() or rp.Inventory and IsValid(rp.Inventory.Panels.InventoryMenu)) then
 						rp.RefreshContextMenu()
 					end
-					
-					
+
+
 					local panel = rp.gui["inv"..invID] or IsValid(rp.gui.inv1) and rp.gui.inv1 or rp.Inventory and IsValid(rp.Inventory.Panels.InventoryMenu) and (rp.Inventory.Panels.InventoryMenu.PlayerInventory.invID == invID) and rp.Inventory.Panels.InventoryMenu.PlayerInventory or rp.LootInventory and IsValid(rp.LootInventory.Panels.InventoryMenu) and (rp.LootInventory.Panels.InventoryMenu.PlayerInventory.invID == invID) and rp.LootInventory.Panels.InventoryMenu.PlayerInventory
-					
+
 					if (IsValid(panel)) then
 						local icon = panel.panels[id]
 
@@ -1039,6 +1165,8 @@ do
 					end
 				end
 			end
+
+			rp.ProccessVendorsRm(id, invID, owner)
 		end)
 	else
 		function rp.item.loadItemByID(itemIndex, recipientFilter)
@@ -1090,17 +1218,27 @@ do
 					if (item) then
 						if (newInvID and invID != newInvID and newInvID != "disagreement") then
 							--print(item.notCanGive, tonumber(invID), tonumber(character:getInv():getID()), tonumber(invID) == tonumber(character:getInv():getID()))
+							-- print( SysTime(), "own1", inventory.owner, "own2:", inventory2.owner, "ent1", inventory.entity, "ent2", inventory2.entity );
 							if item.notCanGive and (tonumber(invID) == tonumber(character:getInv():getID())) then return end
-							
+
 							local inventory2 = rp.item.inventories[newInvID]
-							
+
 							if (inventory2) then
+								local inventory_ent = inventory.entity or inventory.owner;
+								local inventory2_ent = inventory2.entity or inventory2.owner;
+
+								if IsValid( inventory_ent ) and IsValid( inventory2_ent ) then
+									if inventory_ent:GetPos():DistToSqr( inventory2_ent:GetPos() ) > 9216 --[[96]] then
+										return
+									end
+								end
+
 								local result = item:transfer(newInvID, x, y, client)
-								
+
 								if isentity(inventory2.owner) and IsValid(inventory2.owner) then
 									rp.item.RunGesture(inventory2.owner, ACT_GMOD_GESTURE_ITEM_GIVE)
 								end
-								
+
 								if result and IsValid(inventory.entity) then
                                     hook.Call('Inventory.OnMoveItem', nil, character, inventory, inventory.entity, item);
                                 end
@@ -1110,6 +1248,9 @@ do
 						end
 
 						if (inventory:canItemFit(x, y, item.width, item.height, item)) then
+							local status = hook.Run( "CanItemBeMoved", item, inventory, client );
+							if status == false then return end
+
 							if item:getCount() > 1 && newInvID && newInvID == "disagreement" then
 								if inventory:canItemFit(x, y, item.width, item.height, rp.item.instances[0]) then
 									inventory:add(item.uniqueID, 1, {}, x, y)
@@ -1149,7 +1290,7 @@ do
 							end
 
 							--print('Sync to', client)
-							
+
 							if IsValid(client) then
 								inventory:sync(client)
 							end
@@ -1165,58 +1306,58 @@ do
 
 		netstream.Hook("invShopAdd", function(client, oldX, oldY, x, y, invID, newInvID, price, amount)
 			if not IsValid(client) or client:GetJobTable().CantUseInventory then return end
-			
+
 			price 	= tonumber(price or 50) or 50
 			amount 	= tonumber(amount or 1) or 1
-			
+
 			local inventoryFrom = rp.item.inventories[invID]
 			local inventoryTo = rp.item.inventories[newInvID]
-			
-			if not inventoryFrom or not inventoryTo then 
-				return 
+
+			if not inventoryFrom or not inventoryTo then
+				return
 			end
-			
+
 			local ownerFrom = isentity(inventoryFrom.owner) and IsValid(inventoryFrom.owner) and inventoryFrom.owner:SteamID64() or inventoryFrom.owner
 			local ownerTo = isentity(inventoryTo.owner) and IsValid(inventoryTo.owner) and inventoryTo.owner:SteamID64() or inventoryTo.owner
-			
+
 			if ownerFrom == ownerTo and inventoryTo.vars.isBag == 'ent_shop' then
 				local item = inventoryFrom:getItemAt(oldX, oldY)
-				
+
 				if item then
 					local count = item:getCount()
-					
-					if amount > count then 
+
+					if amount > count then
 						return rp.Notify(client, NOTIFY_ERROR, rp.Term('EntShop::NotEnoughItems'))
 					end
-					
+
 					inventoryTo:add(item.uniqueID, amount, {price = price}, nil, nil, true, true, function(failed)
 						if not failed then
 							local new_item = inventoryTo:hasItem(item.uniqueID)
 							new_item:setData('price', price)
-							
+
 							if amount < count then
 								item:addCount(-amount)
 							else
 								item:remove()
 							end
 						end
-						
+
 						inventoryTo:sync()
 					end)
-					
+
 					if result then
 						rp.item.RunGesture(client, ACT_GMOD_GESTURE_ITEM_GIVE)
 					end
 				end
 			end
 		end)
-		
+
 		netstream.Hook("invAct", function(client, action, item, invID, data)
 			if (!client) then
 				return
 			end
 
-			if client:GetJobTable().CantUseInventory then return end
+			if client:GetJobTable().CantUseInventory or IsValid(client.nutScn) then return end
 
 			local inventory = rp.item.inventories[invID]
 
@@ -1226,7 +1367,7 @@ do
 			-- 	end
 			-- end
 
-			if (hook.Run("CanPlayerInteractItem", client, action, item, data) == false) then
+			if (hook.Run("CanPlayerInteractItem", client, action, item, data, inventory) == false) then
 				return
 			end
 
@@ -1262,10 +1403,10 @@ do
 				return
 			end
 
-			local callback = item.functions[action]
+			local callback = item.functions and item.functions[action]
 			local oldInvID = item.invID
 			local oldPlayer = item.player
-			
+
 			if (callback) then
 				if (callback.onCanRun and callback.onCanRun(item, data) == false) then
 					item.entity = nil
@@ -1293,12 +1434,12 @@ do
 
 				if action == 'combine' then
 					local gInventory = rp.item.inventories[oldInvID or -1];
-					
+
 					if gInventory and IsValid(gInventory.entity) then
 						hook.Call('Inventory.OnCombineItem', nil, oldPlayer, gInventory, gInventory.entity, item);
 					end
 				end
-				
+
 				if (result != false) then
 					if (IsValid(entity)) then
 						entity.rpIsSafe = true
@@ -1307,7 +1448,7 @@ do
 						if item:getCount() > 1 then
 							item:addCount(-1)
 						else
-							item:remove()
+							item:remove(oldPlayer)
 						end
 					end
 				end
@@ -1319,15 +1460,24 @@ do
 
 		util.AddNetworkString("rp.ShopBuyItem")
 		util.AddNetworkString("rp.GiveItem")
+
 		net.Receive("rp.ShopBuyItem", function(len, ply)
+			local CT = CurTime();
+
+			if (ply.net_ShopBuyItem or 0) > CT then
+				return
+			end
+
+			ply.net_ShopBuyItem = CT + 0.1;
+
 			--local itemShop = net.ReadTable()
 			--local itemBase = rp.item.list[itemShop.uniqueID]
 			local itemShop = net.ReadString()
-			
+
 			local realItemShop
 			for k, v in pairs(rp.item.shop) do
 				if realItemShop then break end
-				
+
 				for k1, v1 in pairs(v) do
 					if v1.content then
 						--if v1.content == itemShop.content then
@@ -1342,53 +1492,57 @@ do
 					end
 				end
 			end
-			
+
 			--PrintTable(realItemShop)
-			
+
 			if not realItemShop then return end
 			itemShop = realItemShop
 
 			local itemBase = rp.item.list[itemShop.uniqueID]
-			
+
 			if itemShop.allowed and table.Count(itemShop.allowed) > 0 then
 				if itemShop.allowed[ply:Team()] ~= true then return end
 			end
-			
+
 			if itemShop.unlockTime and itemShop.unlockTime > ply:GetPlayTime() then
 				return
 			end
-			
+
 			local discounted_price = ply.GetAttributeAmount and ply:GetAttributeAmount('trader') and math.ceil(itemShop.price * (1 - ply:GetAttributeAmount('trader') / 100)) or itemShop.price
 
 			if ply:GetMoney() < discounted_price then
 				return ply:Notify(0, translates.Get("У вас недостаточно денег!"))
 			end
-			
+
+			if not ply:getInv() or not ply:getInv().getItemCount then
+				return ply:Notify(0, translates.Get("Ошибка с прогрузкой инвентаря. Обратитесь к администратору!"))
+			end
+
 			local countItem = ply:getInv():getItemCount(itemShop.uniqueID) + ply:GetCount(itemShop.uniqueID)
 			if itemShop.max and itemShop.max ~= 0 and itemShop.max <= countItem then
 				return ply:Notify(0, translates.Get("Вы достигли максимума!"))
 			end
-			
+
 			if ((!itemShop.max or itemShop.max == 0) and !itemShop.onlyEntity and ((rp.cfg.BoughtShipmentLimit or 5) <= ply:GetCount(itemShop.uniqueID))) then
 				return ply:Notify(0, translates.Get("Вы достигли максимума!"))
 			end
 
 			local is_ammo = itemBase and itemBase.ammo
-			
+
 			if is_ammo and ply:GetJobTable() and ply:GetJobTable().dontBuyAmmo then
 				return ply:Notify(0, translates.Get("Вы не можете покупать патроны!"))
 			end
-				
+
 			local translate_str = itemShop.ShopToInventory and "Вы купили '%s' за %s, предмет помещён в инвентарь" or "Вы купили '%s' за %s"
 			ply:Notify(0, translates.Get(translate_str, itemShop.name, rp.FormatMoney(discounted_price)))
-			
+
 			if is_ammo then
 				ply:GiveAmmo(itemBase.ammoAmount, itemBase.ammo)
-				ply:EmitSound("items/ammo_pickup.wav", 110)
+				ply:EmitSound("items/ammo_pickup.wav", rp.cfg.BuySoundLevel or 110)
 				ply:AddMoney(-discounted_price)
 				return
 			end
-			
+
 			if not itemShop.onlyEntity then
 				if itemShop.ShopToInventory then
 					local inv = ply:getInv()
@@ -1403,15 +1557,18 @@ do
 			        end
 				else
 					rp.item.spawn(itemShop.uniqueID, ply, function(item, entity)
-						if IsValid(entity) then 
+						if IsValid(entity) then
 							timer.Simple(1, function()
+								if not item then return end
 								itemShop.count = itemShop.count || 1
 								if itemShop.count && itemShop.content then
+									if not item:getInv() then return end
 									item:getInv():add(itemShop.content, itemShop.count)
 								end
 							end)
 							entity:GetPhysicsObject():EnableMotion(true)
 							entity:GetPhysicsObject():Wake()
+
 							ply:AddCount(itemShop.uniqueID, entity)
 						end
 					end)
@@ -1421,48 +1578,120 @@ do
 			ply:AddMoney(-discounted_price)
 		end)
 
-		net.Receive("rp.GiveItem",function(len, ply)
-			local tbl = net.ReadTable()
+		net.Receive( "rp.GiveItem", function( _, ply )
+			local CT = CurTime();
 
-			if not IsValid(tbl.targetPly) then return end
+			if (ply.net_GiveItem or 0) > CT then
+				return
+			end
 
-			local targetPlyInv = tbl.targetPly:getInv()
-			local itemBase = rp.item.list[tbl.item.uniqueID]
-			local item = rp.item.instances[tbl.item.id]
+			ply.net_GiveItem = CT + 0.1;
 
-			local realItemShop
-			for k, v in pairs(rp.item.shop) do
-				if realItemShop then break end
-				
-				for k1, v1 in pairs(v) do
-					if v1.content then
-						if v1.content == tbl.item.content then
-							realItemShop = v1
-							break
-						end
-					elseif v1.uniqueID == tbl.item.uniqueID then
-						realItemShop = v1
-						break
+			local target = net.ReadEntity();
+			if not IsValid( target ) then return end
+
+			if ply:GetPos():DistToSqr( target:GetPos() ) > 36864 then -- 192
+				return
+			end
+
+			local target_inv = target:getInv();
+			if (not target_inv) or (not target_inv.IsItemLimit) then
+				return
+			end
+
+			local item_id = net.ReadUInt( 24 );
+			local item = rp.item.instances[item_id];
+
+			if (not item) or ((item.invID or -1) ~= ply:getInvID()) then
+				return
+			end
+
+			local item_base = rp.item.list[item.uniqueID];
+
+			local realItemShop;
+			for _, cat in pairs( rp.item.shop ) do
+				for _, i in pairs( cat ) do
+					if i.uniqueID == item.uniqueID then
+						realItemShop = i; break
+					end
+
+					if i.content and (i.content == item.content) then
+						realItemShop = i; break
 					end
 				end
 			end
 
-			if targetPlyInv:IsItemLimit(tbl.targetPly, tbl.item.uniqueID, realItemShop and realItemShop.max or 10) then
-				return ply:Notify(0, translates.Get("Игрок достиг максимума!"))
+			if target_inv:IsItemLimit( target, item.uniqueID, realItemShop and realItemShop.max or 10 ) then
+				return ply:Notify( NOTIFY_GENERIC, translates.Get("Игрок достиг максимума!") );
 			end
 
-			local x, y, bagInv = targetPlyInv:findEmptySlot(itemBase.width, itemBase.height)	
-			if !x and !y then return ply:Notify(1, translates.Get("Нет места в инвентаре!")) end
+			local x, y, bagInv = target_inv:findEmptySlot( item_base.width, item_base.height );
+			if (not x) and (not y) then
+				return ply:Notify( NOTIFY_GENERIC, translates.Get("Нет места в инвентаре!") );
+			end
 
-			local count = item:getCount() or 1
-			item.data.count = nil
-			
-			targetPlyInv:add(tbl.item.uniqueID, count, item.data)
-			item:remove()
+			local count = item:getCount() or 1;
+			item.data.count = nil;
 
-			rp.Notify(tbl.targetPly, NOTIFY_GENERIC, translates.Get("Вам передали '%s'!", itemBase.name))
-			rp.Notify(ply, NOTIFY_GENERIC, translates.Get("Вы передали '%s' игроку %s!", itemBase.name, tbl.targetPly:Name()))
-		end)
+			local status, result = target_inv:add( item.uniqueID, count, item.data );
+			item:remove();
+
+			rp.Notify( target, NOTIFY_GENERIC, translates.Get("Вам передали '%s'!", item_base.name) );
+			rp.Notify( ply, NOTIFY_GENERIC, translates.Get("Вы передали '%s' игроку %s!", item_base.name, target:Name()) );
+
+			-- local targetPlyInv = tbl.targetPly:getInv()
+			-- local itemBase = rp.item.list[tbl.item.uniqueID]
+			-- local item = rp.item.instances[tbl.item.id]
+
+			-- if not item or not targetPlyInv or not targetPlyInv.IsItemLimit then return end
+
+			-- local realItemShop
+			-- for k, v in pairs(rp.item.shop) do
+			-- 	if realItemShop then break end
+
+			-- 	for k1, v1 in pairs(v) do
+			-- 		if v1.content then
+			-- 			if v1.content == tbl.item.content then
+			-- 				realItemShop = v1
+			-- 				break
+			-- 			end
+			-- 		elseif v1.uniqueID == tbl.item.uniqueID then
+			-- 			realItemShop = v1
+			-- 			break
+			-- 		end
+			-- 	end
+			-- end
+
+			-- if targetPlyInv:IsItemLimit(tbl.targetPly, tbl.item.uniqueID, realItemShop and realItemShop.max or 10) then
+			-- 	return ply:Notify(0, translates.Get("Игрок достиг максимума!"))
+			-- end
+
+			-- local x, y, bagInv = targetPlyInv:findEmptySlot(itemBase.width, itemBase.height)
+			-- if !x and !y then return ply:Notify(1, translates.Get("Нет места в инвентаре!")) end
+
+			-- local count = item:getCount() or 1
+			-- item.data.count = nil
+
+			-- local status, result = targetPlyInv:add(tbl.item.uniqueID, count, item.data)
+			-- item:remove()
+
+			-- /*
+			-- if status then
+			-- 	timer.Simple(0.25, function()
+			-- 		if IsValid(tbl.targetPly) and tbl.targetPly:getInv() then
+			-- 			targetPlyInv:sync(tbl.targetPly, true)
+			-- 		end
+
+			-- 		if IsValid(ply) and ply:getInv() then
+			-- 			ply:getInv():sync(ply, true)
+			-- 		end
+			-- 	end)
+			-- end
+			-- */
+
+			-- rp.Notify(tbl.targetPly, NOTIFY_GENERIC, translates.Get("Вам передали '%s'!", itemBase.name))
+			-- rp.Notify(ply, NOTIFY_GENERIC, translates.Get("Вы передали '%s' игроку %s!", itemBase.name, tbl.targetPly:Name()))
+		end );
 	end
 
 	-- Instances and spawns a given item type.
@@ -1484,12 +1713,12 @@ rp.item.loadFromDir(engine.ActiveGamemode() .. "/gamemode/config/items")
 if CLIENT then
 	net.Receive('rp.inventory.RunGesture', function()
 		local ply = net.ReadEntity()
-		
+
 		if IsValid(ply) and ply:IsPlayer() and ply:Alive() then
 			ply:AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, rp.item.gestures[net.ReadUInt(3)], true)
 		end
 	end)
-	
+
 	function rp.makeItem(ent)
 		if !IsValid(ent) then return end
 		ent.getItemID = function()
@@ -1515,12 +1744,12 @@ else
 	function rp.item.RunGesture(ply, gesture)
 		if not gesture_map then
 			gesture_map = {}
-			
+
 			for k, v in pairs(rp.item.gestures) do
 				gesture_map[v] = k
 			end
 		end
-		
+
 		if gesture_map[gesture] and IsValid(ply) and ply:IsPlayer() and ply:Alive() then
 			net.Start('rp.inventory.RunGesture')
 				net.WriteEntity(ply)
@@ -1528,7 +1757,7 @@ else
 			net.Broadcast()
 		end
 	end
-	
+
 	function rp.makeItem(ent, id)
 		if !ent || !IsValid(ent) then return end
 
@@ -1565,6 +1794,7 @@ else
 				ent.nutItemID = itemID
 				ent.uniqueID = itemTable.uniqueID
 				ent.itemTable = itemTable
+				itemTable.ent = ent
 
 				ent:SetNWString("uniqueID",itemTable.uniqueID)
 				ent:SetNWString("class",itemTable.class)
@@ -1652,14 +1882,18 @@ else
 
 				timer.Simple(recipe.timeCreation or rp.cfg.DefaultTimeCreation, function()
 					if not IsValid(ply) or not inv then return end
-					local status, result = inv:add(recipe.result.uniqueID)
+
+					local status_luck = hook.Run( "PlayerTestLuck", ply, LUCK_TYPE_CRAFT, recipe );
+					local amt = recipe.amount or 1;
+
+					local status, result = inv:add(recipe.result.uniqueID, status_luck and amt * 2 or amt)
 					--print(status, result)
 					if status == false then
 					    rp.Notify(ply, NOTIFY_RED, translates.Get("Нет места в инвентаре!")) -- rp.Term("VendorNpc_fullInv"))
 					    OnItemCrafted(ply, 2, recipe.result.uniqueID)
 					    return
 					end
-					
+
 					for k,v in pairs(recipe.items) do
 						local count = v.count
 						if count > 0  then
@@ -1677,7 +1911,17 @@ else
 							end
 						end
 					end
-					
+
+					/*
+					print(ply, inv)
+
+					timer.Simple(0.25, function()
+						if IsValid(ply) and ply:getInv() then
+							inv:sync(ply, true)
+						end
+					end)
+					*/
+
 					OnItemCrafted(ply, 4, recipe.result.uniqueID)
 					--print("Item crafted: " .. recipe.result.uniqueID)
 				end)
@@ -1729,10 +1973,11 @@ function rp.IsCanCraftItem(inv, recipe)
 end
 
 rp.item.recipeMaxId = 0
-function rp.AddCraftingRecipe(name, result, items, instruments, timeCreation)
+rp.item.usedincraft = {};
+function rp.AddCraftingRecipe(name, result, items, instruments, timeCreation, result_amount)
 	timeCreation = timeCreation or 0.5--rp.cfg.DefaultTimeCreation
 
-	local items2 = {} 
+	local items2 = {}
 	local instruments2 = {}
 
 	for k,v in pairs(items) do
@@ -1741,6 +1986,7 @@ function rp.AddCraftingRecipe(name, result, items, instruments, timeCreation)
 			item = rp.item.list[k],
 			count = v
 		}
+		rp.item.usedincraft[k] = true
 	end
 
 	if instruments then
@@ -1756,9 +2002,10 @@ function rp.AddCraftingRecipe(name, result, items, instruments, timeCreation)
 
 	rp.item.recipes[name] = {
 		id = rp.item.recipeMaxId,
-		result = rp.item.list[result], 
+		result = rp.item.list[result],
 		items = items2,
 		instruments = instruments2,
+		amount = result_amount or 1,
 		timeCreation = timeCreation
 	}
 end
@@ -1768,7 +2015,7 @@ function rp.AddTypeLoot(name, items, func)
 	for k,v in pairs(items) do
 		if not rp.item.list[v[1]] then ErrorNoHalt("В луте \""..name.."\" не был найден item: "..v[1].."\n") continue end
 		newItems[v[1]] = {
-			item = rp.item.list[v[1]], 
+			item = rp.item.list[v[1]],
 			procent = v[2]
 		}
 	end

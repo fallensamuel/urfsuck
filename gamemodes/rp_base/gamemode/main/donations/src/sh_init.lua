@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\donations\\src\\sh_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 donations = {list = {}, methods = {}}
 
 type_error = 1
@@ -120,9 +122,11 @@ hook.Add("rpBase.Loaded", "SkinsPlayMult", function()
 		return nw.GetGlobal('SkinsDonateMultiplayerTime') or 0
 	end
 
-	function rp.SetSkinsDonateMultiplayer(mult, time)
-		nw.SetGlobal('SkinsDonateMultiplayerTime', time + os.time())
+	function rp.SetSkinsDonateMultiplayer(mult, time, minimum, save)
+		nw.SetGlobal('SkinsDonateMultiplayerTime', time + (save and os.time() or 0))
 		nw.SetGlobal('SkinsDonateMultiplayer', mult)
+
+		if SERVER and save then donations.SaveMultiplayer(0, time, mult, 0) end
 	end
 
 	ba.cmd.Create("setskinsdonatemultiplayer", function(pl, args)
@@ -139,13 +143,13 @@ hook.Add("rpBase.Loaded", "SkinsPlayMult", function()
 		
 		ba.logAction(pl, tostring(bonus), 'skinsdonate_multiplayer', tostring(time))
 		
-		rp.SetSkinsDonateMultiplayer(bonus, time)
+		rp.SetSkinsDonateMultiplayer(bonus, time, nil, true)
 		rp.Notify(pl, NOTIFY_GREEN, rp.Term("SkinsDonateMultiplayerSuccess"), bonus, ba.str.FormatTime(time))
 	end)
 	:AddParam('string', 'multiplier')
 	:AddParam('time', 'time')
 	:SetFlag('*')
-	:SetHelp('Устанавливает множитель пополнения скинами')
+	:SetHelp(translates.Get('Устанавливает множитель пополнения скинами'))
 
 
 	-- Та же херня, только глобальная (работает при любом из методов пополнения)
@@ -184,12 +188,13 @@ hook.Add("rpBase.Loaded", "SkinsPlayMult", function()
 		return nw.GetGlobal("DonateMultiplayerMinimum") or 0
 	end
 
-	function rp.SetDonateMultiplayer(mult, time, minimum)
-		nw.SetGlobal('DonateMultiplayerTime', time + os.time())
+	function rp.SetDonateMultiplayer(mult, time, minimum, save)
+		nw.SetGlobal('DonateMultiplayerTime', time + (save and os.time() or 0))
 		nw.SetGlobal('DonateMultiplayer', mult)
-		if minimum then
-			nw.SetGlobal('DonateMultiplayerMinimum', minimum)
-		end
+
+		nw.SetGlobal('DonateMultiplayerMinimum', minimum or 0)
+
+		if SERVER and save then donations.SaveMultiplayer(1, time, mult, minimum) end
 	end
 
 	ba.cmd.Create("setdonatemultiplayer", function(pl, args)
@@ -206,13 +211,13 @@ hook.Add("rpBase.Loaded", "SkinsPlayMult", function()
 		
 		ba.logAction(pl, tostring(bonus), 'donate_multiplayer', tostring(time))
 		
-		rp.SetDonateMultiplayer(bonus, time, tonumber(args.minimum))
+		rp.SetDonateMultiplayer(bonus, time, tonumber(args.minimum), true)
 		rp.Notify(pl, NOTIFY_GREEN, rp.Term("DonateMultiplayerSuccess"), bonus * 100, ba.str.FormatTime(time))
 	end)
 	:AddParam('string', 'multiplier')
 	:AddParam('time', 'time')
 	:AddParam('string', 'minimum', "optional")
 	:SetFlag('*')
-	:SetHelp('Устанавливает множитель пополнения (для любого метода пополнения)')
+	:SetHelp(translates.Get('Устанавливает множитель пополнения (для любого метода пополнения)'))
 
 end)

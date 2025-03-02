@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\fidgetspinner_new.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 SWEP.Author 			= "PYRO: Model / Diablos: Code"
 SWEP.Base				= "weapon_base"
 SWEP.Contact 			= "Steam Item"

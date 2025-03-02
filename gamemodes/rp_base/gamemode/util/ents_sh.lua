@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\util\\ents_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 function PLAYER:IsCooldownAction(uid, delay)
 	local CT = CurTime()
 	if (self["CD_"..uid] or 0) > CT then return true end

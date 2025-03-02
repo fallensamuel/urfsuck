@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\weapon_c4\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 if (SERVER) then
 	AddCSLuaFile('shared.lua')
 end

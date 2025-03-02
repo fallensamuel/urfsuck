@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\emoteactions\\player_meta_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local PLAYER = FindMetaTable( "Player" );
 
 function PLAYER:GetAvalibleActions()
@@ -21,6 +23,13 @@ function PLAYER:GetAvalibleActions()
 
 	return tab
 end
+
+
+function PLAYER:RequestEmoteActionInterrupt()
+	net.Start("EmoteActions.RequestInterrupt");
+	net.SendToServer();
+end
+
 
 function PLAYER:RunEmoteAction( actID )
 	if self ~= LocalPlayer() then return end

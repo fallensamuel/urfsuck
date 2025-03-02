@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\cosmetics\\appearance\\rpui_jobslist_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local PANEL = {}
 
 function PANEL:BaseInit()
@@ -84,6 +86,7 @@ end
 vgui.Register( "rp_jobslist", PANEL, "Panel" );
 vgui.Register( "rp_faction_jobslist", PANEL, "Panel" );
 
+--[[
 function rp.OpenEmployerMenu(f)
     local fr = ui.Create('ui_frame', function(self, p)
         self:SetSize(ScrW() * 0.65, ScrH() * 0.6)
@@ -99,3 +102,4 @@ function rp.OpenEmployerMenu(f)
        	--self:SetSize(p:GetWide() - 10, p:GetTall() - 30)
     end, fr)
 end
+]]

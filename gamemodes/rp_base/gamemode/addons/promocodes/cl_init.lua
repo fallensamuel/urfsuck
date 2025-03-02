@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\promocodes\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 hook.Add("CreditsMenuOpened", function(fr)
 	fr.Promocode = fr.Promocode or ui.Create("DButton", function(self)
 		self:SetText(translates and translates.Get("Промокод") or "Промокод")

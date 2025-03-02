@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\items\\base\\sh_weapons.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ITEM.name = "Weapon"
 ITEM.desc = "A Weapon."
 ITEM.category = "Weapons"
@@ -35,11 +37,33 @@ ITEM:hook("drop", function(item)
 		local weapon = client.carryWeapons[item.class]
 
 		if (IsValid(weapon)) then
-			item:setData("ammo", weapon:Clip1(), client)
+			local just_give_ammo = (weapon:GetSecondaryAmmoType() != -1) and (weapon:GetPrimaryAmmoType() == -1)
+			
+			if just_give_ammo then
+				item:setData("ammo", item.player:GetAmmoCount(weapon:GetSecondaryAmmoType()))
+				
+			else
+				item:setData("ammo", weapon:Clip1())
+				item:setData("ammo2", weapon:Clip2())
+			end
 
 			client:StripWeapon(item.class)
 			client.carryWeapons[item.class] = nil
 			client:EmitSound("physics/cardboard/cardboard_box_impact_bullet1.wav", 80)
+			
+			if weapon.RemovingWeapon and weapon.NeedToRemove then
+				timer.Simple(0, function()
+					if not item then return end
+					
+					if IsValid(item.entity) then
+						item.entity:Remove()
+					end
+					
+					if item.remove then
+						item:remove()
+					end
+				end)
+			end
 		end
 	end
 end)
@@ -67,7 +91,7 @@ ITEM.functions.EquipUn = { -- sorry, for name order.
 		end
 
 		if (item.onUnequipWeapon) then
-			item:onUnequipWeapon(client, weapon)
+			item:onUnequipWeapon(item.player, weapon)
 		end
 		
 		if weapon.RemovingWeapon and weapon.NeedToRemove then
@@ -77,14 +101,23 @@ ITEM.functions.EquipUn = { -- sorry, for name order.
 				item:remove()
 			else
 				item:addCount(-1)
-				item:setData("equip", false, client)
+				item:setData("equip", false, item.player)
 			end
 			
 			return false
 		end
 		
 		if (IsValid(weapon)) then
-			item:setData("ammo", weapon:Clip1())
+			local just_give_ammo = (weapon:GetSecondaryAmmoType() != -1) and (weapon:GetPrimaryAmmoType() == -1)
+			
+			if just_give_ammo then
+				item:setData("ammo", item.player:GetAmmoCount(weapon:GetSecondaryAmmoType()))
+				--PrintTable(item)
+			else
+				item:setData("ammo", weapon:Clip1())
+				item:setData("ammo2", weapon:Clip2())
+			end
+			
 		else
 			print(Format("Weapon %s does not exist!", item.class))
 		end
@@ -105,6 +138,11 @@ ITEM.functions.Equip = {
 	onRun = function(item)
 		local client = item.player
 		local inv = client:getInv()
+		
+		if not inv then 
+			return false 
+		end
+		
 		local items = inv:getItems()
 
 		if client:IsHandcuffed() then
@@ -113,12 +151,18 @@ ITEM.functions.Equip = {
 		
 		local x, y, bagInv
 		if IsValid(item.entity) then
+			if item.entity.TakingItem then
+				return false
+			end
+			
 			local itemBase = rp.item.list[item.entity.uniqueID]
 			x, y, bagInv = inv:findEmptySlot(itemBase.width, itemBase.height)
 			if !x and !y then
 				client:Notify(1, translates and translates.Get("Нет места в инвентаре!") or "Нет места в инвентаре!")
 				return false
 			end
+		else
+			hook.Run("Inventory::ItemUse", client, item)
 		end
 
 		client.carryWeapons = client.carryWeapons or {}
@@ -152,7 +196,11 @@ ITEM.functions.Equip = {
 		end
 
 		local weapon = client:Give(item.class, true)
-
+		
+		--lua_run print(Entity(1):GetActiveWeapon():GetMaxClip1(), Entity(1):GetActiveWeapon():GetMaxClip2())
+		--lua_run print(Entity(1):GetActiveWeapon():Clip2())
+		--lua_run print(Entity(1):GetActiveWeapon():GetSecondaryAmmoType())
+		
 		if (IsValid(weapon) and weapon:IsWeapon()) then
 			weapon.inv_item_associated = item
 			
@@ -161,18 +209,32 @@ ITEM.functions.Equip = {
 			client:SetActiveWeapon(weapon)
 			client:EmitSound("physics/cardboard/cardboard_box_impact_bullet1.wav", 80)
 
-			if (weapon:GetPrimaryAmmoType()) then
-				-- Remove default given ammo.
-				if (client:GetAmmoCount(weapon:GetPrimaryAmmoType()) == weapon:Clip1() and item:getData("ammo", 0) == 0) then
+			local just_give_ammo = (weapon:GetSecondaryAmmoType() != -1) and (weapon:GetPrimaryAmmoType() == -1)
+			
+			--print('First ammo', item:getData("ammo"))
+			
+			--if (weapon:GetPrimaryAmmoType()) then
+				if weapon:GetPrimaryAmmoType() != -1 and (client:GetAmmoCount(weapon:GetPrimaryAmmoType()) == weapon:Clip1() and item:getData("ammo", 0) == 0) then
 					client:RemoveAmmo(weapon:Clip1(), weapon:GetPrimaryAmmoType())
 				end
-			end
+				
+				if weapon:GetSecondaryAmmoType() != -1 and (client:GetAmmoCount(weapon:GetSecondaryAmmoType()) == weapon:Clip2() and item:getData("ammo2", 0) == 0) then
+					client:RemoveAmmo(weapon:Clip2(), weapon:GetSecondaryAmmoType())
+				end
+			--end
 			item:setData("equip", true, client)
 
-			weapon:SetClip1(item:getData("ammo", 0))
-
+			if just_give_ammo then
+				client:SetAmmo(item:getData("ammo", 0), weapon:GetSecondaryAmmoType())
+				--PrintTable(item)
+				
+			else
+				weapon:SetClip1(item:getData("ammo", 0))
+				weapon:SetClip2(item:getData("ammo2", 0))
+			end
+			
 			if (item.onEquipWeapon) then
-				item:onEquipWeapon(client, weapon)
+				item:onEquipWeapon(client, weapon, item:getData("ammo"), item:getData("ammo2"))
 			end
 		else
 			print(Format("Weapon %s does not exist!", item.class))
@@ -180,7 +242,12 @@ ITEM.functions.Equip = {
 
 		if x and y then
 			item.noDeleteWeapon = true
-			item.entity:Remove()
+			
+			if IsValid(item.entity) then
+				item.entity.TakingItem = true
+				item.entity:Remove()
+			end
+			
 			inv:add(item.id, nil, nil, x, y)
 		end
 
@@ -188,7 +255,7 @@ ITEM.functions.Equip = {
 	end,
 	onCanRun = function(item)
 		local count = item:getCount()
-		return --[[count < 2 &&]] !item.player:IsArrested() && !item.player.SupervisorID && !item.player:IsHandcuffed() && ((IsValid(item.entity) && item:getData("equip") != true) || (item:getData("equip") != true && !IsValid(item.entity) && item.invID == item.player:getInvID()))
+		return --[[count < 2 &&]] !item.player:IsArrested() && !item.player.SupervisorID && !item.player:IsHandcuffed() && ((IsValid(item.entity) && item:getData("equip") != true) || (item:getData("equip") != true && !IsValid(item.entity) && item.invID == item.player:getInvID())) and not (item.player:GetJobTable() and item.player:GetJobTable().CantUseInventorySWEPS)
 	end
 }
 
@@ -211,9 +278,19 @@ function ITEM:onLoadout()
 			weapon.inv_item_associated = self
 			
 			client:RemoveAmmo(weapon:Clip1(), weapon:GetPrimaryAmmoType())
+			client:RemoveAmmo(weapon:Clip2(), weapon:GetSecondaryAmmoType())
+			
 			client.carryWeapons[self.class] = weapon
 
-			weapon:SetClip1(self:getData("ammo", 0))
+			local just_give_ammo = (weapon:GetSecondaryAmmoType() != -1) and (weapon:GetPrimaryAmmoType() == -1)
+			
+			if just_give_ammo then
+				client:SetAmmo(self:getData("ammo", 0), weapon:GetSecondaryAmmoType())
+				
+			else
+				weapon:SetClip1(self:getData("ammo", 0))
+				weapon:SetClip2(self:getData("ammo2", 0))
+			end
 		else
 			print(Format("Weapon %s does not exist!", self.class))
 		end
@@ -224,7 +301,15 @@ function ITEM:onSave()
 	local weapon = self.player:GetWeapon(self.class)
 
 	if (IsValid(weapon)) then
-		self:setData("ammo", weapon:Clip1())
+		local just_give_ammo = (weapon:GetSecondaryAmmoType() != -1) and (weapon:GetPrimaryAmmoType() == -1)
+		
+		if just_give_ammo then
+			self:setData("ammo", self.player:GetAmmoCount(weapon:GetSecondaryAmmoType()))
+			
+		else
+			self:setData("ammo", weapon:Clip1())
+			self:setData("ammo2", weapon:Clip2())
+		end
 	end
 end
 

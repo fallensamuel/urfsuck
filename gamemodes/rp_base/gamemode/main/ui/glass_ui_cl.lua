@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\ui\\glass_ui_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local blur = Material("pp/blurscreen")
 local scrw, scrh = ScrW(), ScrH()
 

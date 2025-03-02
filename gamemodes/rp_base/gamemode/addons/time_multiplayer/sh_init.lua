@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\time_multiplayer\\sh_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 nw.Register'TimeMultiplayer':Write(net.WriteFloat):Read(net.ReadFloat):SetLocalPlayer()
 nw.Register'TimeMultiplier':Write(net.WriteFloat):Read(net.ReadFloat):SetGlobal()
@@ -60,3 +62,10 @@ table.insert(rp.cfg.Announcements,
 	or 
 	('С '..rp.cfg.StartNightTimeMultiplier..' часов ночи по '..rp.cfg.EndNightTimeMultiplier..' часов утра московского времени получение времени ускоряется на '..rp.cfg.NightTimeMultiplier*100)) .. '%!'
 )
+
+if CLIENT then
+	function PLAYER:HasTimeMultiplayer(id)
+		local tms = self:GetNetVar("Timemultipliers") or {}
+		return tms[id] or false
+	end
+end

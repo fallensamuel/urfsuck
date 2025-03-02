@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\fps\\cl_fog.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local render, GetRenderDist, math_sqrt = render, GetRenderDistance, math.sqrt;
 
 
@@ -37,6 +39,10 @@ hook.Add( "DayNightChanged", changeFog );
 
 
 hook.Add( "SetupWorldFog", function()
+	if hook.Run("OverrideWorldFog") == true then
+		return true
+	end
+
 	render.FogMode( MATERIAL_FOG_LINEAR );
 
 	if not GetRenderDist then
@@ -54,22 +60,26 @@ hook.Add( "SetupWorldFog", function()
 
 	render.FogMaxDensity( fogDensity );
 	render.FogColor( fogColor.r, fogColor.g, fogColor.b );
-	
+
 	return true
 end );
 
 
 hook.Add( "SetupSkyboxFog", function( skyboxscale )
+	if hook.Run("OverrideSkyboxFog", skyboxscale) == true then
+		return true
+	end
+
 	if isWhiteForest then return end
 
 	render.FogMode( MATERIAL_FOG_LINEAR );
 
 	-- print(fogEnd * cvar_Get('draw_distance'))
-	
+
 	render.FogStart( 0 ); -- fogStart * skyboxscale )
 	render.FogEnd( fogEnd * skyboxscale );
 	render.FogMaxDensity( fogDensity );
 	render.FogColor( fogColor.r, fogColor.g, fogColor.b );
-	
+
 	return true
 end );

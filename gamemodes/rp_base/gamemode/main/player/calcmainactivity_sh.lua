@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\player\\calcmainactivity_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local tableinsert, pairs, isfunction, IsValid, list_Get, CurTime = table.insert, pairs, isfunction, IsValid, list.Get, CurTime
 local ACT_MP_STAND_IDLE, ACT_MP_RUN, ACT_MP_WALK, MOVETYPE_NOCLIP = ACT_MP_STAND_IDLE, ACT_MP_RUN, ACT_MP_WALK, MOVETYPE_NOCLIP
 local FL_ANIMDUCKING, ACT_MP_CROUCHWALK, ACT_MP_CROUCH_IDLE, ACT_MP_JUMP, ACT_MP_SWIM = FL_ANIMDUCKING, ACT_MP_CROUCHWALK, ACT_MP_CROUCH_IDLE, ACT_MP_JUMP, ACT_MP_SWIM
@@ -172,7 +174,6 @@ end
 local wep
 local allowed_weps = {
 	keys = true,
-	weapon_hands = true,
 }
 
 local driving, drv_pod_mode
@@ -185,7 +186,7 @@ function mPly:CalcMainActivity(velocity)
 	driving, drv_pod_mode = GM:HandlePlayerDriving(self)
 	
     if GM:HandlePlayerSwimming(self, velocity) 	or
-		driving        	or
+		driving                                 or
         GM:HandlePlayerJumping(self, velocity) 	or
         GM:HandlePlayerDucking(self, velocity) 	then
     else
@@ -194,9 +195,8 @@ function mPly:CalcMainActivity(velocity)
         if len2d > 22500 then
 			wep = self:GetActiveWeapon()
 			
-			if self:KeyDown(IN_SPEED) and not (self.IsProne and self:IsProne()) and (not IsValid(wep) or allowed_weps[wep:GetClass()]) and self:GetSequenceActivity(16) > 0 then
+			if not rp.cfg.DisableCustomRun and self:IsSprinting() and not (self.IsProne and self:IsProne()) and (not IsValid(wep) or allowed_weps[wep:GetClass()]) and self:GetSequenceActivity(16) > 0 then
 				self.CalcIdeal = ACT_HL2MP_RUN_FAST;
-				
 			else
 				self.CalcIdeal = ACT_MP_RUN;
 			end

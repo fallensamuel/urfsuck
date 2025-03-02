@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\thirdperson_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 cvar.Register'enable_thirdperson':SetDefault(false):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Вид от 3го лица')
 local cvar_Get = cvar.GetValue
@@ -24,6 +26,9 @@ local savedTeam
 
 local angles, origin, trace
 local old = vector_origin
+
+local filter = {}
+
 hook.Add("CalcViewOverride", function(view)
 	local ply = LocalPlayer()
 	if IsValid(ply) then 
@@ -43,10 +48,13 @@ hook.Add("CalcViewOverride", function(view)
 		end
 
 		if cvar_Get('enable_thirdperson') and (not ply:InVehicle()) and (not scopeAiming()) then
+			filter = {ply}
+			hook.Run("CalcView.ThirdPersonFilter", filter);			
+
 			trace = util.TraceHull({
 				start = origin,
 				endpos = origin + (angles:Up() * usedOffset.UD) + (angles:Right() * usedOffset.RL) + (angles:Forward() * usedOffset.FB * view.fov / 90),
-				filter = ply,
+				filter = filter,
 				mins = Vector( -5, -5, -5 ),
 				maxs = Vector( 5, 5, 5 ),
 			})
@@ -73,8 +81,13 @@ local pressed = false
 hook.Add('Tick', 'listen3rdPerson', function()
 	if input.IsKeyDown(KEY_F2) then
 		if not pressed then
-			local ent = LocalPlayer():GetEyeTrace().Entity
-			if IsValid(ent) and ent:IsDoor() and (ent:GetPos():DistToSqr(LocalPlayer():GetPos()) <= 13225) then
+			local tr = LocalPlayer():GetEyeTraceNoCursor()
+			local ent = tr.Entity
+			if IsValid(ent) and ent:IsDoor() and (tr.HitPos:DistToSqr(LocalPlayer():GetPos()) <= 16384) then
+				return
+			end
+			
+			if LocalPlayer().Blocked3dPerson then
 				return
 			end
 			

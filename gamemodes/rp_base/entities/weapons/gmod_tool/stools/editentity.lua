@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stools\\editentity.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 --
 -- This works - but I'm not certain that it's the way to go about it.

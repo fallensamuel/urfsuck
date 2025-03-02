@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\pimpmyride\\sh_pimp_meta.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local meta = {
 	VehicleName = "nil",
 	Name = translates and translates.Get("Автомобиль") or "Автомобиль",

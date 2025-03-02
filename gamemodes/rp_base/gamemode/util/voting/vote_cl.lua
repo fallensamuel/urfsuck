@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\util\\voting\\vote_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local VoteVGUI = {}
 local QuestionVGUI = {}
 local PanelNum = 0

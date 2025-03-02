@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stools\\urf_duplicator.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 TOOL.Name = '#Tool.urf_duplicator.name'
 TOOL.Description = '#tool.urf.duplicator.desc'
 TOOL.Information = {'left', 'right', 'reload'}
@@ -40,7 +42,7 @@ if (CLIENT) then
 	net.Receive('DupePasting', function()
 		DSS.PastingConstruction = net.ReadBool()
 	end)
-	
+
     DSS.VGUI = DSS.VGUI or {};
     DSS.Preview = DSS.Preview or {};
     DSS.PreviewModels = DSS.PreviewModels or {};
@@ -176,7 +178,7 @@ if CLIENT then
         for ent in pairs(DSS.HighlightsProps) do
             if IsValid(ent) and ent.OriginalDDSColr then
                ent:SetColor(ent.OriginalDDSColr)
-                ent.OriginalDDSColr = nil 
+                ent.OriginalDDSColr = nil
             end
         end
 
@@ -236,7 +238,7 @@ function TOOL:CreateEntityViaEntData(Player, Index, EntityList)
 
         if (Entity.PostEntityPaste) then
             Entity:PostEntityPaste(Player, Entity, EntityList);
-        end 
+        end
 
         if (Object.FadingDoor) then
             Entity.FadeKey = Object.FadeKey;
@@ -249,7 +251,7 @@ function TOOL:CreateEntityViaEntData(Player, Index, EntityList)
 	        Entity.NumpadFadeDown = numpad.OnDown(Player, Object.FadeKey, 'FadeDoor', Entity, true);
         end
 
-        if (Entity:GetPhysicsObject() != nil) then
+        if IsValid(Entity:GetPhysicsObject()) then
             Entity:GetPhysicsObject():EnableMotion(false);
         end
 
@@ -268,10 +270,14 @@ function TOOL:LeftClick(Trace)
     local Construction = Owner.DupedConstruction;
     if (!Construction) then return false end
 
-    if (Owner.PastingConstruction or DSS.PastingConstruction) then 
+    if (Owner.PastingConstruction or DSS.PastingConstruction) then
         if (SERVER) then rp.Notify(Owner, NOTIFY_ERROR, rp.Term(DSS.PastingConstruction and "DupeWaitAnotherPly" or 'DupeWait')); end
-        return false 
+        return false
     end
+
+	if not Construction.Mins or not Construction.Mins.z then
+		return false
+	end
 
     local pos = Owner:GetInfoNum("dds_pastebyorigin_vec", 0) > 0 and Owner.DupedConstructionPos and Owner.DupedConstructionPos.vec or Vector(Trace.HitPos.x, Trace.HitPos.y, Trace.HitPos.z - Construction.Mins.z)
     local ang = Owner:GetInfoNum("dds_pastebyorigin_ang", 0) > 0 and Owner.DupedConstructionPos and Owner.DupedConstructionPos.ang or Angle(0, Owner:EyeAngles().y, 0) + (Construction.AngleModifier or zeroAng)
@@ -288,7 +294,7 @@ function TOOL:LeftClick(Trace)
     self:SetOperation(1); self:SetStage(1);
     Owner.PastingConstruction = true;
 	DSS.PastingConstruction = true;
-	
+
 	net.Start('DupePasting')
 		net.WriteBool(true)
 	net.Broadcast()
@@ -305,6 +311,7 @@ function TOOL:LeftClick(Trace)
     for Index = 1, FixedSize do
         timer.Simple((Index - 1) * self.Delay, function()
             if (!IsValid(self:GetOwner())) then return end
+            if (!Owner.PastingConstruction) then return end
             local Entity = self:CreateEntityViaEntData(Owner, Index, Construction.Entities);
             table.ForceInsert(Entities, Entity);
             if (IsValid(Entity)) then
@@ -315,26 +322,37 @@ function TOOL:LeftClick(Trace)
         end);
     end
 
-    timer.Simple(FixedSize * self.Delay + .1, function()
+    timer.Create("DSS.Paste" .. Owner:SteamID64(), FixedSize * self.Delay + .1, 1, function()
+		DSS.PastingConstruction = false
+
+		local Owner = IsValid(Owner) and Owner or IsValid(self) and self:GetOwner()
+
         self:Refresh();
 
         undo.Create('urf.duplicator.construction');
             for _, Entity in pairs(Entities) do
-                undo.AddEntity(Entity);
-                Owner:AddCleanup('construction', Entity);
+				if IsValid(Entity) then
+					undo.AddEntity(Entity);
+					Owner:AddCleanup('construction', Entity);
+				end
             end
             undo.SetPlayer(Owner);
         undo.Finish();
-        
+
         if (SERVER) then rp.Notify(Owner, NOTIFY_GREEN, rp.Term('DupePasted')); end
-        Owner.PastingConstruction = false;
-        DSS.PastingConstruction = false;
-		
+
+		if IsValid(Owner) then
+			Owner.PastingConstruction = false;
+		end
+
 		net.Start('DupePasting')
 			net.WriteBool(false)
 		net.Broadcast()
-		
-        self:SetOperation(1); self:SetStage(1);
+
+		if IsValid(self:GetWeapon()) then
+			self:SetOperation(1);
+			self:SetStage(1);
+		end
     end);
 
     if SERVER then
@@ -358,11 +376,11 @@ function TOOL:RightClick(Trace)
     if CLIENT then return true end
     --if (IsValid(Trace.Entity) and Trace.Entity:IsWorld()) then return false end
     --if (CLIENT and IsValid(Trace.Entity) and IsValid(Owner)) then return true end
-    --if (!IsValid(Trace.Entity) or (Trace.Entity:IsWorld()) or !self:ValidClass(Trace.Entity:GetClass())) then 
+    --if (!IsValid(Trace.Entity) or (Trace.Entity:IsWorld()) or !self:ValidClass(Trace.Entity:GetClass())) then
     --    if (SERVER) then rp.Notify(Owner, NOTIFY_ERROR, rp.Term('DupeRestrictedEnts')); end
     --    return false
     --end
-    if (Owner.PastingConstruction or DSS.PastingConstruction) then 
+    if (Owner.PastingConstruction or DSS.PastingConstruction) then
         if (SERVER) then rp.Notify(Owner, NOTIFY_ERROR, rp.Term('DupeWait')); end
         return false
     end
@@ -390,7 +408,7 @@ function TOOL:RightClick(Trace)
 
         if pos:Distance(ent:GetPos()) <= rad and rp.pp.PlayerCanManipulate(Owner, ent) then
             local phys = ent:GetPhysicsObject()
-            if IsValid(phys) and not phys:IsMotionEnabled() then 
+            if IsValid(phys) and not phys:IsMotionEnabled() then
                 constraint.RemoveAll(ent)
             end
             table_insert(duplicatorEnts, ent)
@@ -732,8 +750,14 @@ end
 
 hook.Add('PlayerSwitchWeapon', 'urf_dupe_paste', function(Player, OldWeapon, Weapon)
     if (!SERVER) then return end
-    if (Player.PastingConstruction) then 
-        return true
+    if (Player.PastingConstruction) then
+        local tid = "DSS.Paste" .. Player:SteamID64();
+
+        if timer.Exists(tid) then
+            timer.Adjust(tid, 0);
+        end
+
+        -- return true
     end
 end);
 
@@ -767,9 +791,13 @@ if (CLIENT) then
         if not GetGmodTool(LocalPlayer()) then return end
         if (DSS.PreviewModels) then GarbageCollector(); end
 
-        DSS.VGUI.X:SetValue(0);
-        DSS.VGUI.Y:SetValue(0);
-        DSS.VGUI.Z:SetValue(0);
+        -- DSS.VGUI.X/Y/Z can be nil if tool panel doesnt exist (player dont open q menu since connect)
+        if (IsValid(DSS.VGUI.X)) then
+            DSS.VGUI.X:SetValue(0);
+            DSS.VGUI.Y:SetValue(0);
+            DSS.VGUI.Z:SetValue(0);
+        end
+
         DSS.AngleModifier = DSS.Preview.AngleModifier or zeroAng;
 
         for Index, Object in pairs(DSS.Preview.Entities) do
@@ -778,8 +806,8 @@ if (CLIENT) then
             Entity:SetRenderMode(RENDERMODE_TRANSCOLOR);
             Entity:SetColor(Color(255, 255, 255, 200));
 
-            Entity.DataAngle = Object.PhysicsObjects[0].Angle;
-            Entity.DataPos = Object.PhysicsObjects[0].Pos;
+            Entity.DataAngle = Object.PhysicsObjects[0] and Object.PhysicsObjects[0].Angle or Angle(0, 0, 0);
+            Entity.DataPos = Object.PhysicsObjects[0] and Object.PhysicsObjects[0].Pos or Vector(0, 0, 0);
 
             if (IsValid(Entity)) then
                 table.ForceInsert(DSS.PreviewModels, Entity);
@@ -903,10 +931,10 @@ if (SERVER) then
             [1] = function(Client)
                 local Name = net.ReadString();
 
-                local Dupes = #DSS.GiveMeMyTableDamnIt(Client);
-                if (Dupes >= DSS.MaxSlotsPerPlayer) then 
+                local Dupes = #(DSS.GiveMeMyTableDamnIt(Client) or {});
+                if (Dupes >= DSS.MaxSlotsPerPlayer) then
                     rp.Notify(Client, NOTIFY_ERROR, rp.Term('EndDupeSlots'), DSS.MaxSlotsPerPlayer);
-                    return 
+                    return
                 end
                 if (utf8.len(Name) > 32) then return end
 
@@ -926,9 +954,9 @@ if (SERVER) then
             -- remove saved dupe
             [2] = function(Client)
                 local Selected = net.ReadUInt(4);
-                
+
                 local Dupes = DSS.GiveMeMyTableDamnIt(Client);
-                if (Selected > #Dupes) then return end
+                if not Dupes or (Selected > #Dupes) or not Dupes[Selected] or not Dupes[Selected][1] then return end
                 DSS.DeleteDupe(Client, Dupes[Selected][1], function(Result)
                     SendUpdatedInfo(Client);
                 end);
@@ -939,11 +967,11 @@ if (SERVER) then
                 local Selected = net.ReadUInt(4);
                 local Dupes = DSS.GiveMeMyTableDamnIt(Client);
 
+                if (!Dupes or !Selected or !Dupes[Selected] or !Dupes[Selected][1]) then return end
                 if (Selected > #Dupes) then return end
-                if (!Dupes or !Dupes[Selected] or !Dupes[Selected][1] or !Selected) then return end
                 DSS.LoadDupe(Client, Dupes[Selected][1]);
             end,
-            
+
             -- change angles
             [4] = function(Client)
                 if (!Client.DupedConstruction) then return end
@@ -965,8 +993,9 @@ if (SERVER) then
 
                 if (!Selected or !SID64) then return end
                 local Dupes = DSS.GiveMeMyTableDamnIt(Client);
+                if not Dupes or (Selected > #Dupes) or not Dupes[Selected] or not Dupes[Selected][1] then return end
+                if (Selected > #Dupes) then return end
                 local Dupe = Dupes[Selected][1];
-                if (Selected > #Dupes or !Dupe) then return end
 
                 DSS.ShareDupe(Client, Dupe, player.GetBySteamID64(SID64), function(Result)
                     SendUpdatedInfo(Client);

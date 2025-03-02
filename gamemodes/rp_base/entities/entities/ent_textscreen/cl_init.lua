@@ -1,14 +1,16 @@
+-- "gamemodes\\rp_base\\entities\\entities\\ent_textscreen\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include("shared.lua")
 
 function ENT:Initialize()
 	self:SetMaterial("models/effects/vol_light001")
 	self:SetRenderMode(RENDERMODE_TRANSALPHA)
 	self:SetColor(255, 255, 255, 0)
-
-	rp_TextScreens[self] = true
 end
 
 function ENT:Draw()
+	rp_TextScreens[self] = true
+	
 --	if (self:GetPos():Distance(LocalPlayer():GetPos()) < 750) then
 --		local ang = self:GetAngles()
 --		local pos = self:GetPos() + ang:Up()

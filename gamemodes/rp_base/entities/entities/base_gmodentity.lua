@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\base_gmodentity.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 DEFINE_BASECLASS("base_anim")
 ENT.PrintName = ""

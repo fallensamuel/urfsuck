@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stools\\weld.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 TOOL.Category = "Constraints"
 TOOL.Name = "#tool.weld.name"
@@ -52,6 +54,9 @@ function TOOL:LeftClick( trace )
 			
 			self:GetOwner():AddCleanup( "constraints", constraint )
 		
+			if IsValid(Ent1:GetPhysicsObject()) then
+				Ent1:GetPhysicsObject():EnableMotion(false)
+			end
 		end
 
 		-- Clear the objects so we're ready to go again
@@ -179,7 +184,7 @@ function TOOL:RightClick( trace )
 		local constraint = constraint.Weld( Ent1, Ent2, Bone1, Bone2, forcelimit, nocollide )
 		if ( constraint ) then
 		
-			Phys1:EnableMotion( true )
+			Phys1:EnableMotion( false )
 			
 			undo.Create( "Weld" )
 				undo.AddEntity( constraint )
@@ -187,7 +192,6 @@ function TOOL:RightClick( trace )
 			undo.Finish()
 			
 			self:GetOwner():AddCleanup( "constraints", constraint )
-
 		end
 		
 		-- Clear the objects so we're ready to go again
@@ -224,17 +228,19 @@ function TOOL:Think()
 
 			local cmd = self:GetOwner():GetCurrentCommand()
 			
-			local degrees = cmd:GetMouseX() * 0.05
-			
-			local angle = Phys1:RotateAroundAxis( self.RotAxis, degrees )
-			
-			Phys1:SetAngles( angle )
-			
-			-- Move so spots join up
-			local TargetPos = self:GetPos( 2 ) + ( Phys1:GetPos() - self:GetPos( 1 ) )
-			Phys1:SetPos( TargetPos )
-			Phys1:Wake()
-		
+			if cmd then
+				local degrees = cmd:GetMouseX() * 0.05
+				
+				local angle = Phys1:RotateAroundAxis( self.RotAxis, degrees )
+				
+				Phys1:SetAngles( angle )
+				
+				-- Move so spots join up
+				local TargetPos = self:GetPos( 2 ) + ( Phys1:GetPos() - self:GetPos( 1 ) )
+				Phys1:SetPos( TargetPos )
+				Phys1:Wake()
+				Phys1:EnableMotion(false)
+			end
 		end
 	
 	end

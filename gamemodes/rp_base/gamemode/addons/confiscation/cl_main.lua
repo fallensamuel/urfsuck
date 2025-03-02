@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\confiscation\\cl_main.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local colors = {
 	["background"] 	= Color(25, 25, 25, 125),
 	["fill"] 		= Color(255, 255, 255, 75)
@@ -117,7 +119,7 @@ local Handle = {
 					net.WriteUInt(i, 6)
 				net.SendToServer()
 				timer.Simple((rp.cfg.ConfiscationTime or 5), function()
-					rp.Notify(NOTIFY_GREEN, "Вы конфисковали `".. printName .."`! Награда: ".. rp.FormatMoney(price))
+					rp.Notify(NOTIFY_GREEN, translates.Get('Вы конфисковали') .. " `".. printName .."`! " .. translates.Get('Награда') .. ": ".. rp.FormatMoney(price))
 				end)
 			end
 			icon.OnMousePressed, icon.doRightClick, icon.actionsMenu, icon.move = nil, nil, nil, nil

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\sandbox\\spawnmenu\\creationmenu\\content\\contenttypes\\vehicles_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 hook( "PopulateVehicles", "AddEntityContent", function( pnlContent, tree, node )
 

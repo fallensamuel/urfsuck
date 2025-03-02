@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\npc_pimp.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 
 ENT.Spawnable = true

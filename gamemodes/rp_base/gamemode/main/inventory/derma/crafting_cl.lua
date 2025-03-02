@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\derma\\crafting_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local sounds = {"physics/metal/weapon_impact_soft1.wav", "physics/metal/weapon_impact_soft2.wav"}
 local sounds_complete_craft = {"physics/wood/wood_strain3.wav", "physics/wood/wood_strain4.wav"}
 local sounds_crafting = {"physics/wood/wood_strain3.wav", "physics/wood/wood_strain4.wav"}

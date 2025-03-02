@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_camera.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 SWEP.ViewModel = Model("models/weapons/c_arms_animations.mdl")
 SWEP.WorldModel = Model("models/MaxOfS2D/camera.mdl")

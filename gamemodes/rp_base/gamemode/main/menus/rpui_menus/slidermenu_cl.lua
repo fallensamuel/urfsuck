@@ -1,1 +1,192 @@
-local ‪ = _G local ‪‪ = ‪['\115\116\114\105\110\103'] local ‪‪‪ = ‪['\98\105\116']['\98\120\111\114'] local function ‪‪‪‪‪‪‪(‪‪‪‪) if ‪‪['\108\101\110'](‪‪‪‪) == 0 then return ‪‪‪‪ end local ‪‪‪‪‪ = '' for _ in ‪‪['\103\109\97\116\99\104'](‪‪‪‪,'\46\46') do ‪‪‪‪‪=‪‪‪‪‪..‪‪['\99\104\97\114'](‪‪‪(‪["\116\111\110\117\109\98\101\114"](_,16),238)) end return ‪‪‪‪‪ end local do‪=‪[‪‪‪‪‪‪‪'8a9c8f99'][‪‪‪‪‪‪‪'bd87839e828bba8b969a']local end‪=‪[‪‪‪‪‪‪‪'838f9a86'][‪‪‪‪‪‪‪'bc819b808a']local ‪false=‪[‪‪‪‪‪‪‪'9c9e'][‪‪‪‪‪‪‪'a8819c838f9aa381808b97']local ‪‪‪‪‪if={[‪‪‪‪‪‪‪'9986879a8b']=‪[‪‪‪‪‪‪‪'ad8182819c'](255,255,255)}local ‪until={[‪‪‪‪‪‪‪'ad8b809a8b9c']=‪[‪‪‪‪‪‪‪'baabb6bab1afa2a7a9a0b1adaba0baabbc'],[‪‪‪‪‪‪‪'a28b889a']=‪[‪‪‪‪‪‪‪'baabb6bab1afa2a7a9a0b1a2aba8ba'],[‪‪‪‪‪‪‪'ba819e']=‪[‪‪‪‪‪‪‪'baabb6bab1afa2a7a9a0b1baa1be'],[‪‪‪‪‪‪‪'bc8789869a']=‪[‪‪‪‪‪‪‪'baabb6bab1afa2a7a9a0b1bca7a9a6ba'],[‪‪‪‪‪‪‪'ac819a9a8183']=‪[‪‪‪‪‪‪‪'baabb6bab1afa2a7a9a0b1aca1babaa1a3']}‪[‪‪‪‪‪‪‪'9d9b9c888f8d8b'][‪‪‪‪‪‪‪'ad9c8b8f9a8ba881809a'](‪‪‪‪‪‪‪'9c9e9b87c09d82878a8b9c838b809bc08881809a',{[‪‪‪‪‪‪‪'8881809a']=‪‪‪‪‪‪‪'a381809a9d8b9c9c8f9a',[‪‪‪‪‪‪‪'8b969a8b808a8b8a']=true ,[‪‪‪‪‪‪‪'8f809a878f82878f9d']=true ,[‪‪‪‪‪‪‪'9d87948b']=22*(‪[‪‪‪‪‪‪‪'bd8d9ca6']()/1080)})local end‪‪‪‪‪={}end‪‪‪‪‪[‪‪‪‪‪‪‪'a780879a']=function (for‪‪‪‪‪‪‪)for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c']=‪[‪‪‪‪‪‪‪'98899b87'][‪‪‪‪‪‪‪'ad9c8b8f9a8b'](‪‪‪‪‪‪‪'9b9c88c08783c19c9e9b87c1809b839d82878a8b9c',for‪‪‪‪‪‪‪)for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a']=‪[‪‪‪‪‪‪‪'98899b87'][‪‪‪‪‪‪‪'ad9c8b8f9a8b'](‪‪‪‪‪‪‪'9b9c88c08783c19c9e9b87c19a969a87809e9b9a',for‪‪‪‪‪‪‪)for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'][‪‪‪‪‪‪‪'bba7aa']=‪‪‪‪‪‪‪'bd82878a8b9ca38b809b' for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'][‪‪‪‪‪‪‪'af9e9e8297aa8b9d878980'](for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'])for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9cb196']=0 for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9ab197']=0 for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9ab186']=0 for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'][‪‪‪‪‪‪‪'a180bd82878a8b9ca381988b']=function (local‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'bd8b9aa7809e9b9ab88f82'](for‪‪‪‪‪‪‪,end‪(local‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a98b9abe9d8b9b8a81a580818cbe819d'](local‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)))end for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'][‪‪‪‪‪‪‪'a180ad868f80898b']=function (repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)if not for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c']then return end local ‪‪‪‪‪‪‪‪in=‪[‪‪‪‪‪‪‪'9d9a9c878089'][‪‪‪‪‪‪‪'bc8b9e828f8d8b'](repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a98b9aba8b969a'](repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪),‪‪‪‪‪‪‪'c2',‪‪‪‪‪‪‪'')or ‪‪‪‪‪‪‪'de' repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'bc8b8f82b88f829b8b']=‪[‪‪‪‪‪‪‪'9a81809b838c8b9c'](‪‪‪‪‪‪‪‪in)if not repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'bc8b8f82b88f829b8b']then return end for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'][‪‪‪‪‪‪‪'bd8b9abe9d8b9b8a81a580818cbe819d'](for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'],repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'bc8b8f82b88f829b8b'])end for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8a9c819e']=‪[‪‪‪‪‪‪‪'98899b87'][‪‪‪‪‪‪‪'ad9c8b8f9a8b'](‪‪‪‪‪‪‪'9b9c88c08783c19c9e9b87c18c9b9a9a8180',for‪‪‪‪‪‪‪)local ‪‪‪‪true=for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8a9c819e']local ‪‪‪local=‪[‪‪‪‪‪‪‪'9a9c8f809d828f9a8b9d'][‪‪‪‪‪‪‪'a98b9a'](‪‪‪‪‪‪‪'3e713f6e3e563e533f613f6c3f62')‪‪‪‪true[‪‪‪‪‪‪‪'bd8b9aba8b969a'](‪‪‪‪true,‪‪‪local)‪‪‪‪true[‪‪‪‪‪‪‪'bd8b9aa881809a'](‪‪‪‪true,‪‪‪‪‪‪‪'9c9e9b87c09d82878a8b9c838b809bc08881809a')‪‪‪‪true[‪‪‪‪‪‪‪'aa81ad82878d85']=function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not)if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'a98b9aba8b969a'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not)==‪‪‪local then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'bd8b9aba8b969a'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not,‪[‪‪‪‪‪‪‪'9a9c8f809d828f9a8b9d'][‪‪‪‪‪‪‪'a98b9a'](‪‪‪‪‪‪‪'3e713e703e7a3e4c3e7c3e7b3e4e3e7a3e763e4c3e7b'))return else ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'bd8b9aba8b969a'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not,‪‪‪local)end if for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'aa9c819ead8f82828c8f8d85']then for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'aa9c819ead8f82828c8f8d85'](for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'][‪‪‪‪‪‪‪'bc8b8f82b88f829b8b'])end if not for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a0819aac97be828f978b9ca381808b97']then for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'][‪‪‪‪‪‪‪'a38f96b88f829b8b']=‪[‪‪‪‪‪‪‪'a2818d8f82be828f978b9c']()[‪‪‪‪‪‪‪'a98b9aa381808b97'](‪[‪‪‪‪‪‪‪'a2818d8f82be828f978b9c']())-for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'][‪‪‪‪‪‪‪'bc8b8f82b88f829b8b']end for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'bd8b9aa7809e9b9ab88f82'](for‪‪‪‪‪‪‪,end‪(for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'][‪‪‪‪‪‪‪'a98b9abe9d8b9b8a81a580818cbe819d'](for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'])))end for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8d8f808d8b82']=‪[‪‪‪‪‪‪‪'98899b87'][‪‪‪‪‪‪‪'ad9c8b8f9a8b'](‪‪‪‪‪‪‪'9b9c88c08783c19c9e9b87c18c9b9a9a8180',for‪‪‪‪‪‪‪)for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8d8f808d8b82'][‪‪‪‪‪‪‪'bd8b9aba8b969a'](for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8d8f808d8b82'],‪[‪‪‪‪‪‪‪'9a9c8f809d828f9a8b9d']and ‪[‪‪‪‪‪‪‪'9a9c8f809d828f9a8b9d'][‪‪‪‪‪‪‪'a98b9a'](‪‪‪‪‪‪‪'3e703f6c3e523e5b3e533e5e')or ‪‪‪‪‪‪‪'3e703f6c3e523e5b3e533e5e')for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8d8f808d8b82'][‪‪‪‪‪‪‪'bd8b9aa881809a'](for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8d8f808d8b82'],‪‪‪‪‪‪‪'9c9e9b87c09d82878a8b9c838b809bc08881809a')for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8d8f808d8b82'][‪‪‪‪‪‪‪'aa81ad82878d85']=function ()for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'868b8f8a8b9c'][‪‪‪‪‪‪‪'8c9a80'][‪‪‪‪‪‪‪'aa81ad82878d85'](for‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'868b8f8a8b9c'][‪‪‪‪‪‪‪'8c9a80'])end end end‪‪‪‪‪[‪‪‪‪‪‪‪'bd8b9ab88f829b8b9d']=function (true‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)if not true‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a0819aac97be828f978b9ca381808b97']then true‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'][‪‪‪‪‪‪‪'a38f96b88f829b8b']=‪[‪‪‪‪‪‪‪'a2818d8f82be828f978b9c']()[‪‪‪‪‪‪‪'a98b9aa381808b97'](‪[‪‪‪‪‪‪‪'a2818d8f82be828f978b9c']())else true‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'][‪‪‪‪‪‪‪'bd868199a38f96']=true end true‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'bd8b9aa7809e9b9ab88f82'](true‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,true‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'][‪‪‪‪‪‪‪'a98b9abe9d8b9b8a81a580818cbe819d'](true‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c']))end end‪‪‪‪‪[‪‪‪‪‪‪‪'be819d9abe8b9c88819c83a28f97819b9a']=function (and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)local return‪,‪‪‪‪‪do=and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a98b9ab9878a8b'](and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪),and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a98b9aba8f8282'](and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)local ‪break,‪‪then=return‪*0.925,0.18*‪‪‪‪‪do local ‪‪‪‪‪‪‪‪‪‪‪‪not,and‪‪‪‪‪‪=return‪*0.16923076,0.16*‪‪‪‪‪do and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'][‪‪‪‪‪‪‪'bd8b9abd87948b'](and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'],‪break,‪‪then)local repeat‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪goto=return‪*0.5-‪break*0.5,‪‪‪‪‪do*0.6-0.5*‪‪then and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'][‪‪‪‪‪‪‪'bd8b9abe819d'](and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'],repeat‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪goto)and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9cb196']=repeat‪‪ and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9ab197']=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪goto-1.25*and‪‪‪‪‪‪ and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9ab186']=and‪‪‪‪‪‪ and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'][‪‪‪‪‪‪‪'bd8b9abd87948b'](and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'],‪‪‪‪‪‪‪‪‪‪‪‪not,and‪‪‪‪‪‪)and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'][‪‪‪‪‪‪‪'bd8b9abe819d'](and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'],repeat‪‪+‪break-‪‪‪‪‪‪‪‪‪‪‪‪not,and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9ab197'])and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'][‪‪‪‪‪‪‪'af9e9e8297aa8b9d878980'](and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'])local ‪‪‪‪‪‪‪and,‪‪‪‪‪‪‪‪‪‪while=return‪*0.45,‪‪then and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8a9c819e'][‪‪‪‪‪‪‪'bd8b9abd87948b'](and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8a9c819e'],‪‪‪‪‪‪‪and,‪‪‪‪‪‪‪‪‪‪while)and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8d8f808d8b82'][‪‪‪‪‪‪‪'bd8b9abd87948b'](and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8d8f808d8b82'],‪‪‪‪‪‪‪and,‪‪‪‪‪‪‪‪‪‪while)local ‪‪‪‪until=0.025*return‪ and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8a9c819e'][‪‪‪‪‪‪‪'bd8b9abe819d'](and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8a9c819e'],‪‪‪‪until,‪‪‪‪‪do-‪‪‪‪‪‪‪‪‪‪while*1.4)and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8d8f808d8b82'][‪‪‪‪‪‪‪'bd8b9abe819d'](and‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8d8f808d8b82'],return‪-‪‪‪‪‪‪‪and-‪‪‪‪until,‪‪‪‪‪do-‪‪‪‪‪‪‪‪‪‪while*1.4)end local ‪‪‪‪‪‪‪‪function=‪[‪‪‪‪‪‪‪'9a9c8f809d828f9a8b9d']and ‪[‪‪‪‪‪‪‪'9a9c8f809d828f9a8b9d'][‪‪‪‪‪‪‪'a98b9a'](‪‪‪‪‪‪‪'3e7c3e503f6f3e513e503e553f623e593f6d3e573f6c3e5b3f6f3f62ce3e513e503e553e593f6d3e533e543e503e52ce3e563e553e56ce3e5c3e5c3e5b3e5a3e563f6c3e5bce3e593e533e5e3f693e5b3e533e563e5bc0')or ‪‪‪‪‪‪‪'3e7c3e503f6f3e513e503e553f623e593f6d3e573f6c3e5b3f6f3f62ce3e513e503e553e593f6d3e533e543e503e52ce3e563e553e56ce3e5c3e5c3e5b3e5a3e563f6c3e5bce3e593e533e5e3f693e5b3e533e563e5bc0' local for‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪=‪[‪‪‪‪‪‪‪'9a9c8f809d828f9a8b9d']and ‪[‪‪‪‪‪‪‪'9a9c8f809d828f9a8b9d'][‪‪‪‪‪‪‪'a98b9a'](‪‪‪‪‪‪‪'3e4f3e543e503e553f623e543e50ce3e5c3f653e5f3f6e3e503f6f3e563f6c3f62d1')or ‪‪‪‪‪‪‪'3e4f3e543e503e553f623e543e50ce3e5c3f653e5f3f6e3e503f6f3e563f6c3f62d1' local until‪‪‪‪‪=‪[‪‪‪‪‪‪‪'9a9c8f809d828f9a8b9d']and ‪[‪‪‪‪‪‪‪'9a9c8f809d828f9a8b9d'][‪‪‪‪‪‪‪'a98b9a'](‪‪‪‪‪‪‪'3e4f3e543e503e553f623e543e50ce3e5c3f65ce3f6b3e503f6c3e563f6c3e5bce3e513e5b3f6e3e5b3e5a3e5e3f6c3f62d1')or ‪‪‪‪‪‪‪'3e4f3e543e503e553f623e543e50ce3e5c3f65ce3f6b3e503f6c3e563f6c3e5bce3e513e5b3f6e3e5b3e5a3e5e3f6c3f62d1' end‪‪‪‪‪[‪‪‪‪‪‪‪'be819d9abe8f87809a']=function (continue‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not,‪‪return)do‪(continue‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a1988b9cbd82878a8b9cba879a828b']or ‪‪‪‪‪‪‪‪function,‪‪‪‪‪‪‪'9c9e9b87c09d82878a8b9c838b809bc08881809a',continue‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9cb196'],continue‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9ab197']+continue‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9ab186']*0.5,‪‪‪‪‪if[‪‪‪‪‪‪‪'9986879a8b'],‪until[‪‪‪‪‪‪‪'a28b889a'],‪until[‪‪‪‪‪‪‪'ad8b809a8b9c'])end end‪‪‪‪‪[‪‪‪‪‪‪‪'bd8b9aa7809e9b9ab88f82']=function (return‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)return‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'][‪‪‪‪‪‪‪'bc8b8f82b88f829b8b']=in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ return‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'][‪‪‪‪‪‪‪'bd8b9ab88f829b8b'](return‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'87809e9b9a'],‪‪‪‪‪‪‪''..in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end ‪[‪‪‪‪‪‪‪'98899b87'][‪‪‪‪‪‪‪'bc8b89879d9a8b9c'](‪‪‪‪‪‪‪'9b9c88c08783c19c9e9b87c1838b809b9dc19d82878a8b9c838b809b',end‪‪‪‪‪,‪‪‪‪‪‪‪'9b9c88c08783c19c9e9b87c1838b809b9dc18c828f8085')‪[‪‪‪‪‪‪‪'9c9e9b87'][‪‪‪‪‪‪‪'bd82878a8b9cbc8b9f9b8b9d9a']=function (elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪do,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪in,nil‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)local nil‪‪=‪[‪‪‪‪‪‪‪'bd8d9ca6']()/1080 local elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪=‪[‪‪‪‪‪‪‪'98899b87'][‪‪‪‪‪‪‪'ad9c8b8f9a8b'](‪‪‪‪‪‪‪'9b9c88c08783c19c9e9b87c1838b809b9dc19d82878a8b9c838b809b')elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'bd8b9abd87948b'](elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,650*nil‪‪,250*nil‪‪)elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'ad8b809a8b9c'](elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a38f858bbe819e9b9e'](elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'bd8b9ab88f829b8b9d'](elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'868b8f8a8b9c'][‪‪‪‪‪‪‪'bd8b9aa78d8180'](elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'868b8f8a8b9c'],‪‪‪‪‪‪‪‪‪‪do)elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'868b8f8a8b9c'][‪‪‪‪‪‪‪'bd8b9aba879a828b'](elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'868b8f8a8b9c'],elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'868b8f8a8b9c'][‪‪‪‪‪‪‪'bd8b9aa881809a'](elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'868b8f8a8b9c'],‪‪‪‪‪‪‪'9c9e9b87c09e828f978b9c9d8b828b8d9ac09a879a828b')elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'868b8f8a8b9c'][‪‪‪‪‪‪‪'a78d81bd87948ba39b829a']=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪in local break‪‪‪‪‪‪‪‪=‪[‪‪‪‪‪‪‪'838f9a86'][‪‪‪‪‪‪‪'8d8b8782'](‪[‪‪‪‪‪‪‪'9c9e'][‪‪‪‪‪‪‪'8d8889'][‪‪‪‪‪‪‪'bd9a8f9c9aa381808b97']*0.1)elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'][‪‪‪‪‪‪‪'bd8b9abe9d8b9b8a81a580818cbe819d'](elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9d82878a8b9c'],break‪‪‪‪‪‪‪‪)elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'bd8b9aa7809e9b9ab88f82'](elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,break‪‪‪‪‪‪‪‪)elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'aa9c819ead8f82828c8f8d85']=nil‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ return elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ end ‪[‪‪‪‪‪‪‪'9c9e9b87'][‪‪‪‪‪‪‪'bd82878a8b9cbc8b9f9b8b9d9aa89c8b8b']=function (or‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,repeat‪‪‪‪‪‪‪‪‪‪‪‪‪,elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,continue‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪true)local elseif‪‪‪‪‪‪‪‪=‪[‪‪‪‪‪‪‪'bd8d9ca6']()/1080 local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue=‪[‪‪‪‪‪‪‪'98899b87'][‪‪‪‪‪‪‪'ad9c8b8f9a8b'](‪‪‪‪‪‪‪'9b9c88c08783c19c9e9b87c1838b809b9dc19d82878a8b9c838b809b')‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'bd8b9abd87948b'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue,650*elseif‪‪‪‪‪‪‪‪,‪[‪‪‪‪‪‪‪'9c9e9b87'][‪‪‪‪‪‪‪'af8a8f9e9aba81bd8d9c8b8b80'](0,301)[2])‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'ad8b809a8b9c'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'a38f858bbe819e9b9e'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'a0819aac97be828f978b9ca381808b97']=true ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'9d82878a8b9c'][‪‪‪‪‪‪‪'a38f96b88f829b8b']=continue‪‪‪‪ ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'bd8b9ab88f829b8b9d'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'868b8f8a8b9c'][‪‪‪‪‪‪‪'bd8b9aa78d8180'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'868b8f8a8b9c'],repeat‪‪‪‪‪‪‪‪‪‪‪‪‪)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'868b8f8a8b9c'][‪‪‪‪‪‪‪'bd8b9aba879a828b'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'868b8f8a8b9c'],or‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'868b8f8a8b9c'][‪‪‪‪‪‪‪'bd8b9aa881809a'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'868b8f8a8b9c'],‪‪‪‪‪‪‪'9c9e9b87c09e828f978b9c9d8b828b8d9ac09a879a828b')‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'868b8f8a8b9c'][‪‪‪‪‪‪‪'a78d81bd87948ba39b829a']=elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and=‪[‪‪‪‪‪‪‪'838f9a86'][‪‪‪‪‪‪‪'8d8b8782'](continue‪‪‪‪/2)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'9d82878a8b9c'][‪‪‪‪‪‪‪'bd8b9abe9d8b9b8a81a580818cbe819d'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'9d82878a8b9c'],‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'bd8b9aa7809e9b9ab88f82'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue[‪‪‪‪‪‪‪'aa9c819ead8f82828c8f8d85']=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪true return ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪continue end ‪[‪‪‪‪‪‪‪'8d81808d8183838f808a'][‪‪‪‪‪‪‪'af8a8a'](‪‪‪‪‪‪‪'8a9c819e8381808b97b1838b809b',function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break,or‪,then‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)‪[‪‪‪‪‪‪‪'9c9e9b87'][‪‪‪‪‪‪‪'bd82878a8b9cbc8b9f9b8b9d9a'](for‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪'8a879e8281838f8d97c1808b9b9a878dd8dac09e8089',1)end )‪[‪‪‪‪‪‪‪'8d81808d8183838f808a'][‪‪‪‪‪‪‪'af8a8a'](‪‪‪‪‪‪‪'8987988b8381808b97b1838b809b',function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪true,nil‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,not‪‪‪‪‪)‪[‪‪‪‪‪‪‪'9c9e9b87'][‪‪‪‪‪‪‪'bd82878a8b9cbc8b9f9b8b9d9a'](until‪‪‪‪‪,‪‪‪‪‪‪‪'8a879e8281838f8d97c1808b9b9a878dd8dac09e8089',1,function (local‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)if not local‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ or local‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪<0 then return end ‪[‪‪‪‪‪‪‪'bc9b80ad81809d81828bad8183838f808a'](‪‪‪‪‪‪‪'9d8f97',‪‪‪‪‪‪‪'c18987988bce'..local‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end )end )
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\rpui_menus\\slidermenu_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
+local SimpleText = draw.SimpleText
+local mathRound = math.Round
+local rp_FormatMoney = rp.FormatMoney
+
+local colors = {
+	white = Color(255, 255, 255)
+}
+
+local Align = {
+	Center = TEXT_ALIGN_CENTER,
+	Left = TEXT_ALIGN_LEFT,
+	Top = TEXT_ALIGN_TOP,
+	Right = TEXT_ALIGN_RIGHT,
+	Bottom = TEXT_ALIGN_BOTTOM
+}
+
+surface.CreateFont("rpui.slidermenu.font", {
+    font = "Montserrat", -- Montserrat
+    extended = true,
+    antialias = true,
+    size = 22 * (ScrH()/1080)
+})
+
+local PANEL = {}
+
+function PANEL:Init()
+	self.slider = vgui.Create("urf.im/rpui/numslider", self)
+
+	self.input = vgui.Create("urf.im/rpui/txtinput", self)
+	self.input.UID = "SliderMenu"
+	self.input.ApplyDesign(self.input)
+
+	self.slider_x = 0
+	self.input_y = 0
+	self.input_h = 0
+
+	self.slider.OnSliderMove = function(this1)
+		self:SetInputVal( math.floor(this1:GetPseudoKnobPos()) )
+	end
+
+	self.input.OnChange = function(this2)
+		if not self.slider then return end
+		local num = string.Replace(this2:GetText(), ",", "") or "0"
+		this2.RealValue = tonumber( num )
+		if not this2.RealValue then return end
+		self.slider.SetPseudoKnobPos(self.slider, this2.RealValue)
+	end
+
+	self.drop = vgui.Create("urf.im/rpui/button", self)
+	local drop = self.drop
+	
+	local word = translates.Get("Принять")
+	drop:SetText(word)
+	drop:SetFont("rpui.slidermenu.font")
+	drop.DoClick = function(this)
+		if this:GetText() == word then
+			this:SetText(translates.Get("ПОДТВЕРДИТЕ"))
+			return
+		else
+			this:SetText(word)
+		end
+
+		if self.DropCallback then
+			self.DropCallback(self.input.RealValue)
+		end
+
+		if not self.NotByPlayerMoney then
+			self.slider.MaxValue = LocalPlayer():GetMoney() - (self.input.RealValue or 0);
+		end
+		self:SetInputVal( mathRound(self.slider.GetPseudoKnobPos(self.slider)) )
+	end
+
+	self.cancel = vgui.Create("urf.im/rpui/button", self)
+	self.cancel.SetText(self.cancel, translates and translates.Get("Отмена") or "Отмена")
+	self.cancel.SetFont(self.cancel, "rpui.slidermenu.font")
+	self.cancel.DoClick = function()
+		self.header.btn.DoClick(self.header.btn)
+	end
+end
+
+function PANEL:SetValues()
+	if not self.NotByPlayerMoney then
+		self.slider.MaxValue = LocalPlayer():GetMoney()
+	else
+		self.slider.ShowMax = true
+	end
+	self:SetInputVal(self.slider.GetPseudoKnobPos(self.slider))
+end
+
+function PANEL:PostPerformLayout()
+	local selfW, selfH = self:GetWide(), self:GetTall()
+
+	local sl_w, sl_h = selfW*0.925, 0.18 * selfH
+	local in_w, in_h = selfW*0.16923076, 0.16 * selfH
+
+	self.slider.SetSize(self.slider, sl_w, sl_h)
+	local sl_x, sl_y = selfW*0.5 - sl_w*0.5, selfH*0.6 - 0.5 * sl_h
+	self.slider.SetPos(self.slider, sl_x, sl_y)
+
+	self.slider_x = sl_x
+	self.input_y = sl_y - 1.25 * in_h
+	self.input_h = in_h
+
+	self.input.SetSize(self.input, in_w, in_h)
+	self.input.SetPos(self.input, sl_x + sl_w - in_w, self.input_y)
+	self.input.ApplyDesign(self.input)
+
+	local btn_w, btn_h = selfW*0.45, sl_h
+
+	self.drop.SetSize(self.drop, btn_w, btn_h)
+	self.cancel.SetSize(self.cancel, btn_w, btn_h)
+
+	local offset = 0.025 * selfW
+
+	self.drop.SetPos(self.drop, offset, selfH - btn_h*1.4)
+	self.cancel.SetPos(self.cancel, selfW - btn_w - offset, selfH - btn_h*1.4)
+end
+
+local polz_txt = translates and translates.Get("Воспользуйтесь ползунком или введите значение.") or "Воспользуйтесь ползунком или введите значение."
+local drop_txt = translates and translates.Get("Сколько выбросить?") or "Сколько выбросить?"
+local give_txt = translates and translates.Get("Сколько вы хотите передать?") or "Сколько вы хотите передать?"
+
+function PANEL:PostPaint(w, h)
+	SimpleText(self.OverSliderTitle or polz_txt, "rpui.slidermenu.font", self.slider_x, self.input_y + self.input_h*0.5, colors.white, Align.Left, Align.Center)
+end
+
+function PANEL:SetInputVal(v)
+	self.input.RealValue = v
+	self.input.SetValue( self.input, '' .. v )
+end
+
+vgui.Register("urf.im/rpui/menus/slidermenu", PANEL, "urf.im/rpui/menus/blank")
+
+rpui.SliderRequest = function(title, icon, iconScale, callback)
+	local ScrScale = ScrH()/1080
+
+	local menu = vgui.Create("urf.im/rpui/menus/slidermenu")
+	menu:SetSize(650*ScrScale, 250*ScrScale)
+	menu:Center()
+	menu:MakePopup()
+
+	menu:SetValues()
+	
+	menu.header.SetIcon(menu.header, icon)
+	menu.header.SetTitle(menu.header, title)
+	menu.header.SetFont(menu.header, "rpui.playerselect.title")
+	menu.header.IcoSizeMult = iconScale
+
+	local knob_val = rp.cfg.StartMoney*0.1
+	menu.slider.SetPseudoKnobPos(menu.slider, knob_val)
+	menu:SetInputVal(math.Round(knob_val))
+
+	menu.DropCallback = callback
+
+	return menu
+end
+
+rpui.SliderRequestFree = function(title, icon, iconScale, max, callback)
+	local ScrScale = ScrH()/1080
+
+	local menu = vgui.Create("urf.im/rpui/menus/slidermenu")
+	menu:SetSize(650*ScrScale, rpui.AdaptToScreen(0, 301)[2])
+	menu:Center()
+	menu:MakePopup()
+	
+	menu.NotByPlayerMoney = true
+	menu.slider.MaxValue = max
+	
+	menu:SetValues()
+	
+	menu.header.SetIcon(menu.header, icon)
+	menu.header.SetTitle(menu.header, title)
+	menu.header.SetFont(menu.header, "rpui.playerselect.title")
+	menu.header.IcoSizeMult = iconScale
+
+	local knob_val = max * 0.5
+	menu.slider.SetPseudoKnobPos(menu.slider, knob_val)
+	menu:SetInputVal(math.Round(knob_val))
+
+	menu.DropCallback = callback
+
+	return menu
+end
+
+concommand.Add("givemoney_menu", function(ply, cmd, args)
+	rpui.SliderRequest(give_txt, "diplomacy/neutic64.png", 1, function(val)
+		if not val or val < 0 then return end
+		RunConsoleCommand("say", "/give " .. val)
+	end)
+end)

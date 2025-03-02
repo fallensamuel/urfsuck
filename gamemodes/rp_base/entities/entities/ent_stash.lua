@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\ent_stash.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 
 
@@ -29,8 +31,11 @@ if SERVER then
 		self:SetMoveType(MOVETYPE_VPHYSICS)
 		self:SetSolid(SOLID_VPHYSICS)
 		self:SetCollisionGroup(COLLISION_GROUP_INTERACTIVE_DEBRIS)
-		self:GetPhysicsObject():EnableMotion(false)
-
+		
+		if IsValid(self:GetPhysicsObject()) then
+			self:GetPhysicsObject():EnableMotion(false)
+		end
+		
 		self:PrecacheGibs()
 	end
 

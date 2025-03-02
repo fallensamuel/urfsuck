@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\utf8_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local UTF8 = {};
 
 local string_byte = string.byte;
@@ -87,11 +89,22 @@ function UTF8.Lower(String)
     local Char, CodePoint;
     while (Data.Position <= Data.Bytes) do
         Data.CharByte = UTF8.SBytes(String, Data.Position);
+		
+		if not Data.CharByte then 
+			break 
+		end
+		
         Char = string_sub(String, Data.Position, Data.Position + Data.CharByte - 1);
-        CodePoint = utf8_codepoint(Char, 1);
+        local result, CodePoint = pcall(utf8_codepoint, Char, 1);
+		
+		if not result or not CodePoint then
+			break
+		end
+		
         if (CodePoint >= 1040 and CodePoint <= 1071) or (CodePoint >= 65 and CodePoint <= 90) then
             Char = utf8_char(CodePoint + 32);
         end
+		
         Data.LowerString = Data.LowerString .. Char;
         Data.Position = Data.Position + Data.CharByte;
     end
@@ -229,7 +242,7 @@ utf8.EndsWith = UTF8.EndsWith;
 
 local utf8_len = utf8.len
 function string.isutf8(s)
-    return #s > utf8_len(s)
+    return #s > (utf8_len(s) or 0)
 end
 
 function string.utfnotutflower(s)
@@ -239,3 +252,5 @@ function string.utfnotutflower(s)
         return s:lower()
     end
 end
+
+string.forcelower = string.utfnotutflower

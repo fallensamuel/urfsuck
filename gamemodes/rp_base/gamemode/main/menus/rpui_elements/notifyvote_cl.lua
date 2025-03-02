@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\rpui_elements\\notifyvote_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local IsVALID, SetDrawColor, DrawRect, SetMaterial, DrawTexturedRect, SimpleText = IsValid, surface.SetDrawColor, surface.DrawRect, surface.SetMaterial, surface.DrawTexturedRect, draw.SimpleText
 local isfunc = isfunction
 local DrawBlur = draw and draw.Blur or function(...) draw.Blur(...) end
@@ -84,8 +86,6 @@ local GradiMat = Material("vgui/gradient_up", "smooth", "noclamp")
 function PANEL:Init()
 	self.GradiAlpha = 0
 
-	self:SetText("")
-
 	self.btn = vgui.Create("DButton", self)
 	local btn = self.btn
 	btn:SetText("")
@@ -128,7 +128,7 @@ function PANEL:Init()
 
 				if self.contents then
 					local txw, txh = SimpleText(isfunc(self.contents.title) and self.contents.title() or self.contents.title or "title", "rpui.notifyvote.font", 25, 16, colors.title, Align.Left, Align.Top)
-					SimpleText(self.contents.desc or "description", "rpui.notifyvote.font", 25, 16 + txh, colors.desc, Align.Left, Align.Top)
+					SimpleText(self.contents.desc or "description", "rpui.notifyvote.font", 25, 19 + txh, colors.desc, Align.Left, Align.Top)
 				end
 			end
 
@@ -157,22 +157,25 @@ function PANEL:Init()
 			ok:SetSize(btn_w, btn_h)
 			cancel:SetSize(btn_w, btn_h)
 
-			local pos_y = self:GetTall()*3 - btn_h - 18
+			local pos_y = self:GetTall()*3 - btn_h - 9 -- 18
 			ok:SetPos(popup:GetWide()*0.025, pos_y)
 			cancel:SetPos(popup:GetWide() - popup:GetWide()*0.025 - btn_w, pos_y)
 
 			local sx, sy = self:GetPos()
 			popup:SetPos(sx, sy + self:GetTall())
 
-			local a, b, c = self:GetWide(), self:GetTall()*3, 0.15
-			self:OnPopupSizeTo(a, b, c)
-			popup:SizeTo(a, b, c, 0, -1, function()
-				self:OnPopupSizeToEnd(a, b, c)
-				
-				timer.Simple(0.2, function()
-					if IsValid(self) then
-						self.InAnimation = nil
-					end
+			timer.Simple(0, function()
+				if (!IsValid(self)) then return end
+				local a, b, c = self:GetWide(), self:GetTall()*3 + 9, 0.15
+				self:OnPopupSizeTo(a, b, c)
+				popup:SizeTo(a, b, c, 0, -1, function()
+					self:OnPopupSizeToEnd(a, b, c)
+					
+					timer.Simple(0.2, function()
+						if IsValid(self) then
+							self.InAnimation = nil
+						end
+					end)
 				end)
 			end)
 		end
@@ -183,10 +186,6 @@ function PANEL:Init()
 		SetMaterial(this3.Icon)
 		DrawTexturedRect(0, 0, w, h)
 	end
-end
-
-function PANEL:DoClick()
-	self.btn:DoClick()
 end
 
 function PANEL:OnPopupSizeTo() end -- for override
@@ -273,7 +272,7 @@ function PANEL:SetContents(title, desc, callback)
 	}
 end
 
-vgui.Register("urf.im/rpui/notifyvote", PANEL, "DButton")
+vgui.Register("urf.im/rpui/notifyvote", PANEL, "EditablePanel")
 
 concommand.Add("notifyvote_debug", function(ply, cmd, args)
 	if not LocalPlayer():IsRoot() then return end

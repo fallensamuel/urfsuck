@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\interact_menu\\ping_system\\vgui\\elements\\subtabs_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local framework = Nexus:ClassManager("Framework")
 local panels = framework:Class("Panels")
 

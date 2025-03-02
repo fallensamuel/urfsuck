@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\derma\\derma_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 if CLIENT then
 	net.Receive("rp.OpenInventory",function()
 		hook.Run("rp.OpenInventory")

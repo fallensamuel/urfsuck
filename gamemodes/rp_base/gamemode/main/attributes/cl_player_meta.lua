@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\attributes\\cl_player_meta.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local PLAYER = FindMetaTable( "Player" );
 
 

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stools\\creator.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 TOOL.AddToMenu = false
 TOOL.ClientConVar[ "type" ] = "0"
 TOOL.ClientConVar[ "name" ] = "0"

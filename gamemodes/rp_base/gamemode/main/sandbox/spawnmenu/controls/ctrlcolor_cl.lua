@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\sandbox\\spawnmenu\\controls\\ctrlcolor_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 --
 --  ___  ___   _   _   _    __   _   ___ ___ __ __
 -- |_ _|| __| / \ | \_/ |  / _| / \ | o \ o \\ V /

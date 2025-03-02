@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\interact_menu\\ping_system\\networking\\client_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 net.Receive("PIS.PlacePing", function(len)
 	local tbl = net.ReadTable()
 

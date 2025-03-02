@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\donations\\src\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 net.Receive("donations.sync", function()
 	local t = net.ReadTable()
 	hook.Add("Think", "donations.sync", function()

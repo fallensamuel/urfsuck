@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stools\\permaprops.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 /*
 	PermaProps
 	Created by Entoros, June 2010
@@ -125,7 +127,20 @@ function TOOL:Reload(trace)
 
 	if not PermaProps then ply:ChatPrint( "ERROR: Lib not found" ) return end
 
-	if (not trace.Entity:IsValid()) then self:GetOwner():ChatPrint( "You have reload all PermaProps !" ) PermaProps.ReloadPermaProps() return false end
+	if (not trace.Entity:IsValid()) then
+		local ply = self:GetOwner();
+		
+		if (not ply:IsRoot()) and ((ply.PermaPropsLastReload or 0) > SysTime()) then
+			ply:ChatPrint( "Please wait before reloading PermaProps!" );
+			return false
+		end
+
+		ply.PermaPropsLastReload = SysTime() + 300;
+		ply:ChatPrint( "You have reload all PermaProps!" );
+		PermaProps.ReloadPermaProps();
+
+		return false
+	end
 
 	if trace.Entity.PermaProps then
 

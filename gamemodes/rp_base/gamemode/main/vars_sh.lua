@@ -1,9 +1,13 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\vars_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 -- Global vars
 nw.Register'TheLaws':Write(net.WriteString):Read(net.ReadString):SetGlobal()
 nw.Register'lockdown':Write(net.WriteUInt, 4):Read(net.ReadUInt, 4):SetGlobal()
 nw.Register'mayorGrace':Write(net.WriteUInt, 32):Read(net.ReadUInt, 32):SetGlobal()
 -- Player Vars
+nw.Register'Carma':Write(net.WriteUInt, 32):Read(net.ReadUInt, 32):SetLocalPlayer()
 nw.Register'HasGunlicense':Write(net.WriteBool):Read(net.ReadBool):SetPlayer()
+nw.Register'IsAFK':Write(net.WriteBool):Read(net.ReadBool):SetPlayer()
 nw.Register'Name':Write(net.WriteString):Read(net.ReadString):SetPlayer()
 nw.Register'Money':Write(net.WriteUInt, 32):Read(net.ReadUInt, 32):SetLocalPlayer()
 nw.Register'Karma':Write(net.WriteUInt, 7):Read(net.ReadUInt, 7):SetLocalPlayer()
@@ -18,7 +22,7 @@ nw.Register'UsergroupExpire':Write(net.WriteUInt, 32):Read(net.ReadUInt, 32):Set
 nw.Register'NextMonsterEat':Write(net.WriteUInt, 32):Read(net.ReadUInt, 32):SetLocalPlayer()
 
 nw.Register"Whitelist":Write(function(tbl)
-	net.WriteUInt(table.Count(tbl), 6)
+	net.WriteUInt(table.Count(tbl), 16)
 
 	for k, v in pairs(tbl) do
 		net.WriteString(k)
@@ -26,7 +30,7 @@ nw.Register"Whitelist":Write(function(tbl)
 end):Read(function()
 	local tbl = {}
 
-	for i = 1, net.ReadUInt(6) do
+	for i = 1, net.ReadUInt(16) do
 		tbl[net.ReadString()] = true
 	end
 
@@ -92,6 +96,24 @@ nw.Register'DisguiseTime':Write(net.WriteUInt, 32):Read(net.ReadUInt, 32):SetLoc
 nw.Register'ShareProps':Write(net.WriteTable):Read(net.ReadTable):SetLocalPlayer()
 nw.Register'PropIsOwned':Write(net.WriteBool):Read(net.ReadBool):Filter(function(self) return self:CPPIGetOwner() end):SetNoSync()
 nw.Register'Credits':Write(net.WriteUInt, 32):Read(net.ReadUInt, 32):SetLocalPlayer()
+
+nw.Register'Timemultipliers':Write(function(t)
+	net.WriteUInt(table.Count(t), 8)
+
+	for k, v in pairs(t) do
+		net.WriteString(k)
+	end
+	
+end):Read(function()
+	local tbl = {}
+
+	for i = 1, net.ReadUInt(8) do
+		tbl[net.ReadString()] = true
+	end
+
+	return tbl
+	
+end):SetLocalPlayer()
 
 nw.Register'Upgrades':Write(function(v)
 	net.WriteUInt(#v, 8)

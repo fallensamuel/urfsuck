@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\chatsounds\\cl_chatsounds.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 --[[
 local function ClientDoVoice(id)
 	net.Start('rp.DoVoice')

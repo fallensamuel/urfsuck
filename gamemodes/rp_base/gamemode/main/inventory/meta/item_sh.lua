@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\meta\\item_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local ITEM = rp.meta.item or {}
 ITEM.__index = ITEM
 ITEM.name = "Undefined"
@@ -23,7 +25,7 @@ end
 
 function ITEM:getDesc()
 	if (!self.desc) then return "ERROR" end
-	
+
 	return (self.desc or "noDesc")
 end
 
@@ -91,10 +93,10 @@ if CLIENT then
 			item.data["count"] = net.ReadUInt(6)
 
 			local panel = item.invID and rp.gui["inv"..item.invID] or rp.gui.inv1
-			
+
 			if (panel and panel.panels) then
 				local icon = panel.panels[id]
-				
+
 				if IsValid(icon) then
 					icon:SetToolTip(item:getName(), item:getDesc() or "")
 				end
@@ -108,7 +110,7 @@ end
 function ITEM:setData(key, value, receivers, noSave, noCheckEntity)
 	self.data = self.data or {}
 	self.data[key] = value
-	
+
 	if SERVER then
 		if !noCheckEntity then
 			local ent = self:getEntity()
@@ -120,7 +122,7 @@ function ITEM:setData(key, value, receivers, noSave, noCheckEntity)
 				ent:setNetVar("data", data)
 			end
 		end
-		
+
 		if (receivers != false) and (receivers or self:getOwner()) then
 			if key == "count" then
 				net.Start('inv.SendCount')
@@ -136,7 +138,7 @@ function ITEM:setData(key, value, receivers, noSave, noCheckEntity)
 			if (rp.db) then
 				rp.db.updateTable({_data = self.data}, nil, "items", "_itemID = "..self:getID())
 			end
-		end	
+		end
 	end
 end
 
@@ -173,12 +175,12 @@ end
 
 function ITEM:getModel()
 	local itemBase = rp.item.list[self.uniqueID]
-	
+
 	if not itemBase then
 		--print(self.uniqueID, self:getData("model"))
 		return self:getData("model") or "models/props_junk/popcan01a.mdl"
 	end
-	
+
 	if itemBase.randomModel then
 		return self:getData("model")
 	else
@@ -210,7 +212,7 @@ function ITEM:postHook(name, func)
 	end
 end
 
-function ITEM:remove()
+function ITEM:remove(sync_ply)
 	local inv = rp.item.inventories[self.invID]
 	local x2, y2
 
@@ -237,6 +239,7 @@ function ITEM:remove()
 			for k, v in pairs(items) do
 				if (v.invID == inv:getID()) then
 					for x = self.gridX, self.gridX + (self.width - 1) do
+						inv.slots[x] = inv.slots[x] or {}
 						for y = self.gridY, self.gridY + (self.height - 1) do
 							inv.slots[x][y] = v.id
 						end
@@ -244,12 +247,28 @@ function ITEM:remove()
 				end
 			end
 
-			if (IsValid(inv.owner) and inv.owner:IsPlayer()) then
+			if IsEntity(inv.owner) and IsValid(inv.owner) and inv.owner:IsPlayer() then
 				inv:sync(inv.owner, true)
+			end
+
+			if IsValid(sync_ply) and sync_ply:IsPlayer() then
+				inv:sync(sync_ply, true)
 			end
 
 			return false
 		end
+
+		timer.Simple(0.25, function()
+			if inv then
+				if IsEntity(inv.owner) and IsValid(inv.owner) and inv.owner:IsPlayer() then
+					inv:sync(inv.owner, true)
+				end
+
+				if IsValid(sync_ply) and sync_ply:IsPlayer() then
+					inv:sync(sync_ply, true)
+				end
+			end
+		end)
 	else
 		local inv = rp.item.inventories[self.invID]
 
@@ -264,7 +283,7 @@ function ITEM:remove()
 		if (IsValid(entity)) then
 			entity:Remove()
 		end
-		
+
 		local receiver = inv.getReceiver and inv:getReceiver()
 
 		if (self.invID != 0) then
@@ -281,7 +300,7 @@ function ITEM:remove()
 			if (item and item.onRemoved) then
 				item:onRemoved()
 			end
-			
+
 			rp._Inventory:Query("DELETE FROM items WHERE _itemID = "..self.id)
 			rp.item.instances[self.id] = nil
 		end
@@ -292,13 +311,16 @@ end
 
 if (SERVER) then
 	function ITEM:getEntity()
-		local id = self:getID()
+		/*local id = self:getID()
 
 		for k, v in ipairs(ents.FindByClass("rp_item")) do
 			if (v.nutItemID == id) then
 				return v
 			end
 		end
+		*/
+
+		return self.ent
 	end
 	-- Spawn an item entity based off the item table.
 	function ITEM:spawn(position, angles)
@@ -317,21 +339,28 @@ if (SERVER) then
 			-- Spawn the actual item entity.
 			local itemBase = rp.item.list[self.uniqueID]
 			local itemClass = "rp_item"
-			
-			if itemBase.itemClass and (not itemBase.base or itemBase.base == 'base_usable') then
+
+			if itemBase.itemClass and ((not itemBase.base or itemBase.base == 'base_usable') or (itemBase.type and itemBase.type == 'entity')) then
 				itemClass = itemBase.itemClass
 			end
 
-			if (IsValid(client) and itemClass ~= 'rp_item' and client:GetCount(itemClass) >= 3) then
-				--print('Limit 3', itemClass, client:GetCount(itemClass))
-				rp.Notify(client, NOTIFY_ERROR, rp.Term('JobLimit'));
-				return
-			end
+			--	if (IsValid(client) and itemClass ~= 'rp_item' and client:GetCount(itemClass) >= 3) then
+			--		--print('Limit 3', itemClass, client:GetCount(itemClass))
+			--		rp.Notify(client, NOTIFY_ERROR, rp.Term('JobLimit'));
+			--		return
+			--	end
 
 			local entity = ents.Create(itemClass)
 			if not IsValid(entity) then
 				entity = ents.Create("rp_item")
 			end
+
+			if entity.SafeSetPos then
+				entity:SafeSetPos(position)
+			else
+				entity:SetPos(position)
+			end
+			entity:SetAngles(angles or Angle(0, 0, 0))
 
 			local oldInitialize = entity.Initialize
 			function entity:Initialize()
@@ -344,19 +373,19 @@ if (SERVER) then
 				end
 
 				if itemBase.onInitialize then
-					itemBase.onInitialize(self)
+					itemBase.onInitialize(self, client, position)
 				end
 			end
 
 			if IsValid(client) then
 				--print(client, entity)
-				
+
 				client:AddCount("rp_item", entity)
-				
+
 				if itemBase.itemClass then
 					client:AddCount(itemBase.itemClass, entity)
 				end
-				
+
 			end
 
 			entity:Spawn()
@@ -369,13 +398,6 @@ if (SERVER) then
 				entity:Setowning_ent(client)
 			end
 			entity.ItemOwner = client
-
-			if entity.SafeSetPos then
-				entity:SafeSetPos(position)
-			else
-				entity:SetPos(position)
-			end
-			entity:SetAngles(angles or Angle(0, 0, 0))
 
 			if (IsValid(client)) then
 				entity.nutSteamID = client:SteamID()
@@ -402,7 +424,7 @@ if (SERVER) then
 	end
 
 	-- Transfers an item to a specific inventory.
-	function ITEM:transfer(invID, x, y, client, noReplication, isLogical, forceStack)	
+	function ITEM:transfer(invID, x, y, client, noReplication, isLogical, forceStack)
 		invID = invID or 0
 
 		if (self.invID == invID) then
@@ -412,7 +434,7 @@ if (SERVER) then
 		local inventory = rp.item.inventories[invID]
 		local curInv = rp.item.inventories[self.invID or 0]
 
-		if (hook.Run("CanItemBeTransfered", self, curInv, inventory) == false) then
+		if (hook.Run("CanItemBeTransfered", self, curInv, inventory, client or self.player) == false) then
 			return false, "notAllowed"
 		end
 
@@ -432,10 +454,22 @@ if (SERVER) then
 		if (!authorized and self.onCanBeTransfered and self:onCanBeTransfered(curInv, inventory) == false) then
 			return false, "notAllowed"
 		end
-		
+
 		if IsValid(client) and invID == 0 then
 			if client:GetCount('rp_item') >= (rp.cfg.DroppedItemsLimit and (rp.cfg.DroppedItemsLimit * 2) or 10) then
 				client:Notify(0, translates.Get("Вы достигли максимума!"));
+				return false
+			end
+
+			local itemBase = rp.item.list[self.uniqueID];
+			local itemClass = "rp_item";
+
+			if itemBase.itemClass and ((not itemBase.base or itemBase.base == 'base_usable') or (itemBase.type and itemBase.type == 'entity')) then
+				itemClass = itemBase.itemClass;
+			end
+
+			if itemClass ~= "rp_item" and client:GetCount(itemClass) >= 3 then
+				rp.Notify(client, NOTIFY_ERROR, rp.Term("JobLimit"));
 				return false
 			end
 		end
@@ -458,13 +492,23 @@ if (SERVER) then
 				if (!x or !y) and !forceStack then
 					return false, "noSpace"
 				end
-				
+
 				local prevID = self.invID
 				local status, result = inventory:add(self.id, count, nil, x, y, noReplication)
-				
+
 				--print('Add item', status, self.id, count)
-				
+
 				if (status) then
+					/*
+					if IsEntity(client) and IsValid(client) then
+						timer.Simple(0.25, function()
+							if curInv and IsValid(client) then
+								curInv:sync(client, true)
+							end
+						end)
+					end
+					*/
+
 					if (self.invID > 0 and prevID != 0) then
 						curInv:remove(self.id, false, true)
 						self.invID = invID
@@ -504,8 +548,12 @@ if (SERVER) then
 				if count > 1 then
 					self:addCount(-1)
 					rp.item.spawn(self.uniqueID, client, function(item, entity)
-						entity:GetPhysicsObject():EnableMotion(true)
-						entity:GetPhysicsObject():Wake()
+						if not IsValid(entity) then return end
+
+						if IsValid(entity:GetPhysicsObject()) then
+							entity:GetPhysicsObject():EnableMotion(true)
+							entity:GetPhysicsObject():Wake()
+						end
 						hook.Run("Inventory.OnItemDrop", item, client, entity)
 					end)
 					return true
@@ -516,9 +564,17 @@ if (SERVER) then
 				rp._Inventory:Query("UPDATE items SET _invID = 0 WHERE _itemID = "..self.id)
 
 				if (isLogical != true) then
-					local entity = self:spawn(client)	
-					entity:GetPhysicsObject():EnableMotion(true)
-					entity:GetPhysicsObject():Wake()
+					local entity = self:spawn(client)
+
+					if not IsValid(entity) then
+						return false
+					end
+
+					if IsValid(entity:GetPhysicsObject()) then
+						entity:GetPhysicsObject():EnableMotion(true)
+						entity:GetPhysicsObject():Wake()
+					end
+
 					hook.Run("Inventory.OnItemDrop", self, client, entity)
 					return entity
 				else

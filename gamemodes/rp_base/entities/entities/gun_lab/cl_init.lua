@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\gun_lab\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include('shared.lua')
 local LocalPlayer = LocalPlayer
 local Color = Color

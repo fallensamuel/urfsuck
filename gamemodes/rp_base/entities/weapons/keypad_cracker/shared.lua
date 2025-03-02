@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\keypad_cracker\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 
 if (SERVER) then
@@ -60,7 +62,7 @@ function SWEP:PrimaryAttack()
 	local ent = tr.Entity
 	self.DoorLockpicking = ent
 
-	if (IsValid(ent) and tr.HitPos:Distance(self.Owner:GetShootPos()) <= 50 and (ent:GetClass() == "keypad" or ent:GetClass() == "urf_keypad" or ent:GetClass() == "keypad_wire" or ent.isForceField)) then
+	if (IsValid(ent) and tr.HitPos:Distance(self.Owner:GetShootPos()) <= 50 and (ent:GetClass() == "keypad" or ent:GetClass() == "urf_keypad" or ent:GetClass() == "urf_keypad_advanced" or ent:GetClass() == "keypad_wire" or ent.isForceField)) then
 		self.IsCracking = true
 		self.StartCrack = CurTime()
 		self.EndCrack = CurTime() + self.KeyCrackTime
@@ -77,26 +79,6 @@ function SWEP:PrimaryAttack()
 					self:EmitSound(self.KeyCrackSound, 50, 100)
 				end
 			end)
-		else
-			self.Dots = self.Dots or ""
-			local entindex = self:EntIndex()
-
-			timer.Create("KeyCrackDots: " .. entindex, 0.5, 0, function()
-				if (not IsValid(self)) then
-					timer.Destroy("KeyCrackDots: " .. entindex)
-				else
-					local len = string.len(self.Dots)
-
-					local dots = {
-						[0] = ".",
-						[1] = "..",
-						[2] = "...",
-						[3] = ""
-					}
-
-					self.Dots = dots[len]
-				end
-			end)
 		end
 
 		hook.Call('PlayerStartKeypadCrack', nil, self.Owner, tr.Entity)
@@ -108,8 +90,6 @@ function SWEP:Holster()
 
 	if (SERVER) then
 		timer.Destroy("KeyCrackSounds: " .. self:EntIndex())
-	else
-		timer.Destroy("KeyCrackDots: " .. self:EntIndex())
 	end
 
 	return true
@@ -126,7 +106,7 @@ function SWEP:Succeed()
 	self:SetHoldType(self.IdleStance)
 
 	if SERVER and IsValid(ent) and tr.HitPos:Distance(self.Owner:GetShootPos()) <= 50 then
-		if (ent:GetClass() == "keypad" or ent:GetClass() == "urf_keypad" or ent:GetClass() == "keypad_wire") then
+		if (ent:GetClass() == "keypad" or ent:GetClass() == "urf_keypad" or ent:GetClass() == "urf_keypad_advanced" or ent:GetClass() == "keypad_wire") then
 			ent:Process(true)
 			net.Start("KeypadCracker_Hold")
 			net.WriteEntity(self)
@@ -145,8 +125,6 @@ function SWEP:Succeed()
 
 	if (SERVER) then
 		timer.Destroy("KeyCrackSounds: " .. self:EntIndex())
-	else
-		timer.Destroy("KeyCrackDots: " .. self:EntIndex())
 	end
 end
 
@@ -160,8 +138,6 @@ function SWEP:Fail()
 		net.WriteBit(true)
 		net.Broadcast()
 		timer.Destroy("KeyCrackSounds: " .. self:EntIndex())
-	else
-		timer.Destroy("KeyCrackDots: " .. self:EntIndex())
 	end
 end
 
@@ -194,7 +170,7 @@ function SWEP:Think()
 			end
 		end
 
-		if (not IsValid(tr.Entity) or tr.HitPos:Distance(self.Owner:GetShootPos()) > 50 or (tr.Entity:GetClass() ~= "keypad" and tr.Entity:GetClass() ~= "urf_keypad" and tr.Entity:GetClass() ~= "keypad_wire" and !tr.Entity:GetClass():find('forcefield'))) then
+		if (not IsValid(tr.Entity) or tr.HitPos:Distance(self.Owner:GetShootPos()) > 50 or (tr.Entity:GetClass() ~= "keypad" and tr.Entity:GetClass() ~= "urf_keypad" and tr.Entity:GetClass() ~= "urf_keypad_advanced" and tr.Entity:GetClass() ~= "keypad_wire" and !tr.Entity:GetClass():find('forcefield'))) then
 			self:Fail()
 		elseif (self.EndCrack <= CurTime()) then
 			self:Succeed()
@@ -210,37 +186,85 @@ function SWEP:Think()
 end
 
 if (CLIENT) then
-	function SWEP:DrawHUD()
-		if self.IsLockPicking then
-			self.Dots = self.Dots or ""
-			local x, y = (ScrW() / 2) - 150, (ScrH() / 2) - 25
-			local w, h = 300, 50
-			local time = self.EndCrack - self.StartCrack
-			local status = (CurTime() - self.StartCrack) / time
-			rp.ui.DrawProgress(x, y, w, h, status)
-			draw.SimpleTextOutlined("Picking lock" .. self.Dots, "HudFont2", ScrW() / 2, ScrH() / 2, Color(255, 255, 255, 255), 1, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, Color(0, 0, 0, 255))
-		end
-	end
+	local WhiteCircle = Material('deathmechanics/circle');
+	local GrayCircle = Material('deathmechanics/cline');
+	local YellowCircle = Material('deathmechanics/gline');
+	local Icon = Material('urfim_hud/icons/weapons/keypad_cracker');
 
-	local cached
-	
-	function SWEP:DrawHUD()
-		if (self.IsCracking) then
-			if (not self.StartCrack) then
-				self.StartCrack = CurTime()
-				self.EndCrack = CurTime() + self.KeyCrackTime
-			end
+	local Width, Height, Poly;
+	local Diameter, Radius, Radian;
+	local StartX, StartY, CenterX, CenterY;
+	local Time, MaxTime;
 
-			if not cached then
-				cached = translates and translates.Get( 'Взлом' ) or 'Взлом'
-			end
-			
-			self.Dots = self.Dots or ""
-			local x, y = (ScrW() / 2) - 150, (ScrH() / 2) - 25
-			local w, h = 300, 50
-			rp.ui.DrawProgress(x, y, w, h, (CurTime() - self.StartCrack) / (self.EndCrack - self.StartCrack))
-			draw.SimpleTextOutlined(cached .. self.Dots, "HudFont2", ScrW() / 2, ScrH() / 2, Color(255, 255, 255, 255), 1, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, Color(0, 0, 0, 255))
+	local Rad, Sin, Cos = math.rad, math.sin, math.cos;
+	local GetScrW, GetScrH = ScrW, ScrH;
+	local Floor = math.floor;
+
+	local SetStencilCompareFunction = render.SetStencilCompareFunction;
+	local SetStencilFailOperation = render.SetStencilFailOperation;
+	local ExperimentalStencil = rpui.ExperimentalStencil;
+	local DrawTexturedRect = surface.DrawTexturedRect;
+	local SetDrawColor = surface.SetDrawColor;
+	local SetMaterial = surface.SetMaterial;
+	local NoTexture = draw.NoTexture;
+	local DrawPoly = surface.DrawPoly;
+
+	function SWEP:DrawHUD()
+		if (!self.IsCracking) then return end
+
+		if (not self.StartCrack) then
+			self.StartCrack = CurTime();
+			self.EndCrack = CurTime() + self.KeyCrackTime;
 		end
+
+		Width, Height = GetScrW(), GetScrH();
+
+		Diameter = Height * .1;
+		Radius = Diameter * .5;
+		Radian = Rad(0);
+
+		StartX = (Width - Diameter) * .5;
+		StartY = (Height - Diameter) * .5;
+		CenterX = StartX + Radius;
+		CenterY = StartY + Radius;
+
+		Poly = {};
+
+		Poly[#Poly + 1] = {x = StartX + Radius, y = StartY + Radius};
+		Poly[#Poly + 1] = {x = CenterX - Sin(Radian) * Radius, y = CenterY - Cos(Radian) * Radius};
+
+		MaxTime = self.EndCrack - self.StartCrack;
+		Time = self.EndCrack - CurTime();
+
+		for Segment = 0, Floor(90 * Time / MaxTime) do
+			Radian = Rad((Segment / 90) * -360);
+			Poly[#Poly + 1] = {x = CenterX - Sin(Radian) * Radius, y = CenterY - Cos(Radian) * Radius};
+		end
+
+		SetDrawColor(255, 255, 255);
+
+		SetMaterial(WhiteCircle);
+		DrawTexturedRect(StartX + 5, StartY + 5, Diameter - 10, Diameter - 10);
+
+		SetMaterial(GrayCircle);
+		DrawTexturedRect(StartX + 3, StartY + 3, Diameter - 6, Diameter - 6);
+
+		NoTexture();
+
+		ExperimentalStencil(function()
+			DrawPoly(Poly);
+
+			SetStencilCompareFunction(STENCIL_NOTEQUAL);
+			SetStencilFailOperation(STENCIL_KEEP);
+
+			SetMaterial(YellowCircle);
+			DrawTexturedRect(StartX + 3, StartY + 3, Diameter - 6, Diameter - 6);
+		end);
+
+		Width = Radius * .5;
+
+		SetMaterial(Icon);
+		DrawTexturedRect(CenterX - Width, CenterY - Width, Radius, Radius);
 	end
 
 	SWEP.DownAngle = Angle(-10, 0, 0)

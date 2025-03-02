@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\npc_scene\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include('shared.lua')
 local render_SetColorModulation = render.SetColorModulation
 local render_SetBlend = render.SetBlend

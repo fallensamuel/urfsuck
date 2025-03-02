@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\fps\\cl_cmds.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 cvar.Register'render_multicore_new':SetDefault(true):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Многоядерный рендеринг (повышает FPS, но иногда вызывает краши)')
 
 local cvar_Get = cvar.GetValue

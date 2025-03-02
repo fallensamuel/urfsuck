@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\capture\\conjunctions\\conj_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ﻿CONJ_NEUTRAL	= 0
 CONJ_WAR 		= 1
 CONJ_UNION 		= 2

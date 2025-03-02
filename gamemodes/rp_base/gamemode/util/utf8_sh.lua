@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\util\\utf8_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 -- $Id: utf8.lua 179 2009-04-03 18:10:03Z pasta $
 --
 -- Provides UTF-8 aware string functions implemented in pure lua:

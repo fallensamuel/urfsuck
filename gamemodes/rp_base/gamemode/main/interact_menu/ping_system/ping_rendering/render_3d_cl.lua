@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\interact_menu\\ping_system\\ping_rendering\\render_3d_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local recFilled = Material("ping_system/rec_fill.png", "smooth")
 local gradientDown = Material("vgui/gradient_down")
 

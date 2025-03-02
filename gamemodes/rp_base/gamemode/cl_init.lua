@@ -1,12 +1,14 @@
+-- "gamemodes\\rp_base\\gamemode\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include("sh_init.lua")
 
 timer.Create("CleanBodys", 60, 0, function()
 	RunConsoleCommand("r_cleardecals")
-	for k, v in ipairs(ents.FindByClass("class C_ClientRagdoll")) do
-		v:Remove()
+	for _, cl_ragdoll in ipairs(ents.FindByClass("class C_ClientRagdoll")) do
+		if not cl_ragdoll.b_DontCleanBodys then cl_ragdoll:Remove() end
 	end
-	for k, v in ipairs(ents.FindByClass("class C_PhysPropClientside")) do
-		v:Remove()
+	for _, cl_ent in ipairs(ents.FindByClass("class C_PhysPropClientside")) do
+		if not cl_ent.b_DontCleanBodys then cl_ent:Remove() end
 	end
 end)
 

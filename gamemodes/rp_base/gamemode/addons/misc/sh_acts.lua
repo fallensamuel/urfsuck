@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\misc\\sh_acts.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local acts = {'cheer', 'laugh', 'muscle', 'zombie', 'robot', 'dance', 'agree', 'becon', 'disagree', 'salute', 'wave', 'forward', 'pers'}
 
 if (SERVER) then

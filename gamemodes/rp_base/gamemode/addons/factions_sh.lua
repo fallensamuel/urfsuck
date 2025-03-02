@@ -1,9 +1,11 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\factions_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 function rp.TeamByID(t)
 	return rp.teams[t]
 end
 
 function PLAYER:GetFaction()
-	return rp.teams and rp.teams[self:Team() or 1] and rp.teams[self:Team() or 1].faction
+	return IsValid(self) and rp.teams and rp.teams[self:Team() or 1] and rp.teams[self:Team() or 1].faction
 end
 
 function PLAYER:GetFactionTable()
@@ -21,7 +23,16 @@ function PLAYER:CanTeam(t)
 		if t.minUnlockTime and self:GetCustomPlayTime(t.minUnlockTimeTag) < t.minUnlockTime then
 			return false
 		end
+		if rp.Experiences and t.unlockExperience and rp.Experiences:GetExperience(self, t.unlockExperience.id) < t.unlockExperience.amount then
+			return false
+		end
 		if !self:TeamUnlocked(t) then
+			return false
+		end
+		if t.likeReactions and self:GetLikeReacts() < t.likeReactions then
+			return false
+		end
+		if hook.Run('PlayerCanTeam', self, t) == false then
 			return false
 		end
 		return true
@@ -117,20 +128,97 @@ function rp.GetFactionTeamsMap(factions, teams)
 	return map
 end
 
-function rp.IsValidFactionChange(ply, faction) 
+function rp.GetFactionNPCs(faction)
+	faction = istable(faction) and faction or rp.Factions[faction]
+
+	local result = {}
+
+	if faction.faction == 1 then
+		for k, v in pairs(rp.Factions) do
+			if v.npcs then
+				for k1, v1 in pairs(v.npcs[game.GetMap()] or {}) do
+					table.insert(result, {
+						v1[1],
+						v1[2],
+						v1[3],
+						faction.BubbleColor,
+						faction.BubbleIcon,
+					})
+				end
+			end
+		end
+
+		return result
+	end
+
+	if faction.npcs then
+		for _, v in pairs(faction.npcs[game.GetMap()] or {}) do
+			table.insert(result, {
+				v[1],
+				v[2],
+				v[3],
+				faction.BubbleColor,
+				faction.BubbleIcon,
+			})
+		end
+	end
+
+	if faction.teammates then
+		for k, v in pairs(faction.teammates) do
+			local fact = rp.Factions[v]
+			if not fact or not fact.npcs then continue end
+
+			for k1, v1 in pairs(fact.npcs[game.GetMap()] or {}) do
+				table.insert(result, {
+					v1[1],
+					v1[2],
+					v1[3],
+					faction.BubbleColor,
+					faction.BubbleIcon,
+				})
+			end
+		end
+	end
+
+	if faction.dialogue_npcs then
+		for _, v in pairs(faction.dialogue_npcs) do
+			table.insert(result, {
+				v:GetPos(),
+				v:GetAngles(),
+				v:GetModel(),
+				faction.BubbleColor,
+				faction.BubbleIcon,
+			})
+		end
+	end
+
+	return result
+end
+
+function rp.IsValidFactionChange(ply, faction)
 	if not rp.cfg.CheckTeamChange or rp.cfg.EnableF4Jobs then return true end
 	if not faction then return false end
-	if faction == 1 then return true end
-	
+	if CLIENT and faction == 1 then return true end
+
 	faction = istable(faction) and faction or rp.Factions[faction]
-	
+
 	local pos = ply:GetPos()
-	pos = Vector(pos.x, pos.y)
-	
+	-- pos = Vector(pos.x, pos.y)
+
+	local npcs = rp.GetFactionNPCs( faction );
+	if #npcs == 0 then return true end
+
+	for k, npcdata in ipairs( npcs ) do
+		if npcdata[1]:DistToSqr( pos ) <= 250000 then
+			return true
+		end
+	end
+
+	--[[
 	if not (faction.npcs and faction.npcs[game.GetMap()] or faction.dialogue_npcs) then
 		return true
 	end
-	
+
 	if faction.npcs and faction.npcs[game.GetMap()] then
 		for _, v in pairs(faction.npcs[game.GetMap()]) do
 			if Vector(v[1].x, v[1].y):DistToSqr(pos) < 250000 then
@@ -138,15 +226,15 @@ function rp.IsValidFactionChange(ply, faction)
 			end
 		end
 	end
-	
-	if faction.teammates then 
+
+	if faction.teammates then
 		local fact
-		
+
 		for k, v in pairs(faction.teammates) do
 			fact = rp.Factions[v]
-			
+
 			if not fact or not fact.npcs or not fact.npcs[game.GetMap()] then continue end
-			
+
 			for k1, v1 in pairs(fact.npcs[game.GetMap()]) do
 				if Vector(v1[1].x, v1[1].y):DistToSqr(pos) < 250000 then
 					return true
@@ -154,7 +242,7 @@ function rp.IsValidFactionChange(ply, faction)
 			end
 		end
 	end
-	
+
 	if faction.dialogue_npcs then
 		for _, v in pairs(faction.dialogue_npcs) do
 			if v:DistToSqr(pos) < 250000 then
@@ -162,24 +250,25 @@ function rp.IsValidFactionChange(ply, faction)
 			end
 		end
 	end
-	
+	]]--
+
 	return false
 end
 
 function rp.CombineFactionTeammates( ... )
-	local factions = {...};
+	local factions = {...}
 
-	for _, f in ipairs( factions ) do
-		local faction = rp.Factions[f];
+	for _, f in pairs( factions ) do
+		local faction = rp.Factions[f or -1]
 		if not faction then continue end
-		
-		for _, tmf in ipairs( factions ) do
-			if tmf ~= f then
-				local teammate_faction = rp.Factions[tmf];
-				if not teammate_faction then continue end
 
-				table.insert( faction.teammates, tmf );
-			end
+		for __, tmf in pairs( factions ) do
+			if tmf == f then continue end
+
+			local teammate_faction = rp.Factions[tmf or -1]
+			if not teammate_faction then continue end
+
+			table.insert( faction.teammates, tmf )
 		end
 	end
 end
@@ -221,22 +310,36 @@ function rp.RegisterFactionKeypadGroup(...)
 	end
 end
 
+function rp.RegisterFactionRumorGroup( ... )
+	local factions = {...};
+
+	local assoc = {};
+	for k, v in ipairs( factions ) do assoc[v] = true; end
+
+	for _, f in ipairs( factions ) do
+		local faction = rp.Factions[f];
+
+		faction.rumorgroup = faction.rumorgroup or {};
+		table.Merge( faction.rumorgroup, assoc );
+	end
+end
+
 
 hook.Add('ConfigLoaded', 'SetupFactionDialogueNPCs', function()
 	if not (rp.cfg.CheckTeamChange and cnQuests and table.Count(cnQuests) > 0) then return end
 	local faction_table
-	
+
 	for _, v in pairs(rp.cfg.DialogueNPCs[game.GetMap()] or {}) do
 		local data = cnQuests[v[3]]
-		
+
 		if data and data.Factions then
 			for __, f in pairs(data:Factions()) do
 				faction_table = rp.Factions[f]
-				
+
 				if not faction_table then continue end
-				
+
 				--print(f, v[1])
-				
+
 				faction_table.dialogue_npcs = faction_table.dialogue_npcs or {}
 				table.insert(faction_table.dialogue_npcs, Vector(v[1].x, v[1].y))
 			end
@@ -245,6 +348,7 @@ hook.Add('ConfigLoaded', 'SetupFactionDialogueNPCs', function()
 	--PrintTable(rp.Factions)
 end)
 
+--[[
 if CLIENT then
 	local size_w, size_h = 1221, 837
 	local matFrame = Material( "stalker_pda_frame.png") -- background png
@@ -283,7 +387,7 @@ if CLIENT then
 			function self:PerformLayout()
 				self.lblTitle:SizeToContents()
 				self.lblTitle:SetPos(5, 3)
-				
+
 				self.btnClose:SetPos(btnCloseX, btnCloseY)
 				self.btnClose:SetSize(50, 28)
 			end
@@ -296,3 +400,4 @@ if CLIENT then
 		end, fr)
 	end
 end
+]]

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\urf_button.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 DEFINE_BASECLASS("base_anim")
 
@@ -8,7 +10,7 @@ end
 function ENT:Initialize()
 	if (SERVER) then
 		self:PhysicsInit(SOLID_VPHYSICS)
-		self:SetMoveType(MOVETYPE_VPHYSICS)
+		self:SetMoveType(MOVETYPE_NONE)
 		self:SetSolid(SOLID_VPHYSICS)
 		self:SetCollisionGroup(COLLISION_GROUP_DEBRIS_TRIGGER)
 		self:SetTrigger( true ) -- тк коллизия отключена ^
@@ -27,15 +29,15 @@ function ENT:StartTouch(ent)
 	if not (ent:IsPlayer() and ent:IsValid()) then return end
 	self:EmitSound('buttons/lightswitch2.wav', 50, 70)
 	if self.Toggled then self:Toggle(!self.On, ent) return end
-	self:Toggle(true, ent) 
+	self:Toggle(true, ent)
 	timer.Destroy('urfpressbutton' .. self:GetCreationID());
 end
 -- self:EmitSound('buttons/button3.wav', 60, 70)
 
 function ENT:EndTouch(ent)
-	if not (ent:IsPlayer() and ent:IsValid()) then return end 
+	if not (ent:IsPlayer() and ent:IsValid()) then return end
 	if self.Toggled then return end
-	
+
 	timer.Create('urfpressbutton' .. self:GetCreationID(), self.Cooldown, 1, function()
 		if (!IsValid(self)) then return end
 		self:Toggle(false, ent);

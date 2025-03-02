@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\player\\data_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 PLAYER.SteamName = PLAYER.SteamName or PLAYER.Name
 
 function PLAYER:Name()
@@ -31,7 +33,7 @@ function PLAYER:Wealth(min, max)
 end
 
 function PLAYER:HasLicense()
-	return (self:GetNetVar('HasGunlicense') or self:GetJobTable().hasLicense)
+	return self:GetNetVar('HasGunlicense') or self:GetJobTable().hasLicense or self:IsDisguised() and self:GetDisguiseJobTable().hasLicense
 end
 
 if SERVER then

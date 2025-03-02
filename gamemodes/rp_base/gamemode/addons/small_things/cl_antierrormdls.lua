@@ -1,67 +1,116 @@
-local pairs, insert, entsGetAll, LocalPlayer, IsValid, ColorAlpha, SimpleText, FindInSphere = pairs, table.insert, ents.GetAll, LocalPlayer, IsValid, ColorAlpha,draw.SimpleText, ents.FindInSphere
-local TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, TEXT_ALIGN_TOP = TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, TEXT_ALIGN_TOP
+-- "gamemodes\\rp_base\\gamemode\\addons\\small_things\\cl_antierrormdls.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
+local color_text = Color( 200, 200, 200 );
+local color_error = Color( 200, 200, 200, 127 );
 
-surface.CreateFont("urf.im/errormodels", {
-	font = "Montserrat", 
-    extended = true,
-    antialias = true,
-    size = 14
-})
+surface.CreateFont( "urf.im/errormodels", {
+	font = "Montserrat",
+	size = ScrH() * 0.015,
+	extended = true,
+} );
 
-local badEnts = {}
-local MaxDist = 125*125
-local txtCol = Color(200, 200, 200)
+local queue = {};
 
-local text1 = translates.Get("Пожалуйста подпишитесь на контент в ESC меню!")
-local text2 = translates.Get("Памятка с информацией по решению проблем: urf.im/page/tech")
+local radius = 384;
+local radius_sqr = math.pow( radius, 2 );
 
-local iserror = {["models/error.mdl"] = true}
+local messages = {
+	[1] = translates.Get( "Пожалуйста подпишитесь на контент в ESC меню!" ),
+	[2] = translates.Get( "Памятка с информацией по решению проблем: urf.im/page/tech" ),
+};
 
-timer.Create("AntiErrorMdls", 5, 0, function()
-	badEnts = {}
+local classes = {
+	["prop_detail"] = true,
+	["prop_static"] = true,
+	["prop_physics"] = true,
+	["prop_ragdoll"] = true,
+	["prop_dynamic"] = true,
+	["prop_physics_multiplayer"] = true,
+	["prop_physics_override"] = true,
+	["prop_dynamic_override"] = true,
+};
 
-	for k, ent in pairs(entsGetAll()) do
-		if iserror[ent:GetModel()] then
-			ent:SetModel("models/props_junk/cardboard_box004a.mdl")
+local co_thread;
+local co_thread_timeout = 0;
 
-			if ent.badents_index then
-				badEnts[ent.badents_index] = nil
-			end
+local thread = function()
+	while true do
+		local t = SysTime();
 
-			local index = insert(badEnts, ent)
-			ent.badents_index = index
-		end
-	end
-end)
-
-hook.Add("HUDPaint", "AntiErrorMdls", function()
-	local lpPos = LocalPlayer():GetPos()
-
-	for k, ent in pairs(badEnts) do
-		if IsValid(ent) == false then
-			badEnts[k] = nil
+		if co_thread_timeout > t then
+			coroutine.yield();
 			continue
 		end
 
-		local pos = ent:GetPos()
-		local dist = pos:DistToSqr(lpPos)
-		if dist >= MaxDist then continue end
+		for k, ent in ipairs( ents.FindInSphere(LocalPlayer():GetPos(), radius) ) do
+			coroutine.yield();
 
-		local pos2d = pos:ToScreen()
+			if not ent:IsValid() then
+				continue
+			end
 
-		local col = ColorAlpha(txtCol, 255 - (dist/MaxDist * 255))
-		SimpleText(text1, "urf.im/errormodels", pos2d.x, pos2d.y, col, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM)
-		SimpleText(text2, "urf.im/errormodels", pos2d.x, pos2d.y, col, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP)
+			if not classes[ent:GetClass()] then
+				continue
+			end
+
+			local mdl = ent:GetModel();
+
+			if not queue[ent] and not util.IsValidModel( mdl ) then
+				queue[ent] = { m = mdl, r = t + 5 };
+			end
+		end
+
+		co_thread_timeout = SysTime() + 1;
 	end
-end)
+end
 
-hook.Add("FixErrorItemShowEntityMenu", "AntiErrorMdls", function(LocalPlayer)
-	if LocalPlayer.HasBlockedInventory and LocalPlayer:HasBlockedInventory() then return true end
+hook.Add( "HUDPaint", "rp.AntiErrorModels::Render", function()
+	local view = LocalPlayer():GetShootPos();
+	local t = SysTime();
 
-	for k, ent in pairs(FindInSphere(LocalPlayer:GetEyeTrace().HitPos, 8)) do
+	if not co_thread or not coroutine.resume( co_thread ) then
+		co_thread = coroutine.create( thread );
+		coroutine.resume( co_thread );
+	end
+
+	for ent, data in pairs( queue ) do
+		if data.r < t then
+			queue[ent] = nil;
+			continue
+		end
+
+		if ent:IsValid() then
+			data.v = ent:GetPos();
+			data.r = t + 5;
+
+			ent:SetModel( "models/props_junk/cardboard_box004a.mdl" );
+		end
+
+		if data.v:DistToSqr( view ) > radius_sqr then
+			continue
+		end
+
+		local tw, th = 0, 0;
+		local screen = data.v:ToScreen();
+		local x, y = screen.x, screen.y;
+
+		tw, th = draw.SimpleText( messages[1], "urf.im/errormodels", x, y, color_text, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP );
+		y = y + th;
+
+		tw, th = draw.SimpleText( messages[2], "urf.im/errormodels", x, y, color_text, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP );
+		y = y + th;
+
+		draw.SimpleText( data.m, "urf.im/errormodels", x, y, color_error, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP );
+	end
+end );
+
+hook.Add( "FixErrorItemShowEntityMenu", "AntiErrorMdls", function( ply )
+	if ply.HasBlockedInventory and ply:HasBlockedInventory() then return true end
+
+	for k, ent in pairs( ents.FindInSphere(ply:GetEyeTrace().HitPos, 8) ) do
 		if ent.badents_index and ent:GetNWBool("isInvItem") then
-            hook.Run("ItemShowEntityMenu", ent)
+            hook.Run( "ItemShowEntityMenu", ent );
 			return true
 		end
 	end
-end)
+end );

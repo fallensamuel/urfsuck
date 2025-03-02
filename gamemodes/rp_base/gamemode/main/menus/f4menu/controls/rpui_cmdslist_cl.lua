@@ -1,1 +1,198 @@
-local ‪ = _G local ‪‪ = ‪['\115\116\114\105\110\103'] local ‪‪‪ = ‪['\98\105\116']['\98\120\111\114'] local function ‪‪‪‪‪‪‪(‪‪‪‪) if ‪‪['\108\101\110'](‪‪‪‪) == 0 then return ‪‪‪‪ end local ‪‪‪‪‪ = '' for _ in ‪‪['\103\109\97\116\99\104'](‪‪‪‪,'\46\46') do ‪‪‪‪‪=‪‪‪‪‪..‪‪['\99\104\97\114'](‪‪‪(‪["\116\111\110\117\109\98\101\114"](_,16),189)) end return ‪‪‪‪‪ end local or‪‪={}or‪‪[‪‪‪‪‪‪‪'efd8dfc8d4d1d9fbd2d3c9ce']=function (else‪‪‪‪‪‪‪‪,return‪‪‪‪‪‪‪‪‪‪‪,end‪‪‪‪‪)‪[‪‪‪‪‪‪‪'cec8cfdbdcded8'][‪‪‪‪‪‪‪'fecfd8dcc9d8fbd2d3c9'](‪‪‪‪‪‪‪'cfcdc8d493fbd2d3c9ce93fed2d0d0dcd3d9cef1d4cec993fedcc9d8dad2cfc4e9d4c9d1d8',{[‪‪‪‪‪‪‪'dbd2d3c9']=‪‪‪‪‪‪‪'f0d2d3c9ced8cfcfdcc9',[‪‪‪‪‪‪‪'d8c5c9d8d3d9d8d9']=true ,[‪‪‪‪‪‪‪'cad8d4dad5c9']=600,[‪‪‪‪‪‪‪'ced4c7d8']=end‪‪‪‪‪*0.035,})‪[‪‪‪‪‪‪‪'cec8cfdbdcded8'][‪‪‪‪‪‪‪'fecfd8dcc9d8fbd2d3c9'](‪‪‪‪‪‪‪'cfcdc8d493fbd2d3c9ce93fed2d0d0dcd3d9cef1d4cec993fed0d9ffc8c9c9d2d3',{[‪‪‪‪‪‪‪'dbd2d3c9']=‪‪‪‪‪‪‪'f0d2d3c9ced8cfcfdcc9',[‪‪‪‪‪‪‪'d8c5c9d8d3d9d8d9']=true ,[‪‪‪‪‪‪‪'cad8d4dad5c9']=500,[‪‪‪‪‪‪‪'ced4c7d8']=end‪‪‪‪‪*0.02,})end local then‪={[‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'dedbda'][‪‪‪‪‪‪‪'f0d8d3c8fedcc9d8dad2cfc4f0dcc4d2cf']]=true ,[‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'dedbda'][‪‪‪‪‪‪‪'f0d8d3c8fedcc9d8dad2cfc4edd2d1d4ded8']]=true ,[‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'dedbda'][‪‪‪‪‪‪‪'f0d8d3c8fedcc9d8dad2cfc4f0d2d3d8c4']]=true ,[‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'dedbda'][‪‪‪‪‪‪‪'f0d8d3c8fedcc9d8dad2cfc4fcdec9d4d2d3ce']]=true ,[‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'dedbda'][‪‪‪‪‪‪‪'f0d8d3c8fedcc9d8dad2cfc4efd2d1d8cdd1dcc4']]=true ,}or‪‪[‪‪‪‪‪‪‪'f4d3d4c9']=function (continue‪‪‪‪‪)continue‪‪‪‪‪[‪‪‪‪‪‪‪'eddccfd8d3c9']=continue‪‪‪‪‪[‪‪‪‪‪‪‪'fad8c9eddccfd8d3c9'](continue‪‪‪‪‪)continue‪‪‪‪‪[‪‪‪‪‪‪‪'dbcfdcd0d8ea'],continue‪‪‪‪‪[‪‪‪‪‪‪‪'dbcfdcd0d8f5']=continue‪‪‪‪‪[‪‪‪‪‪‪‪'eddccfd8d3c9'][‪‪‪‪‪‪‪'fad8c9eed4c7d8'](continue‪‪‪‪‪[‪‪‪‪‪‪‪'eddccfd8d3c9'])continue‪‪‪‪‪[‪‪‪‪‪‪‪'f9d2ded6'](continue‪‪‪‪‪,‪[‪‪‪‪‪‪‪'fbf4f1f1'])continue‪‪‪‪‪[‪‪‪‪‪‪‪'eed8c9eedecfd2d1d1dfdccfead4d9c9d5'](continue‪‪‪‪‪,continue‪‪‪‪‪[‪‪‪‪‪‪‪'dbcfdcd0d8f5']*0.0085)continue‪‪‪‪‪[‪‪‪‪‪‪‪'efd8dfc8d4d1d9fbd2d3c9ce'](continue‪‪‪‪‪,continue‪‪‪‪‪[‪‪‪‪‪‪‪'dbcfdcd0d8ea'],continue‪‪‪‪‪[‪‪‪‪‪‪‪'dbcfdcd0d8f5'])continue‪‪‪‪‪[‪‪‪‪‪‪‪'fed2d3c9dcd4d3d8cf']=‪[‪‪‪‪‪‪‪'cbdac8d4'][‪‪‪‪‪‪‪'fecfd8dcc9d8'](‪‪‪‪‪‪‪'cfcdc8d493fed2d1c8d0d3ebd4d8ca')local ‪if=continue‪‪‪‪‪[‪‪‪‪‪‪‪'fed2d3c9dcd4d3d8cf']‪if[‪‪‪‪‪‪‪'f9d2ded6'](‪if,‪[‪‪‪‪‪‪‪'e9f2ed'])‪if[‪‪‪‪‪‪‪'eed8c9fed2d1c8d0d3ce'](‪if,2)continue‪‪‪‪‪[‪‪‪‪‪‪‪'fcd9d9f4c9d8d0'](continue‪‪‪‪‪,‪if)continue‪‪‪‪‪[‪‪‪‪‪‪‪'fcd1d1d2cad8d9fedcc9ce']={}continue‪‪‪‪‪[‪‪‪‪‪‪‪'fcd1d1d2cad8d9fedcc9ce'][‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'dedbda'][‪‪‪‪‪‪‪'f0d8d3c8fedcc9d8dad2cfc4f0d2d3d8c4']]=true  continue‪‪‪‪‪[‪‪‪‪‪‪‪'fcd1d1d2cad8d9fedcc9ce'][‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'dedbda'][‪‪‪‪‪‪‪'f0d8d3c8fedcc9d8dad2cfc4fcdec9d4d2d3ce']]=true  continue‪‪‪‪‪[‪‪‪‪‪‪‪'fcd1d1d2cad8d9fedcc9ce'][‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'dedbda'][‪‪‪‪‪‪‪'f0d8d3c8fedcc9d8dad2cfc4efd2d1d8cdd1dcc4']]=true  if ‪[‪‪‪‪‪‪‪'f1d2dedcd1edd1dcc4d8cf']()[‪‪‪‪‪‪‪'f4cef0dcc4d2cf'](‪[‪‪‪‪‪‪‪'f1d2dedcd1edd1dcc4d8cf']())then continue‪‪‪‪‪[‪‪‪‪‪‪‪'fcd1d1d2cad8d9fedcc9ce'][‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'dedbda'][‪‪‪‪‪‪‪'f0d8d3c8fedcc9d8dad2cfc4f0dcc4d2cf']]=true  end if ‪[‪‪‪‪‪‪‪'f1d2dedcd1edd1dcc4d8cf']()[‪‪‪‪‪‪‪'f4cefeed'](‪[‪‪‪‪‪‪‪'f1d2dedcd1edd1dcc4d8cf']())or ‪[‪‪‪‪‪‪‪'f1d2dedcd1edd1dcc4d8cf']()[‪‪‪‪‪‪‪'f4cef0dcc4d2cf'](‪[‪‪‪‪‪‪‪'f1d2dedcd1edd1dcc4d8cf']())then continue‪‪‪‪‪[‪‪‪‪‪‪‪'fcd1d1d2cad8d9fedcc9ce'][‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'dedbda'][‪‪‪‪‪‪‪'f0d8d3c8fedcc9d8dad2cfc4edd2d1d4ded8']]=true  end local or‪‪‪‪‪ for repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪elseif in ‪[‪‪‪‪‪‪‪'cddcd4cfce'](‪[‪‪‪‪‪‪‪'dad8c9ded0d9ce']())do or‪‪‪‪‪=false if not then‪[repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪]then for ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪function,break‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ in ‪[‪‪‪‪‪‪‪'cddcd4cfce'](‪‪‪‪‪‪‪‪‪‪‪‪elseif)do if break‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'dec8cec9d2d0']()then or‪‪‪‪‪=true break end end end if not continue‪‪‪‪‪[‪‪‪‪‪‪‪'fcd1d1d2cad8d9fedcc9ce'][repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪]and not or‪‪‪‪‪ then continue end local nil‪‪‪‪=‪[‪‪‪‪‪‪‪'cbdac8d4'][‪‪‪‪‪‪‪'fecfd8dcc9d8'](‪‪‪‪‪‪‪'eddcd3d8d1')nil‪‪‪‪[‪‪‪‪‪‪‪'f9d2ded6'](nil‪‪‪‪,‪[‪‪‪‪‪‪‪'e9f2ed'])nil‪‪‪‪[‪‪‪‪‪‪‪'e9d4c9d1d8']=‪[‪‪‪‪‪‪‪'cbdac8d4'][‪‪‪‪‪‪‪'fecfd8dcc9d8'](‪‪‪‪‪‪‪'f9f1dcdfd8d1',nil‪‪‪‪)local for‪‪=nil‪‪‪‪[‪‪‪‪‪‪‪'e9d4c9d1d8']for‪‪[‪‪‪‪‪‪‪'f9d2ded6'](for‪‪,‪[‪‪‪‪‪‪‪'e9f2ed'])for‪‪[‪‪‪‪‪‪‪'eed8c9e9dcd1d1'](for‪‪,continue‪‪‪‪‪[‪‪‪‪‪‪‪'dbcfdcd0d8f5']*0.065)for‪‪[‪‪‪‪‪‪‪'eed8c9fed2d3c9d8d3c9fcd1d4dad3d0d8d3c9'](for‪‪,5)for‪‪[‪‪‪‪‪‪‪'eed8c9fbd2d3c9'](for‪‪,‪‪‪‪‪‪‪'cfcdc8d493fbd2d3c9ce93fed2d0d0dcd3d9cef1d4cec993fedcc9d8dad2cfc4e9d4c9d1d8')for‪‪[‪‪‪‪‪‪‪'eed8c9e9d8c5c9fed2d1d2cf'](for‪‪,‪[‪‪‪‪‪‪‪'cfcdc8d4'][‪‪‪‪‪‪‪'e8f4fed2d1d2cfce'][‪‪‪‪‪‪‪'ead5d4c9d8'])for‪‪[‪‪‪‪‪‪‪'eed8c9e9d8c5c9'](for‪‪,‪[‪‪‪‪‪‪‪'cec9cfd4d3da'][‪‪‪‪‪‪‪'c8c9db85c8cdcdd8cf'](repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪))for‪‪[‪‪‪‪‪‪‪'eddcd4d3c9']=function (‪‪‪‪‪repeat,until‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪do)‪[‪‪‪‪‪‪‪'cec8cfdbdcded8'][‪‪‪‪‪‪‪'eed8c9f9cfdccafed2d1d2cf'](‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'dedbda'][‪‪‪‪‪‪‪'e8f4fed2d1d2cf']and ‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'dedbda'][‪‪‪‪‪‪‪'e8f4fed2d1d2cf'][‪‪‪‪‪‪‪'ffd1d2ded6f5d8dcd9d8cf']or ‪[‪‪‪‪‪‪‪'cfcdc8d4'][‪‪‪‪‪‪‪'e8f4fed2d1d2cfce'][‪‪‪‪‪‪‪'ffd1dcded6'])‪[‪‪‪‪‪‪‪'cec8cfdbdcded8'][‪‪‪‪‪‪‪'f9cfdccaefd8dec9'](0,0,until‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪do)end nil‪‪‪‪[‪‪‪‪‪‪‪'fed2d3c9dcd4d3d8cf']=‪[‪‪‪‪‪‪‪'cbdac8d4'][‪‪‪‪‪‪‪'fecfd8dcc9d8'](‪‪‪‪‪‪‪'cfcdc8d493fed2d1c8d0d3ebd4d8ca',nil‪‪‪‪)local repeat‪‪‪‪=nil‪‪‪‪[‪‪‪‪‪‪‪'fed2d3c9dcd4d3d8cf']repeat‪‪‪‪[‪‪‪‪‪‪‪'f9d2ded6'](repeat‪‪‪‪,‪[‪‪‪‪‪‪‪'e9f2ed'])repeat‪‪‪‪[‪‪‪‪‪‪‪'eed8c9fed2d1c8d0d3ce'](repeat‪‪‪‪,2)for ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪in,goto‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ in ‪[‪‪‪‪‪‪‪'cddcd4cfce'](‪‪‪‪‪‪‪‪‪‪‪‪elseif)do if not goto‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'dec8cec9d2d0']()then continue end local until‪‪=‪[‪‪‪‪‪‪‪'c8c9d4d1'][‪‪‪‪‪‪‪'feeffe'](‪[‪‪‪‪‪‪‪'cec9cfd4d3da'][‪‪‪‪‪‪‪'c8c9db85d1d2cad8cf'](goto‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'d3dcd0d8']))until‪‪=‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'dedbda'][‪‪‪‪‪‪‪'fed2d0d0dcd3d9f4ded2d3efd8cdd1dcded8d0d8d3c9']and ‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'dedbda'][‪‪‪‪‪‪‪'fed2d0d0dcd3d9f4ded2d3efd8cdd1dcded8d0d8d3c9'][until‪‪]or until‪‪ local ‪‪‪‪‪‪‪‪‪‪not=‪[‪‪‪‪‪‪‪'cbdac8d4'][‪‪‪‪‪‪‪'fecfd8dcc9d8'](‪‪‪‪‪‪‪'f9ffc8c9c9d2d3')‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'f9d2ded6'](‪‪‪‪‪‪‪‪‪‪not,‪[‪‪‪‪‪‪‪'e9f2ed'])‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'eed8c9e9dcd1d1'](‪‪‪‪‪‪‪‪‪‪not,continue‪‪‪‪‪[‪‪‪‪‪‪‪'dbcfdcd0d8f5']*0.065)‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'eed8c9fbd2d3c9'](‪‪‪‪‪‪‪‪‪‪not,‪‪‪‪‪‪‪'cfcdc8d493fbd2d3c9ce93fed2d0d0dcd3d9cef1d4cec993fed0d9ffc8c9c9d2d3')‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'eed8c9e9d8c5c9'](‪‪‪‪‪‪‪‪‪‪not,‪[‪‪‪‪‪‪‪'cec9cfd4d3da'][‪‪‪‪‪‪‪'c8c9db85c8cdcdd8cf'](goto‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'d3dcd0d8']))‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'f0dcc9d8cfd4dcd1']=‪[‪‪‪‪‪‪‪'f0dcc9d8cfd4dcd1'](‪‪‪‪‪‪‪'cfcdc8d492ded2d0d0dcd3d9ce92'..until‪‪)‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'f4ded2d3eed4c7d8']=0.65 ‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'eddcd9d9d4d3da']=continue‪‪‪‪‪[‪‪‪‪‪‪‪'dbcfdcd0d8ea']*0.005 ‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'eddcd4d3c9']=function (if‪‪‪‪‪‪‪‪‪‪,repeat‪‪‪‪‪‪,local‪‪‪‪‪‪‪‪‪‪)if not if‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'ffdcd6d8d9e9d8c5c9']then if‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'ffdcd6d8d9e9d8c5c9'],if‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'ffdcd6d8d9e9d8c5c9f5d8d4dad5c9']=‪[‪‪‪‪‪‪‪'cfcdc8d4'][‪‪‪‪‪‪‪'ffdcd6d8e9d8c5c9'](if‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'fad8c9e9d8c5c9'](if‪‪‪‪‪‪‪‪‪‪),if‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'fad8c9fbd2d3c9'](if‪‪‪‪‪‪‪‪‪‪),repeat‪‪‪‪‪‪-local‪‪‪‪‪‪‪‪‪‪-if‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'eddcd9d9d4d3da']*3,local‪‪‪‪‪‪‪‪‪‪)end local function‪‪‪‪‪‪‪‪‪‪‪,return‪‪‪‪‪=‪[‪‪‪‪‪‪‪'cfcdc8d4'][‪‪‪‪‪‪‪'fad8c9eddcd4d3c9eec9c4d1d8'](if‪‪‪‪‪‪‪‪‪‪,‪[‪‪‪‪‪‪‪'eee9e4f1f8e2e9effcf3eeedfceff8f3e9'])‪[‪‪‪‪‪‪‪'cec8cfdbdcded8'][‪‪‪‪‪‪‪'eed8c9f9cfdccafed2d1d2cf'](function‪‪‪‪‪‪‪‪‪‪‪)‪[‪‪‪‪‪‪‪'cec8cfdbdcded8'][‪‪‪‪‪‪‪'f9cfdccaefd8dec9'](0,0,repeat‪‪‪‪‪‪,local‪‪‪‪‪‪‪‪‪‪)‪[‪‪‪‪‪‪‪'cec8cfdbdcded8'][‪‪‪‪‪‪‪'eed8c9f9cfdccafed2d1d2cf'](‪[‪‪‪‪‪‪‪'cfcdc8d4'][‪‪‪‪‪‪‪'e8f4fed2d1d2cfce'][‪‪‪‪‪‪‪'ead5d4c9d8'])‪[‪‪‪‪‪‪‪'cec8cfdbdcded8'][‪‪‪‪‪‪‪'f9cfdccaefd8dec9'](0,0,local‪‪‪‪‪‪‪‪‪‪,local‪‪‪‪‪‪‪‪‪‪)if if‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'f0dcc9d8cfd4dcd1']then ‪[‪‪‪‪‪‪‪'cec8cfdbdcded8'][‪‪‪‪‪‪‪'eed8c9f0dcc9d8cfd4dcd1'](if‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'f0dcc9d8cfd4dcd1'])‪[‪‪‪‪‪‪‪'cec8cfdbdcded8'][‪‪‪‪‪‪‪'eed8c9f9cfdccafed2d1d2cf'](‪[‪‪‪‪‪‪‪'cfcdc8d4'][‪‪‪‪‪‪‪'e8f4fed2d1d2cfce'][‪‪‪‪‪‪‪'ffd1dcded6'])local while‪‪=(local‪‪‪‪‪‪‪‪‪‪-local‪‪‪‪‪‪‪‪‪‪*‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'f4ded2d3eed4c7d8'])*0.5 ‪[‪‪‪‪‪‪‪'cec8cfdbdcded8'][‪‪‪‪‪‪‪'f9cfdccae9d8c5c9c8cfd8d9efd8dec9'](while‪‪,while‪‪,local‪‪‪‪‪‪‪‪‪‪*‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'f4ded2d3eed4c7d8'],local‪‪‪‪‪‪‪‪‪‪*‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'f4ded2d3eed4c7d8'])end for ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪end in ‪[‪‪‪‪‪‪‪'cddcd4cfce'](if‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'ffdcd6d8d9e9d8c5c9'])do ‪[‪‪‪‪‪‪‪'d9cfdcca'][‪‪‪‪‪‪‪'eed4d0cdd1d8e9d8c5c9'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪end[‪‪‪‪‪‪‪'c9d8c5c9'],if‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'fad8c9fbd2d3c9'](if‪‪‪‪‪‪‪‪‪‪),‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪end[‪‪‪‪‪‪‪'c5']+local‪‪‪‪‪‪‪‪‪‪+if‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'eddcd9d9d4d3da'],‪[‪‪‪‪‪‪‪'cfcdc8d4'][‪‪‪‪‪‪‪'edd2caf2dbe9cad2']((local‪‪‪‪‪‪‪‪‪‪*0.5-if‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'ffdcd6d8d9e9d8c5c9f5d8d4dad5c9']*0.5)+‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪end[‪‪‪‪‪‪‪'c4']),return‪‪‪‪‪)end return true  end ‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'f9d2fed1d4ded6']=‪[‪‪‪‪‪‪‪'d4cecec9cfd4d3da'](goto‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'dedfdcded6'])and function ()‪[‪‪‪‪‪‪‪'cfcd'][‪‪‪‪‪‪‪'efc8d3fed2d0d0dcd3d9'](goto‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'dedfdcded6'])end or goto‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'dedfdcded6']repeat‪‪‪‪[‪‪‪‪‪‪‪'fcd9d9f4c9d8d0'](repeat‪‪‪‪,‪‪‪‪‪‪‪‪‪‪not)‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'f4d3cbdcd1d4d9dcc9d8eddccfd8d3c9'](‪‪‪‪‪‪‪‪‪‪not,true )end nil‪‪‪‪[‪‪‪‪‪‪‪'f4d3cbdcd1d4d9dcc9d8f1dcc4d2c8c9'](nil‪‪‪‪,true )nil‪‪‪‪[‪‪‪‪‪‪‪'eed4c7d8e9d2fed5d4d1d9cfd8d3'](nil‪‪‪‪,false ,true )‪if[‪‪‪‪‪‪‪'fcd9d9f4c9d8d0'](‪if,nil‪‪‪‪)end ‪if[‪‪‪‪‪‪‪'f4d3cbdcd1d4d9dcc9d8eddccfd8d3c9'](‪if,true )‪if[‪‪‪‪‪‪‪'edd8cfdbd2cfd0f1dcc4d2c8c9'](‪if)end or‪‪[‪‪‪‪‪‪‪'eed8c9eecddcded4d3da']=function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else)local ‪return=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local[‪‪‪‪‪‪‪'fed2d3c9dcd4d3d8cf']‪return[‪‪‪‪‪‪‪'eed8c9eecddcded4d3dae5'](‪return,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else)‪return[‪‪‪‪‪‪‪'eed8c9eecddcded4d3dae4'](‪return,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local[‪‪‪‪‪‪‪'eed8c9eedecfd2d1d1dfdccff0dccfdad4d3'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else*0.8)for do‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪until in ‪[‪‪‪‪‪‪‪'cddcd4cfce'](‪return[‪‪‪‪‪‪‪'fad8c9fed5d4d1d9cfd8d3'](‪return))do for ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪goto,repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ in ‪[‪‪‪‪‪‪‪'cddcd4cfce'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪until[‪‪‪‪‪‪‪'fad8c9fed5d4d1d9cfd8d3'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪until))do repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'e9d4c9d1d8'][‪‪‪‪‪‪‪'f9d2ded6f0dccfdad4d3'](repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'e9d4c9d1d8'],0,0,0,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else)repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'fed2d3c9dcd4d3d8cf'][‪‪‪‪‪‪‪'eed8c9eecddcded4d3dae5'](repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'fed2d3c9dcd4d3d8cf'],‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else)repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'fed2d3c9dcd4d3d8cf'][‪‪‪‪‪‪‪'eed8c9eecddcded4d3dae4'](repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'fed2d3c9dcd4d3d8cf'],‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else)repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'f4d3cbdcd1d4d9dcc9d8f1dcc4d2c8c9'](repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,true )repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'eed4c7d8e9d2fed5d4d1d9cfd8d3'](repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,false ,true )end end end ‪[‪‪‪‪‪‪‪'cbdac8d4'][‪‪‪‪‪‪‪'efd8dad4cec9d8cf'](‪‪‪‪‪‪‪'cfcdc8d493fed2d0d0dcd3d9cef1d4cec9',or‪‪,‪‪‪‪‪‪‪'cfcdc8d493eedecfd2d1d1eddcd3d8d1')
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\f4menu\\controls\\rpui_cmdslist_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
+
+local PANEL = {};
+
+function PANEL:RebuildFonts( frameW, frameH )
+    surface.CreateFont( "rpui.Fonts.CommandsList.CategoryTitle", {
+        font     = "Montserrat",
+        extended = true,
+        weight = 600,
+        size     = frameH * 0.035,
+    } );
+
+    surface.CreateFont( "rpui.Fonts.CommandsList.CmdButton", {
+        font     = "Montserrat",
+        extended = true,
+        weight = 500,
+        size     = frameH * 0.02,
+    } );
+end
+
+local CustomCats = {
+	[rp.cfg.MenuCategoryMayor] = true,
+	[rp.cfg.MenuCategoryPolice] = true,
+	[rp.cfg.MenuCategoryMoney] = true,
+	[rp.cfg.MenuCategoryActions] = true,
+	[rp.cfg.MenuCategoryRoleplay] = true,
+}
+
+function PANEL:Init()
+    self.Parent              = self:GetParent();
+    self.frameW, self.frameH = self.Parent.GetSize(self.Parent);
+
+    self:Dock( FILL );
+    self:SetScrollbarWidth( self.frameH * 0.0085 );
+
+    self:RebuildFonts( self.frameW, self.frameH );
+
+    self.Container = vgui.Create( "rpui.ColumnView" );
+	local cont = self.Container;
+	
+    cont:Dock( TOP );
+    cont:SetColumns( 2 );
+    self:AddItem( cont );
+
+    self.AllowedCats = {};
+
+    self.AllowedCats[rp.cfg.MenuCategoryMoney]    = true;
+	self.AllowedCats[rp.cfg.MenuCategoryActions]  = true;
+	self.AllowedCats[rp.cfg.MenuCategoryRoleplay] = true;
+
+	if LocalPlayer():IsMayor() then
+		self.AllowedCats[rp.cfg.MenuCategoryMayor] = true;
+	end
+
+	if LocalPlayer():IsCP() or LocalPlayer():IsMayor() then
+		self.AllowedCats[rp.cfg.MenuCategoryPolice] = true;
+	end
+
+	local can_draw_cat
+    for cat, cmds in pairs( getcmds() ) do
+		can_draw_cat = false
+		
+		if not CustomCats[cat] then
+			for _, cmd in pairs( cmds ) do
+				if cmd.custom() then
+					can_draw_cat = true
+					break
+				end
+			end
+		end
+		
+        if not self.AllowedCats[cat] and not can_draw_cat then continue end
+
+        local CategoryPnl = vgui.Create( "Panel" );
+        CategoryPnl:Dock( TOP );
+
+        CategoryPnl.Title = vgui.Create( "DLabel", CategoryPnl );
+		local title = CategoryPnl.Title;
+		
+        title:Dock( TOP );
+        title:SetTall( self.frameH * 0.065 );
+        title:SetContentAlignment( 5 );
+        title:SetFont( "rpui.Fonts.CommandsList.CategoryTitle" );
+        title:SetTextColor( rpui.UIColors.White );
+        title:SetText( string.utf8upper(cat) );
+        title.Paint = function( this, w, h )
+            surface.SetDrawColor( rp.cfg.UIColor and rp.cfg.UIColor.BlockHeader or rpui.UIColors.Black );
+            surface.DrawRect( 0, 0, w, h );
+        end
+
+        CategoryPnl.Container = vgui.Create( "rpui.ColumnView", CategoryPnl );
+		local container = CategoryPnl.Container;
+		
+        container:Dock( TOP );
+        container:SetColumns( 2 );
+        
+        for _, cmd in pairs( cmds ) do
+            if not cmd.custom() then continue end
+
+			local id = util.CRC(string.utf8lower(cmd.name))
+			id = rp.cfg.CommandIconReplacement and rp.cfg.CommandIconReplacement[id] or id
+			
+            local CmdButton = vgui.Create( "DButton" );
+            CmdButton:Dock( TOP );
+            CmdButton:SetTall( self.frameH * 0.065 );
+            CmdButton:SetFont( "rpui.Fonts.CommandsList.CmdButton" );
+            CmdButton:SetText( string.utf8upper(cmd.name) );
+
+            if cmd.icon then
+                CmdButton.Material = Material( cmd.icon );
+
+                if CmdButton.Material:IsError() then -- first pass:
+                    CmdButton.Material = Material( "rpui/commands/" .. cmd.icon );
+                end
+
+                if CmdButton.Material:IsError() then -- replacement pass:
+                    local rid = rp.cfg.CommandIconReplacement and rp.cfg.CommandIconReplacement[cmd.icon] or cmd.icon;
+                    CmdButton.Material = Material( "rpui/commands/" .. rid );
+                end
+            end
+
+            if CmdButton.Material then
+                if CmdButton.Material:IsError() then
+                    CmdButton.Material = Material( "rpui/commands/" .. id );
+                end
+            else
+                CmdButton.Material = Material( "rpui/commands/" .. id );
+            end
+
+			--print(cmd.name, "rpui/commands/" .. util.CRC(string.utf8lower(cmd.name)))
+            CmdButton.IconSize = 0.65;
+            CmdButton.Padding = self.frameW * 0.005;
+            CmdButton.Paint = function( this, w, h )
+                if not this.BakedText then
+                    this.BakedText, this.BakedTextHeight = rpui.BakeText( this:GetText(), this:GetFont(), w - h - this.Padding * 3, h );
+                end
+
+                local baseColor, textColor = rpui.GetPaintStyle( this, STYLE_TRANSPARENT );
+                surface.SetDrawColor( baseColor );
+                surface.DrawRect( 0, 0, w, h );
+
+                surface.SetDrawColor( rpui.UIColors.White );
+                surface.DrawRect( 0, 0, h, h );
+
+                if this.Material then
+                    surface.SetMaterial( this.Material );
+                    surface.SetDrawColor( rpui.UIColors.Black );
+                    local offset = (h - h * CmdButton.IconSize) * 0.5;
+                    surface.DrawTexturedRect( offset, offset, h * CmdButton.IconSize, h * CmdButton.IconSize );
+                end
+
+                for k, v in pairs( this.BakedText ) do
+                    draw.SimpleText( v.text, this:GetFont(), v.x + h + this.Padding, rpui.PowOfTwo((h * 0.5 - this.BakedTextHeight * 0.5) + v.y), textColor );
+                end
+
+                return true;
+            end
+            CmdButton.DoClick = isstring(cmd.cback) and function()
+                rp.RunCommand(cmd.cback);
+            end or cmd.cback;
+            
+            container:AddItem( CmdButton );
+            CmdButton:InvalidateParent( true );
+        end
+
+        CategoryPnl:InvalidateLayout( true );
+        CategoryPnl:SizeToChildren( false, true );
+
+        cont:AddItem( CategoryPnl );
+    end
+
+    cont:InvalidateParent( true );
+    cont:PerformLayout();
+end
+
+
+function PANEL:SetSpacing( spacing )
+	local cont = self.Container;
+    cont:SetSpacingX( spacing );
+    cont:SetSpacingY( spacing );
+    self:SetScrollbarMargin( spacing * 0.8 );
+
+    for _, column in pairs( cont:GetChildren() ) do
+        for _, CategoryPnl in pairs( column:GetChildren() ) do
+            CategoryPnl.Title.DockMargin( CategoryPnl.Title, 0, 0, 0, spacing );
+
+            CategoryPnl.Container.SetSpacingX( CategoryPnl.Container, spacing );
+            CategoryPnl.Container.SetSpacingY( CategoryPnl.Container, spacing );
+
+            CategoryPnl:InvalidateLayout( true );
+            CategoryPnl:SizeToChildren( false, true );
+        end
+    end
+end
+
+
+vgui.Register( "rpui.CommandsList", PANEL, "rpui.ScrollPanel" );

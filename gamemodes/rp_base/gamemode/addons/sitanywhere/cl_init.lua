@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\sitanywhere\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local CurTime = CurTime
 
 local lastAction = 0

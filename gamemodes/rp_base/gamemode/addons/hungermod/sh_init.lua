@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\hungermod\\sh_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local math_round = math.Round
 local math_max = math.max
 local CurTime = CurTime

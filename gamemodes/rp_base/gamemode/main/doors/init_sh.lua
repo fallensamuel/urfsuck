@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\doors\\init_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local istable = istable
 
 local doorClasses = {
@@ -9,8 +11,22 @@ local doorClasses = {
 }
 
 --['prop_dynamic'] = true,
-function ENTITY:IsDoor()
-	return self:IsVehicle() || (doorClasses[self:GetClass()] or false)
+
+if CLIENT then
+	function ENTITY:IsDoor()
+		if (!IsValid(self)) then return false end
+		return self:IsVehicle() || (doorClasses[self:GetClass()] or false) || self:GetNetVar("IsDoor") || false
+	end
+else
+	function ENTITY:IsDoor()
+		if (!IsValid(self)) then return false end -- im not sure
+
+		if self.IsDoorEnt == nil then
+			self.IsDoorEnt = self:IsVehicle() || (doorClasses[self:GetClass()] or false) || self:GetNetVar("IsDoor") || false
+		end
+		
+		return self.IsDoorEnt
+	end
 end
 
 function PLAYER:CanLockUnlock(ent)
@@ -78,4 +94,9 @@ function ENTITY:DoorGetGroup()
 	return (istable(self:GetNetVar('DoorData')) and (self:GetNetVar('DoorData').Group) or nil)
 end
 
+function ENTITY:DoorGetLocked()
+	return self:GetNetVar('DoorLocked')
+end
+
 nw.Register('DoorData')
+nw.Register('DoorLocked'):Write(net.WriteBool):Read(net.ReadBool)

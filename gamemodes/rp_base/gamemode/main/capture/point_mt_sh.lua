@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\capture\\point_mt_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 local capture_point = {}
 capture_point.__index = capture_point
@@ -111,6 +113,11 @@ function capture_point:SetAddSpeed(speed)
 	return self
 end
 
+function capture_point:SetScorePerMin(scores) 
+	self.score_per_min = scores
+	return self
+end
+
 function capture_point:SetOwnDoors()
 	self.reset_doors = true
 	return self
@@ -148,6 +155,7 @@ function capture_point:AddBonusBox(model)
 	local t = { model = model }
 	
 	t.id = table.insert(self.Boxes, t)
+	t.point_id = self.id
 	
 	setmetatable(t, rp.meta.capture_bbox)
 	return t

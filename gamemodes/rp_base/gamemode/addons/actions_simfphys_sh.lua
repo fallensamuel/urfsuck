@@ -1,6 +1,10 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\actions_simfphys_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 if istable(simfphys) then
 	---
 	local meta = FindMetaTable( "Player" )
+	local IsValid = FindMetaTable("Entity").IsValid
+	
 	function meta:IsDrivingSimfphys()
 		local Car = self:GetSimfphys()
 		local Pod = self:GetVehicle()

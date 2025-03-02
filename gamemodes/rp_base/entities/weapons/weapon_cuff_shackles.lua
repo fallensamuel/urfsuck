@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\weapon_cuff_shackles.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 -------------------------------------
 ---------------- Cuffs --------------
 -------------------------------------
@@ -21,12 +23,12 @@ SWEP.Spawnable = true
 --SWEP.AdminOnly = true
 SWEP.AdminSpawnable = true
 
-SWEP.Slot = 3
+SWEP.Slot = 2
 SWEP.PrintName = "Кандалы"
 
 //
 // Handcuff Vars
-SWEP.CuffTime = 1.0 // Seconds to handcuff
+SWEP.CuffTime = 0.01 // Seconds to handcuff
 SWEP.CuffSound = Sound( "buttons/lever7.wav" )
 
 SWEP.CuffMaterial = "phoenix_storms/cube"

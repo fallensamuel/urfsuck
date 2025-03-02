@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\capture\\captures\\capture_mt_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 rp.meta.capture_action = {}
 rp.meta.capture_action.__index = rp.meta.capture_action

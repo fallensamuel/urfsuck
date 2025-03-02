@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\sandbox\\spawnmenu\\creationmenu\\content\\contentsearch_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 if (not CONTENTSEARCHLOAD) then return end
 AddCSLuaFile()
 PANEL.Base = "Panel"

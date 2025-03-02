@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\emoteactions\\emoteactions_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 if SERVER then
 	util.AddNetworkString( "PlayerAnimAction" );
 	util.AddNetworkString( "PlayerAnimSequence" );
@@ -100,6 +102,9 @@ hook.Add( "Think", "EmoteActions.Think.PlayerChecks", function()
 		if isnumber(ply) or not IsValid(ply) then
 			EmoteActions.PlayerAnims[ply] = nil;
 		else
+			local seqDuration = ply:SequenceDuration();
+			ply:SetCycle( ((SysTime() - EmoteActions.PlayerAnims[ply].Start) % seqDuration) / seqDuration );
+
 			if not ply:Alive() then
 				-- some weird ragdoll fix
 				if CLIENT then
@@ -113,7 +118,9 @@ hook.Add( "Think", "EmoteActions.Think.PlayerChecks", function()
 
 								EmoteActions.LocalPlayer.__ragdollFixed = true;
 								timer.Simple( 0, function()
-									ragdollPhysObj:EnableMotion( true );
+									if (IsValid(ragdollPhysObj)) then
+										ragdollPhysObj:EnableMotion( true );
+									end
 								end );
 							end
 						end

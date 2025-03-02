@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\wos\\metatable_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 --[[-------------------------------------------------------------------
 	wiltOS Hold Type Meta Tables:
 		Creating functions for your Hold Types since 2017

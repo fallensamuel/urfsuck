@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stools\\light.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 TOOL.Category = "Staff"
 TOOL.Name = "#tool.light.name"
 
@@ -70,6 +72,16 @@ function TOOL:LeftClick( trace, attach )
 
 	local lamp = MakeLight( ply, r, g, b, brght, size, toggle, !toggle, key, { Pos = pos, Angle = ang } )
 	
+	local Weld = constraint.Weld(lamp, trace.Entity, 0, trace.PhysicsBone, 0, 0, true);
+	trace.Entity:DeleteOnRemove(Weld);
+	lamp:DeleteOnRemove(Weld);
+	
+	local Physics = lamp:GetPhysicsObject();
+
+	if (IsValid(Physics)) then
+		Physics:EnableCollisions(false);
+	end
+
 	undo.Create( "Light" )
 		undo.AddEntity(lamp)
 		undo.SetPlayer( self:GetOwner() )

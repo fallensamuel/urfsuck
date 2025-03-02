@@ -1,6 +1,14 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\rp_commands\\cl_main.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 net.Receive('SendAnimToClientNet', function(Length)
+	local Player = net.ReadEntity();
+	if not IsValid(Player) then return end
+	
     local Animation = net.ReadUInt(12);
-    LocalPlayer():AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, Animation, true);
+    Player:AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, Animation, true);
+
+	--local Animation = net.ReadUInt(12);
+    --LocalPlayer():AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, Animation, true);
 end);
 
 net.Receive("promocode_menu", function()

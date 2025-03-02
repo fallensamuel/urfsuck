@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\orgs\\org_actions_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 rp.orgs.EmoteActs = {};
 
 rp.AddContextCommand( translates.Get("Действия"), translates.Get("Эмоции огранизации"), function()

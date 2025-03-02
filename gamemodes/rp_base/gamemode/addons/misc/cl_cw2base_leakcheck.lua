@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\misc\\cl_cw2base_leakcheck.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 concommand.Add("cl_cwbase_leakcheck", function(ply)
     if IsValid(ply) and not ply:IsRoot() then return end
 

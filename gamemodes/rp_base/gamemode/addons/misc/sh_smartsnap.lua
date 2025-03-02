@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\misc\\sh_smartsnap.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 if SERVER then
 	resource.AddFile("materials/smartsnap_offsets_default.png")
 end

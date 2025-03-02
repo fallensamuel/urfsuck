@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\items\\base\\sh_usable.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ITEM.name = "Usable base"
 ITEM.model = "models/Items/BoxSRounds.mdl"
 ITEM.width = 1
@@ -19,6 +21,8 @@ ITEM.functions.use = {
 			item.entity:Use(item.player, item.player, USE_ON, 1)
 			return false
 		else
+			hook.Run("Inventory::ItemUse", item.player, item)
+			
 			local ent = item:transfer()
 			
 			local ply = item.player

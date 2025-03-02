@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\universal_npc\\sh_main.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 rp.UniversalNPCs = rp.UniversalNPCs or {}
 
 local _meta = {Name = "none", Sequence = "idle_all_01"}

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\items\\base\\sh_attachment.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ITEM.name = "Attachment Base"
 ITEM.model = "models/Items/BoxSRounds.mdl"
 ITEM.width = 1

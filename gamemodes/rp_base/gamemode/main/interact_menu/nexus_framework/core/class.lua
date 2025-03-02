@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\interact_menu\\nexus_framework\\core\\class.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local CLASS = {}
 CLASS.__constructor = function(self, name) end
 CLASS.__data = {}

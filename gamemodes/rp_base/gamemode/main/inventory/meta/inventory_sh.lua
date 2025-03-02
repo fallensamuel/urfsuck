@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\meta\\inventory_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local META = rp.meta.inventory or {}
 META.__index = META
 META.slots = META.slots or {}
@@ -95,7 +97,7 @@ function META:setOwner(owner, fullUpdate)
 				end
 			end
 		end
-		if owner != nil then
+		if owner != nil and not (IsEntity(owner) and not IsValid(owner)) then
 			rp._Inventory:Query("UPDATE inventories SET _charID = "..(type(owner) == "Player" and owner:SteamID64() or owner).." WHERE _invID = "..self:getID())
 		end
 	end
@@ -185,7 +187,7 @@ function META:remove(id, noReplication, noDelete)
 	for x = 1, self.w do
 		if (self.slots[x]) then
 			for y = 1, self.h do
-				local item = self.slots[x][y]
+				local item = isnumber(self.slots[x][y]) and rp.item.list[self.slots[x][y]] or self.slots[x][y];
 
 				if (item and item.id == id) then
 					self.slots[x][y] = nil
@@ -202,8 +204,26 @@ function META:remove(id, noReplication, noDelete)
 
 		if (type(receiver) == "Player" and IsValid(receiver)) then
 			netstream.Start(receiver, "invRm", id, self:getID())
+			
+			/*
+			timer.Simple(0.25, function()
+				if IsValid(receiver) then
+					self:sync(receiver, true)
+				end
+			end)
+			*/
 		else
 			netstream.Start(receiver, "invRm", id, self:getID(), self.owner)
+			
+			/*
+			if IsEntity(self.owner) then
+				timer.Simple(0.25, function()
+					if IsValid(self.owner) and self.owner:getInv() then
+						self:sync(self.owner, true)
+					end
+				end)
+			end
+			*/
 		end
 
 		if (!noDelete) then
@@ -218,8 +238,8 @@ function META:remove(id, noReplication, noDelete)
 		end
 	end
 
-	if CLIENT then
-		if self:IsEmpty() and self:getID() ~= LocalPlayer():getInv():getID() and IsValid(rp.LootInventory.Panels.InventoryMenu) and rp.LootInventory.Panels.InventoryMenu.PlayerInventory.invID == self:getID() then
+	if CLIENT and IsValid(rp.LootInventory.Panels.InventoryMenu) and LocalPlayer():getInv() and LocalPlayer():getInv().getID and self.getID then
+		if self:IsEmpty() and self:getID() ~= LocalPlayer():getInv():getID() and rp.LootInventory.Panels.InventoryMenu.PlayerInventory.invID == self:getID() then
 			rp.LootInventory.Panels.InventoryMenu.Remove(rp.LootInventory.Panels.InventoryMenu)
 			
 			if IsValid(rp.Inventory.Panels.InventoryMenu) then
@@ -285,6 +305,10 @@ function META:getItems(onlyMain)
 
 	for k, v in pairs(self.slots) do
 		for k2, v2 in pairs(v) do
+			if (isnumber(v2)) then
+				v2 = rp.item.list[v2];
+			end
+
 			if (v2 and !items[v2.id]) then
 				items[v2.id] = v2
 
@@ -558,10 +582,10 @@ if (SERVER) then
 				-- end
 
 				if (x and y) then
-					targetInv.slots[x] = targetInv.slots[x] or {}
-					targetInv.slots[x][y] = item
-					
 					rp.item.instance(targetInv:getID(), uniqueID, data, x, y, function(item)
+						targetInv.slots[x] = targetInv.slots[x] or {}
+						targetInv.slots[x][y] = item
+						
 						item.gridX = x
 						item.gridY = y
 
@@ -605,6 +629,14 @@ if (SERVER) then
 
 		for x, items in pairs(self.slots) do
 			for y, item in pairs(items) do
+				if isnumber(item) then 
+					item = rp.item.list[item]
+				end
+				
+				if not item then
+					continue
+				end
+				
 				if (item.gridX == x and item.gridY == y) then
 					--PrintTable(item.data)
 					--print(item.uniqueID, item.id)

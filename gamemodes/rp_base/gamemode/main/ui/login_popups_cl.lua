@@ -1,47 +1,115 @@
-rp.LoginPopups = {}
+-- "gamemodes\\rp_base\\gamemode\\main\\ui\\login_popups_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
+rp.LoginPopups = {};
 
 function rp.RegisterLoginPopup(weight, show, customcheck)
-    table.insert(rp.LoginPopups, {
+    table.insert( rp.LoginPopups, {
         weight  = weight,
         show    = show,
         customcheck = customcheck,
-    })
+    } );
 
-    table.sort(rp.LoginPopups, function(a, b)
+    table.sort( rp.LoginPopups, function(a, b)
         return a.weight > b.weight
-    end)
+    end );
 end
 
-local function ShowNext()
-    if #rp.LoginPopups < 1 then return end
+--local function ShowNext()
+--    if #rp.LoginPopups < 1 then return end
+--
+--    if vgui.GetKeyboardFocus() or gui.IsGameUIVisible() then return end
+--    local val = table.remove(rp.LoginPopups, select(next(rp.LoginPopups), 1))
+--    if not val then return end
+--    if val.customcheck and val.customcheck() == false then return ShowNext() end
+--
+--    val.show()
+--    return true
+--end
 
-    local val = table.remove(rp.LoginPopups, select(next(rp.LoginPopups), 1))
-    if not val then return end
-    if val.customcheck and val.customcheck() == false then return ShowNext() end
+local cv_loginpopups = cvar.Register('enable_loginpopups'):SetDefault(true):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Включить отображение уведомлений о доступных бонусах');
 
-    val.show()
-    return true
-end
+local function CoroutineFunc_LoginPopups()
+    local wasAlive = LocalPlayer():Alive();
 
-hook.Add("PreDrawHUD", "LoginPopups", function()
-    hook.Remove("PreDrawHUD", "LoginPopups")
-    ShowNext()
+    while true do
+        local popups = rp.LoginPopups or {};
+        coroutine.yield();
 
-    local LocalPlayer = LocalPlayer()
+        if LocalPlayer():Alive() then
+            if wasAlive then
+                local somethingShown = false;
 
-    local alive = true
-    hook.Add("PreDrawHUD", "LoginPopups", function()
-        local now = LocalPlayer:Alive()
+                for key, val in ipairs( popups ) do
+                    wasAlive = LocalPlayer():Alive();
+                    if not wasAlive then break end
 
-        if alive == false and now then
-            if not ShowNext() then
-                hook.Remove("PreDrawHUD", "LoginPopups")
+                    coroutine.yield();
+
+                    if vgui.GetKeyboardFocus() or gui.IsGameUIVisible() then continue end
+                    if val.customcheck and val.customcheck() == false then continue end
+
+                    if not somethingShown then
+                        somethingShown = true;
+                    end
+
+                    if cv_loginpopups:GetValue() then
+                        val.show();
+                    end
+                end
+
+                if somethingShown then
+                    wasAlive = false;
+                end
+            end
+        else
+            if not wasAlive then
+                wasAlive = true;
             end
         end
+    end
+end
 
-        alive = now
+hook.Add( "CreateMove", "rp.LoginPopups", function( cmd )
+    if cmd:GetButtons() < 1 then return end
+    hook.Remove( "CreateMove", "rp.LoginPopups" );
+
+    local CoroutineThread_LoginPopups;
+    hook.Add( "PreDrawHUD", "rp.LoginPopups", function()
+        hook.Remove( "PreDrawHUD", "rp.LoginPopups" );
+
+        timer.Create( "LoginPopup.Carousel", 0.25, 0, function()
+            if (not CoroutineThread_LoginPopups) or (not coroutine.resume(CoroutineThread_LoginPopups) ) then
+                CoroutineThread_LoginPopups = coroutine.create( CoroutineFunc_LoginPopups );
+                coroutine.resume( CoroutineThread_LoginPopups );
+            end
+        end );
+    end );
+end );
+
+--[[
+hook.Add("PreDrawHUD", "LoginPopups", function()
+    hook.Remove("PreDrawHUD", "LoginPopups")
+
+	timer.Simple(5, function()
+		ShowNext()
+
+		local LocalPlayer = LocalPlayer()
+
+		local alive = true
+		hook.Add("PreDrawHUD", "LoginPopups", function()
+			local now = LocalPlayer:Alive()
+
+			if alive == false and now then
+				if not ShowNext() then
+					hook.Remove("PreDrawHUD", "LoginPopups")
+				end
+			end
+
+			alive = now
+		end)
     end)
 end)
+]--
 
 --[[ Дропает попапы по очерёдно, при первом спавне. (1 окно в фокусе, как только игрок его закроет - откроется второе и так пока не кончатся)
 hook.Add("PreDrawHUD", "LoginPopups", function()
@@ -59,23 +127,60 @@ end)
 
 local articlePattern = "<a href=\"/(@.-)%?.-article__title\">(.-)</span>.-article__description\">(.-)</p>.-article__info\">(.-)</span>.-url%((.-)%)";
 local content3
-            
+
 for k, v in pairs(rp.cfg.MoTD or {}) do
     if v[1] == translates.Get('Группа ВК') then
         content3 = v[2]
         break
     end
 end
-        
+
 rp.cfg.VKGroup = (content3 ~= rp.cfg.VKGroup and rp.cfg.VKGroup) or content3
-    
+
+local month_to_number = {
+    ["янв"] = 1,
+    ["фев"] = 2,
+    ["мар"] = 3,
+    ["апр"] = 4,
+    ["май"] = 5,
+    ["июн"] = 6,
+    ["июл"] = 7,
+    ["авг"] = 8,
+    ["сен"] = 9,
+    ["окт"] = 10,
+    ["ноя"] = 11,
+    ["дек"] = 12,
+}
+
+local CurrentYear = 1970
+local year_secs = 31536000
+CurrentYear = CurrentYear + math.floor(os.time() / year_secs)
+
+local function ParseTextDate(txt_date) -- example input: 22 ноя в 16:20
+    local i = 0
+    local data = {}
+
+    txt_date:gsub("%S+", function(w)
+        i = i + 1
+        data[i] = w
+    end)
+
+	if not data[4] or not month_to_number[ string.lower(data[2]) ] then
+		return os.time()
+
+	else
+		local time = data[4]:Split(":")
+		return os.time({day = data[1], month = month_to_number[ string.lower(data[2]) ], year = CurrentYear, hour = time[1], min = time[2], sec = 0}) or 0
+	end
+end
+
 local function GetServerUpdates(callback)
     http.Fetch(rp.cfg.VKGroup:Replace("vk.com/", "vk.com/@"), function(body)
         local articles = {}
 
         for href, title, desc, stats, image in string.gmatch(body, articlePattern) do
             local article = {}
-            
+
             article.hash = util.CRC(href)
             article.href = "https://vk.com/".. href
             article.title = title
@@ -83,10 +188,12 @@ local function GetServerUpdates(callback)
 
             article.stats = {}
             stats = string.Explode(" · ", stats)
-            article.stats.date = stats[1] or translates.Get("1 янв 1970")
+            article.stats.date = stats[1] or translates.Get("1 янв в 12:34")
             article.stats.viewercount = stats[2] or translates.Get("0 просмотров")
-                    
+
             article.image = image
+            article.time = ParseTextDate(article.stats.date)
+
             table.insert(articles, article)
         end
 
@@ -129,15 +236,15 @@ local function CreateUpdatePanel(article)
         surface.CreateFont("rpui.Fonts.UpdatePanel.Title", {
             font = "Montserrat",
             extended = true,
-            weight = 700,
+            weight = 600,
             size = frameH * 0.125,
         })
 
         surface.CreateFont("rpui.Fonts.UpdatePanel.Description", {
             font = "Montserrat",
             extended = true,
-            weight = 500,
-            size = frameH * 0.085,
+            weight = 400,
+            size = frameH * 0.09,
         })
 
         surface.CreateFont("rpui.Fonts.UpdatePanel.Stats", {
@@ -210,8 +317,11 @@ local function CreateUpdatePanel(article)
     return UpdatePanel
 end
 
+local maxTime = os.time() + 60*60*24*7
+
 GetServerUpdates(function(articles)
     local k, article = next(articles)
+    if not article or article.time > maxTime then return end
 
     rp.RegisterLoginPopup(100, function()
         cookie.Set(article.hash, 1)

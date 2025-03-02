@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\inventory\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 if SERVER then
 	AddCSLuaFile("shared.lua")
 end
@@ -9,6 +11,9 @@ if CLIENT then
 	SWEP.DrawAmmo = false
 	SWEP.DrawCrosshair = false
 end
+
+SWEP.SelectorCategory		= translates.Get("РОЛЕПЛЕЙ")
+SWEP.WeaponSelectorIcon		= 10
 
 -- Variables that are used on both client and server
 SWEP.Instructions = "ПКМ открыть инвентарь"

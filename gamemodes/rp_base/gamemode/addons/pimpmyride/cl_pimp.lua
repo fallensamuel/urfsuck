@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\pimpmyride\\cl_pimp.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 PIMP = PIMP or {}
 
 local meh --cl scene

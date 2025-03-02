@@ -1,9 +1,56 @@
+-- "gamemodes\\rp_base\\entities\\entities\\universal_npc\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include("shared.lua")
 
 ENT.RenderGroup = RENDERGROUP_BOTH
 
 function ENT:Draw()
     self:DrawModel()
+end
+
+function ENT:GetActionsContnets()
+    return {
+        {
+            text = translates.Get("Торговать"),
+            material = Material("bubble_hints/cart.png"),
+            color = Color(255, 255, 255),
+            func = function()
+                rp.OpenVendorNpcMenu(self)
+            end,
+            access = function() return isstring(self:GetObject().Vendor) end
+        },
+        {
+            text = translates.Get("Сменить работу"),
+            material = Material("ping_system/u_job.png"),
+            color = Color(255, 255, 255),
+            func = function()
+                local f       = self:GetObject().EmployerFaction
+                local faction = rp.Factions[f];
+
+                if (rpui and rpui.EnableUIRedesign or rpui.DebugMode) and faction.teammates and not rp.cfg.ForceFaction then
+                    rp.OpenEmployerMenu({f, unpack(faction.teammates)}, f);
+                else
+                    rp.OpenEmployerMenu(f, nil, rp.cfg.ForceFaction);
+                end
+            end,
+            access = function() return isnumber(self:GetObject().EmployerFaction) end
+        },
+        {
+            text = translates.Get("Переехать"),
+            material = Material("ping_system/u_cspawn.png"),
+            color = Color(255, 255, 255),
+            func = function()
+                rp.SelectSpawn(self:GetObject().Spawnpoint)
+            end,
+            access = function() return isnumber(self:GetObject().Spawnpoint) end
+        },
+    }
+end
+
+function ENT:GetAllowedActions()
+    return table.filter(table.Copy(self:GetActionsContnets()), function(v, i)
+        return not v.access or v.access()
+    end)
 end
 
 local frame
@@ -15,50 +62,25 @@ net.Receive("universal_npc", function()
     local ent = ents.GetByIndex( net.ReadUInt(32) )
     local LocalPlayer = LocalPlayer()
 
+    local contents = ent:GetAllowedActions()
+
+    if table.Count(allowed) < 2 then
+        local _, v = next(allowed)
+        if v and v.func then
+            v.func(LocalPlayer())
+        end
+        return
+    end
+
     frame = _NexusPanelsFramework:Call("Create", "PIS.Radial")
     frame:SetSize(ScrW(), ScrH())
     frame:SetPos(0, 0)
     frame.SelectedPlayer = ent
     frame.KeyCode = KEY_E
-    frame:SetCustomContents({
-        {
-            text = translates.Get("Торговать"),
-            material = Material("ping_system/u_trade.png"),
-            color = Color(255, 255, 255),
-            func = function(ply, pnl)
-                rp.OpenVendorNpcMenu(ent)
-            end,
-            access = function() return isstring(ent:GetObject().Vendor) end
-        },
-        {
-            text = translates.Get("Сменить работу"),
-            material = Material("ping_system/u_job.png"),
-            color = Color(255, 255, 255),
-            func = function(ply, pnl)
-                local f       = ent:GetObject().EmployerFaction
-                local faction = rp.Factions[f];
-
-                if (rpui and rpui.EnableUIRedesign or rpui.DebugMode) and faction.teammates and not rp.cfg.ForceFaction then
-                    rp.OpenEmployerMenu({f, unpack(faction.teammates)}, f);
-                else
-                    rp.OpenEmployerMenu(f, nil, rp.cfg.ForceFaction);
-                end
-            end,
-            access = function() return isnumber(ent:GetObject().EmployerFaction) end
-        },
-        {
-            text = translates.Get("Переехать"),
-            material = Material("ping_system/u_cspawn.png"),
-            color = Color(255, 255, 255),
-            func = function(ply, pnl)
-                rp.SelectSpawn(ent:GetObject().Spawnpoint)
-            end,
-            access = function() return isnumber(ent:GetObject().Spawnpoint) end
-        },
-    })
+    frame:SetCustomContents(contents)
 end)
 
-
+--[[
 local _txt = (translates and translates.Get("[E] Поговорить")) or "[E] Поговорить"
 
 local color_green, color_white, maxDist = Color(127, 255, 127, 255), Color(245, 245, 245), 800^2
@@ -88,3 +110,4 @@ function ENT:Initialize()
         self:DrawTranslucent()
     end)
 end
+]]--

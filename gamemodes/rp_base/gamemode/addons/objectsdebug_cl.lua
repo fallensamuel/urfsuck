@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\objectsdebug_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local Find = ents.FindByClass;
 local Print = chat.AddText;
 local GetAll = ents.GetAll;

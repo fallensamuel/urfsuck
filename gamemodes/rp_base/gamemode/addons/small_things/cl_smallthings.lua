@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\small_things\\cl_smallthings.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local pos, update, LocalPlayer = Vector(0, 0, 0), false, LocalPlayer
 local mVec = FindMetaTable("Vector")
 local DistToSqr = mVec.DistToSqr
@@ -80,8 +82,9 @@ local foot_sounds_cp = {Sound("npc/metropolice/gear1.wav"),Sound("npc/metropolic
 local zombie_sounds = {Sound("npc/zombie/foot1.wav"),Sound("npc/zombie/foot2.wav"),Sound("npc/zombie/foot3.wav")}
 ]]--
 
+local math_Round = math.Round
 local table_Random = table.Random
-local step_sound
+local step_sound, jtab, ftab
 
 hook('PlayerFootstep', function(client, position, foot, soundName, volume)
 	
@@ -89,20 +92,38 @@ hook('PlayerFootstep', function(client, position, foot, soundName, volume)
 		step_sound = nil
 
 		if client:GetJobTable() and client:GetJobTable().silentsteps then
-			if client:GetVelocity():Length() == client:GetRunSpeed() then
+			if math_Round(client:GetVelocity():Length()) >= client:GetRunSpeed() then
 				return true
 			end
 		end
 		
 		if client:IsDisguised() then
-			local jtab = client:GetDisguiseJobTable()
-			step_sound = jtab and (jtab.footstepSound or (rp.Factions[jtab.faction] and rp.Factions[jtab.faction].footstepSound))
+			jtab = client:GetDisguiseJobTable()
+			--step_sound = jtab and (jtab.footstepSound or (rp.Factions[jtab.faction] and rp.Factions[jtab.faction].footstepSound))
+			
+			if jtab then
+				if jtab.footstepSound ~= nil then
+					step_sound = jtab.footstepSound
+					
+				elseif rp.Factions[jtab.faction] and rp.Factions[jtab.faction].footstepSound ~= nil then
+					step_sound = rp.Factions[jtab.faction].footstepSound
+				end
+			end
 		else 
-			step_sound = client:GetJobTable() and client:GetJobTable().footstepSound
-		end
-		
-		if step_sound == nil then
-			step_sound = client:GetFactionTable() and client:GetFactionTable().footstepSound
+			jtab = client:GetJobTable()
+			
+			--step_sound = client:GetJobTable() and client:GetJobTable().footstepSound or client:GetFactionTable() and client:GetFactionTable().footstepSound
+			
+			if jtab and jtab.footstepSound ~= nil then
+				step_sound = jtab.footstepSound
+				
+			else
+				ftab = client:GetFactionTable()
+				
+				if ftab and ftab.footstepSound ~= nil then
+					step_sound = ftab.footstepSound
+				end
+			end
 		end
 		
 		if step_sound == nil then
@@ -117,14 +138,4 @@ hook('PlayerFootstep', function(client, position, foot, soundName, volume)
 			return true
 		end
 	end
-	
-	--[[
-	if client:IsCombineOrDisguised() then
-		if volume > 0.4 then 
-			client:EmitSound(r(ply:GetFaction() == FACTION_OTA && foot_sounds_ota || foot_sounds_cp), 75, 100, volume)
-		end
-	elseif client:IsZombie() then
-		client:EmitSound(r(zombie_sounds), 75, 100, volume)
-	end
-	]]--
 end)

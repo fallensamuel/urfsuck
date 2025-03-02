@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\car_interface\\cl_carint.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ﻿local v
 local IsValid = IsValid
 local draw = draw

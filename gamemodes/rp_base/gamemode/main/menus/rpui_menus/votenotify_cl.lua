@@ -1,1 +1,375 @@
-local ‪ = _G local ‪‪ = ‪['\115\116\114\105\110\103'] local ‪‪‪ = ‪['\98\105\116']['\98\120\111\114'] local function ‪‪‪‪‪‪‪(‪‪‪‪) if ‪‪['\108\101\110'](‪‪‪‪) == 0 then return ‪‪‪‪ end local ‪‪‪‪‪ = '' for _ in ‪‪['\103\109\97\116\99\104'](‪‪‪‪,'\46\46') do ‪‪‪‪‪=‪‪‪‪‪..‪‪['\99\104\97\114'](‪‪‪(‪["\116\111\110\117\109\98\101\114"](_,16),92)) end return ‪‪‪‪‪ end local or‪=‪[‪‪‪‪‪‪‪'113d28392e353d30']local ‪‪‪until=function (continue‪‪‪‪‪‪‪)return or‪(continue‪‪‪‪‪‪‪,‪‪‪‪‪‪‪'2f3133332834',‪‪‪‪‪‪‪'32333f303d312c')end ‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'3f3a3b'][‪‪‪‪‪‪‪'0a33283908252c392f']=‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'3f3a3b'][‪‪‪‪‪‪‪'0a33283908252c392f']or {}‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'3f3a3b'][‪‪‪‪‪‪‪'0a33283908252c392f'][‪‪‪‪‪‪‪'3f33323629323f28353332']={[‪‪‪‪‪‪‪'2835283039']=‪[‪‪‪‪‪‪‪'282e3d322f303d28392f']and ‪[‪‪‪‪‪‪‪'282e3d322f303d28392f'][‪‪‪‪‪‪‪'1b3928'](‪‪‪‪‪‪‪'8cc88ce48ce38ce78ce28ce08cec8dde8ce48dd3')or ‪‪‪‪‪‪‪'8cc88ce48ce38ce78ce28ce08cec8dde8ce48dd3',[‪‪‪‪‪‪‪'353f33']=‪‪‪until(‪‪‪‪‪‪‪'38352c3033313d3f25733d303025353f6a68722c323b')}‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'3f3a3b'][‪‪‪‪‪‪‪'0a33283908252c392f'][‪‪‪‪‪‪‪'30332828392e25']={[‪‪‪‪‪‪‪'34393d38392e2835283039']=‪[‪‪‪‪‪‪‪'282e3d322f303d28392f']and ‪[‪‪‪‪‪‪‪'282e3d322f303d28392f'][‪‪‪‪‪‪‪'1b3928'](‪‪‪‪‪‪‪'8cc78ce28dde8ce98ddc8ce98dd3')or ‪‪‪‪‪‪‪'8cc78ce28dde8ce98ddc8ce98dd3',[‪‪‪‪‪‪‪'2835283039']=‪[‪‪‪‪‪‪‪'282e3d322f303d28392f']and ‪[‪‪‪‪‪‪‪'282e3d322f303d28392f'][‪‪‪‪‪‪‪'1b3928'](‪‪‪‪‪‪‪'8cc68ddf8ce38ce48dde8dd07c8ced8ce48ce78ce98dde63')or ‪‪‪‪‪‪‪'8cc68ddf8ce38ce48dde8dd07c8ced8ce48ce78ce98dde63',[‪‪‪‪‪‪‪'353f33']=‪‪‪until(‪‪‪‪‪‪‪'2f34332c732f393030722c323b')}‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'3f3a3b'][‪‪‪‪‪‪‪'0a33283908252c392f'][‪‪‪‪‪‪‪'34352e39']={[‪‪‪‪‪‪‪'2835283039']=‪[‪‪‪‪‪‪‪'282e3d322f303d28392f']and ‪[‪‪‪‪‪‪‪'282e3d322f303d28392f'][‪‪‪‪‪‪‪'1b3928'](‪‪‪‪‪‪‪'8cc18cec8dcd8ce0')or ‪‪‪‪‪‪‪'8cc18cec8dcd8ce0',[‪‪‪‪‪‪‪'353f33']=‪‪‪until(‪‪‪‪‪‪‪'2c35323b032f252f283931733a333030332b722c323b'),[‪‪‪‪‪‪‪'153f330f35263911293028']=1.5}‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'3f3a3b'][‪‪‪‪‪‪‪'0a33283908252c392f'][‪‪‪‪‪‪‪'2b3d2e2e3d3228']={[‪‪‪‪‪‪‪'2835283039']=‪[‪‪‪‪‪‪‪'282e3d322f303d28392f']and ‪[‪‪‪‪‪‪‪'282e3d322f303d28392f'][‪‪‪‪‪‪‪'1b3928'](‪‪‪‪‪‪‪'8cc28ced8dd78ddd8ce6')or ‪‪‪‪‪‪‪'8cc28ced8dd78ddd8ce6',[‪‪‪‪‪‪‪'353f33']=‪‪‪until(‪‪‪‪‪‪‪'2c35323b032f252f283931732c3330353f3903292c722c323b')}‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'3f3a3b'][‪‪‪‪‪‪‪'0a33283908252c392f'][‪‪‪‪‪‪‪'383931332839']={[‪‪‪‪‪‪‪'34393d38392e2835283039']=‪[‪‪‪‪‪‪‪'282e3d322f303d28392f']and ‪[‪‪‪‪‪‪‪'282e3d322f303d28392f'][‪‪‪‪‪‪‪'1b3928'](‪‪‪‪‪‪‪'8cff8cee8ce28ce78dd08ce18ce98ce18ce48ce9')or ‪‪‪‪‪‪‪'8cff8cee8ce28ce78dd08ce18ce98ce18ce48ce9',[‪‪‪‪‪‪‪'2835283039']=‪‪‪‪‪‪‪'',[‪‪‪‪‪‪‪'353f33']=‪‪‪until(‪‪‪‪‪‪‪'2e2c29357331352f3f733a303d3b722c323b')}‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'3f3a3b'][‪‪‪‪‪‪‪'0a33283908252c392f'][‪‪‪‪‪‪‪'332e3b35322a352839']={[‪‪‪‪‪‪‪'34393d38392e2835283039']=‪[‪‪‪‪‪‪‪'282e3d322f303d28392f']and ‪[‪‪‪‪‪‪‪'282e3d322f303d28392f'][‪‪‪‪‪‪‪'1b3928'](‪‪‪‪‪‪‪'8cc28ddc8cef8cec8ce18ce48ceb8cec8dda8ce48dd3')or ‪‪‪‪‪‪‪'8cc28ddc8cef8cec8ce18ce48ceb8cec8dda8ce48dd3',[‪‪‪‪‪‪‪'2835283039']=‪[‪‪‪‪‪‪‪'282e3d322f303d28392f']and ‪[‪‪‪‪‪‪‪'282e3d322f303d28392f'][‪‪‪‪‪‪‪'1b3928'](‪‪‪‪‪‪‪'8cf98ce28dde8ce98ce78ce47c8ced8dd77c8cee8dd77c8ce38ddc8ce48ddd8ce28ce98ce88ce48ce18ce48dde8dd08ddd8dd37c8ce6')or ‪‪‪‪‪‪‪'8cf98ce28dde8ce98ce78ce47c8ced8dd77c8cee8dd77c8ce38ddc8ce48ddd8ce28ce98ce88ce48ce18ce48dde8dd08ddd8dd37c8ce6',[‪‪‪‪‪‪‪'353f33']=‪‪‪until(‪‪‪‪‪‪‪'2c35323b032f252f283931733d3838332e3b722c323b'),[‪‪‪‪‪‪‪'153f330f35263911293028']=2}‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'3f3a3b'][‪‪‪‪‪‪‪'0a33283908252c392f'][‪‪‪‪‪‪‪'3133293228']={[‪‪‪‪‪‪‪'34393d38392e2835283039']=‪[‪‪‪‪‪‪‪'282e3d322f303d28392f']and ‪[‪‪‪‪‪‪‪'282e3d322f303d28392f'][‪‪‪‪‪‪‪'1b3928'](‪‪‪‪‪‪‪'8cce8ce98ddc8dd98ce28cee8cec8dd37c8ce98ceb8ce88cec')or ‪‪‪‪‪‪‪'8cce8ce98ddc8dd98ce28cee8cec8dd37c8ce98ceb8ce88cec',[‪‪‪‪‪‪‪'2835283039']=‪[‪‪‪‪‪‪‪'282e3d322f303d28392f']and ‪[‪‪‪‪‪‪‪'282e3d322f303d28392f'][‪‪‪‪‪‪‪'1b3928'](‪‪‪‪‪‪‪'8cc48ce08dd37c8ce18cec8ce98ceb8ce88ce18ce48ce68cec667c')or ‪‪‪‪‪‪‪'8cc48ce08dd37c8ce18cec8ce98ceb8ce88ce18ce48ce68cec667c',[‪‪‪‪‪‪‪'353f33']=‪‪‪until(‪‪‪‪‪‪‪'2c35323b032f252f283931733133293228722c323b'),[‪‪‪‪‪‪‪'153f330f35263911293028']=2}for ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not=1,120 do ‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'3f3a3b'][‪‪‪‪‪‪‪'0a33283908252c392f'][‪‪‪‪‪‪‪'30332828392e25'..‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not]=‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'3f3a3b'][‪‪‪‪‪‪‪'0a33283908252c392f'][‪‪‪‪‪‪‪'30332828392e25']end local ‪‪‪‪true,for‪‪‪‪,local‪=‪[‪‪‪‪‪‪‪'0f3f2e0b'],‪[‪‪‪‪‪‪‪'2c3d352e2f'],‪[‪‪‪‪‪‪‪'152f0a3d303538']local until‪‪=‪[‪‪‪‪‪‪‪'323928']local goto‪‪=‪[‪‪‪‪‪‪‪'1f292e08353139']local local‪‪‪‪‪‪‪=‪[‪‪‪‪‪‪‪'10333f3d300c303d25392e']local and‪‪‪=‪[‪‪‪‪‪‪‪'34333337']local ‪‪‪elseif=‪[‪‪‪‪‪‪‪'2c3d352e2f']local for‪‪‪‪‪‪‪‪‪‪‪‪=‪[‪‪‪‪‪‪‪'152f0a3d303538']local then‪‪‪=‪[‪‪‪‪‪‪‪'283d3e3039']local until‪=‪[‪‪‪‪‪‪‪'313d2834']local else‪‪‪‪‪‪‪‪‪‪‪‪‪=‪[‪‪‪‪‪‪‪'28332f282e35323b']local goto‪‪‪‪‪‪‪‪‪‪‪‪=‪[‪‪‪‪‪‪‪'283531392e']‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d3239302f']=‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d3239302f']or {}local do‪‪‪‪‪‪‪‪‪‪‪‪‪‪=400 local goto‪‪‪‪‪‪‪‪‪‪=45 local ‪in=0.5*do‪‪‪‪‪‪‪‪‪‪‪‪‪‪ local local‪‪‪‪‪‪‪‪=0.5*goto‪‪‪‪‪‪‪‪‪‪ local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪break=function ()return ‪‪‪‪true()*0.25-‪in end local elseif‪‪=function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪nil)local nil‪‪‪‪‪‪‪‪‪‪‪‪‪=0 local ‪‪‪‪‪‪‪‪‪‪‪‪‪elseif=0 for return‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do in for‪‪‪‪(‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d3239302f'])do if not local‪(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do)then ‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d3239302f'][return‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪]=nil continue end ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'0335']=nil‪‪‪‪‪‪‪‪‪‪‪‪‪ local ‪‪‪‪‪‪‪‪‪‪nil=goto‪‪‪‪‪‪‪‪‪‪*nil‪‪‪‪‪‪‪‪‪‪‪‪‪+(‪‪‪‪‪‪‪‪‪‪‪‪‪elseif and (local‪(‪[‪‪‪‪‪‪‪'2b3433'])and ‪[‪‪‪‪‪‪‪'2b3433'][‪‪‪‪‪‪‪'0335']or 0)<nil‪‪‪‪‪‪‪‪‪‪‪‪‪ and ‪‪‪‪‪‪‪‪‪‪‪‪‪elseif or 0)if local‪(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'2c332c292c'])then ‪‪‪‪‪‪‪‪‪‪‪‪‪elseif=‪‪‪‪‪‪‪‪‪‪‪‪‪elseif+‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'2c332c292c'][‪‪‪‪‪‪‪'1b3928083d3030'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'2c332c292c'])end if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪nil then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'0f39280c332f'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do,‪‪‪‪‪‪‪‪‪‪‪‪‪‪break(),‪‪‪‪‪‪‪‪‪‪nil)else ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'11332a390833'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do,‪‪‪‪‪‪‪‪‪‪‪‪‪‪break(),‪‪‪‪‪‪‪‪‪‪nil,0.15)end ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'133211332a390833'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do,‪‪‪‪‪‪‪‪‪‪‪‪‪‪break(),‪‪‪‪‪‪‪‪‪‪nil,0.15,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪nil)nil‪‪‪‪‪‪‪‪‪‪‪‪‪=nil‪‪‪‪‪‪‪‪‪‪‪‪‪+1 end end local end‪‪‪‪‪=function (‪‪‪‪‪‪‪‪‪‪‪false,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪in,function‪,do‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,do‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and=goto‪‪()local until‪‪‪‪‪‪=do‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ or (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪in..‪‪‪‪‪‪‪'')if function‪==0 then function‪=100 end local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪for=‪[‪‪‪‪‪‪‪'2f282e35323b'][‪‪‪‪‪‪‪'3a353238'](‪‪‪‪‪‪‪‪‪‪‪false,‪‪‪‪‪‪‪'20')local ‪‪‪‪‪‪‪‪‪‪‪‪‪not=‪‪‪‪‪‪‪'' if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪for then ‪‪‪‪‪‪‪‪‪‪‪‪‪not=‪‪‪‪‪‪‪‪‪‪‪false[‪‪‪‪‪‪‪'2f293e'](‪‪‪‪‪‪‪‪‪‪‪false,1,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪for-1)‪‪‪‪‪‪‪‪‪‪‪false=‪‪‪‪‪‪‪‪‪‪‪false[‪‪‪‪‪‪‪'2f293e'](‪‪‪‪‪‪‪‪‪‪‪false,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪for+1,999)end local return‪‪‪‪=‪[‪‪‪‪‪‪‪'2f282e35323b'][‪‪‪‪‪‪‪'3a353238'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪in,‪‪‪‪‪‪‪'20')if return‪‪‪‪ then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪in=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪in[‪‪‪‪‪‪‪'2f293e'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪in,0,return‪‪‪‪-1)end local ‪‪‪‪‪‪‪‪‪false for ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local,not‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ in for‪‪‪‪(‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d3239302f'])do if local‪(not‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)and local‪(not‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'2c332c292c'])then ‪‪‪‪‪‪‪‪‪false=true break end end local ‪‪‪‪‪‪‪or=‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'3f3a3b'][‪‪‪‪‪‪‪'0a33283908252c392f'][‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪in]local‪‪‪‪‪‪‪()[‪‪‪‪‪‪‪'193135280f33293238'](local‪‪‪‪‪‪‪(),‪‪‪‪‪‪‪'08332b3272386d0328332b32036c6e033930392a3e3930306d',100,100)local or‪‪‪‪‪‪=function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'0f39280c332f'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break,‪[‪‪‪‪‪‪‪'0f3f2e0b']()*0.5-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'1b39280b353839'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break)*0.5,0)end ‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228']=‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228']or ‪[‪‪‪‪‪‪‪'2a3b2935'][‪‪‪‪‪‪‪'1f2e393d2839'](‪‪‪‪‪‪‪'0c3d323930')‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228'][‪‪‪‪‪‪‪'0f39280f352639'](‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228'],‪[‪‪‪‪‪‪‪'0f3f2e0b']()*0.5,‪[‪‪‪‪‪‪‪'0f3f2e14']()*0.5)or‪‪‪‪‪‪(‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228'])and‪‪‪[‪‪‪‪‪‪‪'1d3838'](‪‪‪‪‪‪‪'13321f33322839242811393229132c3932',‪‪‪‪‪‪‪'123328353a250a332839720f39280c3d2e393228',function ()‪[‪‪‪‪‪‪‪'3b031f33322839242811393229'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228']=‪[‪‪‪‪‪‪‪'3b031f33322839242811393229'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228']or ‪[‪‪‪‪‪‪‪'2a3b2935'][‪‪‪‪‪‪‪'1f2e393d2839'](‪‪‪‪‪‪‪'0c3d323930',‪[‪‪‪‪‪‪‪'3b031f33322839242811393229'])‪[‪‪‪‪‪‪‪'3b031f33322839242811393229'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228'][‪‪‪‪‪‪‪'0f39280f352639'](‪[‪‪‪‪‪‪‪'3b031f33322839242811393229'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228'],‪[‪‪‪‪‪‪‪'0f3f2e0b']()*0.5,‪[‪‪‪‪‪‪‪'0f3f2e14']()*0.5)or‪‪‪‪‪‪(‪[‪‪‪‪‪‪‪'3b031f33322839242811393229'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228'])for ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪while,not‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ in ‪‪‪elseif(‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228'][‪‪‪‪‪‪‪'1b39281f343530382e3932'](‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228']))do not‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'0f39280c3d2e393228'](not‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪[‪‪‪‪‪‪‪'3b031f33322839242811393229'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228'])if for‪‪‪‪‪‪‪‪‪‪‪‪(not‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'2c332c292c'])then not‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'2c332c292c'][‪‪‪‪‪‪‪'0f39280c3d2e393228'](not‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'2c332c292c'],‪[‪‪‪‪‪‪‪'3b031f33322839242811393229'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228'])end end end )and‪‪‪[‪‪‪‪‪‪‪'1d3838'](‪‪‪‪‪‪‪'13321f333228392428113932291f30332f39',‪‪‪‪‪‪‪'123328353a250a332839720f39280c3d2e393228',function ()if for‪‪‪‪‪‪‪‪‪‪‪‪(‪[‪‪‪‪‪‪‪'3b031f33322839242811393229'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228'])then for ‪‪‪‪‪‪and,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪goto in ‪‪‪elseif(‪[‪‪‪‪‪‪‪'3b031f33322839242811393229'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228'][‪‪‪‪‪‪‪'1b39281f343530382e3932'](‪[‪‪‪‪‪‪‪'3b031f33322839242811393229'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228']))do ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪goto[‪‪‪‪‪‪‪'0f39280c3d2e393228'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪goto,‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228'])if for‪‪‪‪‪‪‪‪‪‪‪‪(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪goto[‪‪‪‪‪‪‪'2c332c292c'])then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪goto[‪‪‪‪‪‪‪'2c332c292c'][‪‪‪‪‪‪‪'0f39280c3d2e393228'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪goto[‪‪‪‪‪‪‪'2c332c292c'],‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228'])end end end end )local if‪‪‪‪=‪[‪‪‪‪‪‪‪'2a3b2935'][‪‪‪‪‪‪‪'1f2e393d2839'](‪‪‪‪‪‪‪'292e3a723531732e2c293573323328353a252a332839',‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d2e393228'])if‪‪‪‪[‪‪‪‪‪‪‪'2d29392f283533321518']=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪in if‪‪‪‪[‪‪‪‪‪‪‪'283d3e033532383924']=then‪‪‪[‪‪‪‪‪‪‪'35322f392e28'](‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d3239302f'],if‪‪‪‪)if‪‪‪‪[‪‪‪‪‪‪‪'0f39280f352639'](if‪‪‪‪,do‪‪‪‪‪‪‪‪‪‪‪‪‪‪,goto‪‪‪‪‪‪‪‪‪‪)if‪‪‪‪[‪‪‪‪‪‪‪'0f39280c332f'](if‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪break(),-goto‪‪‪‪‪‪‪‪‪‪)if then‪‪‪[‪‪‪‪‪‪‪'1f33293228'](‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d3239302f'])>0 then local nil‪‪‪‪‪‪‪‪‪‪‪‪=then‪‪‪[‪‪‪‪‪‪‪'1b3928103d2f280a3d302939'](‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d3239302f'])nil‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'303d2f282c3d323930']=if‪‪‪‪ end if not ‪‪‪‪‪‪‪‪‪false then if‪‪‪‪[‪‪‪‪‪‪‪'3e2832'][‪‪‪‪‪‪‪'18331f30353f37'](‪[‪‪‪‪‪‪‪'3e2832'])end if‪‪‪‪[‪‪‪‪‪‪‪'0f3928153f3332'](if‪‪‪‪,‪‪‪‪‪‪‪or and ‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'353f33']or ‪‪‪‪‪‪‪'2f3f332e393e333d2e3873292f392e3b2e33292c2f73293b036d722c323b')if‪‪‪‪[‪‪‪‪‪‪‪'0f39280835283039'](if‪‪‪‪,‪‪‪‪‪‪‪or and ‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'34393d38392e2835283039']or ‪[‪‪‪‪‪‪‪'282e3d322f303d28392f']and ‪[‪‪‪‪‪‪‪'282e3d322f303d28392f'][‪‪‪‪‪‪‪'1b3928'](‪‪‪‪‪‪‪'8ccf8ce28ce78ce28ddd8ce28cee8cec8ce18ce48ce9')or ‪‪‪‪‪‪‪'8ccf8ce28ce78ce28ddd8ce28cee8cec8ce18ce48ce9')if‪‪‪‪[‪‪‪‪‪‪‪'0f39281a333228'](if‪‪‪‪,‪‪‪‪‪‪‪'2e2c2935722c303d25392e2f3930393f28722835283039')if‪‪‪‪[‪‪‪‪‪‪‪'153f330f35263911293028']=‪‪‪‪‪‪‪or and ‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'153f330f35263911293028']or 1 if‪‪‪‪[‪‪‪‪‪‪‪'0834353237']=function (while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)local function‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪=until‪[‪‪‪‪‪‪‪'3f393530'](function‪-(goto‪‪()-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and))while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'0835283039']=‪‪‪‪‪‪‪or and ‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'34393d38392e2835283039']and (‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'34393d38392e2835283039']..‪‪‪‪‪‪‪'667c'..else‪‪‪‪‪‪‪‪‪‪‪‪‪(until‪[‪‪‪‪‪‪‪'3d3e2f'](function‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)))or ‪[‪‪‪‪‪‪‪'282e3d322f303d28392f']and ‪[‪‪‪‪‪‪‪'282e3d322f303d28392f'][‪‪‪‪‪‪‪'1b3928'](‪‪‪‪‪‪‪'8ccf8ce28ce78ce28ddd8ce28cee8cec8ce18ce48ce9667c792f',else‪‪‪‪‪‪‪‪‪‪‪‪‪(until‪[‪‪‪‪‪‪‪'3d3e2f'](function‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)))or (‪‪‪‪‪‪‪'8ccf8ce28ce78ce28ddd8ce28cee8cec8ce18ce48ce9667c'..else‪‪‪‪‪‪‪‪‪‪‪‪‪(until‪[‪‪‪‪‪‪‪'3d3e2f'](function‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)))local ‪‪‪‪‪‪‪‪‪in=while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'1b39280c3d2e393228'](while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)[‪‪‪‪‪‪‪'1b39281f34353038'](while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'1b39280c3d2e393228'](while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪),#while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'1b39280c3d2e393228'](while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)[‪‪‪‪‪‪‪'1b39281f343530382e3932'](while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'1b39280c3d2e393228'](while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪))-1)while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'182e3d2b1b2e3d3835393228']=local‪(‪‪‪‪‪‪‪‪‪in)if while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'182e3d2b1b2e3d3835393228']and (‪‪‪‪‪‪‪‪‪in==while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ or while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'152f132c39323938'])then while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'182e3d2b1b2e3d3835393228']=nil end if while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'11332a390834353237']then elseif‪‪(true )end if function‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪<=0 then while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'123311332a39']=true while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'1f30332f39'](while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end end if‪‪‪‪[‪‪‪‪‪‪‪'0f39281f3332283932282f'](if‪‪‪‪,(‪‪‪‪‪‪‪or and ‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'2835283039']or ‪‪‪‪‪‪‪'')..‪‪‪‪‪‪‪'7c'..‪‪‪‪‪‪‪‪‪‪‪‪‪not,‪‪‪‪‪‪‪‪‪‪‪false,function ()if do‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ then local‪‪‪‪‪‪‪()[‪‪‪‪‪‪‪'1f33321f3331313d3238'](local‪‪‪‪‪‪‪(),‪‪‪‪‪‪‪'2a3328397c'..until‪‪‪‪‪‪..‪‪‪‪‪‪‪'7c25393d56')else local‪‪‪‪‪‪‪()[‪‪‪‪‪‪‪'1f33321f3331313d3238'](local‪‪‪‪‪‪‪(),‪‪‪‪‪‪‪'3d322f7c'..until‪‪‪‪‪‪..‪‪‪‪‪‪‪'7c6d56')end if‪‪‪‪[‪‪‪‪‪‪‪'1f30332f39'](if‪‪‪‪)end )if‪‪‪‪[‪‪‪‪‪‪‪'1e2928283332123318331f30353f37']=function ()if do‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ then local‪‪‪‪‪‪‪()[‪‪‪‪‪‪‪'1f33321f3331313d3238'](local‪‪‪‪‪‪‪(),‪‪‪‪‪‪‪'2a3328397c'..until‪‪‪‪‪‪..‪‪‪‪‪‪‪'7c323d2556')else local‪‪‪‪‪‪‪()[‪‪‪‪‪‪‪'1f33321f3331313d3238'](local‪‪‪‪‪‪‪(),‪‪‪‪‪‪‪'3d322f7c'..until‪‪‪‪‪‪..‪‪‪‪‪‪‪'7c6e56')end if‪‪‪‪[‪‪‪‪‪‪‪'1f30332f39'](if‪‪‪‪)end if‪‪‪‪[‪‪‪‪‪‪‪'0c2e390e3931332a39']=function (true‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d3239302f'][if‪‪‪‪[‪‪‪‪‪‪‪'283d3e033532383924']]=nil elseif‪‪()end if‪‪‪‪[‪‪‪‪‪‪‪'13321f30332f39']=function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪nil)elseif‪‪()end if‪‪‪‪[‪‪‪‪‪‪‪'13320c332c292c0f3526390833']=function (in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,while‪‪‪‪‪,local‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif)elseif‪‪(true )in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'11332a390834353237']=true end if‪‪‪‪[‪‪‪‪‪‪‪'13320c332c292c0f3526390833193238']=function (then‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪until,nil‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,do‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)goto‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'0f35312c3039'](0.1,function ()if for‪‪‪‪‪‪‪‪‪‪‪‪(then‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)then then‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'11332a390834353237']=nil end end )end elseif‪‪()end until‪‪[‪‪‪‪‪‪‪'0e393f39352a39'](‪‪‪‪‪‪‪'18330d29392f28353332',function ()if local‪‪‪‪‪‪‪()[‪‪‪‪‪‪‪'152f1e3d32323938'](local‪‪‪‪‪‪‪())then return end local not‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪=until‪‪[‪‪‪‪‪‪‪'0e393d380f282e35323b']()local true‪‪‪‪‪‪‪‪‪=until‪‪[‪‪‪‪‪‪‪'0e393d380f282e35323b']()local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local=until‪‪[‪‪‪‪‪‪‪'0e393d381a30333d28']()end‪‪‪‪‪(not‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,true‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local)end )until‪‪[‪‪‪‪‪‪‪'0e393f39352a39'](‪‪‪‪‪‪‪'173530300d29392f283533320a1b0915',function ()local in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪=until‪‪[‪‪‪‪‪‪‪'0e393d380f282e35323b']()for for‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ in ‪‪‪elseif(‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d3239302f'])do if for‪‪‪‪‪‪‪‪‪‪‪‪(while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)and while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'2d29392f283533321518']==in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ then while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'1f30332f39'](while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end end end )‪[‪‪‪‪‪‪‪'292f392e31392f2f3d3b39'][‪‪‪‪‪‪‪'14333337'](‪‪‪‪‪‪‪'18330a332839',function (repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)if local‪‪‪‪‪‪‪()[‪‪‪‪‪‪‪'152f1e3d32323938'](local‪‪‪‪‪‪‪())then return end local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪false=repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'0e393d380f282e35323b'](repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)local end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪=repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'0e393d380f34332e28'](repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)local then‪‪‪‪‪‪‪=repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'0e393d381a30333d28'](repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)local ‪‪‪‪‪‪‪‪function=repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'0e393d380f282e35323b'](repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end‪‪‪‪‪(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪false,‪‪‪‪‪‪‪'383931332839',then‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪function,end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end )‪[‪‪‪‪‪‪‪'292f392e31392f2f3d3b39'][‪‪‪‪‪‪‪'14333337'](‪‪‪‪‪‪‪'173530300a3328390a1b0915',function (goto‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪in=goto‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'0e393d380f34332e28'](goto‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)for return‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not in ‪‪‪elseif(‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d3239302f'])do if for‪‪‪‪‪‪‪‪‪‪‪‪(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not)and ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'2d29392f283533321518']==‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪in then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not[‪‪‪‪‪‪‪'1f30332f39'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not)end end end )‪[‪‪‪‪‪‪‪'3f33323f3331313d3238'][‪‪‪‪‪‪‪'1d3838'](‪‪‪‪‪‪‪'323328353a252a3328390338393e293b0331393229',function ()if not local‪‪‪‪‪‪‪()[‪‪‪‪‪‪‪'152f0e333328'](local‪‪‪‪‪‪‪())then return end if local‪(‪[‪‪‪‪‪‪‪'323328353a252a3328390338393e293b0331393229'])then ‪[‪‪‪‪‪‪‪'323328353a252a3328390338393e293b0331393229'][‪‪‪‪‪‪‪'0e3931332a39'](‪[‪‪‪‪‪‪‪'323328353a252a3328390338393e293b0331393229'])return end ‪[‪‪‪‪‪‪‪'323328353a252a3328390338393e293b0331393229']=‪[‪‪‪‪‪‪‪'2a3b2935'][‪‪‪‪‪‪‪'1f2e393d2839'](‪‪‪‪‪‪‪'181a2e3d3139')‪[‪‪‪‪‪‪‪'323328353a252a3328390338393e293b0331393229'][‪‪‪‪‪‪‪'0f39280f352639'](‪[‪‪‪‪‪‪‪'323328353a252a3328390338393e293b0331393229'],330,150)‪[‪‪‪‪‪‪‪'323328353a252a3328390338393e293b0331393229'][‪‪‪‪‪‪‪'0f39280c332f'](‪[‪‪‪‪‪‪‪'323328353a252a3328390338393e293b0331393229'],‪[‪‪‪‪‪‪‪'0f3f2e0b']()*0.5-330*0.5,‪[‪‪‪‪‪‪‪'0f3f2e14']()-150)‪[‪‪‪‪‪‪‪'323328353a252a3328390338393e293b0331393229'][‪‪‪‪‪‪‪'0f39281133292f3915322c292819323d3e303938'](‪[‪‪‪‪‪‪‪'323328353a252a3328390338393e293b0331393229'],true )local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else={{[‪‪‪‪‪‪‪'282428']=‪‪‪‪‪‪‪'1f30393d2e',[‪‪‪‪‪‪‪'3a29323f']=function ()for elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,for‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ in ‪‪‪elseif(‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d3239302f'])do if not local‪(for‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)then ‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d3239302f'][elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪]=nil continue end for‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'1f30332f39'](for‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end end },{[‪‪‪‪‪‪‪'282428']=‪‪‪‪‪‪‪'1f2e393d2839',[‪‪‪‪‪‪‪'3a29323f']=function ()end‪‪‪‪‪(‪‪‪‪‪‪‪'8cfa8ce98ce18cec667c'..‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'1a332e313d281133323925'](1000),‪‪‪‪‪‪‪'30332828392e25',30,‪‪‪‪‪‪‪'')end },{[‪‪‪‪‪‪‪'282428']=‪‪‪‪‪‪‪'0c2e353228',[‪‪‪‪‪‪‪'3a29323f']=function ()for ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪true,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else in ‪‪‪elseif(‪[‪‪‪‪‪‪‪'2e2c'][‪‪‪‪‪‪‪'123328353a250a3328390c3d3239302f'])do ‪[‪‪‪‪‪‪‪'2c2e353228'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪true,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else[‪‪‪‪‪‪‪'283d3e033532383924'])end end }}for while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪=1,#‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else do local ‪‪‪‪‪in=while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪-1 local in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪=‪[‪‪‪‪‪‪‪'2a3b2935'][‪‪‪‪‪‪‪'1f2e393d2839'](‪‪‪‪‪‪‪'181e2928283332',‪[‪‪‪‪‪‪‪'323328353a252a3328390338393e293b0331393229'])in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'0f39280f352639'](in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,100,100)in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'0f392808392428'](in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else[while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪][‪‪‪‪‪‪‪'282428'])in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'0f39280c332f'](in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪in*110+5,40)in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'18331f30353f37']=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else[while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪][‪‪‪‪‪‪‪'3a29323f']‪[‪‪‪‪‪‪‪'323328353a252a3328390338393e293b0331393229'][‪‪‪‪‪‪‪'3e2832'..while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪]=in‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ end end )
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\rpui_menus\\votenotify_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
+local OldMaterial = Material
+local Material = function(s)
+    return OldMaterial(s, "smooth", "noclamp")
+end
+
+rp.cfg.VoteTypes = rp.cfg.VoteTypes or {}
+
+rp.cfg.VoteTypes["conjunction"] = {
+    title = translates and translates.Get("Дипломатия") or "Дипломатия",
+    ico = Material("diplomacy/allyic64.png")
+}
+rp.cfg.VoteTypes["lottery"] = {
+    headertitle = translates and translates.Get("Лотерея") or "Лотерея",
+    title = translates and translates.Get("Купить билет?") or "Купить билет?",--translates and translates.Get("Лотерея") or "Купить билет?",
+    ico = Material("shop/sell.png")--Material("rpui/bonus_menu/cash.vtf")
+}
+rp.cfg.VoteTypes["hire"] = {
+    title = translates and translates.Get("Наём") or "Наём",
+    ico = Material("ping_system/follow.png"),
+    IcoSizeMult = 1.5
+}
+rp.cfg.VoteTypes["warrant"] = {
+    title = translates and translates.Get("Обыск") or "Обыск",
+    ico = Material("ping_system/police_up.png")
+}
+rp.cfg.VoteTypes["demote"] = {
+    headertitle = translates and translates.Get("Увольнение") or "Увольнение",
+    title = "",
+    ico = Material("rpui/misc/flag.png")
+}
+rp.cfg.VoteTypes["orginvite"] = {
+    headertitle = translates and translates.Get("Организация") or "Организация",
+    title = translates and translates.Get("Хотели бы вы присоединиться к") or "Хотели бы вы присоединиться к",
+    ico = Material("ping_system/addorg.png"),
+    IcoSizeMult = 2
+}
+rp.cfg.VoteTypes["mount"] = {
+    headertitle = translates and translates.Get("Верховая езда") or "Верховая езда",
+    title = translates and translates.Get("Имя наездника: ") or "Имя наездника: ",
+    ico = Material("ping_system/mount.png"),
+    IcoSizeMult = 2
+}
+
+for i = 1, 120 do
+    rp.cfg.VoteTypes["lottery"..i] = rp.cfg.VoteTypes["lottery"]
+end
+
+local Sw, pairs_, IsValid_ = ScrW, pairs, IsValid
+local net = net
+local CurTime = CurTime
+local LocalPlayer = LocalPlayer
+local hook = hook
+local pairs = pairs
+local IsValid = IsValid
+local table = table
+local math = math
+local tostring = tostring
+local timer = timer
+
+rp.NotifyVotePanels = rp.NotifyVotePanels or {}
+
+local Wide = 400
+local Tall = 45
+local Wide_2 = 0.5 * Wide
+local Tall_2 = 0.5 * Tall
+
+local posX = function()
+    return 0 --Sw()*0.25 - Wide_2
+end
+
+local MoveAllNotifyPANELS = function(isforce)
+    local i = 0
+    local y_offset =  0
+
+    for k, pnl in pairs_(rp.NotifyVotePanels) do
+        if not IsValid_(pnl) then rp.NotifyVotePanels[k] = nil continue end
+
+        pnl._i = i
+
+        --local y = (pnl._pTall or Tall) * i + (y_offset and ((IsValid_(who) and who._i or 0) < i) and y_offset or 0)
+        
+		y_offset = y_offset + (pnl._pTall or Tall)
+		local y = y_offset
+
+        if IsValid_(pnl.popup) then
+            y_offset = y_offset + pnl.popup.GetTall(pnl.popup)
+        end
+
+        if isforce then
+            pnl:SetPos(posX(), y)
+        else
+            pnl:MoveTo(posX(), y, 0.15)
+        end
+        pnl:OnMoveTo(posX(), y, 0.15, isforce)
+
+        i = i + 1
+    end
+end
+
+local CreateVoteNotify = function(question, quesid, timeleft, steamid, _vote_ID)
+    local OldTime = CurTime()
+    local realQuesID = _vote_ID or (quesid.."") -- copy
+
+    if timeleft == 0 then
+        timeleft = 100
+    end
+
+    local st = string.find(question, "|")
+    local Add2Title = ""
+    if st then
+        Add2Title = question:sub(1, st-1)
+        question = question:sub(st+1, 999)
+    end
+
+    local st2 = string.find(quesid, "|")
+    if st2 then
+        quesid = quesid:sub(0, st2-1)
+    end
+
+    local is_opened
+    for k, pnl in pairs_(rp.NotifyVotePanels) do
+        if IsValid_(pnl) and IsValid_(pnl.popup) then
+            is_opened = true
+            break
+        end
+    end
+                                 
+    local voteType = rp.cfg.VoteTypes[quesid]
+
+    if IsValid(LocalPlayer()) and cvar.GetValue("enable_notify_top") then
+        LocalPlayer():EmitSound("Town.d1_town_02_elevbell1", 100, 100)
+    end
+
+    rp.NotifyVoteParent = rp.NotifyVoteParent or vgui.Create( "DPanel" );
+    rp.NotifyVoteParent.SetSize( rp.NotifyVoteParent, Wide, Tall * table.Count(rp.NotifyVotePanels) + Tall * 12 + 9 );
+    rp.NotifyVoteParent.CenterHorizontal( rp.NotifyVoteParent );
+    rp.NotifyVoteParent.MakePopup( rp.NotifyVoteParent );
+    rp.NotifyVoteParent.SetKeyboardInputEnabled( rp.NotifyVoteParent, false );
+    rp.NotifyVoteParent.SetPaintBackground( rp.NotifyVoteParent, false );
+    rp.NotifyVoteParent.Think = function( this )
+        if this.IsMouseInputEnabled( this ) then this.SetMouseInputEnabled( this, false ); end
+		
+        if #this:GetChildren() > 0 then
+            this.InvalidateLayout( this, true );
+            this.SizeToChildren( this, false, true );
+
+			this.SetMouseInputEnabled( this, g_ContextMenu.IsVisible(g_ContextMenu) or vgui.CursorVisible() );   
+
+            if not g_RPUI_JobsList_HasFocus then
+                this.MoveToFront( this );
+            end
+        end
+    end
+    
+    --[[
+    hook.Add("OnContextMenuOpen", "NotifyVote.SetParent", function()
+        g_ContextMenu.NotifyVoteParent = g_ContextMenu.NotifyVoteParent or vgui.Create("Panel", g_ContextMenu)
+        g_ContextMenu.NotifyVoteParent.SetSize(g_ContextMenu.NotifyVoteParent, ScrW()*0.5, ScrH()*0.5)
+        CenterPos(g_ContextMenu.NotifyVoteParent)
+        
+        for k, pnl in pairs(rp.NotifyVoteParent.GetChildren(rp.NotifyVoteParent)) do
+            pnl:SetParent(g_ContextMenu.NotifyVoteParent)
+            if IsValid(pnl.popup) then
+                pnl.popup.SetParent(pnl.popup, g_ContextMenu.NotifyVoteParent)
+            end
+        end
+    end)
+
+    hook.Add("OnContextMenuClose", "NotifyVote.SetParent", function()
+        if IsValid(g_ContextMenu.NotifyVoteParent) then
+            for k, pnl in pairs(g_ContextMenu.NotifyVoteParent.GetChildren(g_ContextMenu.NotifyVoteParent)) do
+                pnl:SetParent(rp.NotifyVoteParent)
+                if IsValid(pnl.popup) then
+                    pnl.popup.SetParent(pnl.popup, rp.NotifyVoteParent)
+                end
+            end
+        end
+    end)
+    ]]--
+
+    local notifyvote = vgui.Create("urf.im/rpui/notifyvote", rp.NotifyVoteParent)
+    notifyvote.questionID = quesid
+    notifyvote.tab_index = table.insert(rp.NotifyVotePanels, notifyvote)
+    notifyvote:SetSize(Wide, Tall)
+    notifyvote:SetPos(posX(), -Tall)
+
+    --if table.Count(rp.NotifyVotePanels) > 0 then
+    --    local pnl = table.GetLastValue(rp.NotifyVotePanels)
+	--	if IsValid(pnl) then 
+	--		pnl.lastpanel = notifyvote
+	--	end
+    --end
+
+    local pnl;
+
+    for _, v in ipairs( rp.NotifyVoteParent.GetChildren( rp.NotifyVoteParent ) ) do
+        if not pnl then pnl = v; continue end
+
+        if (v.GetY(v) + v.GetTall(v)) > (pnl.GetY(pnl) + pnl.GetTall(pnl)) then
+            pnl = v;
+        end
+    end
+
+    if IsValid( pnl ) then
+        pnl.lastpanel = notifyvote;
+    end
+
+    if not is_opened then
+        notifyvote.btn:DoClick()
+    end
+
+    notifyvote:SetIcon(voteType and voteType.ico or "scoreboard/usergroups/ug_1.png")
+    notifyvote:SetTitle(voteType and voteType.headertitle or translates and translates.Get("Голосование") or "Голосование")
+    notifyvote:SetFont("rpui.playerselect.title")
+    notifyvote.IcoSizeMult = voteType and voteType.IcoSizeMult or 1
+
+    notifyvote.Think = function(this)
+        local time = math.ceil(timeleft - (CurTime() - OldTime))
+
+        this.Title = voteType and voteType.headertitle and (voteType.headertitle .. ": " .. tostring(math.abs(time))) or translates and translates.Get("Голосование: %s", tostring(math.abs(time))) or ("Голосование: "..tostring(math.abs(time)))
+
+        local last = this:GetParent():GetChild(#this:GetParent():GetChildren() - 1)
+        this.DrawGradient = IsValid_(last)
+        if this.DrawGradient and (last == this or this.IsOpened) then
+            this.DrawGradient = nil
+        end
+
+        if this.MoveThink then
+            MoveAllNotifyPANELS(true)
+        end
+
+        if time <= 0 then
+            this.NoMove = true
+            this:Close()
+        end
+    end
+
+    notifyvote:SetContents((voteType and voteType.title or "").." "..Add2Title, question, function()
+        if steamid then
+            LocalPlayer():ConCommand("vote " .. realQuesID .. " yea\n")
+        else
+            LocalPlayer():ConCommand("ans " .. realQuesID .. " 1\n")
+        end
+        notifyvote:Close()
+    end)
+
+    notifyvote.ButtonNoDoClick = function()
+        if steamid then
+            LocalPlayer():ConCommand("vote " .. realQuesID .. " nay\n")
+        else
+            LocalPlayer():ConCommand("ans " .. realQuesID .. " 2\n")
+        end
+        notifyvote:Close()
+    end
+
+    notifyvote.PreRemove = function(this)
+        rp.NotifyVotePanels[notifyvote.tab_index] = nil
+        MoveAllNotifyPANELS()
+    end
+    notifyvote.OnClose = function(this)
+        MoveAllNotifyPANELS()
+    end
+    notifyvote.OnPopupSizeTo = function(this, w, h, time)
+        MoveAllNotifyPANELS(true)
+        this.MoveThink = true
+    end
+    notifyvote.OnPopupSizeToEnd = function(this, w, h, time)
+        timer.Simple(0.1, function()
+            if IsValid(this) then this.MoveThink = nil end
+        end)
+    end
+
+	timer.Simple(0, function()
+		MoveAllNotifyPANELS()
+	end)
+	
+	return notifyvote
+end
+
+net.Receive("DoQuestion", function()
+    if IsValid(LocalPlayer()) and LocalPlayer():IsBanned() then return end
+
+    local question = net.ReadString()
+    local quesid = net.ReadString()
+    local timeleft = net.ReadFloat()
+
+    CreateVoteNotify(question, quesid, timeleft)
+end)
+
+net.Receive("KillQuestionVGUI", function()
+    local id = net.ReadString()
+
+    for k, pnl in pairs(rp.NotifyVotePanels) do
+        if IsValid(pnl) and pnl.questionID == id then
+            pnl:Close()
+        end
+    end
+end)
+
+
+function rp.NotifyVoteClient(message, quesid, timeleft)
+	return CreateVoteNotify(message, quesid, timeleft)
+end
+
+
+usermessage.Hook("DoVote", function(msg)
+    if LocalPlayer():IsBanned() then return end
+
+    local question = msg:ReadString()
+    local voteid = msg:ReadShort()
+    local timeleft = msg:ReadFloat()
+    local steamid = msg:ReadString()
+
+    CreateVoteNotify(question, "demote", timeleft, steamid, voteid)
+end)
+
+usermessage.Hook("KillVoteVGUI", function(msg)
+    local id = msg:ReadShort()
+
+    for k, pnl in pairs(rp.NotifyVotePanels) do
+        if IsValid(pnl) and pnl.questionID == id then
+            pnl:Close()
+        end
+    end
+end)
+
+concommand.Add("notifyvote_debug_menu", function()
+    if not LocalPlayer():IsRoot() then return end
+
+    if IsValid_(notifyvote_debug_menu) then notifyvote_debug_menu:Remove() return end
+
+    notifyvote_debug_menu = vgui.Create("DFrame")
+    notifyvote_debug_menu:SetSize(330, 150)
+    notifyvote_debug_menu:SetPos(ScrW()*0.5 - 330*0.5, ScrH()-150)
+    notifyvote_debug_menu:SetMouseInputEnabled(true)
+
+    local btns = {
+        {
+            txt = "Clear",
+            func = function()
+                for k, v in pairs(rp.NotifyVotePanels) do
+                    if not IsValid_(v) then rp.NotifyVotePanels[k] = nil continue end
+                    v:Close()
+                end
+            end
+        },
+        {
+            txt = "Create",
+            func = function()
+                CreateVoteNotify("Цена: "..rp.FormatMoney(1000), "lottery", 30, "")
+            end
+        },
+        {
+            txt = "Print",
+            func = function()
+                for k, v in pairs(rp.NotifyVotePanels) do
+                    print(k, v.tab_index)
+                end
+            end
+        }
+    }
+
+    for i = 1, #btns do
+        local _i = i - 1
+        local btn = vgui.Create("DButton", notifyvote_debug_menu)
+        btn:SetSize(100, 100)
+        btn:SetText(btns[i].txt)
+        btn:SetPos(_i*110 + 5, 40)
+        btn.DoClick = btns[i].func
+
+        notifyvote_debug_menu["btn"..i] = btn
+    end
+end)

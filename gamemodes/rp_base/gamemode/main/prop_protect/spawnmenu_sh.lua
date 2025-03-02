@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\prop_protect\\spawnmenu_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 if rp.cfg.DisableQEntities then return end
 
 local Split = string.Split
@@ -42,8 +44,11 @@ function rp.AddQChair(class, Data)
     Data = Data or {}
     Data.ent = class
     Data.ListIcon = Data.ListIcon
-    Data.on_spawn = function(ent)
+    Data.on_spawn = function(ent, ply)
         ent.IsQMenuChair = true
+        ent:SetNetVar('DoorData', {
+            Owner = ply
+        })
     end
 	
     return rp.AddQEntity(Data)

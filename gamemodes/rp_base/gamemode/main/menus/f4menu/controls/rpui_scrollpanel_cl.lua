@@ -1,1 +1,235 @@
-local ‪ = _G local ‪‪ = ‪['\115\116\114\105\110\103'] local ‪‪‪ = ‪['\98\105\116']['\98\120\111\114'] local function ‪‪‪‪‪‪‪(‪‪‪‪) if ‪‪['\108\101\110'](‪‪‪‪) == 0 then return ‪‪‪‪ end local ‪‪‪‪‪ = '' for _ in ‪‪['\103\109\97\116\99\104'](‪‪‪‪,'\46\46') do ‪‪‪‪‪=‪‪‪‪‪..‪‪['\99\104\97\114'](‪‪‪(‪["\116\111\110\117\109\98\101\114"](_,16),217)) end return ‪‪‪‪‪ end local ‪and={}‪and[‪‪‪‪‪‪‪'90b7b0ad']=function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and[‪‪‪‪‪‪‪'89b8abbcb7ad']=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and[‪‪‪‪‪‪‪'9ebcad89b8abbcb7ad'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and[‪‪‪‪‪‪‪'8eb0bdadb1']=8 ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and[‪‪‪‪‪‪‪'91bcb0beb1ad']=0 ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and[‪‪‪‪‪‪‪'94b8abbeb0b7']=0 ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and[‪‪‪‪‪‪‪'8abaabb6b5b59badb7']=‪[‪‪‪‪‪‪‪'afbeacb0'][‪‪‪‪‪‪‪'9aabbcb8adbc'](‪‪‪‪‪‪‪'89b8b7bcb5',‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and[‪‪‪‪‪‪‪'8abaabb6b5b59badb7'][‪‪‪‪‪‪‪'96b794b6acaabc89abbcaaaabcbd']=function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪return,repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)if repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪==‪[‪‪‪‪‪‪‪'94968c8a9c86959c9f8d']then local elseif‪,‪‪goto=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪return[‪‪‪‪‪‪‪'9aacabaab6ab89b6aa'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪return)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪return[‪‪‪‪‪‪‪'90aa8abaabb6b5b5b0b7be']=true  ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪return[‪‪‪‪‪‪‪'94b6acaabc96bfbfaabcad']=‪‪goto end end ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and[‪‪‪‪‪‪‪'8abaabb6b5b59badb7'][‪‪‪‪‪‪‪'96b794b6acaabc8bbcb5bcb8aabcbd']=function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪function)if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪function==‪[‪‪‪‪‪‪‪'94968c8a9c86959c9f8d']then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if[‪‪‪‪‪‪‪'90aa8abaabb6b5b5b0b7be']=false  ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if[‪‪‪‪‪‪‪'94b6acaabc96bfbfaabcad']=nil  end end ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and[‪‪‪‪‪‪‪'8abaabb6b5b59badb7'][‪‪‪‪‪‪‪'89b8b0b7ad']=function (true‪‪‪‪‪,return‪‪‪‪‪‪‪‪‪,false‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)‪[‪‪‪‪‪‪‪'aaacabbfb8babc'][‪‪‪‪‪‪‪'8abcad9dabb8ae9ab6b5b6ab'](‪[‪‪‪‪‪‪‪'9ab6b5b6ab'](255,255,255,255))‪[‪‪‪‪‪‪‪'aaacabbfb8babc'][‪‪‪‪‪‪‪'9dabb8ae8bbcbaad'](0,0,return‪‪‪‪‪‪‪‪‪,false‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end end ‪and[‪‪‪‪‪‪‪'8abcad8abaabb6b5b5bbb8ab8eb0bdadb1']=function (nil‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,else‪‪‪‪)nil‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8eb0bdadb1']=else‪‪‪‪ nil‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'89bcabbfb6abb495b8a0b6acad'](nil‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end ‪and[‪‪‪‪‪‪‪'8abcad8abaabb6b5b5bbb8ab94b8abbeb0b7']=function (for‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,else‪‪‪‪‪‪‪‪‪)for‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'94b8abbeb0b7']=else‪‪‪‪‪‪‪‪‪ for‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'89bcabbfb6abb495b8a0b6acad'](for‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end ‪and[‪‪‪‪‪‪‪'8db1b0b7b2']=function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat)if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'8abaabb6b5b59badb7'][‪‪‪‪‪‪‪'90aa8abaabb6b5b5b0b7be']then if not ‪[‪‪‪‪‪‪‪'b0b7a9acad'][‪‪‪‪‪‪‪'90aa94b6acaabc9db6aeb7'](‪[‪‪‪‪‪‪‪'94968c8a9c86959c9f8d'])then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'8abaabb6b5b59badb7'][‪‪‪‪‪‪‪'96b794b6acaabc8bbcb5bcb8aabcbd'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'8abaabb6b5b59badb7'],‪[‪‪‪‪‪‪‪'94968c8a9c86959c9f8d'])return end local false‪‪‪‪,‪‪goto=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'8abaabb6b5b59badb7'][‪‪‪‪‪‪‪'9aacabaab6ab89b6aa'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'8abaabb6b5b59badb7'])local goto‪‪‪‪=‪‪goto-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'8abaabb6b5b59badb7'][‪‪‪‪‪‪‪'94b6acaabc96bfbfaabcad']local then‪‪=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'89b8abbcb7ad'][‪‪‪‪‪‪‪'9ebcad9ab8b7afb8aa'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'89b8abbcb7ad'])local and‪‪‪‪‪‪‪=then‪‪[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](then‪‪)-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'89b8abbcb7ad'][‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'89b8abbcb7ad'])local ‪‪‪‪‪‪goto=(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'8abaabb6b5b59badb7'][‪‪‪‪‪‪‪'a0']+goto‪‪‪‪)/(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat)-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'91bcb0beb1ad'])‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'89b8abbcb7ad'][‪‪‪‪‪‪‪'a096bfbfaabcad']=‪[‪‪‪‪‪‪‪'b4b8adb1'][‪‪‪‪‪‪‪'9ab5b8b4a9'](‪‪‪‪‪‪goto*and‪‪‪‪‪‪‪,0,and‪‪‪‪‪‪‪)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'89b8abbcb7ad'][‪‪‪‪‪‪‪'90b7afb8b5b0bdb8adbc95b8a0b6acad'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪repeat[‪‪‪‪‪‪‪'89b8abbcb7ad'])end end ‪and[‪‪‪‪‪‪‪'89bcabbfb6abb495b8a0b6acad']=function (‪‪‪‪‪‪‪‪elseif)local ‪‪‪‪‪while=‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'89b8abbcb7ad'][‪‪‪‪‪‪‪'9ebcad9ab8b7afb8aa'](‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'89b8abbcb7ad'])local ‪‪‪‪‪‪‪‪‪‪do=‪‪‪‪‪while[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪while)-‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'89b8abbcb7ad'][‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'89b8abbcb7ad'])‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'8abcad8ab0a3bc'](‪‪‪‪‪‪‪‪elseif,‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'8eb0bdadb1'],‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'89b8abbcb7ad'][‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'89b8abbcb7ad']))‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'8abcad89b6aa'](‪‪‪‪‪‪‪‪elseif,‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'89b8abbcb7ad'][‪‪‪‪‪‪‪'9ebcad8eb0bdbc'](‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'89b8abbcb7ad'])-‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'9ebcad8eb0bdbc'](‪‪‪‪‪‪‪‪elseif),0)‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'91bcb0beb1ad8bb8adb0b6']=‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'89b8abbcb7ad'][‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'89b8abbcb7ad'])/‪‪‪‪‪while[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪while)‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'91bcb0beb1ad']=‪[‪‪‪‪‪‪‪'b4b8adb1'][‪‪‪‪‪‪‪'b4b8a1'](20,‪[‪‪‪‪‪‪‪'b4b8adb1'][‪‪‪‪‪‪‪'babcb0b5'](‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'91bcb0beb1ad8bb8adb0b6']*‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'89b8abbcb7ad'][‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'89b8abbcb7ad'])))‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'8abaabb6b5b59badb7'][‪‪‪‪‪‪‪'8abcad8ab0a3bc'](‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'8abaabb6b5b59badb7'],‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'9ebcad8eb0bdbc'](‪‪‪‪‪‪‪‪elseif),‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'91bcb0beb1ad'])‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'8abaabb6b5b59badb7'][‪‪‪‪‪‪‪'8abcad89b6aa'](‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'8abaabb6b5b59badb7'],0,‪[‪‪‪‪‪‪‪'b4b8adb1'][‪‪‪‪‪‪‪'9ab5b8b4a9']((‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'89b8abbcb7ad'][‪‪‪‪‪‪‪'a096bfbfaabcad']/‪‪‪‪‪‪‪‪‪‪do),0,1)*(‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪elseif)-‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'91bcb0beb1ad']))end ‪and[‪‪‪‪‪‪‪'89b8b0b7ad']=function (‪‪‪‪‪‪‪‪nil,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪or,end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)‪[‪‪‪‪‪‪‪'aaacabbfb8babc'][‪‪‪‪‪‪‪'8abcad9dabb8ae9ab6b5b6ab'](‪[‪‪‪‪‪‪‪'9ab6b5b6ab'](0,0,0,200))‪[‪‪‪‪‪‪‪'aaacabbfb8babc'][‪‪‪‪‪‪‪'9dabb8ae8bbcbaad'](0,0,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪or,end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end ‪and[‪‪‪‪‪‪‪'96b794b6acaabc8eb1bcbcb5bcbd']=function (then‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do)then‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'89b8abbcb7ad'][‪‪‪‪‪‪‪'96b794b6acaabc8eb1bcbcb5bcbd'](then‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'89b8abbcb7ad'],‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do)end ‪[‪‪‪‪‪‪‪'afbeacb0'][‪‪‪‪‪‪‪'8bbcbeb0aaadbcab'](‪‪‪‪‪‪‪'aba9acb0f786aabaabb6b5b5bbb8ab',‪and,‪‪‪‪‪‪‪'89b8b7bcb5')local ‪‪‪‪‪‪while={}‪‪‪‪‪‪while[‪‪‪‪‪‪‪'90b7b0ad']=function (end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'bb869fb6abbabcbd95b8a0b6acadaa']=false  end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9ab8b7afb8aa']=‪[‪‪‪‪‪‪‪'afbeacb0'][‪‪‪‪‪‪‪'9aabbcb8adbc'](‪‪‪‪‪‪‪'89b8b7bcb5',end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8f9bb8ab']=‪[‪‪‪‪‪‪‪'afbeacb0'][‪‪‪‪‪‪‪'9aabbcb8adbc'](‪‪‪‪‪‪‪'aba9acb0f786aabaabb6b5b5bbb8ab',end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a096bfbfaabcad']=0 end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a08aa9bcbcbd']=0 end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a08aa9b8bab0b7be']=0 end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9ab8b7afb8aa'][‪‪‪‪‪‪‪'96b79ab1b0b5bd8bbcb4b6afbcbd']=function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪while,do‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)local ‪‪‪‪‪‪end=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪while[‪‪‪‪‪‪‪'9ebcad89b8abbcb7ad'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪while)‪‪‪‪‪‪end[‪‪‪‪‪‪‪'89bcabbfb6abb495b8a0b6acad'](‪‪‪‪‪‪end)end end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'98bdbd90adbcb4']=function (‪‪‪‪‪until,false‪‪)false‪‪[‪‪‪‪‪‪‪'8abcad89b8abbcb7ad'](false‪‪,‪‪‪‪‪until[‪‪‪‪‪‪‪'9ebcad9ab8b7afb8aa'](‪‪‪‪‪until))end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'9ebcad90adbcb4aa']=function (‪‪‪‪‪‪‪‪‪‪‪‪while)local ‪‪‪‪‪‪‪‪‪‪in=‪‪‪‪‪‪‪‪‪‪‪‪while[‪‪‪‪‪‪‪'9ebcad9ab8b7afb8aa'](‪‪‪‪‪‪‪‪‪‪‪‪while)return ‪‪‪‪‪‪‪‪‪‪in[‪‪‪‪‪‪‪'9ebcad9ab1b0b5bdabbcb7'](‪‪‪‪‪‪‪‪‪‪in)end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'9ab5bcb8ab90adbcb4aa']=function (if‪‪‪‪‪)if‪‪‪‪‪[‪‪‪‪‪‪‪'9ab8b7afb8aa'][‪‪‪‪‪‪‪'9ab5bcb8ab'](if‪‪‪‪‪[‪‪‪‪‪‪‪'9ab8b7afb8aa'])end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'98b5aeb8a0aa95b8a0b6acad']=function (if‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪while)if‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'bb869fb6abbabcbd95b8a0b6acadaa']=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪while end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'9ebcad9ab8b7afb8aa']=function (local‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)return local‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9ab8b7afb8aa']end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'8abcad8aa9b8bab0b7be80']=function (nil‪‪‪‪‪‪‪‪,if‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)nil‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a08aa9b8bab0b7be']=if‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'9ebcad8aa9b8bab0b7be80']=function (‪‪‪‪‪‪‪‪goto)return ‪‪‪‪‪‪‪‪goto[‪‪‪‪‪‪‪'a08aa9b8bab0b7be']end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'8abcad8abaabb6b5b5bbb8ab8eb0bdadb1']=function (until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪else)until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'8abcad8abaabb6b5b5bbb8ab8eb0bdadb1'](until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8f9bb8ab'],‪‪‪‪‪‪‪‪‪‪‪‪‪else)end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'9ebcad8abaabb6b5b5bbb8ab8eb0bdadb1']=function (if‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)return if‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'8eb0bdadb1']end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'8abcad8abaabb6b5b5bbb8ab94b8abbeb0b7']=function (for‪‪‪,until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)for‪‪‪[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'8abcad8abaabb6b5b5bbb8ab94b8abbeb0b7'](for‪‪‪[‪‪‪‪‪‪‪'8f9bb8ab'],until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'9ebcad8abaabb6b5b5bbb8ab94b8abbeb0b7']=function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif)return ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'94b8abbeb0b7']end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'96b794b6acaabc8eb1bcbcb5bcbd']=function (false‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and)if (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and>0 and false‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a08aa9bcbcbd']<0)or (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and<0 and false‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a08aa9bcbcbd']>0)then false‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a08aa9bcbcbd']=0 else false‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a08aa9bcbcbd']=false‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'a08aa9bcbcbd']+(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and*1)end end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'8abcad96bfbfaabcad']=function (continue‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪return)local local‪‪‪‪‪=continue‪‪[‪‪‪‪‪‪‪'9ebcad9ab8b7afb8aa'](continue‪‪)local repeat‪‪=‪[‪‪‪‪‪‪‪'b4b8adb1'][‪‪‪‪‪‪‪'b4b8a1'](0,local‪‪‪‪‪[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](local‪‪‪‪‪)-continue‪‪[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](continue‪‪))continue‪‪[‪‪‪‪‪‪‪'a096bfbfaabcad']=‪[‪‪‪‪‪‪‪'b4b8adb1'][‪‪‪‪‪‪‪'9ab5b8b4a9'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪return,0,repeat‪‪)continue‪‪[‪‪‪‪‪‪‪'89bcabbfb6abb495b8a0b6acad'](continue‪‪)return (continue‪‪[‪‪‪‪‪‪‪'a096bfbfaabcad']==0 or continue‪‪[‪‪‪‪‪‪‪'a096bfbfaabcad']==repeat‪‪)and true or false  end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'8db1b0b7b2']=function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break)if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'a08aa9bcbcbd']~=0 then if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'8abcad96bfbfaabcad'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'a096bfbfaabcad']-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'a08aa9bcbcbd'])then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'a08aa9bcbcbd']=0 else if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'a08aa9bcbcbd']<0 then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'a08aa9bcbcbd']=‪[‪‪‪‪‪‪‪'b4b8adb1'][‪‪‪‪‪‪‪'9ab5b8b4a9'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'a08aa9bcbcbd']+(‪[‪‪‪‪‪‪‪'9fabb8b4bc8db0b4bc']()*1*4),‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'a08aa9bcbcbd'],0)else ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'a08aa9bcbcbd']=‪[‪‪‪‪‪‪‪'b4b8adb1'][‪‪‪‪‪‪‪'9ab5b8b4a9'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'a08aa9bcbcbd']-(‪[‪‪‪‪‪‪‪'9fabb8b4bc8db0b4bc']()*1*4),0,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'a08aa9bcbcbd'])end end end if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'bb869fb6abbabcbd95b8a0b6acadaa']then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'89bcabbfb6abb495b8a0b6acad'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break)if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'90aa8fb0aab0bbb5bc'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'8f9bb8ab'])then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'89bcabbfb6abb495b8a0b6acad'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'8f9bb8ab'])end end end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'90aa8f9bb8ab8fb0aab0bbb5bc']=function (repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪)return repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'90aa8fb0aab0bbb5bc'](repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8f9bb8ab'])end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'89bcabbfb6abb495b8a0b6acad']=function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do)if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'90aa8fb0aab0bbb5bc'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'])then local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'9ebcad9ab8b7afb8aa'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do)if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'9ebcad8eb0bdbc'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break)~=(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'9ebcad8eb0bdbc'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do)-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'8eb0bdadb1']-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'94b8abbeb0b7'])then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'8abcad8eb0bdbc'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪break,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'9ebcad8eb0bdbc'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do)-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'8eb0bdadb1']-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'94b8abbeb0b7'])end else local break‪=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'9ebcad9ab8b7afb8aa'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do)if break‪[‪‪‪‪‪‪‪'9ebcad8eb0bdbc'](break‪)~=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'9ebcad8eb0bdbc'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do)then break‪[‪‪‪‪‪‪‪'8abcad8eb0bdbc'](break‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'9ebcad8eb0bdbc'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do))end end local ‪‪‪‪else=0 local ‪‪‪‪‪‪‪‪‪‪local local ‪‪‪‪‪‪‪‪‪‪‪‪‪nil=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'9ebcad9ab8b7afb8aa'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do)for ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local in ‪[‪‪‪‪‪‪‪'a9b8b0abaa'](‪‪‪‪‪‪‪‪‪‪‪‪‪nil[‪‪‪‪‪‪‪'9ebcad9ab1b0b5bdabbcb7'](‪‪‪‪‪‪‪‪‪‪‪‪‪nil))do if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local[‪‪‪‪‪‪‪'9ebcad9db6bab2'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local)==‪[‪‪‪‪‪‪‪'97969d969a92']then if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local[‪‪‪‪‪‪‪'a0']~=(‪‪‪‪else+‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'a08aa9b8bab0b7be'])then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local[‪‪‪‪‪‪‪'8abcad89b6aa'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local,0,‪‪‪‪else+‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'a08aa9b8bab0b7be'])end else local repeat‪‪‪‪,nil‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪until,‪‪end=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local[‪‪‪‪‪‪‪'9ebcad9db6bab294b8abbeb0b7'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local[‪‪‪‪‪‪‪'9db6bab294b8abbeb0b7'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local,repeat‪‪‪‪,nil‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪until,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'a08aa9b8bab0b7be'])end ‪‪‪‪else=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local[‪‪‪‪‪‪‪'a0']+‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local)+‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'a08aa9b8bab0b7be']‪‪‪‪‪‪‪‪‪‪local=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪local end ‪‪‪‪else=‪‪‪‪‪‪‪‪‪‪local and (‪‪‪‪‪‪‪‪‪‪local[‪‪‪‪‪‪‪'a0']+‪‪‪‪‪‪‪‪‪‪local[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪‪‪local))or ‪‪‪‪else if ‪‪‪‪‪‪‪‪‪‪‪‪‪nil[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪‪‪‪‪‪nil)~=‪‪‪‪else then ‪‪‪‪‪‪‪‪‪‪‪‪‪nil[‪‪‪‪‪‪‪'8abcad8db8b5b5'](‪‪‪‪‪‪‪‪‪‪‪‪‪nil,‪‪‪‪else)end if ‪‪‪‪‪‪‪‪‪‪‪‪‪nil[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪‪‪‪‪‪nil)<=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do)and ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'90aa8fb0aab0bbb5bc'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'])then ‪‪‪‪‪‪‪‪‪‪‪‪‪nil[‪‪‪‪‪‪‪'8abcad8db8b5b5'](‪‪‪‪‪‪‪‪‪‪‪‪‪nil,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do))‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'8abcad8fb0aab0bbb5bc'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'],false )elseif ‪‪‪‪‪‪‪‪‪‪‪‪‪nil[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪‪‪‪‪‪nil)>‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do)and !‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'90aa8fb0aab0bbb5bc'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'])then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'8abcad8fb0aab0bbb5bc'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'],true )end local return‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪=‪‪‪‪‪‪‪‪‪‪‪‪‪nil[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪‪‪‪‪‪nil)-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'9ebcad8db8b5b5'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do)if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'a096bfbfaabcad']>return‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'a096bfbfaabcad']=return‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ end if ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'a096bfbfaabcad']<0 then ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'a096bfbfaabcad']=0 end if ‪‪‪‪‪‪‪‪‪‪‪‪‪nil[‪‪‪‪‪‪‪'a1']~=0 or ‪‪‪‪‪‪‪‪‪‪‪‪‪nil[‪‪‪‪‪‪‪'a0']~=-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'a096bfbfaabcad']then ‪‪‪‪‪‪‪‪‪‪‪‪‪nil[‪‪‪‪‪‪‪'8abcad89b6aa'](‪‪‪‪‪‪‪‪‪‪‪‪‪nil,0,-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'a096bfbfaabcad'])‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'][‪‪‪‪‪‪‪'90b7afb8b5b0bdb8adbc95b8a0b6acad'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪do[‪‪‪‪‪‪‪'8f9bb8ab'])end end ‪‪‪‪‪‪while[‪‪‪‪‪‪‪'89b8b0b7ad']=function (‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪end,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪goto)end ‪[‪‪‪‪‪‪‪'afbeacb0'][‪‪‪‪‪‪‪'8bbcbeb0aaadbcab'](‪‪‪‪‪‪‪'aba9acb0f78abaabb6b5b589b8b7bcb5',‪‪‪‪‪‪while,‪‪‪‪‪‪‪'89b8b7bcb5')
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\f4menu\\controls\\rpui_scrollpanel_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
+local PANEL = {};
+
+function PANEL:Init()
+    self.Parent = self:GetParent();
+
+    self.Width    = 8;
+    self.Height   = 0;
+    self.Margin   = 0;
+
+    self.ScrollBtn = vgui.Create( "Panel", self );
+
+    self.ScrollBtn.OnMousePressed = function( this, mousebutton )
+        if mousebutton == MOUSE_LEFT then
+            local mx, my = this:CursorPos();
+
+            this.IsScrolling  = true;
+            this.MouseOffset  = my;
+        end
+    end
+
+    self.ScrollBtn.OnMouseReleased = function( this, mousebutton )
+        if mousebutton == MOUSE_LEFT then
+            this.IsScrolling = false;
+            this.MouseOffset = nil;
+        end
+    end
+
+    self.ScrollBtn.Paint = function( this, w, h )
+        surface.SetDrawColor( Color(255,255,255,255) );
+        surface.DrawRect( 0, 0, w, h );
+    end
+end
+
+function PANEL:SetScrollbarWidth( w )
+    self.Width = w;
+    self:PerformLayout();
+end
+
+function PANEL:SetScrollbarMargin( m )
+    self.Margin = m;
+    self:PerformLayout();
+end
+
+function PANEL:Think()
+    if self.ScrollBtn.IsScrolling then
+        if not input.IsMouseDown(MOUSE_LEFT) then
+            self.ScrollBtn.OnMouseReleased( self.ScrollBtn, MOUSE_LEFT );
+            return
+        end
+
+        local mx, my = self.ScrollBtn.CursorPos(self.ScrollBtn);
+        local diff   = my - self.ScrollBtn.MouseOffset;
+
+		local par_can = self.Parent.GetCanvas(self.Parent);
+        local maxOffset = par_can:GetTall() - self.Parent.GetTall(self.Parent);
+        local perc      = (self.ScrollBtn.y + diff) / (self:GetTall() - self.Height);
+
+        self.Parent.yOffset = math.Clamp( perc * maxOffset, 0, maxOffset );
+        self.Parent.InvalidateLayout(self.Parent);
+    end
+end
+
+function PANEL:PerformLayout()
+	local par_can = self.Parent.GetCanvas(self.Parent);
+    local maxOffset = par_can:GetTall() - self.Parent.GetTall(self.Parent);
+
+    self:SetSize( self.Width, self.Parent.GetTall(self.Parent) );
+    self:SetPos( self.Parent.GetWide(self.Parent) - self:GetWide(), 0 );
+
+    self.HeightRatio = self.Parent.GetTall(self.Parent) / par_can:GetTall();
+    self.Height      = math.max( 20, math.ceil(self.HeightRatio * self.Parent.GetTall(self.Parent)) );
+
+    self.ScrollBtn.SetSize( self.ScrollBtn, self:GetWide(), self.Height );
+    self.ScrollBtn.SetPos( self.ScrollBtn, 0, math.Clamp((self.Parent.yOffset / maxOffset), 0, 1) * (self:GetTall() - self.Height) );
+end
+
+function PANEL:Paint( w, h )
+    surface.SetDrawColor( Color(0,0,0,200) );
+    surface.DrawRect( 0, 0, w, h );
+end
+
+function PANEL:OnMouseWheeled( dt )
+    self.Parent.OnMouseWheeled( self.Parent, dt );
+end
+
+vgui.Register( "rpui._scrollbar", PANEL, "Panel" );
+
+
+
+local PANEL = {};
+
+function PANEL:Init()
+    self.b_ForcedLayouts = false; 
+
+    self.Canvas = vgui.Create( "Panel", self );
+    self.VBar   = vgui.Create( "rpui._scrollbar", self );
+
+    self.yOffset = 0;
+    self.ySpeed  = 0;
+
+    self.ySpacing = 0;
+
+    self.Canvas.OnChildRemoved = function( this, child )
+		local par = this:GetParent();
+        par:PerformLayout();
+    end
+end
+
+function PANEL:AddItem( child )
+    child:SetParent( self:GetCanvas() );
+end
+
+function PANEL:GetItems()
+	local can = self:GetCanvas();
+    return can:GetChildren()
+end
+
+function PANEL:ClearItems()
+    self.Canvas.Clear(self.Canvas);
+end
+
+function PANEL:AlwaysLayout( force )        self.b_ForcedLayouts = force;           end 
+function PANEL:GetCanvas()                  return self.Canvas;                     end
+function PANEL:SetSpacingY( ySpacing )      self.ySpacing = ySpacing;               end
+function PANEL:GetSpacingY()                return self.ySpacing                    end
+function PANEL:SetScrollbarWidth( width )   self.VBar.SetScrollbarWidth( self.VBar, width );   end
+function PANEL:GetScrollbarWidth()          return self.VBar.Width;                 end
+function PANEL:SetScrollbarMargin( margin ) self.VBar.SetScrollbarMargin( self.VBar, margin ); end
+function PANEL:GetScrollbarMargin()         return self.VBar.Margin                 end
+
+function PANEL:OnMouseWheeled( dt )
+    if
+        (dt > 0 and self.ySpeed < 0) or
+        (dt < 0 and self.ySpeed > 0)
+    then
+        self.ySpeed = 0;
+    else
+        self.ySpeed = self.ySpeed + dt * 2;
+    end
+end
+
+function PANEL:SetOffset( offset )
+	local can = self:GetCanvas();
+    local maxOffset = math.max( 0, can:GetTall() - self:GetTall() );
+
+    self.yOffset = math.Clamp( offset, 0, maxOffset );
+    self:PerformLayout();
+
+    return (self.yOffset == 0 or self.yOffset == maxOffset) and true or false;
+end
+
+function PANEL:Think()
+    if self.ySpeed ~= 0 then
+        if self:SetOffset( self.yOffset - self.ySpeed ) then
+            self.ySpeed = 0;
+        else
+            if self.ySpeed < 0 then
+                self.ySpeed = math.Clamp( self.ySpeed + (FrameTime() * 15), self.ySpeed, 0 );
+            else
+                self.ySpeed = math.Clamp( self.ySpeed - (FrameTime() * 15), 0, self.ySpeed );
+            end
+        end
+    end
+
+    if self.b_ForcedLayouts then
+        self:PerformLayout();
+        if self.VBar.IsVisible(self.VBar) then self.VBar.PerformLayout(self.VBar); end
+    end
+end
+
+function PANEL:IsVBarVisible()
+    return self.VBar.IsVisible(self.VBar)
+end
+
+function PANEL:PerformLayout()
+    if self.VBar.IsVisible(self.VBar) then
+		local can = self:GetCanvas();
+        if can:GetWide() ~= (self:GetWide() - self.VBar.Width - self.VBar.Margin) then
+            can:SetWide( self:GetWide() - self.VBar.Width - self.VBar.Margin );
+        end
+    else
+		local can = self:GetCanvas();
+        if can:GetWide() ~= self:GetWide() then
+            can:SetWide( self:GetWide() );
+        end
+    end
+
+    local y = 0;
+    local lastChild;
+	local can = self:GetCanvas();
+	
+    for _, c in pairs( can:GetChildren() ) do
+        if c:GetDock() == NODOCK then
+            if c.y ~= (y + self.ySpacing) then
+                c:SetPos( 0, y + self.ySpacing );
+            end
+        else
+            local ml, mt, mr, mb = c:GetDockMargin();
+            c:DockMargin( ml, mt, mr, self.ySpacing );
+        end
+        
+        y = c.y + c:GetTall() + self.ySpacing;
+        lastChild = c;
+    end
+
+    y = lastChild and (lastChild.y + lastChild:GetTall()) or y;
+
+    if can:GetTall() ~= y then
+        can:SetTall( y );
+    end
+
+    if can:GetTall() <= self:GetTall() and self.VBar.IsVisible(self.VBar) then
+        can:SetTall( self:GetTall() );
+        self.VBar.SetVisible( self.VBar, false );
+    elseif can:GetTall() > self:GetTall() and !self.VBar.IsVisible(self.VBar) then
+        self.VBar.SetVisible( self.VBar, true );
+    end
+
+    local maxOffset = can:GetTall() - self:GetTall();
+
+    if self.yOffset > maxOffset then self.yOffset = maxOffset; end
+    if self.yOffset < 0         then self.yOffset = 0;         end
+
+    if can.x ~= 0 or can.y ~= -self.yOffset then
+        can:SetPos( 0, -self.yOffset );
+        self.VBar.InvalidateLayout(self.VBar);
+    end
+end
+
+function PANEL:Paint( w, h )
+end
+
+vgui.Register( "rpui.ScrollPanel", PANEL, "Panel" );

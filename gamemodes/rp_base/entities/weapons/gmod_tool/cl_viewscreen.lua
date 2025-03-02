@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\cl_viewscreen.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local matScreen = Material("models/weapons/v_toolgun/screen")
 local txBackground = surface.GetTextureID("models/weapons/v_toolgun/screen_bg")
 -- GetRenderTarget returns the texture if it exists, or creates it if it doesn't

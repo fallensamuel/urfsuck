@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\chatrooms\\textmessage_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local PANEL = {}
 PANEL.ColorSent = rp.col.ButtonHovered
 PANEL.ColorReceived = Color(50, 130, 50)
@@ -16,7 +18,7 @@ function PANEL:SetSender(pl)
     if (type(pl) == 'string') then
       lbl:SetText(pl)
     else
-      lbl:SetText(((not pl or pl == LocalPlayer()) and 'Me') or pl:NameID())
+      lbl:SetText(((not pl or pl == LocalPlayer()) and 'Me') or (IsValid(pl) and (pl.NameID and pl:NameID() or (pl:Name() .. '(' .. pl:SteamID() .. ')')) or '?'))
     end
 
     lbl:SizeToContents()

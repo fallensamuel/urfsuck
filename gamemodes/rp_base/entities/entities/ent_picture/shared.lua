@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\ent_picture\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ENT.Type = 'anim'
 ENT.PrintName = 'Picture'
 ENT.Author = 'aStonedPenguin'

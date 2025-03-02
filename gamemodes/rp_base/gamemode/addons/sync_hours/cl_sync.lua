@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\sync_hours\\cl_sync.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ﻿table.insert(rp.cfg.Announcements, translates and translates.Get('sync_time') or '50% от вашего максимального игрового времени на любом сервере urf.im будет перенесено и сюда!')
 
 local SetDrawColor, DrawTexturedRect, SetMaterial, SimpleText = surface.SetDrawColor, surface.DrawTexturedRect, surface.SetMaterial, draw.SimpleText

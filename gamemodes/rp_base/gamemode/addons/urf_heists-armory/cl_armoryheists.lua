@@ -1,9 +1,15 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\urf_heists-armory\\cl_armoryheists.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
+rp.ArmoryHeists.List = rp.ArmoryHeists.List or {};
+
 rp.ArmoryHeists.ReadHeistSync = function()
     return net.ReadUInt(4), net.ReadBool(), net.ReadFloat();
 end
 
 net.Receive( "rp.ArmoryHeists.NetworkMsg", function()
     local id, inprogress, ts = rp.ArmoryHeists.ReadHeistSync();
+
+    rp.ArmoryHeists.List[id] = rp.ArmoryHeists.List[id] or {};
 
     rp.ArmoryHeists.List[id].IsInProgress = inprogress;
     rp.ArmoryHeists.List[id].Timestamp    = ts;

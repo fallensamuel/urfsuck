@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\cosmetics\\playercolor\\colors_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 hook('PopulateF4Tabs', function(tabs)
 	local tab = ui.Create('ui_panel')
 	tab:SetSize(tabs:GetParent():GetWide() - 165, tabs:GetParent():GetTall() - 35)

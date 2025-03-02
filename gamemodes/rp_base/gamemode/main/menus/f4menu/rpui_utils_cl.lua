@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\f4menu\\rpui_utils_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 rpui = rpui or {};
 
 
@@ -125,8 +127,18 @@ STYLE_TRANSPARENT_INVERTED            = 6;
 STYLE_TRANSPARENT_SELECTABLE_INVERTED = 7;
 STYLE_GOLDEN                          = 8;
 STYLE_GOLDEN_TRANSPARENT              = 9;
+STYLE_RGB                             = 10;
 
 local Color = Color
+
+rpui.LerpColor = function( t, color_from, color_to )
+    return Color(
+        color_from.r + (color_to.r - color_from.r) * t,
+        color_from.g + (color_to.g - color_from.g) * t,
+        color_from.b + (color_to.b - color_from.b) * t,
+        color_from.a + (color_to.a - color_from.a) * t
+    );
+end
 
 rpui.GetPaintStyle = function( element, style )
     style = style or STYLE_SOLID;
@@ -173,12 +185,20 @@ rpui.GetPaintStyle = function( element, style )
             element._alpha = math.Approach( element._alpha or 0, (element:IsHovered() and 228 or 146), animspeed );
         end
 
-        local c_ = rp.cfg.UIColor.Selected
-        local scale_ = element._grayscale/255
-        baseColor = Color(c_.r * scale_, c_.g * scale_, c_.b * scale_, element._alpha)
-        local invGrayscale = 255 - element._grayscale;
+        --local c_ = rp.cfg.UIColor.Selected
+        --local scale_ = element._grayscale/255
+        --baseColor = Color(c_.r * scale_, c_.g * scale_, c_.b * scale_, element._alpha)
+        --local invGrayscale = 255 - element._grayscale;
         --baseColor = Color( element._grayscale, element._grayscale, element._grayscale, element._alpha );
-        textColor = Color( invGrayscale, invGrayscale, invGrayscale );
+        --textColor = Color( invGrayscale, invGrayscale, invGrayscale );
+
+        local anim = element._grayscale / 255;
+
+        local bc = rp.cfg.UIColor.Selected or element._grayscale;
+        baseColor = Color( bc.r * anim, bc.g * anim, bc.b * anim, element._alpha );
+
+        local tc = rp.cfg.UIColor.SelectedInverted or Color(255 - element._grayscale, 255 - element._grayscale, 255 - element._grayscale);
+        textColor = rpui.LerpColor( anim, rpui.UIColors.White, tc );
     elseif style == STYLE_ERROR then
         baseColor = Color( 150 + math.sin(CurTime() * 1.5) * 70, 0, 0 );
         textColor = rpui.UIColors.White;
@@ -232,6 +252,17 @@ rpui.GetPaintStyle = function( element, style )
         local vecTextColor = Lerp( animspeed, element._veccolor or vecClrBlack, element:IsHovered() and vecClrBlack or vecClrGold );
 
         textColor = Color( vecTextColor.x, vecTextColor.y, vecTextColor.z );
+    elseif style == STYLE_RGB then
+        local hsv = HSVToColor(SysTime()*0.1 % 360, 0.77, 0.77)
+
+        element._alpha = math.Approach( element._alpha or 0, (element:IsHovered() or element.Selected) and 255 or 0, animspeed );
+        
+        local vecColorRgb  = Vector(hsv.r, hsv.g, hsv.b);
+        local vecClrBlack = Vector(0,0,0);
+        
+        local vecTextColor = Lerp( animspeed, element._veccolor or vecClrBlack, element:IsHovered() and vecClrBlack or vecColorRgb );
+
+        textColor = Color( vecTextColor.x, vecTextColor.y, vecTextColor.z );
     end
 
     return baseColor, textColor;
@@ -256,9 +287,9 @@ rpui.DrawStencilBorder = function( this, x, y, w, h, t, bottom_clr, top_clr, alp
     draw.NoTexture();
     surface.SetDrawColor( rpui.UIColors.White );
     surface.DrawRect( 0, 0, w, bs );
-    surface.DrawRect( 0, h - bs, w, bs );
+    surface.DrawRect( 0, h - bs + y, w, bs );
     surface.DrawRect( 0, 0, bs, h );
-    surface.DrawRect( w - bs, 0, bs, h );
+    surface.DrawRect( x + w - bs, 0, bs, h );
 
     render.SetStencilCompareFunction( STENCIL_EQUAL );
     render.SetStencilFailOperation( STENCIL_KEEP );

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\gmod_lamp.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 DEFINE_BASECLASS("base_gmodentity")
 ENT.Spawnable = false
@@ -99,7 +101,7 @@ end
 ENT.MaxDrawDist = 600
 
 function ENT:UpdateLight()
-	if self:IsNotNeed2Draw(self.MaxDrawDist) then return end
+	if CLIENT and self:IsNotNeed2Draw(self.MaxDrawDist) then return end
 
 	if (not IsValid(self.flashlight)) then return end
 	self.flashlight:Input("SpotlightTexture", NULL, NULL, self:GetFlashlightTexture())

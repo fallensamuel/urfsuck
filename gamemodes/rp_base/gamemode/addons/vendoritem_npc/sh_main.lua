@@ -1,15 +1,28 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\vendoritem_npc\\sh_main.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 rp.VendorItemsNPCS = {}
 
 ----------------------------------------- M E T A -----------------------------------------
-local VendorMETA = {Name = "None", Items = {}, Model = "models/Barney.mdl", Sequence = "idle_all_01", Bodygroups = {}}
+local VendorMETA = {Name = "None", Items = {}, Cases = {}, Model = "models/Barney.mdl", Sequence = "idle_all_01", Bodygroups = {}}
 
 function VendorMETA:SetName(name)
 	self.Name = name
 	return self
 end
 
-function VendorMETA:AddBuyItem(uid, price)
-	self.Items[uid] = price
+function VendorMETA:AddBuyItem(uid, price, pricename, givefunc, model, icon_override)
+	self.Items[uid] = pricename and {
+		price = price,
+		name = pricename or "none",
+		Give = givefunc,
+		model = model,
+		icon_override = icon_override
+	} or price
+	return self
+end
+
+function VendorMETA:AddBuyCase(uid, price)
+	self.Cases[uid] = price
 	return self
 end
 
@@ -93,6 +106,21 @@ end
 
 function VendorMETA:SetFindInfo(str)
 	self.FindInfo = str
+	return self
+end
+
+function VendorMETA:OnBuy(callback)
+	self._OnBuy = callback
+	return self
+end
+
+function VendorMETA:CanAffroad(callback)
+	self._CanAffroad = callback
+	return self
+end
+
+function VendorMETA:GetAnyCount(callback)
+	self._GetAnyCount = callback
 	return self
 end
 

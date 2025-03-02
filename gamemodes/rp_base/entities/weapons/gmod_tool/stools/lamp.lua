@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stools\\lamp.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 TOOL.Category = "Staff"
 TOOL.Name = "#tool.lamp.name"
 

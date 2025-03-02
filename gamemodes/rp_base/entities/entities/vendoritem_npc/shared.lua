@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\vendoritem_npc\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ENT.Base        = "base_entity";
 ENT.PrintName	= "ItemVendor NPC"
 ENT.Author		= "urf.im Beelzebub"
@@ -13,6 +15,7 @@ end
 
 function ENT:SetupDataTables()
 	self:NetworkVar("Int", 0, "VendorIndex")
+	self:NetworkVar("String", 0, "VendorName")
 end
 
 function ENT:GetObject()

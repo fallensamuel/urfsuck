@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\weapon_cuff_base.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 -------------------------------------
 ---------------- Cuffs --------------
 -------------------------------------
@@ -16,6 +18,8 @@ SWEP.Base = "weapon_base"
 SWEP.Category = "Handcuffs"
 SWEP.Author = "my_hat_stinks"
 SWEP.Instructions = ""
+
+SWEP.SelectorCategory = translates.Get("РОЛЕПЛЕЙ")
 
 SWEP.Spawnable = false
 SWEP.AdminOnly = false
@@ -94,11 +98,15 @@ function SWEP:SetupDataTables()
 	self:NetworkVar( "Float", 0, "CuffTime" )
 end
 
+function SWEP:PreDrawViewModel( vm )
+    vm:SetMaterial( "engine/occlusionproxy" );
+end
+
 if SERVER then
 	util.AddNetworkString("DoPrimaryAttack")
 	net.Receive("DoPrimaryAttack", function(len, ply)
 		local swep = ply:GetActiveWeapon()
-		if IsValid(swep) == false or swep:GetNextPrimaryFire() > CurTime() or not swep:CanPrimaryAttack() then return end
+		if not IsValid(swep) or swep:GetNextPrimaryFire() > CurTime() or swep.CanPrimaryAttack and not swep:CanPrimaryAttack() then return end
 		swep:PrimaryAttack()
 	end)
 end
@@ -117,7 +125,7 @@ function SWEP:PrimaryAttack()
 	local tr = self:TargetTrace()
 	if not tr then return end
 	
-	self:SetCuffTime( CurTime() + self.CuffTime )
+	self:SetCuffTime( CurTime() + (rp.cfg.InstantHandcuffs and 0.1 or self.CuffTime) )
 	self:SetIsCuffing( true )
 	self:SetCuffing( tr.Entity )
 	
@@ -147,6 +155,15 @@ function SWEP:Holster()
 end
 SWEP.OnRemove = SWEP.Holster
 
+if SERVER then
+	hook.Add("CustomWeaponCheck", "Hancuffs::ForceNoBuild", function(ply, wep)
+		if ply.ForceGivenCuff then
+			ply.ForceGivenCuff = nil
+			return true
+		end
+	end)
+end
+
 //
 // Handcuff
 function SWEP:DoHandcuff( target )
@@ -156,7 +173,15 @@ function SWEP:DoHandcuff( target )
 
 	self.CuffedPlayers = self.CuffedPlayers or {}
 	
+	target:DropObject()
+	
+	if self.CuffNoBuild then
+		target.ForceGivenCuff = true
+	end
+	
 	local cuff = target:Give("weapon_handcuffed")
+	if not IsValid(cuff) or not cuff.SetCuffStrength then return end
+	
 	cuff:SetCuffStrength( self.CuffStrength + (math.Rand(-self.CuffStrengthVariance,self.CuffStrengthVariance)) )
 	cuff:SetCuffRegen( self.CuffRegen + (math.Rand(-self.CuffRegenVariance,self.CuffRegenVariance)) )
 	
@@ -170,7 +195,7 @@ function SWEP:DoHandcuff( target )
 	cuff:SetCanGag( self.CuffGag )
 	
 	cuff.CuffType = self:GetClass() or ""
-
+	
 	if self.ChangeModel then
 		target:SetModel(self.ChangeModel)
 	end
@@ -217,7 +242,183 @@ function SWEP:TargetTrace()
 end
 
 //
-// HUD
+// UI
+if CLIENT then
+	local UIMat = {
+		Cuffs = Material( "rpui/weapons/handcuffs" ),
+	};
+
+	local UICol = {
+		White      = color_white,
+		WhiteAlpha = Color( 255, 255, 255, 8 ),
+		Black      = color_black,
+		Background = Color( 0, 0, 0, 200 ),
+		Blind      = Color( 0, 0, 0, 253 )
+	};
+
+	local UIText = (translates and translates.Get("Связывание...")) or "Связывание...";
+
+	local CircleCache = {};
+
+	local function GenerateCircle( x, y, radius, quality, startang, endang )
+		startang  = startang  or 0;
+		endang    = endang    or 360;
+		quality   = quality   or 16;
+
+		local crc = util.CRC( x .. y .. radius .. quality .. startang .. endang );
+		local cached = CircleCache[crc];
+		if cached then
+			return cached;
+		end
+
+		local vertices = { { x = x, y = y } };
+
+		quality = quality - 1;
+
+		local diffang = endang - startang;
+
+		local v = {};
+		for i = 0, quality do
+			v = {};
+
+			local step = i / quality;
+			local a = math.rad( startang + diffang * step );
+
+			v.x = x + math.sin( a ) * radius;
+			v.y = y - math.cos( a ) * radius;
+
+			table.insert( vertices, v );
+		end
+
+		CircleCache[crc] = vertices;
+		return vertices;
+	end
+
+	local function RichCircle( x, y, radius, quality, thickness, startang, endang )
+		thickness = thickness or radius;
+
+		local isHollow = ( radius > thickness );
+		local distance = radius * 2;
+
+		if isHollow then
+			local drawColor = surface.GetDrawColor();
+			surface.SetDrawColor( color_white );
+
+			render.SetStencilWriteMask( 0xFF );
+			render.SetStencilTestMask( 0xFF );
+			render.SetStencilReferenceValue( 0 );
+			render.SetStencilPassOperation( STENCIL_KEEP );
+			render.SetStencilZFailOperation( STENCIL_KEEP );
+			render.ClearStencil();
+
+			render.SetStencilEnable( true );
+				render.SetStencilReferenceValue( 1 );
+				render.SetStencilCompareFunction( STENCIL_NEVER );
+				render.SetStencilFailOperation( STENCIL_REPLACE );
+				-- Outer Circle:
+					surface.DrawPoly(
+						GenerateCircle( x, y, radius, quality, startang, endang )
+					);
+				--
+
+				render.SetStencilReferenceValue( 0 );
+				render.SetStencilCompareFunction( STENCIL_NEVER );
+				render.SetStencilFailOperation( STENCIL_REPLACE );
+				-- Inner Circle:
+					surface.DrawPoly(
+						GenerateCircle( x, y, radius - thickness, quality, startang, endang )
+					);
+				--
+				
+				render.SetStencilReferenceValue( 1 );
+				render.SetStencilCompareFunction( STENCIL_EQUAL );
+				render.SetStencilFailOperation( STENCIL_KEEP );
+				-- Main Render:
+					surface.SetDrawColor( drawColor );
+					surface.DrawRect( x - radius, y - radius, distance, distance );
+				--
+			render.SetStencilEnable( false );
+			
+			return
+		end
+
+		surface.DrawPoly(
+			GenerateCircle( x, y, radius, quality, startang, endang )
+		);
+	end
+
+	local scr_w, scr_h = ScrW(), ScrH();
+	local cir_radius, cir_thickness, lay_margin = scr_h * 0.05, scr_h * 0.01, scr_h * 0.0075;
+	local cir_radiushalf = cir_radius * 0.5;
+
+	surface.CreateFont( "Cuffs.Default", {
+		font     = "Montserrat",
+		size     = scr_h * 0.02,
+		extended = true,
+	} );
+
+	function SWEP:DrawHUD()
+		local x, y = scr_w * 0.5, scr_h * 0.5;
+
+		if not self:GetIsCuffing() then
+--			if self:GetCuffTime() <= CurTime() then return end
+--
+--			-- Delta:
+--			-- self.hud_dt = Lerp(
+--			-- 	RealFrameTime() * 4,
+--			-- 	self.hud_dt or 0,
+--			-- 	math.Clamp( ((self:GetCuffTime() - CurTime()) / self.CuffRecharge), 0, 1 )
+--			-- );
+--			-- 
+--			-- local dt = self.hud_dt;
+--
+--			-- Progress Bar:
+--			-- surface.SetDrawColor( UICol.Background );
+--    		-- RichCircle( x, y, cir_radius, 32, cir_thickness, -90, 90 );
+--
+--			-- Icon:
+--			surface.SetDrawColor( UICol.White );
+--			surface.SetMaterial( UIMat.Cuffs );
+--			surface.DrawTexturedRect( x - cir_radiushalf, y - cir_radiushalf, cir_radius, cir_radius );	
+--
+--			-- Progress Bar (Fill):
+--			-- surface.SetDrawColor( HSVToColor( 120 * dt, 1, 1 ) );
+--			-- RichCircle( x, y, cir_radius, 32, cir_thickness, -125, -125 + 250 * dt );
+--
+			return
+		end
+
+		-- Delta:
+		self.hud_dt = Lerp(
+			RealFrameTime() * 4,
+			self.hud_dt or 0,
+			math.Clamp( 1 - ((self:GetCuffTime() - CurTime()) / (rp.cfg.InstantHandcuffs and 0.1 or self.CuffTime)), 0, 1 )
+		);
+
+		local dt = self.hud_dt;
+
+		-- Progress Bar:
+		surface.SetDrawColor( UICol.Background );
+		RichCircle( x, y, cir_radius, 32, cir_thickness, -90, 90 );
+
+		-- Icon:
+		surface.SetDrawColor( UICol.WhiteAlpha );
+		surface.SetMaterial( UIMat.Cuffs );
+		surface.DrawTexturedRect( x - cir_radiushalf, y - cir_radiushalf, cir_radius, cir_radius );	
+
+		-- Progress Bar (Fill):
+		surface.SetDrawColor( HSVToColor( 120 * dt, 1, 1 ) );
+		RichCircle( x, y, cir_radius, 32, cir_thickness, -90, -90 + 180 * dt );
+
+		-- Text:
+		y = y + cir_radiushalf + lay_margin;
+		local _, th = draw.SimpleTextOutlined( UIText, "Cuffs.Default", x, y, UICol.White, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP, 2, UICol.Black );
+	end
+end
+
+--[[
+//
+// Old UI
 local Col = {
 	Text = Color(255,255,255), TextShadow = Color(0,0,0),
 	
@@ -267,7 +468,7 @@ function SWEP:DrawHUD()
 	surface.SetDrawColor( Col.BoxBackground )
 	surface.DrawRect( w-100, h+55, 200, 20 )
 	
-	local CuffingPercent = math.Clamp( 1-((self:GetCuffTime()-CurTime())/self.CuffTime), 0, 1 )
+	local CuffingPercent = math.Clamp( 1-((self:GetCuffTime()-CurTime())/(rp.cfg.InstantHandcuffs and 0.1 or self.CuffTime)), 0, 1 )
 	
 	render.SetScissorRect( w-100, h+55, (w-100)+(CuffingPercent*200), h+75, true )
 		surface.SetDrawColor( Col.BoxRight )
@@ -277,6 +478,11 @@ function SWEP:DrawHUD()
 		surface.SetDrawColor( Col.BoxLeft )
 		surface.DrawTexturedRect( w-100,h+55, 200,20 )
 	render.SetScissorRect( 0,0,0,0, false )
+end
+]]--
+
+function SWEP:PostDrawViewModel( vm )
+    vm:SetMaterial( "" );
 end
 
 //
@@ -291,7 +497,9 @@ local RopeCol = Color(255,255,255)
 function SWEP:ViewModelDrawn( vm )
 	if not IsValid(vm) then return end
 	
-	vm:SetMaterial( "engine/occlusionproxy" )
+	--vm:SetMaterial( "engine/occlusionproxy" )
+	vm:SetColor(Color(255, 255, 255, 1))
+	--vm:SetMaterial("Debug/hsv")
 	
 	if not IsValid(self.cmdl_LeftCuff) then
 		self.cmdl_LeftCuff = ClientsideModel( CuffMdl, RENDER_GROUP_VIEW_MODEL_OPAQUE )

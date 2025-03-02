@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\f4menu\\controls\\rpui_diplomacy_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local PANEL = {}
 
 function PANEL:Init()
@@ -418,7 +420,7 @@ function PANEL:Init()
 end
 
 function PANEL:OnTabOpened()
-    if IsValid(self.F4Menu) and self.alliance then
+    if IsValid(self.F4Menu) and self.alliance and rp.Capture.Alliances and rp.Capture.Alliances[self.alliance] then
         self.F4Menu:SetHeaderTitle(translates.Get("Отношения") .. " "..rp.Capture.Alliances[self.alliance].printName..(self.alliance == LocalPlayer():GetAlliance() and " (" .. translates.Get("ВЫ") .. ")" or ""))
     end
 end

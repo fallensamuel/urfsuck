@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local gmod_drawhelp = CreateClientConVar("gmod_drawhelp", "1", true, false)
 local gmod_toolmode = CreateClientConVar("gmod_toolmode", "rope", true, true)
 

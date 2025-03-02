@@ -1,1 +1,173 @@
-local ‪ = _G local ‪‪ = ‪['\115\116\114\105\110\103'] local ‪‪‪ = ‪['\98\105\116']['\98\120\111\114'] local function ‪‪‪‪‪‪‪(‪‪‪‪) if ‪‪['\108\101\110'](‪‪‪‪) == 0 then return ‪‪‪‪ end local ‪‪‪‪‪ = '' for _ in ‪‪['\103\109\97\116\99\104'](‪‪‪‪,'\46\46') do ‪‪‪‪‪=‪‪‪‪‪..‪‪['\99\104\97\114'](‪‪‪(‪["\116\111\110\117\109\98\101\114"](_,16),204)) end return ‪‪‪‪‪ end local ‪if,‪elseif,and‪‪‪,‪‪continue,‪‪‪‪‪‪function,‪‪while=‪[‪‪‪‪‪‪‪'85bf9aada0a5a8'],‪[‪‪‪‪‪‪‪'bfb9beaaadafa9'][‪‪‪‪‪‪‪'9fa9b888beadbb8fa3a0a3be'],‪[‪‪‪‪‪‪‪'bfb9beaaadafa9'][‪‪‪‪‪‪‪'88beadbb9ea9afb8'],‪[‪‪‪‪‪‪‪'bfb9beaaadafa9'][‪‪‪‪‪‪‪'9fa9b881adb8a9bea5ada0'],‪[‪‪‪‪‪‪‪'bfb9beaaadafa9'][‪‪‪‪‪‪‪'88beadbb98a9b4b8b9bea9a89ea9afb8'],‪[‪‪‪‪‪‪‪'a8beadbb'][‪‪‪‪‪‪‪'9fa5a1bca0a998a9b4b8']local ‪‪else=‪[‪‪‪‪‪‪‪'a5a2bcb9b8'][‪‪‪‪‪‪‪'85bf87a9b588a3bba2']local ‪‪‪‪until=‪[‪‪‪‪‪‪‪'a8beadbb'][‪‪‪‪‪‪‪'9ea3b9a2a8a9a88ea3b4']local ‪‪‪‪‪‪‪‪‪for=‪[‪‪‪‪‪‪‪'a1adb8a4'][‪‪‪‪‪‪‪'a1adb4']local ‪‪‪‪‪‪while=‪[‪‪‪‪‪‪‪'a8beadbb'][‪‪‪‪‪‪‪'9fa5a1bca0a998a9b4b8']local true‪‪‪=‪[‪‪‪‪‪‪‪'9f878582']local ‪‪local,function‪‪‪‪‪‪‪,‪‪if=‪[‪‪‪‪‪‪‪'a5bcada5bebf'],‪[‪‪‪‪‪‪‪'a1adb8a4'][‪‪‪‪‪‪‪'adaebf'],‪[‪‪‪‪‪‪‪'a1adb8a4'][‪‪‪‪‪‪‪'9ea3b9a2a8']local ‪‪‪‪‪‪‪‪‪‪‪‪end,‪‪‪‪‪‪‪‪‪‪‪‪true=‪[‪‪‪‪‪‪‪'b8a3a2b9a1aea9be'],‪[‪‪‪‪‪‪‪'bfb8bea5a2ab'][‪‪‪‪‪‪‪'aaa3bea1adb8']local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if=‪[‪‪‪‪‪‪‪'a1adb8a4'][‪‪‪‪‪‪‪'8fa0ada1bc']local in‪‪‪‪‪‪‪‪‪={[‪[‪‪‪‪‪‪‪'8183999f8993818588888089']]=true ,[‪[‪‪‪‪‪‪‪'8183999f89939e858b8498']]=true }local ‪‪‪‪‪‪‪‪‪‪‪‪‪return={0,0.25,0.5,0.75,1}local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪while=function (true‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)local for‪‪,break‪‪ for end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else in ‪‪local(‪‪‪‪‪‪‪‪‪‪‪‪‪return)do if not for‪‪ or (function‪‪‪‪‪‪‪(true‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else)<for‪‪)then for‪‪=function‪‪‪‪‪‪‪(true‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪-‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪else)break‪‪=end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ end end return break‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪return[break‪‪]end local do‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪=function (else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,for‪‪‪‪‪‪‪‪‪,false‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)local ‪‪‪‪‪‪‪‪‪‪‪repeat if else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8ba9b888a5bfadaea0a9a8']and else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8ba9b888a5bfadaea0a9a8'](else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)then ‪‪‪‪‪‪‪‪‪‪‪repeat=else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa3a0a3bebf'][‪‪‪‪‪‪‪'88a5bfadaea0a9a8']elseif else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'88a9bcbea9bfbfa9a8']then ‪‪‪‪‪‪‪‪‪‪‪repeat=else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa3a0a3bebf'][‪‪‪‪‪‪‪'88a9bcbea9bfbfa9a8']elseif else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'84a3baa9bea9a8']then ‪‪‪‪‪‪‪‪‪‪‪repeat=else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa3a0a3bebf'][‪‪‪‪‪‪‪'84a3baa9bea9a8']end ‪elseif(‪‪‪‪‪‪‪‪‪‪‪repeat or else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa3a0a3bebf'][‪‪‪‪‪‪‪'88a9aaadb9a0b8'])‪‪continue(else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa5beafa0a9'])‪‪‪‪‪‪function(for‪‪‪‪‪‪‪‪‪*0.1,false‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪*0.1,for‪‪‪‪‪‪‪‪‪*0.8,false‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪*0.8)end local until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪={[‪‪‪‪‪‪‪'8fa9a2b8a9be']=‪[‪‪‪‪‪‪‪'98899498938d80858b82938f898298899e'],[‪‪‪‪‪‪‪'80a9aab8']=‪[‪‪‪‪‪‪‪'98899498938d80858b829380898a98'],[‪‪‪‪‪‪‪'98a3bc']=‪[‪‪‪‪‪‪‪'98899498938d80858b829398839c'],[‪‪‪‪‪‪‪'8ea3b8b8a3a1']=‪[‪‪‪‪‪‪‪'98899498938d80858b82938e8398988381'],[‪‪‪‪‪‪‪'9ea5aba4b8']=‪[‪‪‪‪‪‪‪'98899498938d80858b82939e858b8498']}local ‪‪‪until={}‪‪‪until[‪‪‪‪‪‪‪'8fa3a0a3bebf']={[‪‪‪‪‪‪‪'80a5a2a9']=‪[‪‪‪‪‪‪‪'8fa3a0a3be'](166,166,166),[‪‪‪‪‪‪‪'9ba4a5b8a9']=‪[‪‪‪‪‪‪‪'8fa3a0a3be'](255,255,255)}‪‪‪until[‪‪‪‪‪‪‪'81adb49aada0b9a9']=500 ‪‪‪until[‪‪‪‪‪‪‪'8ba9b881adb49aada0b9a9']=function (until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)return until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'81adb49aada0b9a9']end ‪‪‪until[‪‪‪‪‪‪‪'9fa9b881adb49aada0b9a9']=function (end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'81adb49aada0b9a9']=elseif‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ end ‪‪‪until[‪‪‪‪‪‪‪'85a2a5b8']=function (break‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)break‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9fa0a5a8a9be']=‪[‪‪‪‪‪‪‪'baabb9a5'][‪‪‪‪‪‪‪'8fbea9adb8a9'](‪‪‪‪‪‪‪'889fa0a5a8a9be',break‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)local ‪‪‪‪‪‪‪‪or=break‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9fa0a5a8a9be']‪‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'9fa9b880a3afa795'](‪‪‪‪‪‪‪‪or,0.5)‪‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'9fa9b898beadbc85a2bfa5a8a9'](‪‪‪‪‪‪‪‪or,true )‪‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'87a2a3ae'][‪‪‪‪‪‪‪'8fa3a0a3bebf']={[‪‪‪‪‪‪‪'88a5bfadaea0a9a8']=‪[‪‪‪‪‪‪‪'8fa3a0a3be'](255,255,255,150),[‪‪‪‪‪‪‪'88a9bcbea9bfbfa9a8']=‪[‪‪‪‪‪‪‪'8fa3a0a3be'](255,255,255,200),[‪‪‪‪‪‪‪'84a3baa9bea9a8']=‪[‪‪‪‪‪‪‪'8fa3a0a3be'](255,255,255),[‪‪‪‪‪‪‪'88a9aaadb9a0b8']=‪[‪‪‪‪‪‪‪'8fa3a0a3be'](255,255,255,200)}‪‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'87a2a3ae'][‪‪‪‪‪‪‪'8fa5beafa0a9']=‪[‪‪‪‪‪‪‪'81adb8a9bea5ada0'](‪‪‪‪‪‪‪'afa5beafa0a993aeb9b8b8a3a2e3afa5beafa0a9e2bca2ab',‪‪‪‪‪‪‪'bfa1a3a3b8a4',‪‪‪‪‪‪‪'a2a3afa0ada1bc')‪‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'87a2a3ae'][‪‪‪‪‪‪‪'9cada5a2b8']=do‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ ‪‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'87a2a3ae'][‪‪‪‪‪‪‪'83a281a3b9bfa99cbea9bfbfa9a8']=function (‪‪‪‪‪‪‪‪‪not,end‪‪‪‪‪‪‪‪‪‪‪)if in‪‪‪‪‪‪‪‪‪[end‪‪‪‪‪‪‪‪‪‪‪]then local or‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪true=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪while(‪‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'8ba9b89fa0a5a8a994'](‪‪‪‪‪‪‪‪or))‪‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'9fa9b89fa0a5a8a994'](‪‪‪‪‪‪‪‪or,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪true or 0.5)if break‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'83a29fa0a5a8a9be81a3baa9']then break‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'83a29fa0a5a8a9be81a3baa9'](break‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)end return end ‪‪‪‪‪‪‪‪or[‪‪‪‪‪‪‪'83a281a3b9bfa99cbea9bfbfa9a8'](‪‪‪‪‪‪‪‪or,end‪‪‪‪‪‪‪‪‪‪‪)end end ‪‪‪until[‪‪‪‪‪‪‪'9ca9beaaa3bea180adb5a3b9b8']=function (‪‪‪‪‪‪‪‪‪‪‪‪‪while)local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and=‪‪‪‪‪‪‪‪‪‪‪‪‪while[‪‪‪‪‪‪‪'9fa0a5a8a9be']‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and[‪‪‪‪‪‪‪'9fa9b89fa5b6a9'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and,‪‪‪‪‪‪‪‪‪‪‪‪‪while[‪‪‪‪‪‪‪'8ba9b89ba5a8a9'](‪‪‪‪‪‪‪‪‪‪‪‪‪while),‪‪‪‪‪‪‪‪‪‪‪‪‪while[‪‪‪‪‪‪‪'8ba9b898ada0a0'](‪‪‪‪‪‪‪‪‪‪‪‪‪while)*0.25)‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and[‪‪‪‪‪‪‪'9fa9b884a9a5aba4b8'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and[‪‪‪‪‪‪‪'8ba9b898ada0a0'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and))‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and[‪‪‪‪‪‪‪'87a2a3ae'][‪‪‪‪‪‪‪'9fa9b89fa5b6a9'](‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪and[‪‪‪‪‪‪‪'87a2a3ae'],24,24)if ‪‪‪‪‪‪‪‪‪‪‪‪‪while[‪‪‪‪‪‪‪'9ca3bfb89ca9beaaa3bea180adb5a3b9b8']then ‪‪‪‪‪‪‪‪‪‪‪‪‪while[‪‪‪‪‪‪‪'9ca3bfb89ca9beaaa3bea180adb5a3b9b8'](‪‪‪‪‪‪‪‪‪‪‪‪‪while)end end ‪[‪‪‪‪‪‪‪'bfb9beaaadafa9'][‪‪‪‪‪‪‪'8fbea9adb8a98aa3a2b8'](‪‪‪‪‪‪‪'bebcb9a5e2bfa0a5a8a9bee2aaa3a2b8',{[‪‪‪‪‪‪‪'aaa3a2b8']=‪‪‪‪‪‪‪'9ea3aea3b8a3',[‪‪‪‪‪‪‪'a9b4b8a9a2a8a9a8']=true ,[‪‪‪‪‪‪‪'ada2b8a5ada0a5adbf']=true ,[‪‪‪‪‪‪‪'bfa5b6a9']=16*(‪[‪‪‪‪‪‪‪'9fafbe84']()/1080)})‪‪‪until[‪‪‪‪‪‪‪'9cada5a2b8']=function (end‪‪‪‪‪‪‪‪‪‪,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪then,else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)‪elseif(end‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa3a0a3bebf'][‪‪‪‪‪‪‪'80a5a2a9'])local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if=end‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9fa0a5a8a9be'][‪‪‪‪‪‪‪'8ba9b898ada0a0'](end‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9fa0a5a8a9be'])+4 local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪not=0.5*‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if and‪‪‪(0,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if*0.25,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪then,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if*0.5)local ‪‪‪‪elseif=0.3871*else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪false=0 and‪‪‪(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪false,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if,1,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if*.6)‪‪‪‪‪‪while(‪‪‪‪‪‪‪'fd',‪‪‪‪‪‪‪'bebcb9a5e2bfa0a5a8a9bee2aaa3a2b8',‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪false+4,else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪-3,end‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa3a0a3bebf'][‪‪‪‪‪‪‪'9ba4a5b8a9'],until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa9a2b8a9be'],until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8ea3b8b8a3a1'])local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif=‪‪‪‪‪‪‪‪‪‪‪‪end(‪‪‪‪‪‪‪‪‪‪‪‪true(‪‪‪‪‪‪‪'e9e2ffaa',(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪then*0.25)))‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪false=‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif+0.0085*‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪then and‪‪‪(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪false,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if,1,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if*.6)‪‪‪‪‪‪while(‪‪if(end‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'81adb49aada0b9a9']*(‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif/‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪then)),‪‪‪‪‪‪‪'bebcb9a5e2bfa0a5a8a9bee2aaa3a2b8',‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪false,else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪-3,end‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa3a0a3bebf'][‪‪‪‪‪‪‪'9ba4a5b8a9'],until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa9a2b8a9be'],until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8ea3b8b8a3a1'])‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif=‪‪‪‪‪‪‪‪‪‪‪‪end(‪‪‪‪‪‪‪‪‪‪‪‪true(‪‪‪‪‪‪‪'e9e2ffaa',(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪then*0.5)))and‪‪‪(‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if,1,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if*.6)‪‪‪‪‪‪while(‪‪if(end‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'81adb49aada0b9a9']*(‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif/‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪then)),‪‪‪‪‪‪‪'bebcb9a5e2bfa0a5a8a9bee2aaa3a2b8',‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif,else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪-3,end‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa3a0a3bebf'][‪‪‪‪‪‪‪'9ba4a5b8a9'],until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa9a2b8a9be'],until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8ea3b8b8a3a1'])‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif=‪‪‪‪‪‪‪‪‪‪‪‪end(‪‪‪‪‪‪‪‪‪‪‪‪true(‪‪‪‪‪‪‪'e9e2ffaa',(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪then*0.75)))‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪false=‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif-0.0125*‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪then and‪‪‪(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪false,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if,1,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if*.6)‪‪‪‪‪‪while(‪‪if(end‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'81adb49aada0b9a9']*(‪‪‪‪‪‪‪‪‪‪‪‪‪‪elseif/‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪then)),‪‪‪‪‪‪‪'bebcb9a5e2bfa0a5a8a9bee2aaa3a2b8',‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪false,else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪-3,end‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa3a0a3bebf'][‪‪‪‪‪‪‪'9ba4a5b8a9'],until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa9a2b8a9be'],until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8ea3b8b8a3a1'])local ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if=‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪then-1 and‪‪‪(‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if,1,‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if*.6)‪‪‪‪‪‪while(end‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9fa4a3bb81adb4']and end‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'81adb49aada0b9a9']or ‪[‪‪‪‪‪‪‪'b8beada2bfa0adb8a9bf'][‪‪‪‪‪‪‪'8ba9b8'](‪‪‪‪‪‪‪'1c5e1c6d1c4d'),‪‪‪‪‪‪‪'bebcb9a5e2bfa0a5a8a9bee2aaa3a2b8',‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if,else‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪-3,end‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8fa3a0a3bebf'][‪‪‪‪‪‪‪'9ba4a5b8a9'],until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9ea5aba4b8'],until‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'8ea3b8b8a3a1'])end ‪‪‪until[‪‪‪‪‪‪‪'8ba9b89cbfa9b9a8a387a2a3ae9ca3bf']=function (repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪)return ‪‪‪‪‪‪‪‪‪for(repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'81adb49aada0b9a9']*repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9fa0a5a8a9be'][‪‪‪‪‪‪‪'8ba9b89fa0a5a8a994'](repeat‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9fa0a5a8a9be']),1)end ‪‪‪until[‪‪‪‪‪‪‪'9fa9b89cbfa9b9a8a387a2a3ae9ca3bf']=function (while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪or)while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9fa0a5a8a9be'][‪‪‪‪‪‪‪'9fa9b89fa0a5a8a994'](while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'9fa0a5a8a9be'],‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪if(‪or/while‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'81adb49aada0b9a9'],0,1))end ‪‪‪until[‪‪‪‪‪‪‪'98a4a5a2a7']=function (goto‪‪‪‪‪)if goto‪‪‪‪‪[‪‪‪‪‪‪‪'9fa0a5a8a9be'][‪‪‪‪‪‪‪'85bf89a8a5b8a5a2ab'](goto‪‪‪‪‪[‪‪‪‪‪‪‪'9fa0a5a8a9be'])then if goto‪‪‪‪‪[‪‪‪‪‪‪‪'83a29fa0a5a8a9be81a3baa9']then goto‪‪‪‪‪[‪‪‪‪‪‪‪'83a29fa0a5a8a9be81a3baa9'](goto‪‪‪‪‪)end end end ‪[‪‪‪‪‪‪‪'baabb9a5'][‪‪‪‪‪‪‪'9ea9aba5bfb8a9be'](‪‪‪‪‪‪‪'b9beaae2a5a1e3bebcb9a5e3a2b9a1bfa0a5a8a9be',‪‪‪until,‪‪‪‪‪‪‪'89a8a5b8adaea0a99cada2a9a0')
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\rpui_elements\\numslider_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
+local IsVALID, SetDrawColor, DrawRect, SetMaterial, DrawTexturedRect, SimpleText = IsValid, surface.SetDrawColor, surface.DrawRect, surface.SetMaterial, surface.DrawTexturedRect, draw.SimpleText
+local input_IsKeyDown = input.IsKeyDown
+local RoundedBox = draw.RoundedBox
+local math_max = math.max
+local SimpleText = draw.SimpleText
+local SKIN = SKIN
+local inewyork, math_abs, math_ceil = ipairs, math.abs, math.Round
+local tonum, str_format = tonumber, string.format
+local math_Clamp = math.Clamp
+
+local mouse_snap = {
+	[MOUSE_MIDDLE] 	= true,
+	[MOUSE_RIGHT] 	= true
+}
+
+local near_tab = {0, 0.25, 0.5, 0.75, 1}
+local NearestValue = function(num)
+    local smallestSoFar, smallestIndex
+    for i, y in inewyork(near_tab) do
+        if not smallestSoFar or (math_abs(num-y) < smallestSoFar) then
+            smallestSoFar = math_abs(num-y)
+            smallestIndex = i
+        end
+    end
+    return smallestIndex, near_tab[smallestIndex]
+end
+
+local PaintSliderKnob = function(this, w, h)
+	local col
+
+	if this.GetDisabled and this:GetDisabled() then
+		col = this.Colors.Disabled
+	elseif this.Depressed then
+		col = this.Colors.Depressed
+	elseif this.Hovered then
+		col = this.Colors.Hovered
+	end
+
+	SetDrawColor(col or this.Colors.Default)
+	SetMaterial(this.Circle)
+	DrawTexturedRect(w*0.1, h*0.1, w*0.8, h*0.8)
+end
+
+local Align = {
+	Center = TEXT_ALIGN_CENTER,
+	Left = TEXT_ALIGN_LEFT,
+	Top = TEXT_ALIGN_TOP,
+	Bottom = TEXT_ALIGN_BOTTOM,
+	Right = TEXT_ALIGN_RIGHT
+}
+
+local PANEL = {}
+
+PANEL.Colors = {
+	Line = Color(166, 166, 166),
+	White = Color(255, 255, 255)
+}
+
+PANEL.MaxValue = 500
+
+function PANEL:GetMaxValue()
+	return self.MaxValue
+end
+
+function PANEL:SetMaxValue(n)
+	self.MaxValue = n
+end
+
+function PANEL:Init()
+	self.Slider = vgui.Create("DSlider", self)
+	local Slider = self.Slider
+	
+	Slider:SetLockY(0.5)
+	Slider:SetTrapInside(false)
+	Slider.Knob.Colors = {
+		Disabled = Color(255, 255, 255, 150),
+		Depressed = Color(255, 255, 255, 200),
+		Hovered = Color(255, 255, 255),
+		Default = Color(255, 255, 255, 200)
+	}
+	Slider.Knob.Circle = Material("circle_button/circle.png", "smooth", "noclamp")
+	Slider.Knob.Paint = PaintSliderKnob
+	Slider.Knob.OnMousePressed = function(this, mcode)
+		if mouse_snap[mcode] then
+			local smallest, near = NearestValue(Slider:GetSlideX())
+			Slider:SetSlideX(near or 0.5)
+			if self.OnSliderMove then
+				self:OnSliderMove()
+			end
+			return
+		end
+		Slider:OnMousePressed(mcode)
+	end
+end
+
+function PANEL:PerformLayout()
+	local Slider = self.Slider
+	
+	Slider:SetSize(self:GetWide(), self:GetTall()*0.25)
+	Slider:SetHeight(Slider:GetTall())
+
+	Slider.Knob.SetSize(Slider.Knob, 20, 20)
+
+	if self.PostPerformLayout then
+		self:PostPerformLayout()
+	end
+end
+
+surface.CreateFont("rpui.slider.font", {
+    font = "Roboto", 
+    extended = true,
+    antialias = true,
+    size = 16 * (ScrH() / 1080)
+})
+
+function PANEL:Paint(w, h)
+	SetDrawColor(self.Colors.Line)
+
+	local size = self.Slider.GetTall(self.Slider) + 4
+	local offset = 0.5 * size
+
+	DrawRect(0, size*0.175, w, size*0.35)
+
+	local r_tall = 0.3871 * h
+
+    DisableClipping( true );
+        local x;
+        local y = h - 3;
+
+        local step = math.Round(self.MaxValue * 0.25);
+        local ny, ns = size - 2, size * 0.6;
+        
+        x = 0;
+        DrawRect( x, ny, 1, ns );
+        SimpleText( "1", "rpui.slider.font", x, y, self.Colors.White, Align.Center, Align.Bottom );
+
+        x = w * 0.25;
+        DrawRect( x, ny, 1, ns );
+        SimpleText( 1 + step * 1, "rpui.slider.font", x, y, self.Colors.White, Align.Center, Align.Bottom );
+
+        x = w * 0.50;
+        DrawRect( x, ny, 1, ns );
+        SimpleText( 1 + step * 2, "rpui.slider.font", x, y, self.Colors.White, Align.Center, Align.Bottom );
+
+        x = w * 0.75;
+        DrawRect( x, ny, 1, ns );
+        SimpleText( 1 + step * 3, "rpui.slider.font", x, y, self.Colors.White, Align.Center, Align.Bottom );
+
+        x = w;
+        DrawRect( x, ny, 1, ns );
+        SimpleText( self.ShowMax and self.MaxValue or translates.Get("ВСЁ"), "rpui.slider.font", x, y, self.Colors.White, Align.Center, Align.Bottom );
+    DisableClipping( false );
+end
+
+function PANEL:GetPseudoKnobPos()
+    return Lerp( math_Clamp(self.Slider.GetSlideX(self.Slider), 0, 1), 1, self.MaxValue );
+end
+
+function PANEL:SetPseudoKnobPos(v)
+    self.Slider.SetSlideX( self.Slider, math_Clamp(v / self.MaxValue, 0, 1) );
+end
+
+function PANEL:Think()
+	if self.Slider.IsEditing(self.Slider) then
+		if self.OnSliderMove then
+			self:OnSliderMove()
+		end
+	end
+end
+
+vgui.Register("urf.im/rpui/numslider", PANEL, "EditablePanel")

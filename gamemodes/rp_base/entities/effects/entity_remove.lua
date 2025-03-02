@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\effects\\entity_remove.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 --[[---------------------------------------------------------
    Initializes the effect. The data is a table of data 

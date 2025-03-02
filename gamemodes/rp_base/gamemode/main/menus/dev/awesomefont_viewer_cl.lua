@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\dev\\awesomefont_viewer_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local surface_CreateFont = surface.CreateFont
 local TEXT_ALIGN_CENTER, TEXT_ALIGN_RIGHT, TEXT_ALIGN_BOTTOM = TEXT_ALIGN_CENTER, TEXT_ALIGN_RIGHT, TEXT_ALIGN_BOTTOM
 local SimpleText = draw.SimpleText

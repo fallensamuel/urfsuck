@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\ent_picture\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include'shared.lua'
 cvar.Register'enable_pictureframes':SetDefault(true):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Отображение Картин')
 

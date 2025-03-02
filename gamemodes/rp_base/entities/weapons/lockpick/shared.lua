@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\lockpick\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 if SERVER then
 	AddCSLuaFile("shared.lua")
 	util.AddNetworkString("lockpick_time")
@@ -18,8 +20,8 @@ SWEP.Purpose = ""
 SWEP.ViewModelFOV = 60
 SWEP.ViewModelFlip = false
 SWEP.UseHands = true
-SWEP.ViewModel = Model("models/weapons/c_crowbar.mdl")
-SWEP.WorldModel = Model("models/weapons/w_crowbar.mdl")
+SWEP.ViewModel = Model("models/sterling/c_enhanced_lockpicks.mdl")
+SWEP.WorldModel = Model("models/sterling/enhanced_lockpicks.mdl")
 SWEP.Spawnable = true
 SWEP.Category = "RP"
 SWEP.Sound = Sound("physics/wood/wood_box_impact_hard3.wav")
@@ -40,7 +42,7 @@ Name: SWEP:Initialize()
 Desc: Called when the weapon is first loaded
 ---------------------------------------------------------]]
 function SWEP:Initialize()
-	self:SetHoldType("pistol")
+	self:SetHoldType("slam") --pistol
 end
 
 if CLIENT then
@@ -87,7 +89,7 @@ function SWEP:PrimaryAttack()
 	end
 
 	self.EndPick = CurTime() + self.LockPickTime
-	self:SetHoldType("pistol")
+	self:SetHoldType("slam") --pistol
 
 	if SERVER then
 		timer.Create("LockPickSounds", 1, self.LockPickTime, function()
@@ -95,28 +97,9 @@ function SWEP:PrimaryAttack()
 			local snd = {1, 3, 4}
 			self:EmitSound("weapons/357/357_reload" .. tostring(snd[math.random(1, #snd)]) .. ".wav", 50, 100)
 		end)
-	elseif CLIENT then
-		self.Dots = self.Dots or ""
-
-		timer.Create("LockPickDots", 0.5, 0, function()
-			if not self:IsValid() then
-				timer.Remove("LockPickDots")
-
-				return
-			end
-
-			local len = string.len(self.Dots)
-
-			local dots = {
-				[0] = ".",
-				[1] = "..",
-				[2] = "...",
-				[3] = ""
-			}
-
-			self.Dots = dots[len]
-		end)
 	end
+
+	self:SetVMSequence('picklocking_01');
 end
 
 function SWEP:Holster()
@@ -126,16 +109,12 @@ function SWEP:Holster()
 		timer.Remove("LockPickSounds")
 	end
 
-	if CLIENT then
-		timer.Remove("LockPickDots")
-	end
-
 	return true
 end
 
 function SWEP:Succeed()
 	self.IsLockPicking = false
-	self:SetHoldType("normal")
+	self:SetHoldType("slam") --normal
 	local trace = self.Owner:GetEyeTrace()
 
 	if trace.Entity.isFadingDoor and trace.Entity.fadeActivate then
@@ -163,22 +142,33 @@ function SWEP:Succeed()
 		timer.Remove("LockPickSounds")
 	end
 
-	if CLIENT then
-		timer.Remove("LockPickDots")
-	end
+	self:SetVMSequence('idle');
 end
 
 function SWEP:Fail()
 	self.IsLockPicking = false
-	self:SetHoldType("normal")
+	self:SetHoldType("slam") --normal
 
 	if SERVER then
 		timer.Remove("LockPickSounds")
 	end
 
-	if CLIENT then
-		timer.Remove("LockPickDots")
-	end
+	self:SetVMSequence('idle');
+end
+
+function SWEP:SetVMSequence(Name)
+	if (!IsValid(self) or !Name) then return end
+
+	local Owner = self:GetOwner();
+	if (!IsValid(Owner)) then return end
+
+	local ViewModel = Owner:GetViewModel();
+	if (!IsValid(ViewModel)) then return end
+
+	local Sequence = ViewModel:LookupSequence(Name);
+	if (Sequence == -1) then return end
+
+	ViewModel:SendViewModelMatchingSequence(Sequence);
 end
 
 function SWEP:Think()
@@ -199,20 +189,81 @@ function SWEP:Think()
 	end
 end
 
-local cached
-function SWEP:DrawHUD()
-	if self.IsLockPicking then
-		self.Dots = self.Dots or ""
-		local x, y = (ScrW() / 2) - 150, (ScrH() / 2) - 25
-		local w, h = 300, 50
-		local time = self.EndPick - self.StartPick
-		local status = (CurTime() - self.StartPick) / time
-		rp.ui.DrawProgress(x, y, w, h, status)
-		if not cached then
-			cached = translates and translates.Get( 'Взлом' ) or 'Взлом'
+if (CLIENT) then
+	local WhiteCircle = Material('deathmechanics/circle');
+	local GrayCircle = Material('deathmechanics/cline');
+	local YellowCircle = Material('deathmechanics/gline');
+	local Icon = Material('urfim_hud/icons/weapons/lockpick');
+
+	local Width, Height, Poly;
+	local Diameter, Radius, Radian;
+	local StartX, StartY, CenterX, CenterY;
+	local Time, MaxTime;
+
+	local Rad, Sin, Cos = math.rad, math.sin, math.cos;
+	local GetScrW, GetScrH = ScrW, ScrH;
+	local Floor = math.floor;
+
+	local SetStencilCompareFunction = render.SetStencilCompareFunction;
+	local SetStencilFailOperation = render.SetStencilFailOperation;
+	local ExperimentalStencil = rpui.ExperimentalStencil;
+	local DrawTexturedRect = surface.DrawTexturedRect;
+	local SetDrawColor = surface.SetDrawColor;
+	local SetMaterial = surface.SetMaterial;
+	local NoTexture = draw.NoTexture;
+	local DrawPoly = surface.DrawPoly;
+
+	function SWEP:DrawHUD()
+		if (!self.IsLockPicking) then return end
+
+		Width, Height = GetScrW(), GetScrH();
+
+		Diameter = Height * .1;
+		Radius = Diameter * .5;
+		Radian = Rad(0);
+
+		StartX = (Width - Diameter) * .5;
+		StartY = (Height - Diameter) * .5;
+		CenterX = StartX + Radius;
+		CenterY = StartY + Radius;
+
+		Poly = {};
+
+		Poly[#Poly + 1] = {x = StartX + Radius, y = StartY + Radius};
+		Poly[#Poly + 1] = {x = CenterX - Sin(Radian) * Radius, y = CenterY - Cos(Radian) * Radius};
+
+		MaxTime = self.EndPick - self.StartPick;
+		Time = self.EndPick - CurTime();
+
+		for Segment = 0, Floor(90 * Time / MaxTime) do
+			Radian = Rad((Segment / 90) * -360);
+			Poly[#Poly + 1] = {x = CenterX - Sin(Radian) * Radius, y = CenterY - Cos(Radian) * Radius};
 		end
-		
-		draw.SimpleTextOutlined(cached .. self.Dots, "HudFont2", ScrW() / 2, ScrH() / 2, Color(255, 255, 255, 255), 1, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, Color(0, 0, 0, 255))
+
+		SetDrawColor(255, 255, 255);
+
+		SetMaterial(WhiteCircle);
+		DrawTexturedRect(StartX + 5, StartY + 5, Diameter - 10, Diameter - 10);
+
+		SetMaterial(GrayCircle);
+		DrawTexturedRect(StartX + 3, StartY + 3, Diameter - 6, Diameter - 6);
+
+		NoTexture();
+
+		ExperimentalStencil(function()
+			DrawPoly(Poly);
+
+			SetStencilCompareFunction(STENCIL_NOTEQUAL);
+			SetStencilFailOperation(STENCIL_KEEP);
+
+			SetMaterial(YellowCircle);
+			DrawTexturedRect(StartX + 3, StartY + 3, Diameter - 6, Diameter - 6);
+		end);
+
+		Width = Radius * .5;
+
+		SetMaterial(Icon);
+		DrawTexturedRect(CenterX - Width, CenterY - Width, Radius, Radius);
 	end
 end
 

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\sandbox\\spawnmenu\\creationmenu\\content\\content_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local PANEL = {}
 AccessorFunc(PANEL, "m_pSelectedPanel", "SelectedPanel")
 

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\media_base\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include'shared.lua'
 cvar.Register'media_enable':SetDefault(true):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Медиа-Плеер')
 cvar.Register'media_mute_when_unfocused':SetDefault(true):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Заглушить Медиа-Плеер при сворачивании игры')
@@ -147,7 +149,7 @@ net.Receive('rp.MediaMenu', function()
 		end
 
 		self.Think = function(self)
-			if (not medialib.load('media').guessService(text:GetValue())) then
+			if (medialib and (not medialib.load('media').guessService(text:GetValue()))) then
 				self:SetDisabled(true)
 			else
 				self:SetDisabled(false)
@@ -174,7 +176,7 @@ net.Receive('rp.MediaMenu', function()
 		end
 
 		self.Think = function(self)
-			if favs[text:GetValue()] or (not medialib.load('media').guessService(text:GetValue())) then
+			if favs[text:GetValue()] or (medialib and (not medialib.load('media').guessService(text:GetValue()))) then
 				self:SetDisabled(true)
 			else
 				self:SetDisabled(false)

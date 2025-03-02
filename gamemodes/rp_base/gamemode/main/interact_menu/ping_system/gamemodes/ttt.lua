@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\interact_menu\\ping_system\\gamemodes\\ttt.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local GAMEMODE = PIS:GetGamemode()
 GAMEMODE:SetName("Trouble in Terrorist Town")
 GAMEMODE:SetID("ttt")

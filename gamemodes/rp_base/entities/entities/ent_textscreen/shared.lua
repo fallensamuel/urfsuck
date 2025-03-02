@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\ent_textscreen\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ENT.Type = "anim"
 ENT.Base = "base_anim"
 ENT.PrintName = "Textscreen"

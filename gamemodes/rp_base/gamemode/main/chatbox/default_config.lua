@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\chatbox\\default_config.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 -- Стандартный конфиг (используйте кфг в darkrp для перезаписи параметров!)
 
 CHATBOX.ConsoleName = "Console"
@@ -8,7 +10,7 @@ CHATBOX.ImageDownloadFolder = "urfim_chatemotes" -- Папка в которую
 
 CHATBOX.UseUTF8 = true -- Использовать Utf8? Можно офать на европейских серверах.
 
-CHATBOX.MaxMessages = 200 -- Максимум доступных сообщений. После этого старые сообщения начнут удаляться.
+CHATBOX.MaxMessages = 50 -- Максимум доступных сообщений. После этого старые сообщения начнут удаляться.
 
 CHATBOX.SplitLineByChars = false -- Включить по-буквенный автоперенос? При значении false будет переносить только цельные слова.
 
@@ -64,8 +66,8 @@ CHATBOX.ColorScheme = { -- Цветовая схема чат-бокса, мож
 }
 
 --——————————————————————————————————————————— M O D E S ———————————————————————————————————————————--
-
 -- Режимы чата, не предназначены для настройки силами кураторов! Эти настройки только для девелоперов
+-- function CHATBOX:AddMode(name, NickKey, col, cmd, pattern, howto, hidden, skipnext, realcmd, msgkey, dontclick, additionalcmds)
 CHATBOX.LocalChat = CHATBOX:AddMode(translates.Get("Рядом"), 2, Color(226, 167, 13, 150), nil, translates.Get("<Текст для игроков рядом>"), nil, nil, nil, nil, 5)
 CHATBOX:AddMode(translates.Get("Локальный"), 4, Color(16, 107, 33, 150), "/looc", "[LOOC]", translates.Get("<Текст для локального нон-рп чата>"), nil, nil, nil, 7, nil, "[[")
 CHATBOX:AddMode(translates.Get("Шёпот"), 4, Color(55, 150, 95, 150), "/w", "[" .. translates.Get("Шёпот") .. "]", translates.Get("<Текст для шёпота>"), nil, nil, nil, 7)
@@ -95,6 +97,32 @@ CHATBOX.PMChat = CHATBOX:AddMode(function(m, i, content)
 	end
 end, 5, Color(168, 18, 238), "/pm", {"pm_from", "pm_to"}, translates.Get("<Ник игрока> <текст>"), nil, true, nil, 8)
 CHATBOX:AddMode("URF", nil, Color(249, 48, 40, 150 ), nil, "[URF]", nil, true, nil, nil, nil, true)
+CHATBOX:AddMode("Торговец", nil, Color(139, 255, 38, 150), nil, "[Торговец]", nil, true, nil, nil, nil, true)
+
+CHATBOX:AddMode(
+	translates.Get("Рейд"),
+	4,
+	Color(255,100,0,150),
+	"/raid",
+	"[" .. translates.Get("Рейд") .. "]",
+	translates.Get("<Текст для объявления рейда>"),
+	nil, nil, nil, 7, nil,
+	"/rd"
+);
+
+CHATBOX:AddMode(
+	translates.Get("Слухи"),
+	4,
+	Color(255,238,0,150),
+	"/rumor",
+	"[" .. translates.Get("Слухи") .. "]",
+	translates.Get("<Текст для объявления слуха>"),
+	nil, nil, nil, 7, nil,
+	"/rm"
+);
+
+CHATBOX.EmergencyChat = CHATBOX:AddMode(translates.Get("Экстренный"), 4, Color(205, 0, 0, 150), "/em", "[" .. translates.Get("Экстренный") .. "]", nil, true, nil, nil, 7);
+
 
 --——————————————————————————————————————————— P R E V I E W - E M O T E S ———————————————————————————————————————————--
 

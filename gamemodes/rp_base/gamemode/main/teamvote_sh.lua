@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\teamvote_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 if (SERVER) then
 	util.AddNetworkString('rp.TeamVote')
 	util.AddNetworkString('rp.TeamVoteCountdown')

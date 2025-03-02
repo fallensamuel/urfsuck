@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\init_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 rp.meta = rp.meta or {}
 rp.meta.item = rp.meta.item or {}
 rp.meta.inventory = rp.meta.inventory or {}

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\emoteactions\\emoteactions_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 EmoteActions 			 = EmoteActions 			or {};
 EmoteActions.LocalPlayer = EmoteActions.LocalPlayer or {};
 
@@ -34,6 +36,7 @@ hook.Add( "EmoteActions:SequenceSync", "PlayerAnimSync", function( ply, seq )
 	else
 		EmoteActions.PlayerAnims[ply] = EmoteActions.PlayerAnims[ply] or {};
 		EmoteActions.PlayerAnims[ply].Sequence = seq;
+		EmoteActions.PlayerAnims[ply].Start = SysTime();
 	end
 end );
 
@@ -46,6 +49,7 @@ net.Receive( "PlayerAnimAction", function()
 	if act ~= "" then
 		EmoteActions.PlayerAnims[pl]        = EmoteActions.PlayerAnims[pl] or {}
 		EmoteActions.PlayerAnims[pl].Action = act;
+		EmoteActions.PlayerAnims[pl].Start = SysTime();
 	else
 		EmoteActions.PlayerAnims[pl] = nil;
 	end
@@ -129,7 +133,7 @@ function EmoteActions:ShowGUI()
 			ActionBtn:SetText( rawAction.Name );
 			ActionBtn:SetTooltip( rawAction.Desc );
 			ActionBtn.DoClick = function()
-				LocalPlayer():RunEmoteAction( actID );
+				--LocalPlayer():RunEmoteAction( actID );
 			end
 	end
 

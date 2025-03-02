@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\interact_menu\\ping_system\\vgui\\elements\\textentry_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local PANEL = {}
 
 function PANEL:Init()

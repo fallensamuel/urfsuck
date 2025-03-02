@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\player\\util_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local mVec = FindMetaTable("Vector")
 local Dot, GetNormalized = mVec.Dot, mVec.GetNormalized
 local ENTITY = FindMetaTable("Entity")
@@ -28,12 +30,12 @@ function rp.FindPlayer(info)
 end
 
 function PLAYER:GetMaxArmor()
-	return (self:GetJobTable().armor or 0) + (self:HasUpgrade("armor") and self:GetUpgradeCount("armor")*33 or 0)
+	return (self:GetJobTable().armor or 0) + (self:HasUpgrade("armor") and self:GetUpgradeCount("armor")*(rp.cfg.UpgradeArmor or 33) or 0)
 end
 
 if CLIENT then
 	function rp.SendMoney(ply, amount)
-		amount = math.floor(amount)
+		amount = math.floor(amount or 0)
 		net.Start("GivePlayerMoney")
 			net.WriteEntity(ply)
 			net.WriteUInt(amount, 32)

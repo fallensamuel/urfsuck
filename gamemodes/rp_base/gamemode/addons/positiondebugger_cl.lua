@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\positiondebugger_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local Tr = {collisiongroup = COLLISION_GROUP_WORLD};
 local TrLn = util.TraceLine;
 local InWorld = function(Pos)

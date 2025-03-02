@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\relations\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 local ACTION_KICK = 1
 local ACTION_FIRE = 2
@@ -38,12 +40,15 @@ else
 end
 
 rp.AddContextCommand(cached[1], cached[2], function()
+	local relationFilter = LocalPlayer():GetJobTable().relationFilter
+
 	local cps = table.Filter(player.GetAll(), function(v) 
-		return rp.IsHigherRank(LocalPlayer(), v)
+		local r = (relationFilter == nil) and true or relationFilter(v)
+		return r && rp.IsHigherRank(LocalPlayer(), v)
 	end)
 
-	ui.PlayerReuqest(cps, function(v)
-		ui.StringRequest(cached[2], cached[3], '', function(a)
+	rpui.PlayerReuqest(cached[2], "rpui/donatemenu/money", 1.5, function(v) --ui.PlayerReuqest(cps, function(v)
+		rpui.StringRequest(cached[2], cached[3], "shop/filters/list.png", 1.4, function(self, a) --ui.StringRequest(cached[2], cached[3], '', function(a)
 			if IsValid(v) then
 				net.Start('rp.Relations.Actions')
 					net.WriteUInt(ACTION_REWARD, 3)
@@ -52,11 +57,12 @@ rp.AddContextCommand(cached[1], cached[2], function()
 				net.SendToServer()
 			end
 		end)
-	end)
+		
+	end, cps)
 end, function() return LocalPlayer():GetFactionRank() >= RANK_TRAINER end, 'cmenu/premia')
 
 rp.AddContextCommand(cached[1], cached[4], function()
-	ui.StringRequest(cached[2], cached[3], '', function(a)
+	rpui.StringRequest(cached[2], cached[3], "shop/filters/list.png", 1.4, function(self, a) --ui.StringRequest(cached[2], cached[3], '', function(a)
 		net.Start('rp.Relations.Actions')
 			net.WriteUInt(ACTION_REWARD, 3)
 			net.WriteEntity(LocalPlayer())
@@ -84,12 +90,15 @@ end, function() return LocalPlayer():GetFactionRank() >= RANK_TRAINER end, 'cmen
 --end, function() return LocalPlayer():GetFactionRank() >= RANK_OFFICER end)
 
 rp.AddContextCommand(cached[1], cached[5], function()
+	local relationFilter = LocalPlayer():GetJobTable().relationFilter
+
 	local cps = table.Filter(player.GetAll(), function(v) 
-		return rp.IsHigherRank(LocalPlayer(), v)
+		local r = (relationFilter == nil) and true or relationFilter(v)
+		return r && rp.IsHigherRank(LocalPlayer(), v)
 	end)
 
-	ui.PlayerReuqest(cps, function(v)
-		ui.StringRequest(cached[5], cached[6], '', function(a)
+	rpui.PlayerReuqest(cached[5], "rpui/donatemenu/money", 1.5, function(v) --ui.PlayerReuqest(cps, function(v)
+		rpui.StringRequest(cached[5], cached[6], "shop/filters/list.png", 1.4, function(self, a) --ui.StringRequest(cached[5], cached[6], '', function(a)
 			if IsValid(v) then
 				net.Start('rp.Relations.Actions')
 					net.WriteUInt(ACTION_DEMOTE, 3)
@@ -98,16 +107,19 @@ rp.AddContextCommand(cached[1], cached[5], function()
 				net.SendToServer()
 			end
 		end)
-	end)
+	end, cps)
 end, function() return LocalPlayer():GetFactionRank() >= RANK_OFFICER end, 'cmenu/promote')
 
 rp.AddContextCommand(cached[1], cached[7], function()
+	local relationFilter = LocalPlayer():GetJobTable().relationFilter
+
 	local cps = table.Filter(player.GetAll(), function(v) 
-		return rp.IsHigherRank(LocalPlayer(), v)
+		local r = (relationFilter == nil) and true or relationFilter(v)
+		return r && rp.IsHigherRank(LocalPlayer(), v)
 	end)
 
-	ui.PlayerReuqest(cps, function(v)
-		ui.StringRequest(cached[7], cached[8], '', function(a)
+	rpui.PlayerReuqest(cached[7], "rpui/donatemenu/money", 1.5, function(v) --ui.PlayerReuqest(cps, function(v)
+		rpui.StringRequest(cached[7], cached[8], "shop/filters/list.png", 1.4, function(self, a) --ui.StringRequest(cached[7], cached[8], '', function(a)
 			if IsValid(v) then
 				net.Start('rp.Relations.Actions')
 					net.WriteUInt(ACTION_KICK, 3)
@@ -116,17 +128,20 @@ rp.AddContextCommand(cached[1], cached[7], function()
 				net.SendToServer()
 			end
 		end)
-	end)
+	end, cps)
 end, function() return LocalPlayer():GetFactionRank() >= RANK_LEADER end, 'cmenu/demote')
 
 local radius = 2000 ^ 1000
 rp.AddContextCommand(cached[1], cached[9], function()
-	local cps = table.Filter(player.GetAll(), function(v) 
-		return rp.CanRepress(LocalPlayer(), v) && v:GetPos():DistToSqr(LocalPlayer():GetPos()) < radius && v:IsHandcuffed()
+	local relationFilter = LocalPlayer():GetJobTable().relationFilter
+
+	local cps = table.Filter(player.GetAll(), function(v)
+		local r = (relationFilter == nil) and true or relationFilter(v)
+		return r && rp.CanRepress(LocalPlayer(), v) && v:GetPos():DistToSqr(LocalPlayer():GetPos()) < radius && v:IsHandcuffed()
 	end)
 
-	ui.PlayerReuqest(cps, function(v)
-		ui.StringRequest(cached[9] .. ' (' .. cached[10] .. ')', cached[11], '', function(a)
+	rpui.PlayerReuqest(cached[9], "rpui/donatemenu/money", 1.5, function(v) --ui.PlayerReuqest(cps, function(v)
+		rpui.StringRequest(cached[9] .. ' (' .. cached[10] .. ')', cached[11], "shop/filters/list.png", 1.4, function(self, a) --ui.StringRequest(cached[9] .. ' (' .. cached[10] .. ')', cached[11], '', function(a)
 			if IsValid(v) then
 				net.Start('rp.Relations.Actions')
 					net.WriteUInt(ACTION_REPRESS, 3)
@@ -135,5 +150,5 @@ rp.AddContextCommand(cached[1], cached[9], function()
 				net.SendToServer()
 			end
 		end)
-	end)
+	end, cps)
 end, function() return rp.CanRepress(LocalPlayer()) && !rp.cfg.DisableContextRepress end, 'cmenu/unhouse')

@@ -1,1 +1,185 @@
-local ‪ = _G local ‪‪ = ‪['\115\116\114\105\110\103'] local ‪‪‪ = ‪['\98\105\116']['\98\120\111\114'] local function ‪‪‪‪‪‪‪(‪‪‪‪) if ‪‪['\108\101\110'](‪‪‪‪) == 0 then return ‪‪‪‪ end local ‪‪‪‪‪ = '' for _ in ‪‪['\103\109\97\116\99\104'](‪‪‪‪,'\46\46') do ‪‪‪‪‪=‪‪‪‪‪..‪‪['\99\104\97\114'](‪‪‪(‪["\116\111\110\117\109\98\101\114"](_,16),237)) end return ‪‪‪‪‪ end ENT[‪‪‪‪‪‪‪'bd9f848399a38c8088']=‪‪‪‪‪‪‪'3d4d3d5d3d5a3c6d3c6e3c653d5d3d583d513c663d54cd3d533d5c3c673d583d573c6f' ENT[‪‪‪‪‪‪‪'b9949d88']=‪‪‪‪‪‪‪'8c838480' ENT[‪‪‪‪‪‪‪'bf888389889faa9f82989d']=‪[‪‪‪‪‪‪‪'bfa8a3a9a8bfaabfa2b8bdb2afa2b9a5'] ENT[‪‪‪‪‪‪‪'a18c9794ab9f88889788']=true local function‪=6000 ENT[‪‪‪‪‪‪‪'b99f94b982bf889e99829f88']=function (‪‪‪‪‪‪‪‪‪‪‪break,‪‪‪‪‪‪‪and)local while‪=‪‪‪‪‪‪‪'b99f94b982bf889e99829f88bd9f829d'..‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'a88399a483898895'](‪‪‪‪‪‪‪‪‪‪‪break)local local‪=function ()if not ‪[‪‪‪‪‪‪‪'a49ebb8c818489'](‪‪‪‪‪‪‪‪‪‪‪break)then ‪[‪‪‪‪‪‪‪'998480889f'][‪‪‪‪‪‪‪'bf8880829b88'](while‪)return end local for‪‪‪=‪[‪‪‪‪‪‪‪'a49ebb8c818489'](‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'aa8899bd85949e848e9ea28f87888e99'](‪‪‪‪‪‪‪‪‪‪‪break))and ‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'aa8899bd85949e848e9ea28f87888e99'](‪‪‪‪‪‪‪‪‪‪‪break)[‪‪‪‪‪‪‪'a49ebd888388999f8c9984838a'](‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'aa8899bd85949e848e9ea28f87888e99'](‪‪‪‪‪‪‪‪‪‪‪break))local not‪‪‪‪ for continue‪‪‪‪,return‪‪‪‪‪‪ in ‪[‪‪‪‪‪‪‪'9d8c849f9e'](‪[‪‪‪‪‪‪‪'9d818c94889f'][‪‪‪‪‪‪‪'aa8899ac8181']())do if ‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'aa8899bd829e'](‪‪‪‪‪‪‪‪‪‪‪break)[‪‪‪‪‪‪‪'a9849e99b982be9c9f'](‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'aa8899bd829e'](‪‪‪‪‪‪‪‪‪‪‪break),return‪‪‪‪‪‪[‪‪‪‪‪‪‪'aa8899bd829e'](return‪‪‪‪‪‪))<=function‪ then not‪‪‪‪=true end end if not (for‪‪‪ or not‪‪‪‪)then ‪[‪‪‪‪‪‪‪'998480889f'][‪‪‪‪‪‪‪'bf8880829b88'](while‪)‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'be8899ae828181849e848283aa9f82989d'](‪‪‪‪‪‪‪‪‪‪‪break,‪[‪‪‪‪‪‪‪'aea2a1a1a4bea4a2a3b2aabfa2b8bdb2a3a2a3a8'])for function‪‪‪‪‪,local‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪ in ‪[‪‪‪‪‪‪‪'9d8c849f9e'](‪‪‪‪‪‪‪‪‪‪‪break[‪‪‪‪‪‪‪'bda9aa818c9e9e889e']or {})do local‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'be8899ae828181849e848283aa9f82989d'](local‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,‪[‪‪‪‪‪‪‪'aea2a1a1a4bea4a2a3b2aabfa2b8bdb2a3a2a3a8'])end ‪‪‪‪‪‪‪and(‪‪‪‪‪‪‪‪‪‪‪break)end end ‪[‪‪‪‪‪‪‪'998480889f'][‪‪‪‪‪‪‪'ae9f888c9988'](while‪,1,0,local‪)local‪()end function ENT:IsDestroyed()return CLIENT and rp.cfg.LocalDestroyedProps[self:EntIndex()]or self.PDBroken end  ENT[‪‪‪‪‪‪‪'bf889e99829f88']=function (while‪‪‪‪‪‪)if ‪[‪‪‪‪‪‪‪'aea1a4a8a3b9']then ‪[‪‪‪‪‪‪‪'838899'][‪‪‪‪‪‪‪'be998c9f99'](‪‪‪‪‪‪‪'9f9dc3a9889e9982948c8f8188c3bf889e99829f88')‪[‪‪‪‪‪‪‪'838899'][‪‪‪‪‪‪‪'ba9f849988b8a48399'](while‪‪‪‪‪‪[‪‪‪‪‪‪‪'a88399a483898895'](while‪‪‪‪‪‪),20)‪[‪‪‪‪‪‪‪'838899'][‪‪‪‪‪‪‪'be888389b982be889f9b889f']()else local break‪‪‪‪‪‪‪=‪[‪‪‪‪‪‪‪'9f9d'][‪‪‪‪‪‪‪'8e8b8a'][‪‪‪‪‪‪‪'a9889e999f82948c8f8188bd9f829da994838c80848e9e'][while‪‪‪‪‪‪[‪‪‪‪‪‪‪'aa8899a082898881'](while‪‪‪‪‪‪)]‪[‪‪‪‪‪‪‪'998480889f'][‪‪‪‪‪‪‪'bf8880829b88'](‪‪‪‪‪‪‪'bf889e99829f88bd9f829d'..while‪‪‪‪‪‪[‪‪‪‪‪‪‪'a88399a483898895'](while‪‪‪‪‪‪))‪[‪‪‪‪‪‪‪'998480889f'][‪‪‪‪‪‪‪'bf8880829b88'](‪‪‪‪‪‪‪'b99f94b982bf889e99829f88bd9f829d'..while‪‪‪‪‪‪[‪‪‪‪‪‪‪'a88399a483898895'](while‪‪‪‪‪‪))while‪‪‪‪‪‪[‪‪‪‪‪‪‪'b99f94b982bf889e99829f88'](while‪‪‪‪‪‪,function (or‪‪‪)or‪‪‪[‪‪‪‪‪‪‪'bda9af9f82868883']=nil ‪[‪‪‪‪‪‪‪'838899'][‪‪‪‪‪‪‪'be998c9f99'](‪‪‪‪‪‪‪'9f9dc3a9889e9982948c8f8188c3bf889e99829f88')‪[‪‪‪‪‪‪‪'838899'][‪‪‪‪‪‪‪'ba9f849988b8a48399'](or‪‪‪[‪‪‪‪‪‪‪'a88399a483898895'](or‪‪‪),20)‪[‪‪‪‪‪‪‪'838899'][‪‪‪‪‪‪‪'af9f828c898e8c9e99']()end )end end local ‪‪‪‪‪‪‪‪else=300*300 ENT[‪‪‪‪‪‪‪'a9889e999f8294']=function (‪‪‪‪‪elseif)if ‪[‪‪‪‪‪‪‪'bea8bfbba8bf']then local ‪‪‪while=‪[‪‪‪‪‪‪‪'9f9d'][‪‪‪‪‪‪‪'8e8b8a'][‪‪‪‪‪‪‪'a9889e999f82948c8f8188bd9f829da994838c80848e9e'][‪‪‪‪‪elseif[‪‪‪‪‪‪‪'aa8899a082898881'](‪‪‪‪‪elseif)]‪‪‪‪‪elseif[‪‪‪‪‪‪‪'bda9af9f82868883']=true ‪‪‪‪‪elseif[‪‪‪‪‪‪‪'be8899ae828181849e848283aa9f82989d'](‪‪‪‪‪elseif,‪[‪‪‪‪‪‪‪'aea2a1a1a4bea4a2a3b2aabfa2b8bdb2a4a3b2bba8a5a4aea1a8'])if ‪‪‪while[‪‪‪‪‪‪‪'8e828383888e998889']then if not ‪‪‪‪‪elseif[‪‪‪‪‪‪‪'bda9aa818c9e9e889e']then local goto‪=‪‪‪‪‪elseif[‪‪‪‪‪‪‪'aa8899bd829e'](‪‪‪‪‪elseif)‪‪‪‪‪elseif[‪‪‪‪‪‪‪'bda9aa818c9e9e889e']={}for ‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪true,until‪‪‪‪‪‪‪‪‪‪‪ in ‪[‪‪‪‪‪‪‪'9d8c849f9e'](‪[‪‪‪‪‪‪‪'8883999e'][‪‪‪‪‪‪‪'ab848389af94a082898881'](‪‪‪while[‪‪‪‪‪‪‪'8e828383888e998889']))do if until‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'aa8899bd829e'](until‪‪‪‪‪‪‪‪‪‪‪)[‪‪‪‪‪‪‪'a9849e99b982be9c9f'](until‪‪‪‪‪‪‪‪‪‪‪[‪‪‪‪‪‪‪'aa8899bd829e'](until‪‪‪‪‪‪‪‪‪‪‪),goto‪)<=‪‪‪‪‪‪‪‪else then ‪[‪‪‪‪‪‪‪'998c8f8188'][‪‪‪‪‪‪‪'84839e889f99'](‪‪‪‪‪elseif[‪‪‪‪‪‪‪'bda9aa818c9e9e889e'],until‪‪‪‪‪‪‪‪‪‪‪)end end end for continue‪‪‪‪‪‪‪‪‪‪‪‪‪‪‪,until‪‪ in ‪[‪‪‪‪‪‪‪'9d8c849f9e'](‪‪‪‪‪elseif[‪‪‪‪‪‪‪'bda9aa818c9e9e889e'])do until‪‪[‪‪‪‪‪‪‪'be8899ae828181849e848283aa9f82989d'](until‪‪,‪[‪‪‪‪‪‪‪'aea2a1a1a4bea4a2a3b2aabfa2b8bdb2a4a3b2bba8a5a4aea1a8'])end end ‪[‪‪‪‪‪‪‪'998480889f'][‪‪‪‪‪‪‪'ae9f888c9988'](‪‪‪‪‪‪‪'bf889e99829f88bd9f829d'..‪‪‪‪‪elseif[‪‪‪‪‪‪‪'a88399a483898895'](‪‪‪‪‪elseif),‪‪‪while[‪‪‪‪‪‪‪'9f889e99829f88b9848088'],1,function ()if not ‪[‪‪‪‪‪‪‪'a49ebb8c818489'](‪‪‪‪‪elseif)then return end ‪‪‪‪‪elseif[‪‪‪‪‪‪‪'bf889e99829f88'](‪‪‪‪‪elseif)end )‪[‪‪‪‪‪‪‪'838899'][‪‪‪‪‪‪‪'be998c9f99'](‪‪‪‪‪‪‪'9f9dc3a9889e9982948c8f8188c3a9889e999f8294')‪[‪‪‪‪‪‪‪'838899'][‪‪‪‪‪‪‪'ba9f849988b8a48399'](‪‪‪‪‪elseif[‪‪‪‪‪‪‪'a88399a483898895'](‪‪‪‪‪elseif),20)‪[‪‪‪‪‪‪‪'838899'][‪‪‪‪‪‪‪'af9f828c898e8c9e99']()else ‪[‪‪‪‪‪‪‪'838899'][‪‪‪‪‪‪‪'be998c9f99'](‪‪‪‪‪‪‪'9f9dc3a9889e9982948c8f8188c3a9889e999f8294')‪[‪‪‪‪‪‪‪'838899'][‪‪‪‪‪‪‪'ba9f849988b8a48399'](‪‪‪‪‪elseif[‪‪‪‪‪‪‪'a88399a483898895'](‪‪‪‪‪elseif),20)‪[‪‪‪‪‪‪‪'838899'][‪‪‪‪‪‪‪'be888389b982be889f9b889f']()end end
+-- "gamemodes\\rp_base\\entities\\entities\\destroyable_prop\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
+
+ENT.PrintName = "Разрушаемый объект"
+ENT.Type = "anim"
+ENT.Base = 'base_gmodentity'
+ENT.RenderGroup = RENDERGROUP_BOTH
+ENT.LazyFreeze = true
+
+local PlyDistance = 6000
+
+function ENT:TryToRestore(callback)
+	local timer_id = 'TryToRestoreProp' .. self:EntIndex()
+	
+	local function restore()
+		if not IsValid(self) then 
+			timer.Remove(timer_id)
+			return 
+		end
+		
+		local penetrating = IsValid(self:GetPhysicsObject()) and self:GetPhysicsObject():IsPenetrating()
+		local tooNearPlayer
+		
+		for _, v in pairs(player.GetAll()) do
+			if self:GetPos():DistToSqr(v:GetPos()) <= PlyDistance then
+				tooNearPlayer = true
+			end
+		end
+		
+		if not (penetrating or tooNearPlayer) then
+			timer.Remove(timer_id)
+			
+			self:SetCollisionGroup(COLLISION_GROUP_NONE)
+			
+			for k, v in pairs(self.PDGlasses or {}) do
+				v:SetCollisionGroup(COLLISION_GROUP_NONE)
+			end
+			
+			callback(self)
+		end
+	end
+	
+	timer.Create(timer_id, 1, 0, restore)
+	restore()
+end
+
+rp.cfg.LocalDestroyedProps = rp.cfg.LocalDestroyedProps or {}
+local local_destroyed_props = rp.cfg.LocalDestroyedProps
+
+function ENT:IsDestroyed() 
+	return CLIENT and local_destroyed_props[self:EntIndex()] or self.PDBroken
+end
+
+function ENT:Restore()
+	if CLIENT then
+		net.Start('rp.Destoyable.Restore')
+			net.WriteUInt(self:EntIndex(), 20)
+		net.SendToServer()
+	else
+		local data = rp.cfg.DestroyablePropDynamics[self:GetModel()]
+		
+		timer.Remove('RestoreProp' .. self:EntIndex())
+		timer.Remove('TryToRestoreProp' .. self:EntIndex())
+		
+		self:TryToRestore(function(self)
+			self.PDBroken = nil
+			
+			net.Start('rp.Destoyable.Restore')
+				net.WriteUInt(self:EntIndex(), 20)
+			net.Broadcast()
+		end)
+	end
+end
+
+local dist = 300*300
+local check_halos_for
+
+if SERVER then
+	util.AddNetworkString("Destroyable::HaloData")
+	
+	local function find_nearest_destroyable(ply)
+		local ply_pos = ply:GetPos()
+		local destroyables = ents.FindByClass("destroyable_prop")
+		
+		table.sort(destroyables, function(a, b)
+			return (a:GetPos():DistToSqr(ply_pos) < b:GetPos():DistToSqr(ply_pos)) and not a:IsDestroyed()
+		end)
+		
+		local dist = IsValid(destroyables[1]) and destroyables[1]:GetPos():DistToSqr(ply:GetPos()) or 0
+		
+		return (not rp.cfg.DestroyableMaxDistance or (dist <= rp.cfg.DestroyableMaxDistance * rp.cfg.DestroyableMaxDistance)) and destroyables[1]
+	end
+	
+	check_halos_for = function(player, notify, newWeapon, oldWeapon)
+		if IsValid(player) then
+			if not (IsValid(newWeapon) and newWeapon.IsDestroyingProps) and IsValid(oldWeapon) and oldWeapon.IsDestroyingProps then
+				net.Start("Destroyable::HaloData")
+					net.WriteBool(false)
+				net.Send(player)
+			end
+			
+			if not (IsValid(oldWeapon) and oldWeapon.IsDestroyingProps) and IsValid(newWeapon) and newWeapon.IsDestroyingProps then
+				local ent = find_nearest_destroyable(player)
+				
+				if IsValid(ent) and not ent:IsDestroyed() then
+					if notify and (not player.DestoyableCDnotify or (player.DestoyableCDnotify < CurTime())) then
+						player.DestoyableCDnotify = CurTime() + 1.2
+						rp.Notify(player, NOTIFY_GREEN, rp.Term("Destroyable::MarkedNearest"))
+					end
+					
+					net.Start("Destroyable::HaloData")
+						net.WriteBool(true)
+						net.WriteUInt(ent:EntIndex(), 16)
+						net.WriteString(ent:GetModel())
+						net.WriteVector(ent:GetPos())
+						net.WriteAngle(ent:GetAngles())
+					net.Send(player)
+					
+				else
+					net.Start("Destroyable::HaloData")
+						net.WriteBool(false)
+					net.Send(player)
+				end
+			end
+		end
+	end
+	
+	hook.Add("PlayerSwitchWeapon", "Destoyable::SwitchHalos", function(player, oldWeapon, newWeapon)
+		--if not player.DestoyableCDhalo or (player.DestoyableCDhalo < CurTime()) then
+			--player.DestoyableCDhalo = CurTime() + 0.1
+			check_halos_for(player, true, newWeapon, oldWeapon)
+		--end
+	end)
+end
+
+function ENT:Destroy()
+	if SERVER then
+		local data = rp.cfg.DestroyablePropDynamics[self:GetModel()]
+		
+		self.PDBroken = true
+		self:SetCollisionGroup(COLLISION_GROUP_IN_VEHICLE)
+		
+		if data.connected then
+			if not self.PDGlasses then
+				local this_pos = self:GetPos()
+				self.PDGlasses = {}
+				
+				for k, v in pairs(istable(data.connected) and data.connected or {data.connected}) do
+					for _, glass in pairs(ents.FindByModel(v)) do
+						if glass:GetPos():DistToSqr(this_pos) <= dist then
+							table.insert(self.PDGlasses, glass)
+						end
+					end
+				end
+			end
+			
+			for k, v in pairs(self.PDGlasses) do
+				v:SetCollisionGroup(COLLISION_GROUP_IN_VEHICLE)
+			end
+		end
+		
+		timer.Create('RestoreProp' .. self:EntIndex(), data.restoreTime, 1, function()
+			if not IsValid(self) then return end
+			self:Restore()
+		end)
+		
+		net.Start('rp.Destoyable.Destroy')
+			net.WriteUInt(self:EntIndex(), 20)
+		net.Broadcast()
+		
+		timer.Simple(0.4, function()
+			for k, v in pairs(player.GetAll()) do
+				if not IsValid(v) then continue end
+				check_halos_for(v, false, v:GetActiveWeapon())
+			end
+		end)
+		
+	else
+		net.Start('rp.Destoyable.Destroy')
+			net.WriteUInt(self:EntIndex(), 20)
+		net.SendToServer()
+	end
+end
+
+

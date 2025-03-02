@@ -1,11 +1,14 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stools\\fading_door.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 -- First off, make meta functions for entities fading
 local ent = FindMetaTable("Entity")
 
 function ent:Fade()
+	if self.FadeBlocked then return end
+
 	self.Faded = true
 	self.FadedMaterial = self:GetMaterial()
 	self.fCollision = self:GetCollisionGroup()
-	
 	
 	self:SetMaterial("sprites/heatwave")
 	self:DrawShadow(false)
@@ -19,7 +22,9 @@ function ent:Fade()
 end
 
 function ent:UnFade()
-	if (!self:IsValid()) then return end
+	if not IsValid( self ) then return end
+	if self.FadeBlocked then return end
+
 	self.Faded = nil
 	
 	self:SetMaterial(self.FadedMaterial or "")
@@ -28,7 +33,7 @@ function ent:UnFade()
 	
 	local obj = self:GetPhysicsObject()
 	if (IsValid(obj)) then
-		obj:EnableMotion(self.FadedMotion or false)
+		obj:EnableMotion(false)
 	end
 end
 

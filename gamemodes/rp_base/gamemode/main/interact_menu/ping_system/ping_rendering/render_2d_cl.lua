@@ -1,7 +1,14 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\interact_menu\\ping_system\\ping_rendering\\render_2d_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local framework = Nexus:ClassManager("Framework")
 local _draw = framework:Class("Draw")
 local anim = framework:Class("Animations")
 local panels = framework:Class("Panels")
+
+cvar.Register("render_player_hint")
+	:SetDefault(true)
+	:AddMetadata("State", "RPMenu")
+	:AddMetadata("Menu", "Отображать подсказку кнопки взаимодействий с игроком")
 
 surface.CreateFont("Nexus.PingSystem.3D.Type", {
 	font = "Montserrat",
@@ -103,7 +110,7 @@ function PIS:Render2D()
 		local lineX = x
 
 		surface.SetFont("Nexus.PingSystem.3D.Type")
-		
+
 		local commandStr = (ping.directedAt and pingTbl.command .. " " or pingTbl.text)
 		local tw, th = surface.GetTextSize(commandStr)
 		_draw:Call("ShadowText", commandStr, "Nexus.PingSystem.3D.Type", x, y + 4, pingTbl.color, TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP)
@@ -128,7 +135,7 @@ function PIS:Render2D()
 		local tw, th = surface.GetTextSize(cancelStr)
 		local _tw, _th = surface.GetTextSize(PIS:GetKeyName(settings.InteractionKey))
 		local __tw, __th = surface.GetTextSize(cancelStr)
-	
+
 		if (isLocalPlayer) then
 			x = x + tw + 5
 			draw.RoundedBox(6, x, math.ceil(y - 4 - th), _tw + 8, th, Color(215, 215, 215))
@@ -235,11 +242,13 @@ local pairs_ = pairs
 local TEXT_ALIGN_CENTER, TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP = TEXT_ALIGN_CENTER, TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP
 local timer = timer
 
+local ScrS = (64 / ScrH() / 0.0592) * 0.75;
+
 surface.CreateFont("InteractHint_Medium", {
     font = "Montserrat",
     extended = true,
     antialias = true,
-    size = 32,
+    size = 32 * ScrS,
     weight = 500
 })
 
@@ -247,7 +256,7 @@ surface.CreateFont("InteractHint_Small", {
     font = "Montserrat",
     extended = true,
     antialias = true,
-    size = 28,
+    size = 28 * ScrS,
     weight = 540
 })
 
@@ -263,9 +272,10 @@ end
 
 local function DrawInteractHint(is3dcontext)
 	if rpSupervisor and rpSupervisor.ID > 0 then return end
-	
+
     local tr_ent = LocalPlayer_():GetEyeTrace().Entity
-	
+	if tr_ent:IsPlayer() and (hook.Run("HUDShouldDraw", "PlayerDisplay", tr_ent) == false) then return end
+
     DrawInfoBubble = DrawInfoBubble or rp.DrawInfoBubbleLeft
     if not DrawInfoBubble then return end
 
@@ -306,7 +316,7 @@ local function DrawInteractHint(is3dcontext)
         	local screenPos = (tab.pos(tab) or zeroVec):ToScreen()
         	F(tab.alpha, UseIcon, screenPos, function(x, y, w, h)
         		DrawTheKeyWord(x, y, w, h, TxtCol)
-        	end)
+        	end, nil, ScrS)
         end
     end
 end
@@ -361,7 +371,7 @@ local ThinkPlayerHint = function(ply)
 
 		if (ply.HoverStart + 1.5 > CurTime_()) then return end
 	end
-	
+
     AddInteractHint(ply, function(tab)
     	if not IsValid(tab.ent) then return Vector(0, 0, 0) end
 
@@ -376,7 +386,7 @@ local ThinkPlayerHint = function(ply)
 			--print(tab.ent:DrawLeftBubble() or Vector(0, 0, 0))
 			return tab.ent:DrawLeftBubble() or Vector(0, 0, 0)
 		end
-		
+
         return tab.ent:LocalToWorld( Vector(0, tab.ent:OBBMaxs().y*0.25, tab.ent:OBBMaxs().z*0.925) )--(bone_id and tab.ent:GetBonePosition(bone_id) or tab.ent:LocalToWorld( Vector(48, 0, tab.ent:OBBMaxs().z) ))-- + VecOffset
     end, function(tab)
         return IsValid(tab.ent) and tab.ent:GetAngles()--:LocalToWorldAngles(Angle(0, LocalPlayer_():EyeAngles().y - 90, 90))
@@ -409,6 +419,9 @@ end
 
 hook.Add("Think", "Show_PlayerIntecract_Hint", function()
 	--PrintTable(GetThirdPersonTrace())
-    local tr_ply = LocalPlayer_():GetEyeTrace().Entity
-    ThinkPlayerHint(tr_ply)
+	local cv = cvar.Get("render_player_hint");
+	if cv and cv:GetValue() then
+    	local tr_ply = LocalPlayer_():GetEyeTrace() and LocalPlayer_():GetEyeTrace().Entity
+    	ThinkPlayerHint(tr_ply)
+	end
 end)

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\f4\\init_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ﻿local fr, offsetX, offsetY, panelW, panelH
 
 function rp.DrawF4Content()

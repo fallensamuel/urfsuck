@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\mhs_weapon_base.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 //i need faster swep-made ;d
 

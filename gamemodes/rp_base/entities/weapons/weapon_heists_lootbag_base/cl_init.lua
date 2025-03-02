@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\weapon_heists_lootbag_base\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include( "shared.lua" );
 
 
@@ -86,6 +88,7 @@ function SWEP:DrawHUD()
 
     local tr  = LocalPlayer():GetEyeTraceNoCursor();
     local ent = tr.Entity;
+    local ply = LocalPlayer();
 
     local actiontext = ""
 

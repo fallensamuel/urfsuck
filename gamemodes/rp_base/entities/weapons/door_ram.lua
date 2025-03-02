@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\door_ram.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 SWEP.Base = 'weapon_rp_base'
 
@@ -24,14 +26,17 @@ local NewRun = 180
 
 function SWEP:Deploy()
 	if not IsValid(self.Owner) then return end
-	NewRun = self.Owner:GetWalkSpeed()
-	OldJump = self.Owner:GetJumpPower()
+	--NewRun = self.Owner:GetRunSpeed()
+	self.OldJump = self.Owner:GetJumpPower()
 end
 
 function SWEP:OnRemove()
 	if not IsValid(self.Owner) then return end
-	hook.Call('UpdatePlayerSpeed', GAMEMODE, self.Owner)
-	self.Owner:SetJumpPower(OldJump)
+	--hook.Call('UpdatePlayerSpeed', GAMEMODE, self.Owner)
+	
+	if SERVER then
+		self.Owner:SetJumpPower(self.OldJump or 190)
+	end
 end
 
 function SWEP:Holster()
@@ -99,12 +104,12 @@ function SWEP:SecondaryAttack()
 
 	if Ironsights then
 		self:SetHoldType('rpg')
-		self.Owner:SetRunSpeed(NewRun)
+		--self.Owner:SetRunSpeed(NewRun)
 		self.Owner:SetJumpPower(NewJump)
 	else
 		self:SetHoldType('normal')
-		hook.Call('UpdatePlayerSpeed', GAMEMODE, self.Owner)
-		self.Owner:SetJumpPower(OldJump)
+		--hook.Call('UpdatePlayerSpeed', GAMEMODE, self.Owner)
+		self.Owner:SetJumpPower(self.OldJump or 190)
 	end
 end
 --[[

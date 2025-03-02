@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\ent_taser_hook.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 ENT.Type = "anim"
 local Tmodel = Model("models/props_c17/TrapPropeller_Lever.mdl")
@@ -37,9 +39,14 @@ local function ResetPlayer(ply)
 	ply:ConCommand("pp_dof 0")
 	ply.IsTased = false
 	ply:SetMoveType(MOVETYPE_WALK)
+	ply:Freeze(false)
 end
 
+local function noop() end
+
 function ENT:PhysicsCollide(data, physnum)
+	self.PhysicsCollide = noop
+	
 	local ent = data.HitEntity
 
 	if IsValid(ent) then
@@ -51,9 +58,10 @@ function ENT:PhysicsCollide(data, physnum)
 		})
 
 		if (ent:IsPlayer() and not ent.IsTased) then
-			if (not ent:IsWanted()) then
-				if (SERVER and IsValid(self.Weapon) and IsValid(self.Weapon.Owner)) then
+			if (not ent:IsWanted(self.Weapon.Owner:GetFaction())) then
+				if (SERVER and IsValid(self.Weapon) and IsValid(self.Weapon.Owner) and ((ent.mLastTased or 0) < CurTime())) then
 					rp.Notify(self.Weapon.Owner, NOTIFY_ERROR, rp.Term('PlayerNotWanted'))
+					ent.mLastTased = CurTime() + 0.25;
 				end
 
 				self:Remove()
@@ -70,6 +78,7 @@ function ENT:PhysicsCollide(data, physnum)
 			ent:ConCommand("pp_dof_spacing 8")
 			--local move = ent:GetMoveType()
 			ent:SetMoveType(MOVETYPE_NONE)
+			ent:Freeze(true)
 			ent.IsTased = true
 
 			timer.Simple(time.hit, function()
@@ -96,7 +105,7 @@ function ENT:PhysicsCollide(data, physnum)
 		ef:SetStart(data.HitPos)
 		ef:SetEntity(ent)
 		ef:SetMagnitude(2)
-		util.Effect("Sparks", ef, true, true)
+		util.Effect("cball_bounce", ef, true, true)
 		util.Effect("TeslaHitBoxes", ef, true, true)
 		sound.Play(Tsound, data.HitPos, 100, 100)
 
@@ -118,7 +127,7 @@ function ENT:PhysicsCollide(data, physnum)
 		ef:SetNormal(data.HitNormal)
 		ef:SetStart(data.HitPos)
 		ef:SetMagnitude(2)
-		util.Effect("Sparks", ef, true, true)
+		util.Effect("cball_bounce", ef, true, true)
 		sound.Play(Tsound, data.HitPos, 100, 100)
 
 		timer.Simple(time.miss, function()

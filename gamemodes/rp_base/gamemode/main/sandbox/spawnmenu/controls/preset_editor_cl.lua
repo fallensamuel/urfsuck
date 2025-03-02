@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\sandbox\\spawnmenu\\controls\\preset_editor_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 --
 --  ___  ___   _   _   _    __   _   ___ ___ __ __
 -- |_ _|| __| / \ | \_/ |  / _| / \ | o \ o \\ V /
@@ -131,7 +133,7 @@ end
 -----------------------------------------------------------]]
 function PANEL:Delete()
 	local Selected = self.PresetList:GetSelectedValues()
-	if (not Selected) then return end
+	if (not Selected or not self.m_strType) then return end
 	presets.Remove(self.m_strType, Selected)
 	self:Update()
 

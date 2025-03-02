@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\auto_code\\cl_main.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include("sh_main.lua")
 
 local color = {
@@ -144,7 +146,7 @@ function PANEL:OpenFaction(faction)
     local pnl = vgui.Create('DButton')
     pnl:SetSize(50, 50)
     pnl:SetFont('rpui.whitelist.button')
-    pnl:SetText('ВЕРНУТЬСЯ')
+    pnl:SetText(translates.Get('ВЕРНУТЬСЯ'))
     pnl:Dock(TOP)
     pnl:DockMargin(5, 2.5, 5, 2.5)
 
@@ -195,7 +197,7 @@ function PANEL:OpenFaction(faction)
                     self.AllowedTeams[t] = not self.AllowedTeams[t]
                 else
                     self:Close()
-                    rp.Notify(NOTIFY_GENERIC, 'Игрок уже покинул сервер.')
+                    rp.Notify(NOTIFY_GENERIC, translates.Get('Игрок уже покинул сервер.'))
                 end
             end
 
@@ -305,7 +307,7 @@ end
 local selected_player, selectedsteamid
 
 function PANEL:DrawPlayers()
-    self.Header:SetTitle("WHITELIST - ИГРОКИ")
+    self.Header:SetTitle(translates.Get("WHITELIST - ИГРОКИ"))
     self.Scroll:ClearItems()
     self.scroll_items = {}
     self.search = vgui.Create("urf.im/rpui/txtinput", self)
@@ -335,7 +337,7 @@ function PANEL:DrawPlayers()
             if IsValid(self) then self:AlphaTo(255, 0.3) end
 
             selectedsteamid = str
-            rp.Notify(NOTIFY_GENERIC, "Загрузка данных игрока...")
+            rp.Notify(NOTIFY_GENERIC, translates.Get("Загрузка данных игрока..."))
             net.Start("Whitelist::IDInfo")
                 net.WriteString(str)
             net.SendToServer()
@@ -382,7 +384,7 @@ function PANEL:DrawPlayers()
 
             selectedsteamid = nil
             selected_player = v
-            rp.Notify(NOTIFY_GENERIC, 'Загрузка данных игрока...')
+            rp.Notify(NOTIFY_GENERIC, translates.Get('Загрузка данных игрока...'))
             net.Start('Whitelist::PlayerInfo')
             net.WriteEntity(v)
             net.SendToServer()
@@ -467,7 +469,7 @@ local menu
 
 net.Receive('Whitelist::PlayerInfo', function()
     if not IsValid(selected_player) then
-        rp.Notify(NOTIFY_GENERIC, "Игрок уже покинул сервер.")
+        rp.Notify(NOTIFY_GENERIC, translates.Get("Игрок уже покинул сервер."))
         return
     end
 
@@ -523,7 +525,7 @@ net.Receive('Whitelist::ChangeAccess', function()
 end)
 
 local function open_whitelist_menu()
-    if not rp.JobsWhitelist.Ranks[LocalPlayer():GetRank()] then return rp.Notify(NOTIFY_ERROR, 'У вас нет доступа к этой команде.') end
+    if not rp.JobsWhitelist.Ranks[LocalPlayer():GetRank()] then return rp.Notify(NOTIFY_ERROR, translates.Get('У вас нет доступа к этой команде.')) end
 
     if IsValid(menu) then
         menu:Close()

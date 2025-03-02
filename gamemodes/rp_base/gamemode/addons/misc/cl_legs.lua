@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\misc\\cl_legs.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local _R = debug.getregistry();
 
 --[[ Console Variables: ]]--
@@ -332,17 +334,6 @@ hook( "OnAppearanceUpdated", "hook.PlayerLegs:OnAppearanceUpdated", function( pl
         LocalPlayer().Legs.RequestUpdate = true;
     end
 end );
-
---[[
-hook( "PlayerBindPress", "hook.PlayerLegs:CreateLegs", function( ply )
-    print( "PlayerBindPress, ", ply:GetName() );
-    if ply == LocalPlayer() then
-        LocalPlayer().Legs = CreateLegs();
-        LocalPlayer().Legs:UpdateLegs();
-        --hook.Remove( "PlayerBindPress", "hook.PlayerLegs:CreateLegs" );
-    end
-end );
-]]--
 
 hook( "InitPostEntity", "hook.PlayerLegs:CreateLegs", function()
 	if not rp.cfg.DisableLegsForAll then 

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\chatbox\\src\\sh_meta.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 PLAYER.OldIsTyping = PLAYER.OldIsTyping or PLAYER.IsTyping
 
 nw.Register 'IsTyping'

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\util\\notifications\\terms_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 rp.Terms = rp.Terms or {}
 rp.TermsMap = rp.TermsMap or {}
 rp.TermsStore = rp.TermsStore or {}

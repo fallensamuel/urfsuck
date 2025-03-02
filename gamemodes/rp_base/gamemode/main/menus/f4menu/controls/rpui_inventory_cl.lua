@@ -1,37 +1,39 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\f4menu\\controls\\rpui_inventory_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local PANEL = {};
 renderdIcons = renderdIcons or {}
 
 function renderNewIcon(panel, itemTable)
-	if ((itemTable.iconCam and !renderdIcons[string.lower(itemTable.model)]) or itemTable.forceRender) then
-		local iconCam = itemTable.iconCam
-		iconCam = {
-			cam_pos = iconCam.pos,
-			cam_ang = iconCam.ang,
-			cam_fov = iconCam.fov,
-		}
-		renderdIcons[string.lower(itemTable.model)] = true
-		
-		panel.Icon.RebuildSpawnIconEx(
+    if ((itemTable.iconCam and !renderdIcons[string.lower(itemTable.model)]) or itemTable.forceRender) then
+        local iconCam = itemTable.iconCam
+        iconCam = {
+            cam_pos = iconCam.pos,
+            cam_ang = iconCam.ang,
+            cam_fov = iconCam.fov,
+        }
+        renderdIcons[string.lower(itemTable.model)] = true
+
+        panel.Icon.RebuildSpawnIconEx(
             panel.Icon,
-			iconCam
-		)
-	end
+            iconCam
+        )
+    end
 end
 
 local soundclick = {
-	leftClick = "physics/body/body_medium_impact_soft4.wav",
-	clickMenu = "physics/body/body_medium_impact_soft4.wav",
-	movedItem = "physics/body/body_medium_impact_soft2.wav",
-	rightClick = "physics/body/body_medium_impact_soft4.wav",
-	addItemCrafting = "physics/body/body_medium_impact_soft3.wav",
-	removeItemCrafting = "physics/body/body_medium_impact_soft7.wav",
+    leftClick = "physics/body/body_medium_impact_soft4.wav",
+    clickMenu = "physics/body/body_medium_impact_soft4.wav",
+    movedItem = "physics/body/body_medium_impact_soft2.wav",
+    rightClick = "physics/body/body_medium_impact_soft4.wav",
+    addItemCrafting = "physics/body/body_medium_impact_soft3.wav",
+    removeItemCrafting = "physics/body/body_medium_impact_soft7.wav",
 }
 
 local PANEL = {}
 
 function PANEL:Init()
     self:Droppable("inv")
-    
+
     surface.CreateFont( "rpui.Fonts.ItemIcon", {
         font     = "Montserrat",
         extended = true,
@@ -41,58 +43,58 @@ function PANEL:Init()
 end
 
 function PANEL:PaintOver(w, h)
-	local itemTable = rp.item.instances[self.itemID]
+    local itemTable = rp.item.instances[self.itemID]
 
-	if (self.waiting and self.waiting > CurTime()) then
-		local wait = (self.waiting - CurTime()) / self.waitingTime
-		surface.SetDrawColor(255, 255, 255, 100*wait)
-		surface.DrawRect( 0, 0, w, h );
-	end
+    if (self.waiting and self.waiting > CurTime()) then
+        local wait = (self.waiting - CurTime()) / self.waitingTime
+        surface.SetDrawColor(255, 255, 255, 100*wait)
+        surface.DrawRect( 0, 0, w, h );
+    end
 
-	if (itemTable and itemTable.paintOver) then
-		local w1, h1 = self:GetSize()
-		itemTable.paintOver(self, itemTable, w1, h1)
-	end
+    if (itemTable and itemTable.paintOver) then
+        local w1, h1 = self:GetSize()
+        itemTable.paintOver(self, itemTable, w1, h1)
+    end
 
-	local count
-	if itemTable and rp.item.instances[self.itemTable.id] then
-		count = rp.item.instances[self.itemTable.id].getCount(rp.item.instances[self.itemTable.id])
-	end
-	if self.itemStack then
-		count = self.itemStack
-	end
+    local count
+    if itemTable and rp.item.instances[self.itemTable.id] then
+        count = rp.item.instances[self.itemTable.id].getCount(rp.item.instances[self.itemTable.id])
+    end
+    if self.itemStack then
+        count = self.itemStack
+    end
 
-	if count and count > 1 then
-		draw.SimpleText( "X"..count, "rpui.Fonts.ItemIcon", w - h*0.05, h*0.025, rp.col.White, TEXT_ALIGN_RIGHT, TEXT_ALIGN_TOP );
-	end
+    if count and count > 1 then
+        draw.SimpleText( "X"..count, "rpui.Fonts.ItemIcon", w - h*0.05, h*0.025, rp.col.White, TEXT_ALIGN_RIGHT, TEXT_ALIGN_TOP );
+    end
 end
 
 function PANEL:ExtraPaint(w, h)
-	if self.isUsed then
-		surface.SetDrawColor(255,255,0,20)
-		surface.DrawRect( 0, 0, w, h );
-	end
+    if self.isUsed then
+        surface.SetDrawColor(255,255,0,20)
+        surface.DrawRect( 0, 0, w, h );
+    end
 end
 
 function PANEL:Paint(w, h)
-	local parent = self:GetParent()
+    local parent = self:GetParent()
 
-	surface.SetDrawColor( rpui.UIColors.Background );
-	surface.DrawRect( 0, 0, w, h );
+    surface.SetDrawColor( rpui.UIColors.Background );
+    surface.DrawRect( 0, 0, w, h );
 
-	self:ExtraPaint(w, h)
+    self:ExtraPaint(w, h)
 end
 
 function PANEL:wait(time)
-	time = math.abs(time) or .2
-	self.waiting = CurTime() + time
-	self.waitingTime = time
+    time = math.abs(time) or .2
+    self.waiting = CurTime() + time
+    self.waitingTime = time
 end
 
 function PANEL:isWaiting()
-	if (self.waiting and self.waitingTime) then
-		return (self.waiting and self.waiting > CurTime())
-	end
+    if (self.waiting and self.waitingTime) then
+        return (self.waiting and self.waiting > CurTime())
+    end
 end
 
 vgui.Register("rpui.ItemIcon", PANEL, "SpawnIcon")
@@ -124,7 +126,7 @@ function PANEL:Init()
     self.heightFrame = 64
     self.spacingFrame = 0
 end
-    
+
 function PANEL:OnRemove()
     if (self.childPanels) then
         for k1, v1 in ipairs(self.childPanels) do
@@ -147,7 +149,7 @@ function PANEL:viewOnly()
 end
 
 function PANEL:setInventory(inventory)
-    if (inventory.slots) then
+    if (inventory and inventory.slots) then
         if (IsValid(rp.gui.inv1) and rp.gui.inv1.childPanels and inventory != rp.item.getInv(LocalPlayer():getInvID())) then
             table.insert(rp.gui.inv1.childPanels, self)
         end
@@ -164,15 +166,18 @@ function PANEL:setInventory(inventory)
                     local icon = self:addIcon(item.model or "models/props_junk/popcan01a.mdl", data.gridX, data.gridY, item.width, item.height, item.skin or 0, item.icon_override)
 
                     if (IsValid(icon)) then
-                        local newTooltip = hook.Run("OverrideItemTooltip", self, data, item)
+                        if icon:SetInventoryTooltip(data.uniqueID) == false then
+                            local newTooltip = hook.Run("OverrideItemTooltip", self, data, item)
 
-						local additional = inventory.vars and inventory.vars.isBag == 'ent_shop' and item:getData('price')
-						
-                        if (newTooltip) then
-                            icon:SetToolTip(newTooltip, additional)
-                        else
-                            icon:SetToolTip(item:getName() .. (additional and ('\nЦена: ' .. rp.FormatMoney(additional)) or ''), item:getDesc() or "")
+                            local additional = inventory.vars and inventory.vars.isBag == 'ent_shop' and item:getData('price')
+
+                            if (newTooltip) then
+                                icon:SetToolTip(newTooltip, additional)
+                            else
+                                icon:SetToolTip(item:getName() .. (additional and ('\nЦена: ' .. rp.FormatMoney(additional)) or ''), item:getDesc() or "")
+                            end
                         end
+
                         icon.itemID = data.id
 
                         self.panels[data.id] = icon
@@ -205,18 +210,18 @@ function PANEL:buildSlots()
         surface.SetDrawColor( rpui.UIColors.Background );
         surface.DrawRect( 0, 0, w, h );
     end
-    
+
     for k3, v3 in ipairs(self.slots) do
         for k4, v4 in ipairs(v3) do
             v4:Remove()
         end
     end
-    
+
     self.slots = {}
-    
+
     for x = 1, self.gridW do
         self.slots[x] = {}
-        
+
         for y = 1, self.gridH do
             local slot = self:Add("DPanel")
             slot:SetZPos(-999)
@@ -225,8 +230,8 @@ function PANEL:buildSlots()
             slot:SetPos((self.addX or 0) + self.widthFrame * (x - 1) + self.spacingFrame * (x - 1), self.heightFrame * (y - 1) + self.spacingFrame * (y - 1))
             slot:SetSize(self.widthFrame, self.heightFrame)
             slot.Paint = PaintSlot
-            
-            self.slots[x][y] = slot	
+
+            self.slots[x][y] = slot
         end
     end
 end
@@ -234,7 +239,7 @@ end
 local activePanels = {}
 function PANEL:PaintOver(w, h)
     local item = rp.item.held
-    
+
     if (IsValid(item)) then
         local gridW = item.gridW
         local gridH = item.gridH
@@ -247,17 +252,17 @@ function PANEL:PaintOver(w, h)
         end
 
         local mouseX, mouseY = self:LocalCursorPos()
-        mouseX = mouseX - (self.addX or 0) + self.spacingFrame * 0.5
-        mouseY = mouseY + self.spacingFrame * 0.5
+        mouseX = mouseX - (self.addX or 0) + self.spacingFrame * 0.5 - (gridW - 1) * self.widthFrame * 0.5
+        mouseY = mouseY + self.spacingFrame * 0.5 - (gridH - 1) * self.heightFrame * 0.5
 
-        local widthF  = self.widthFrame  + self.spacingFrame;
-        local heightF = self.heightFrame + self.spacingFrame;
+        local widthF  = self.widthFrame  + self.spacingFrame
+        local heightF = self.heightFrame + self.spacingFrame
 
-        local dropX = math.ceil((mouseX - (gridW - 1) * widthF) / widthF); 
-        local dropY = math.ceil((mouseY - (gridH - 1) * heightF) / heightF);
+        local dropX = math.ceil(mouseX / widthF)
+        local dropY = math.ceil(mouseY / heightF)
 
         if ((mouseX < -w*0.05 or mouseX > w*1.05) or (mouseY < -h*0.05 or mouseY > h*1.05)) then
-			activePanels[self] = nil
+            activePanels[self] = nil
         else
             activePanels[self] = true
         end
@@ -271,10 +276,10 @@ function PANEL:PaintOver(w, h)
             for y = 0, gridH - 1 do
                 local x2 = dropX + x;
                 local y2 = dropY + y;
-            
-                if (self.slots[x2] and IsValid(self.slots[x2][y2])) then
+
+                if (self.slots and self.slots[x2] and IsValid(self.slots[x2][y2])) then
                     local bool = self:isEmpty(x2, y2, item)
-                    
+
                     surface.SetDrawColor(0, 0, 255, 10)
 
                     if (x == 0 and y == 0) then
@@ -284,17 +289,17 @@ function PANEL:PaintOver(w, h)
                             x2 = x2, y2 = y2
                         }
                     end
-                        
+
                     if (bool) then
                         surface.SetDrawColor(0, 255, 0, 255)
                     else
                         surface.SetDrawColor(255, 255, 0, 255)
-                        
+
                         if (self.slots[x2] and self.slots[x2][y2] and item.dropPos[self]) then
                             item.dropPos[self].item = self.slots[x2][y2].item
                         end
                     end
-                            
+
                     surface.DrawRect(
                         (self.addX or 0) + self.widthFrame * (x2 - 1) + self.spacingFrame * (x2 - 1),
                         self.heightFrame * (y2 - 1)  + self.spacingFrame * (y2 - 1),
@@ -364,7 +369,7 @@ function PANEL:ClearItemsCrafting()
     if IsValid(rp.gui.result.itemRecipe) then rp.gui.result.itemRecipe.Remove(rp.gui.result.itemRecipe) end
     if rp.gui.craftable.itemsCrafting then
         for k7,v7 in pairs(rp.gui.craftable.itemsCrafting) do
-            if IsValid(v7) then 
+            if IsValid(v7) then
                 v7.itemStack = 0
                 self:RemoveItemCrafting(nil, v7)
             end
@@ -412,7 +417,7 @@ function PANEL:CheckRecipes(name)
             end
             if count < d1.count || count > d1.count then
                 isCan = false
-            end 
+            end
         end
 
         for t2,u2 in pairs(rp.gui.craftable.itemsCrafting) do
@@ -459,8 +464,8 @@ function PANEL:CheckRecipes(name)
             rp.gui.result.recipe = k8
             rp.gui.result.noCanMove = true
 
-			local irec = rp.gui.result.itemRecipe;
-			
+            local irec = rp.gui.result.itemRecipe;
+
             function irec:ExtraPaint(w, h)
                 local isCan, items = rp.IsCanCraftItem(LocalPlayer():getInv(), rp.item.recipes[rp.gui.result.recipe])
                 if isCan then
@@ -532,7 +537,7 @@ function PANEL:AddItemCrafting(inv, item)
         icon.items[newItem.id] = newItem
 
         icon.ExtraPaint = function(this_ic, w, h)
-			local invv = LocalPlayer():getInv();
+            local invv = LocalPlayer():getInv();
             local itemCount = invv:getItemCount(this_ic.itemTable.uniqueID, true)
 
             if itemCount >= this_ic.itemStack then
@@ -553,15 +558,15 @@ function PANEL:onTransfer(oldX, oldY, x, y, oldInventory, noSend)
     local inventory = rp.item.inventories[oldInventory.invID]
     local inventory2 = rp.item.inventories[self.invID]
     local item
-    
+
     if (inventory) then
         item = inventory:getItemAt(oldX, oldY)
-        
+
         if (!item) then
             return false
         end
-		
-		if item.notCanGive and oldInventory.invID == LocalPlayer():getInv():getID() and self.invID != oldInventory.invID then return false end
+
+        if item.notCanGive and oldInventory.invID == LocalPlayer():getInv():getID() and self.invID != oldInventory.invID then return false end
 
         if inventory2.id == "craftable" && inventory.id != "result" then
             if IsValid(rp.gui.craftable) then
@@ -578,7 +583,7 @@ function PANEL:onTransfer(oldX, oldY, x, y, oldInventory, noSend)
         if (hook.Run("CanItemBeTransfered", item, rp.item.inventories[oldInventory.invID], rp.item.inventories[self.invID]) == false) then
             return false, "notAllowed"
         end
-    
+
         if (item.onCanBeTransfered and item:onCanBeTransfered(inventory, inventory != inventory2 and inventory2 or nil) == false) then
             return false
         end
@@ -600,18 +605,22 @@ function PANEL:onTransfer(oldX, oldY, x, y, oldInventory, noSend)
             netstream.Start("invMv", oldX, oldY, x, y, oldInventory.invID)
         end
     end
-	
-    if (inventory) then			
+
+    if (inventory) then
         inventory.slots[oldX][oldY] = nil
-		
-		if inventory:IsEmpty() and oldInventory.invID ~= LocalPlayer():getInv():getID() then
-			if IsValid(rp.LootInventory.Panels.InventoryMenu) then
-				rp.LootInventory.Panels.InventoryMenu.Remove(rp.LootInventory.Panels.InventoryMenu)
-			end
-			if IsValid(rp.Inventory.Panels.InventoryMenu) then
-				rp.Inventory.Panels.InventoryMenu.Remove(rp.Inventory.Panels.InventoryMenu)
-			end
-		end
+
+        if inventory:IsEmpty() and oldInventory.invID ~= LocalPlayer():getInv():getID() then
+            local status = hook.Run( "ShouldCloseEmptyInventoryUI", inventory );
+            if status == false then return end
+
+            if IsValid(rp.LootInventory.Panels.InventoryMenu) then
+                rp.LootInventory.Panels.InventoryMenu.Remove(rp.LootInventory.Panels.InventoryMenu)
+            end
+
+            if IsValid(rp.Inventory.Panels.InventoryMenu) then
+                rp.Inventory.Panels.InventoryMenu.Remove(rp.Inventory.Panels.InventoryMenu)
+            end
+        end
     end
 
     if (item and inventory2) then
@@ -626,10 +635,10 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
 
     if (self.slots[xf] and self.slots[xf][yf]) then
         local panel = self:Add("rpui.ItemIcon")
-        panel:SetSize(w * self.widthFrame, h * self.heightFrame)
+        panel:SetSize(w * self.widthFrame + (self.spacingFrame * (w - 1)), h * self.heightFrame + (self.spacingFrame * (h - 1)))
         panel:SetZPos(999)
         panel:InvalidateLayout(true)
-		
+
 		if icon_override then
 			panel.Icon.SetVisible(panel.Icon, false)
 			--panel:SetImage(icon_override)
@@ -642,7 +651,7 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
 		else
 			panel:SetModel(model, skin)
 		end
-		
+
         panel:SetPos(self.slots[xf][yf].GetPos(self.slots[xf][yf]))
         panel.gridX = xf
         panel.gridY = yf
@@ -665,7 +674,7 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
         if (self.panels[itemTable:getID()]) then
             self.panels[itemTable:getID()].Remove(self.panels[itemTable:getID()])
         end
-        
+
         if (itemTable.exRender) then
             panel.Icon.SetVisible(panel.Icon, false)
             panel.ExtraPaint = function(self1, xv, yv)
@@ -712,7 +721,7 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
                     end
                 end
             end
-            
+
             this.slots = {}
 
             for xa = 1, this.gridW do
@@ -745,7 +754,7 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
                     if (item and inv) then
                         netstream.Start("invAct", "drop", item.id, inv:getID(), item.id)
                     end
-                    
+
                     return false
                 end
                 activePanels = {}
@@ -761,7 +770,7 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
 
                             if (inventory) then
                                 local targetItem = data.item.itemTable
-                                
+
                                 if (targetItem) then
                                     if (targetItem.id == itemTable.id) then return end
                                     if data.item.itemTable.uniqueID != this.itemTable.uniqueID then return end
@@ -775,7 +784,7 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
                                             if (combine.onCanRun and (combine.onCanRun(itemTable, targetItem.id) != false)) then
                                                 netstream.Start("invAct", "combine", itemTable.id, inventory:getID(), targetItem.id)
                                             end
-											
+
                                             itemTable.player = nil
                                         end
                                     end
@@ -785,38 +794,38 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
                             local oldX, oldY = this.gridX, this.gridY
 
                             if code == MOUSE_RIGHT && this.itemTable.getCount(this.itemTable) > 1 then
-								local par = this:GetParent();
+                                local par = this:GetParent();
                                 netstream.Start("invMv", oldX, oldY, data.x2, data.y2, par.invID, "disagreement")
                                 return
                             end
 
                             if (oldX != data.x2 or oldY != data.y2 or inventory != self) then
-								if inventory != self and rp.item.inventories[inventory.invID] and rp.item.inventories[inventory.invID].vars and rp.item.inventories[inventory.invID].vars.isBag == 'ent_shop' then
-									--data.item.itemTable.moveCallback(data, self, inventory, function()
-									
-									local menu1, menu2
-									menu1 = rpui.SliderRequestFree("Назначьте цену за предмет", "rpui/donatemenu/money", 1.5, rp.cfg.StartMoney * 100, function(val1)
-										menu1:Remove()
-										
-										local items_count = this.itemTable.getCount(this.itemTable)
-										
-										if items_count > 1 then
-											menu2 = rpui.SliderRequestFree("Выберите количество предметов на продажу", "rpui/donatemenu/money", 1.5, items_count, function(val2)
-												val2 = math.min(val2, items_count)
-												
-												menu2:Remove()
-												
-												netstream.Start("invShopAdd", oldX, oldY, data.x2, data.y2, this:GetParent().invID, inventory.invID, val1, val2)
-											end)
-										else
-											netstream.Start("invShopAdd", oldX, oldY, data.x2, data.y2, this:GetParent().invID, inventory.invID, val1, 1)
-										end
-									end)
-										
-									--end)
-								else
-									this:move(data, inventory)
-								end
+                                if inventory != self and rp.item.inventories[inventory.invID] and rp.item.inventories[inventory.invID].vars and rp.item.inventories[inventory.invID].vars.isBag == 'ent_shop' then
+                                    --data.item.itemTable.moveCallback(data, self, inventory, function()
+
+                                    local menu1, menu2
+                                    menu1 = rpui.SliderRequestFree("Назначьте цену за предмет", "rpui/donatemenu/money", 1.5, rp.cfg.StartMoney * 100, function(val1)
+                                        menu1:Remove()
+
+                                        local items_count = this.itemTable.getCount(this.itemTable)
+
+                                        if items_count > 1 then
+                                            menu2 = rpui.SliderRequestFree("Выберите количество предметов на продажу", "rpui/donatemenu/money", 1.5, items_count, function(val2)
+                                                val2 = math.min(val2, items_count)
+
+                                                menu2:Remove()
+
+                                                netstream.Start("invShopAdd", oldX, oldY, data.x2, data.y2, this:GetParent().invID, inventory.invID, val1, val2)
+                                            end)
+                                        else
+                                            netstream.Start("invShopAdd", oldX, oldY, data.x2, data.y2, this:GetParent().invID, inventory.invID, val1, 1)
+                                        end
+                                    end)
+
+                                    --end)
+                                else
+                                    this:move(data, inventory)
+                                end
                             end
                         end
                     end
@@ -824,36 +833,36 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
             end
         end
         panel.OnMousePressed = function(this, code)
-			local part = this:GetParent();
+            local part = this:GetParent();
             if part.noCanMove then
                 return
             end
-			
+
             if self.invID == "craftable" then
                 surface.PlaySound(soundclick.removeItemCrafting)
                 self:RemoveItemCrafting(table.Random(this.items), this)
                 return
             end
-            if (code == MOUSE_LEFT) then			
+            if (code == MOUSE_LEFT) then
                 this:DragMousePress(code)
                 this:MouseCapture(true)
 
                 this.IsDraggingTime = CurTime()
 
-				local local_func6 = function()
+                local local_func6 = function()
                     if not IsValid(this.actionsMenuActive) then
                         surface.PlaySound(soundclick.leftClick)
                     end
                 end
-				
+
                 timer.Simple(0.1, local_func6)
 
                 rp.item.held = this
             elseif (code == MOUSE_RIGHT and this.doRightClick) then
-				if rp.item.inventories[self.invID] and rp.item.inventories[self.invID].vars and rp.item.inventories[self.invID].vars.isBag == 'ent_shop' then 
-					return 
-				end
-				
+                if rp.item.inventories[self.invID] and rp.item.inventories[self.invID].vars and rp.item.inventories[self.invID].vars.isBag == 'ent_shop' then
+                    return
+                end
+
                 this:doRightClick()
             end
         end
@@ -872,12 +881,12 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
 
                 rp.item.held = this
 
-				local local_func7 = function()
+                local local_func7 = function()
                     if not IsValid(this.actionsMenuActive) then
                         surface.PlaySound(soundclick.rightClick)
                     end
                 end
-				
+
                 timer.Simple(0.1, local_func7)
             else
                 this:actionsMenu()
@@ -890,11 +899,11 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
                     local menu = DermaMenu()
                     this.actionsMenuActive = menu
                     local override = hook.Run("OnCreateItemInteractionMenu", panel, menu, itemTable)
-                    
+
                     if (override == true) then if (menu.Remove) then menu:Remove() end return end
 
                         for k11, v11 in SortedPairs(itemTable.functions) do
-                            if (k11 == "combine") then continue end 
+                            if (k11 == "combine") then continue end
 
                             if (v11.onCanRun) then
                                 if (v11.onCanRun(itemTable) == false) then
@@ -917,7 +926,7 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
                             end
 
                             if (v11.isMulti) then
-								local local_func8 = function()
+                                local local_func8 = function()
                                     itemTable.player = LocalPlayer()
                                         local send = true
 
@@ -934,7 +943,7 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
                                         end
                                     itemTable.player = nil
                                 end
-								
+
                                 local subMenu, subMenuOption = menu:AddSubMenu((v11.name or k11), local_func8)
                                 subMenuOption:SetImage(v11.icon or "icon16/brick.png")
 
@@ -942,7 +951,7 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
                                     local options = isfunction(v11.multiOptions) and v11.multiOptions(itemTable, LocalPlayer()) or v11.multiOptions
 
                                     for _, sub in pairs(options) do
-										local local_func4 = function()
+                                        local local_func4 = function()
                                             itemTable.player = LocalPlayer()
                                                 local send = true
 
@@ -959,90 +968,90 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
                                                 end
                                             itemTable.player = nil
                                         end
-										
+
                                         subMenu:AddOption((sub.name or "subOption"), local_func4)
                                     end
                                 end
                                 if v11.isSelectPlayers then
                                     for _, subt in pairs(player.GetAll()) do
-										local ppos = subt:GetPos();
+                                        local ppos = subt:GetPos();
                                         if !IsValid(subt) || subt == LocalPlayer() || ppos:Distance(LocalPlayer():GetPos()) > 200 then continue end
-										
-										local local_func3 = function()
+
+                                        local local_func3 = function()
                                             if (v11.onClick) then
                                                 v11.onClick(LocalPlayer(), subt, itemTable)
                                             end
                                         end
-										
+
                                         subMenu:AddOption(subt:Name(), local_func3)
                                     end
                                 end
                             else
-							local local_func1 = function()
-								itemTable.player = LocalPlayer()
-								local send = true
+                            local local_func1 = function()
+                                itemTable.player = LocalPlayer()
+                                local send = true
 
-								if (v11.confirm) then
-									local local_func5 = function()
-										local NewMenu = DermaMenu();
-										local opt = NewMenu:AddOption(translates.Get('Подтвердите действие.'));
-										opt:SetImage('icon16/exclamation.png');
-										NewMenu:AddSpacer();
-										
-										local local_func2 = function()
-											itemTable.player = LocalPlayer()
-											local send = true
-											
-											if (v11.onClick) then
-												send = v11.onClick(itemTable)
-											end
-											
-											if (v11.sound) then
-												surface.PlaySound(v11.sound)
-											end
-											
-											if (send != false) then
-												netstream.Start("invAct", k11, itemTable.id, self.invID)
-											end
-											
-											itemTable.player = nil
-										end
-										
-										NewMenu:AddOption(translates.Get('Подтвердить'), local_func2);
-										NewMenu:Open();
-									end
-									
-									timer.Simple(0, local_func5);
-									return
-								end
+                                if (v11.confirm) then
+                                    local local_func5 = function()
+                                        local NewMenu = DermaMenu();
+                                        local opt = NewMenu:AddOption(translates.Get('Подтвердите действие.'));
+                                        opt:SetImage('icon16/exclamation.png');
+                                        NewMenu:AddSpacer();
 
-								if (v11.onClick) then
-									send = v11.onClick(itemTable)
-								end
-								
-								if (v11.sound) then
-									surface.PlaySound(v11.sound)
-								end
-								
-								if (send != false) then
-									netstream.Start("invAct", k11, itemTable.id, self.invID)
-								end
-							
-								itemTable.player = nil
-							end
-					
-							local popt = menu:AddOption((v11.name or k11), local_func1)
-							popt:SetImage(v11.icon or "icon16/brick.png")
-						end
-					end
-					
+                                        local local_func2 = function()
+                                            itemTable.player = LocalPlayer()
+                                            local send = true
+
+                                            if (v11.onClick) then
+                                                send = v11.onClick(itemTable)
+                                            end
+
+                                            if (v11.sound) then
+                                                surface.PlaySound(v11.sound)
+                                            end
+
+                                            if (send != false) then
+                                                netstream.Start("invAct", k11, itemTable.id, self.invID)
+                                            end
+
+                                            itemTable.player = nil
+                                        end
+
+                                        NewMenu:AddOption(translates.Get('Подтвердить'), local_func2);
+                                        NewMenu:Open();
+                                    end
+
+                                    timer.Simple(0, local_func5);
+                                    return
+                                end
+
+                                if (v11.onClick) then
+                                    send = v11.onClick(itemTable)
+                                end
+
+                                if (v11.sound) then
+                                    surface.PlaySound(v11.sound)
+                                end
+
+                                if (send != false) then
+                                    netstream.Start("invAct", k11, itemTable.id, self.invID)
+                                end
+
+                                itemTable.player = nil
+                            end
+
+                            local popt = menu:AddOption((v11.name or k11), local_func1)
+                            popt:SetImage(v11.icon or "icon16/brick.png")
+                        end
+                    end
+
                     menu:Open()
                 itemTable.player = nil
             end
         end
-        
+
         panel.slots = {}
-        
+
         for i = 0, w - 1 do
             for i2 = 0, h - 1 do
                 local slot = self.slots[xf + i] and self.slots[xf + i][yf + i2]
@@ -1061,9 +1070,9 @@ function PANEL:addIcon(model, xf, yf, w, h, skin, icon_override)
                 end
             end
         end
-        
+
         return panel
     end
 end
-    
+
 vgui.Register( "rpui.Inventory", PANEL, "Panel" );

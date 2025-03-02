@@ -1,3 +1,6 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\weapon_hands.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
+if true then return end
 
 AddCSLuaFile()
 
@@ -7,6 +10,7 @@ SWEP.Purpose			= "Heal people with your primary attack, or yourself with the sec
 
 SWEP.Slot					= 0
 SWEP.SlotPos				= 0
+SWEP.SelectorCategory		= translates.Get("РОЛЕПЛЕЙ")
 
 SWEP.Spawnable				= true
 

@@ -1,5 +1,7 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\small_things\\sh_smallthings.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 hook.Add("OnPlayerNoclip", "Block.AfterNoclipping", function(ply, enable)
-	ply.AfterNoclippingCooldown = CurTime() + (rp.cfg.AfterNoclipUseCooldown or 30)
+	ply.AfterNoclippingCooldown = CurTime() + (rp.cfg.AfterNoclipUseCooldown or 60)
 end)
 
 local accepted_qmenu_tools = {
@@ -27,6 +29,10 @@ function PLAYER:CantDoAfterNoclip(notify)
 		return true
 	end
 ]]--
+	if self:GetMoveType() == MOVETYPE_NOCLIP then
+		self.AfterNoclippingCooldown = CurTime() + (rp.cfg.AfterNoclipUseCooldown or 60)
+	end
+
 	local CT = CurTime()
 	local b = (self.AfterNoclippingCooldown or 0) > CT
 

@@ -1,12 +1,15 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\animations_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 // stolen from chessnut
 
 if SERVER then
 	util.AddNetworkString('seqSet')
-	function PLAYER:forceSequence(sequence, callback, time, noFreeze)
+	function PLAYER:forceSequence(sequence, callback, time, noFreeze, playbackRate)
 		if (!sequence) then
 			net.Start('seqSet')
 				net.WriteEntity(self)
-				net.WriteInt(-1, 8)
+				net.WriteInt(-1, 10)
+				net.WriteInt(0, 6)
 			net.Broadcast()
 			return
 		end
@@ -33,6 +36,7 @@ if SERVER then
 			net.Start('seqSet')
 				net.WriteEntity(self)
 				net.WriteInt(sequence, 10)
+				net.WriteInt(playbackRate or 0, 6)
 			net.Broadcast()
 
 			return time
@@ -45,6 +49,7 @@ if SERVER then
 		net.Start('seqSet')
 			net.WriteEntity(self)
 			net.WriteInt(-1, 10)
+			net.WriteInt(0, 6)
 		net.Broadcast()
 
 		self:SetMoveType(MOVETYPE_WALK)
@@ -58,14 +63,19 @@ else
 	net.Receive('seqSet', function()
 		local entity = net.ReadEntity()
 		local sequence = net.ReadInt(10)
+		local pb_rate = net.ReadInt(6)
 		if (IsValid(entity)) then
 			if (sequence == -1) then
 				entity.nutForceSeq = nil
 				return
 			end
 
-			entity:SetCycle(0)
-			entity:SetPlaybackRate(1)
+			timer.Simple(0, function()
+				if not IsValid(entity) then return end
+				entity:SetCycle(0)
+				entity:SetPlaybackRate(pb_rate == 0 and 1 or pb_rate)
+			end)
+			
 			entity.nutForceSeq = sequence
 		end
 	end)

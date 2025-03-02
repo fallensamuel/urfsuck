@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\deathmechanics\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local DeathMechanics = {};
 
 -----------------------------------
@@ -75,7 +77,7 @@ end
 
 function DeathMechanics.Request(Action)
     if hook.Run("Can.DeathMechanics.Request", Action) == false then return end
-    
+
     net.Start('DeathMechanics');
         net.WriteUInt(Action, 3);
     net.SendToServer();
@@ -98,18 +100,18 @@ DeathMechanics.EatingPlayer = nil
 function DeathMechanics.KeyPress(Player, Key)
     if KCD > CurTime() then return end
     if rpSupervisor and rpSupervisor.ID > 0 then return end
-    
+
     if Key == IN_ATTACK then
 		--if Player:GetJobTable() and Player:GetJobTable().CanSelfRevive or Player:GetFactionTable() and Player:GetFactionTable().CanSelfRevive or hook.Call('ShouldDMRevive', nil, Player) then
 			--print(Player:GetJobTable() and Player:GetJobTable().CanSelfRevive, Player:GetFactionTable() and Player:GetFactionTable().CanSelfRevive, hook.Call('ShouldDMRevive', nil, Player))
 			--DeathMechanics.Request(1)
 		--end
-		
+
     elseif Key == IN_ATTACK2 then
         --DeathMechanics.Request(2)
     elseif Key == IN_USE then
-        
-		local result = hook.Run("DeathMechanics.CanUse", Player)
+
+		local result = hook.Run("DeathMechanics.CanUse", Player, Key)
         if result ~= false and Player:Alive() and not IsValid(DeathMechanics.EatingPlayer) then
 			local Trace = Player:GetEyeTrace();
 			local Ents = ents.FindInSphere(Trace.HitPos, rp.cfg.dm_ReviveDistance or 60);
@@ -122,7 +124,7 @@ function DeathMechanics.KeyPress(Player, Key)
 				end
 			end
 
-			if IsValid(HasPlayer) then 
+			if IsValid(HasPlayer) then
 				DeathMechanics.EatingPlayer = HasPlayer
 			end
         end
@@ -137,12 +139,24 @@ end
 
 function DeathMechanics.KeyRelease(Player, Key)
     if rpSupervisor and rpSupervisor.ID > 0 then return end
-    
-    if (Key == IN_ATTACK) then 
+
+    hook.Run( "DeathMechanics.KeyReleased", ply, key );
+
+    --[[
+    if (Key == IN_ATTACK) then
 	--DeathMechanics.Request(4);
     --elseif (Key == IN_ATTACK2) then --DeathMechanics.Request(5);
-    elseif (Key == IN_USE) then 
-        --DeathMechanics.Request(6); 
+    elseif (Key == IN_USE) then
+        --DeathMechanics.Request(6);
+        DeathMechanics.EatingPlayer = nil
+    end
+    ]]--
+end
+
+-----------------------------------
+
+function DeathMechanics.PlayerButtonUp(Player, Key)
+    if Key == KEY_SPACE then
         DeathMechanics.EatingPlayer = nil
     end
 end
@@ -153,6 +167,7 @@ local LERP, FrameTIME = Lerp, FrameTime
 local DrawAlpha = 0
 local TxtAlpha_1, TxtAlpha_2, MatAlpha = 0.35, 0.35, 0
 local whiteCol = Color(255, 255, 255)
+local goldCol = Color(255, 175, 0)
 local LocalPlayer = LocalPlayer
 local ColorAlpha = ColorAlpha
 local render = render
@@ -162,6 +177,9 @@ local redCol = Color(255, 64, 64)
 local die_text = translates and translates.Get("УДЕРЖИВАЙТЕ, ЧТОБЫ ПОГИБНУТЬ") or "УДЕРЖИВАЙТЕ, ЧТОБЫ ПОГИБНУТЬ"
 local rev_text = translates and translates.Get("УДЕРЖИВАЙТЕ, ЧТОБЫ ВОЗРОДИТЬСЯ") or "УДЕРЖИВАЙТЕ, ЧТОБЫ ВОЗРОДИТЬСЯ"
 local monster_text = translates and translates.Get("КД НА ПРЕВРАЩЕНИЕ") or "КД НА ПРЕВРАЩЕНИЕ"
+local stop_text = translates and translates.Get("НАЖМИТЕ # ЧТОБЫ ПРЕКРАТИТЬ ПОДНЯТИЕ") or "НАЖМИТЕ %s ЧТОБЫ ПРЕКРАТИТЬ ПОДНЯТИЕ"
+local stop_keys = {[1] = translates and translates.Get("[Пробел]") or "[Пробел]"}
+stop_text = string.Explode( "#", stop_text );
 
 function DeathMechanics.HUD()
     --draw.SimpleText(DrawAlpha, "DM.Font", ScrW()/2, ScrH()/2 + 120, whiteCol, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
@@ -199,24 +217,25 @@ function DeathMechanics.HUD()
 
     VarF = (DeathMechanics.QTime != 0) and DeathMechanics.QTime or DeathMechanics.DTime;
 
-    local bool_a, bool_b = DeathMechanics.State != 4 and EmoteAction == 'dm_fall', EmoteAction == 'dm_heal'
+    local state = LocalPlayer:GetDeathMechanicsState();
+    local bool_a, bool_b = DeathMechanics.State != 4 and (state == DEATHMECHANICS_FALL), (state == DEATHMECHANICS_HEAL) --EmoteAction == 'dm_fall', EmoteAction == 'dm_heal'
 
     local time_ = not bool_a and bool_b and DeathMechanics.Time or LocalPlayer:GetNetVar("deathmech_t", CurTime())
-    
+
     if not time_ then return end
-    
+
     VarE = Floor(90 * (time_ - CurTime()) / VarF);
     for Segment = 0, VarE do
         VarD = Rad((Segment / 90) * -360);
         Insert(Poly, {x = VarB - Sin(VarD) * VarA, y = VarC - Cos(VarD) * VarA});
     end
 
-   
+
     DrawAlpha = LERP(FrTime * 5, DrawAlpha, (bool_a or bool_b or VarE > 0) and 255 or 0)
     if DrawAlpha <= 0 then return end
 
     local is_eating = DeathMechanics.IsMonster and (IsValid(DeathMechanics.EatingPlayer) and DeathMechanics.EatingPlayer:GetFaction() ~= LocalPlayer:GetFaction())
-    
+
     SetColor(ColorAlpha(is_eating and redCol or whiteCol, DrawAlpha));
 
     if bool_a then
@@ -225,7 +244,7 @@ function DeathMechanics.HUD()
             Texture(StartX, StartY + 1, Radius, Radius - 1);
 
             SetMaterial(Pulse);
-            Texture((Width - Radius) * .5 + 8, (Height - Radius * .7) * .5 + 5, Radius - 16, Radius * .7 - 10); 
+            Texture((Width - Radius) * .5 + 8, (Height - Radius * .7) * .5 + 5, Radius - 16, Radius * .7 - 10);
         else
             SetMaterial(Circle);
             Texture(StartX + 5, StartY + 5, Radius - 10, Radius - 10);
@@ -277,6 +296,17 @@ function DeathMechanics.HUD()
         SetMaterial(is_eating and Fangs or Pulse);
         Texture((Width - Radius) * .5 + 8, (Height - Radius * .7) * .5 + 5, Radius - 16, Radius * .7 - 10);
 
+        local tx, ty = StartX + Radius * 1.25, StartY + Radius * .5;
+        for k, text in ipairs( stop_text ) do
+            local tw = SimpleText(text, "DM.Font", tx, ty, whiteCol, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER);
+            tx = tx + tw;
+
+            if stop_keys[k] then
+                local tw = SimpleText(stop_keys[k], "DM.Font", tx, ty, goldCol, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER);
+                tx = tx + tw;
+            end
+        end
+
         NoTexture();
         rpui.ExperimentalStencil(function()
             DrawPoly(Poly);
@@ -311,33 +341,60 @@ hook.Add('HUDPaint', 'DeathMechanics.HUDPaint', DeathMechanics.HUD);
 
 -----------------------------------
 
+hook.Add("PlayerButtonUp", "DeathMechanics.PlayerButtonUp", DeathMechanics.PlayerButtonUp);
+
+-----------------------------------
+
+hook.Add( "PrePlayerDraw", "DeathMechanics.RenderOffset", function( ply, flags )
+    if not ply.m_dm_originmanipulated and ply:IsInDeathMechanics() then
+        local jt = ply:GetJobTable() or {};
+
+        if jt.dm_offset then
+            ply.m_dm_originmanipulated = ply:GetManipulateBonePosition( 0 ) or vector_origin;
+            ply:ManipulateBonePosition( 0, jt.dm_offset );
+        end
+    end
+end );
+
+hook.Add( "PostPlayerDraw", "DeathMechanics.RenderOffset", function( ply, flags )
+    if ply.m_dm_originmanipulated and not ply:IsInDeathMechanics() then
+        ply:ManipulateBonePosition( 0, ply.m_dm_originmanipulated );
+        ply.m_dm_originmanipulated = nil;
+    end
+end );
+
+-----------------------------------
+
+
 DeathMechanicsPublic = DeathMechanicsPublic or {};
 
 net.Receive('DeathMechanics.Broadcast', function(Length)
     local Operation = net.ReadBool();
     local Entity = net.ReadEntity();
-    
+
     if not (IsValid(Entity) and Entity:IsPlayer()) then return end
 
     --print("DM: ", Operation, Entity)
-    
-    if (Operation) then 
+
+    if (Operation) then
         --table.insert(DeathMechanicsPublic, Entity);
         DeathMechanicsPublic[Entity:SteamID()] = true
-    else 
-        --table.RemoveByValue(DeathMechanicsPublic, Entity); 
+    else
+        --table.RemoveByValue(DeathMechanicsPublic, Entity);
         DeathMechanicsPublic[Entity:SteamID()] = nil
     end
 end);
 
 timer.Create('DeathMechanics.CheckInvalidAnimation', 2, 0, function()
     local emote
+    local jt
     for k, v in pairs(player.GetAll()) do
         if isfunction(v) or not IsValid(v) then continue end
-        
+
         emote = v:GetEmoteAction()
-        
-        if not DeathMechanicsPublic[v:SteamID()] and (emote == 'dm_fall' or emote == 'dm_getup') then
+        jt = v:GetJobTable() or {}
+
+        if not DeathMechanicsPublic[v:SteamID()] and (emote == 'dm_fall' or emote == 'dm_getup' or (emote == (jt.fall_animation or "?"))) then
             EmoteActions.PlayerAnims[v] = nil
         end
     end

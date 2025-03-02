@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\makethings\\makethings_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local blockTypes = {"Physgun1", "Spawning1", "Toolgun1"}
 local checkModel = function(model) return model ~= nil and (CLIENT or util.IsValidModel(model)) end
 local requiredTeamItems = {"color", "model", "description"}
@@ -28,16 +30,16 @@ end
 
 if CLIENT then
 	rp.TeamsToHandle = rp.TeamsToHandle or {}
-	
+
 	-- --> teamDescriptionHandler:
 		local function teamDescHandler()
 			if not rp.cfg.EnableUIRedesign then
 				local CustomTeam
-				
+
 				for t = 1, table.Count(rp.TeamsToHandle) do
 					CustomTeam = rp.teams[t]
-					
-					if CustomTeam then 
+
+					if CustomTeam then
 						if CustomTeam.unlockPrice then
 							CustomTeam.description = translates.Get("Стоимость разблокировки") .. ": "..rp.FormatMoney(CustomTeam.unlockPrice)..'\n\n'..CustomTeam.description
 						end
@@ -75,14 +77,14 @@ function rp.addTeam(Name, CustomTeam)
 		ErrorNoHalt("Corrupt team \"" .. (CustomTeam.name or "") .. "\": element " .. corrupt .. " is incorrect.\n")
 	end
 
-	table.insert(rp.teams, CustomTeam)
-	team.SetUp(#rp.teams, Name, CustomTeam.color)
-	local t = #rp.teams
+	CustomTeam.TIndex = table.insert(rp.teams, CustomTeam)
+	team.SetUp(CustomTeam.TIndex, Name, CustomTeam.color)
+	local t = CustomTeam.TIndex
 	if CustomTeam.command then
 		if rp.teamscmd[CustomTeam.command] then
 			ErrorNoHalt("Corrupt team \"" .. (CustomTeam.name or "") .. "\": этот command уже используется в профессии " .. rp.teams[ rp.teamscmd[CustomTeam.command] ].name .. "!\n")
 		end
-		
+
 		rp.teamscmd[CustomTeam.command] = t
 	end
 	CustomTeam.loyalty = CustomTeam.loyalty or 1
@@ -104,7 +106,7 @@ function rp.addTeam(Name, CustomTeam)
 		CustomTeam.minUnlockTimeTag = CustomTeam.minUnlockTimeTag or ('j:' .. (CustomTeam.command or CustomTeam.team))
 		rp.RegisterCustomPlayTime(CustomTeam.minUnlockTimeTag)
 	end
-	
+
 	if CustomTeam.whitelisted and not CustomTeam.customCheck then
 		CustomTeam.customCheck = function(ply)
 			return CustomTeam.command and rp.PlayerHasAccessToJob(CustomTeam.command, ply)
@@ -113,18 +115,30 @@ function rp.addTeam(Name, CustomTeam)
 
 	if CustomTeam.likeReactions and not CustomTeam.customCheck then
 		CustomTeam.customCheck = function(ply)
-			return ply:GetLikeReacts() >= CustomTeam.likeReactions
+			return CLIENT or (ply:GetLikeReacts() >= CustomTeam.likeReactions)
 		end
+	end
+
+	if CustomTeam.pointsUnlock and not CustomTeam.customCheck and rp.RegisterCustomUnlockTeam then
+		rp.RegisterCustomUnlockTeam(CustomTeam.TIndex, function(ply)
+		    return ply:HasPoints(CustomTeam.pointsUnlock)
+		end, function(ply)
+		    ply:TakePoints(CustomTeam.pointsUnlock)
+		end, {
+		    cantAfford = translates.Get("У ВАС НЕДОСТАТОЧНО БАЛЛОВ"),
+		    price = translates.Get("СТОИМОСТЬ РАЗБЛОКИРОВКИ: %s БАЛЛОВ", CustomTeam.pointsUnlock),
+		    CustomCheckFailMsg = translates.Get("NeedMorePoints")
+		})
 	end
 
 	if CustomTeam.autoGiveByAddSponsor then
 		rp.AutoGiveWhitelist[CustomTeam.autoGiveByAddSponsor] = rp.AutoGiveWhitelist[CustomTeam.autoGiveByAddSponsor] or {}
 		table.insert(rp.AutoGiveWhitelist[CustomTeam.autoGiveByAddSponsor], CustomTeam.command)
 	end
-	
+
 	if rp.cfg.JobTimeAndPriceMultiplier and rp.cfg.JobTimeAndPriceMultiplier > 0 then
 		CustomTeam.unlockTime = math.ceil(CustomTeam.unlockTime * rp.cfg.JobTimeAndPriceMultiplier)
-		
+
 		if CustomTeam.unlockPrice then
 			CustomTeam.unlockPrice = math.ceil(CustomTeam.unlockPrice * rp.cfg.JobTimeAndPriceMultiplier)
 		end
@@ -133,10 +147,10 @@ function rp.addTeam(Name, CustomTeam)
 	if CustomTeam.vip then
 		CustomTeam.unlockPrice = nil
 	end
-	
+
 	--CustomTeam.unlockTime = 0
 	--CustomTeam.unlockPrice = nil
-	
+
     CustomTeam.model      = type(CustomTeam.model) == 'string' && {CustomTeam.model} or CustomTeam.model or {};
     CustomTeam.appearance = CustomTeam.appearance or {};
 
@@ -172,7 +186,7 @@ function rp.addTeam(Name, CustomTeam)
 	for k, v in pairs(CustomTeam.spawns or {}) do
 		rp.cfg.TeamSpawns[k] = rp.cfg.TeamSpawns[k] or {}
 		rp.cfg.TeamSpawns[k][t] = v
-	end	
+	end
 
 	if CLIENT then
 		--[[
@@ -196,7 +210,7 @@ function rp.addTeam(Name, CustomTeam)
 		hook('OnReloaded', 'Initialize.Reload'..t, f)
 		hook('Initialize', 'Initialize.LoadDescInfo'..t, f)
 		]]
-		
+
 		rp.TeamsToHandle[t] = true
 	end
 
@@ -427,6 +441,7 @@ end
 rp.groupChats = {}
 
 function rp.addGroupChat(...)
+	--[[
 	local classes = {...}
 
 	table.foreach(classes, function(k, class)
@@ -436,6 +451,26 @@ function rp.addGroupChat(...)
 			rp.groupChats[class][class2] = true
 		end)
 	end)
+	]]--
+
+	local classes = { ... };
+
+	for _, a in ipairs( classes ) do
+		if not a then
+			ErrorNoHaltWithStack( "rp.addGroupChat: tried to add invalid team!" );
+			continue
+		end
+
+		rp.groupChats[a] = rp.groupChats[a] or {};
+
+		for _, b in ipairs( classes ) do
+			if not b then
+				continue
+			end
+
+			rp.groupChats[a][b] = true;
+		end
+	end
 end
 
 rp.ammoTypes = {}

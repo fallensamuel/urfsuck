@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\init_scoreboard_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 if SERVER then return end
 
 
@@ -144,10 +146,10 @@ function PANEL:Init()
         self.PlayerContainer.Header = vgui.Create( "DPanel", self.PlayerContainer );
         self.PlayerContainer.Header:Dock( TOP );
         self.PlayerContainer.Header:InvalidateParent( true );
-		
+
 		local job_txt = translates.Get("Профессия")
 		local onl_txt = translates.Get("Онлайн")
-		
+
         self.PlayerContainer.Header.Paint = function( this, w, h )
             local offset = h + self.frameSpacing * 0.5
             w = w - offset;
@@ -205,9 +207,9 @@ function PANEL:Think()
         PlayerEntry.Think = function( this, w, h )
             if not IsValid( ply ) then this:Remove(); end
         end
-        
+
         PlayerEntry.Drawer:SetTall( self.PlayerContainer.Header:GetTall() );
-        
+
         PlayerEntry.UserIcon = vgui.Create( "DImage", PlayerEntry.Drawer );
         PlayerEntry.UserIcon:Dock( LEFT );
         PlayerEntry.UserIcon:DockMargin( self.frameSpacing * 0.25, 0, self.frameSpacing * 0.25, 0 );
@@ -248,7 +250,7 @@ function PANEL:Think()
         PlayerEntry.Drawer.FriendIcon:Dock( LEFT );
         PlayerEntry.Drawer.FriendIcon:DockMargin( self.frameSpacing * 0.25, 0, self.frameSpacing * 0.25, 0 );
         PlayerEntry.Drawer.FriendIcon:SetWide( PlayerEntry.Drawer:GetTall() );
-        
+
         PlayerEntry.Drawer.Paint = function( this, w, h )
             surface.SetDrawColor( rpui.UIColors.Background );
             surface.DrawRect( 0, 0, w, h );
@@ -256,24 +258,24 @@ function PANEL:Think()
             local offset = rpui.PowOfTwo( h + self.frameSpacing * 0.5 );
             w = w - offset;
 
-            local clr = team.GetColor(ply:Team()); clr.a = 78;
+            local clr = team.GetColor( ply:GetJob() ); clr.a = 78;
             surface.SetDrawColor( clr );
             surface.DrawRect( offset, 0, w, h );
 
-            draw.SimpleText( team.GetName(ply:Team()), "DermaDefault", offset + w * 0.5, h * 0.5, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER );
+            draw.SimpleText( team.GetName(ply:GetJob()), "DermaDefault", offset + w * 0.5, h * 0.5, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER );
             draw.SimpleText( ba.str.FormatTime(ply:GetPlayTime()), "DermaDefault", offset + w * 0.88, h * 0.5, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER );
-            draw.SimpleText( ply:Ping(), "DermaDefault", offset + w * 0.96, h * 0.5, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER );
+            draw.SimpleText( math.floor(ply:Ping() * 0.7), "DermaDefault", offset + w * 0.96, h * 0.5, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER );
 
             return true
         end
 
         PlayerEntry.Container = vgui.Create( "Panel" );
-        
+
         PlayerEntry.Container:Dock( TOP );
         PlayerEntry.Container:SetTall( self.frameH * 0.125 );
         PlayerEntry.Container:InvalidateParent( true );
         PlayerEntry.Container.Paint = function( this, w, h )
-            surface.SetDrawColor( team.GetColor(ply:Team()) );
+            surface.SetDrawColor( team.GetColor( ply:GetJob() ) );
             surface.DrawRect( 0, 0, w, h );
 
             surface.SetTexture( surface.GetTextureID("gui/gradient_up") );
@@ -283,7 +285,7 @@ function PANEL:Think()
 
         PlayerEntry.Container:DockMargin( self.frameSpacing * 0.5 + PlayerEntry.Drawer:GetTall(), 0, 0, 0 );
         PlayerEntry.Container:DockPadding( self.frameSpacing * 0.25, self.frameSpacing * 0.5, self.frameSpacing * 0.25, self.frameSpacing * 0.5 );
-        
+
         PlayerEntry.Container.Avatar = vgui.Create( "AvatarImage", PlayerEntry.Container );
         PlayerEntry.Container.Avatar:Dock( LEFT );
         PlayerEntry.Container.Avatar:DockMargin( 0, 0, self.frameSpacing * 0.25, 0 );

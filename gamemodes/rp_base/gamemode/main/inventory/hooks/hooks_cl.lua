@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\hooks\\hooks_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local isPressedRMB, timeStartRMB, setPopup
 
 local CL_PLAYER_BufferedEnts = CL_PLAYER_BufferedEnts or {};

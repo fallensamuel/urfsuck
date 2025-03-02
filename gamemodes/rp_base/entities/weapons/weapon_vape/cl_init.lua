@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\weapon_vape\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 cvar.Register'smoke_disable':SetDefault(false):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Выключить дым от электронный сигареты (повышает FPS)')
 
 

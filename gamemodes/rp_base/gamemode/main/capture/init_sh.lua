@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\capture\\init_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 rp.Capture = rp.Capture or {}
 
 rp.Capture.Points = {}
@@ -13,7 +15,7 @@ nw.Register'CapturePoints':Write(function()
 		if v.isOrg then
 			net.WriteString(v.owner or translates.Get('без владельца'))
 		else
-			net.WriteUInt(v.owner, 4)
+			net.WriteUInt(v.owner, 8)
 		end
 	end
 end):Read(function()
@@ -23,7 +25,7 @@ end):Read(function()
 		if v.isOrg then
 			v.owner = net.ReadString()
 		else
-			v.owner = net.ReadUInt(4)
+			v.owner = net.ReadUInt(8)
 		end
 		
 		owners[k] = v.owner

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\hud_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local CurTime = CurTime
 local IsValid = IsValid
 local ipairs = ipairs
@@ -54,11 +56,110 @@ local material_lockdown = mat'sup/hud/lock24.png'
 local material_mic = mat'sup/hud/speaker100.png'
 local sw, sh
 local LP
-cvar.Register'enable_lawshud':SetDefault(true):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Enable laws HUD')
-cvar.Register'enable_agendahud':SetDefault(true):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Enable agenda HUD')
-cvar.Register'disable_complicated_playertags':SetDefault(false):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Disable complicated player nametag code (increases FPS)')
+
+--cvar.Register'enable_lawshud':SetDefault(true):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Включить отображение законов в худе')
+--cvar.Register'enable_agendahud':SetDefault(true):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Включить отображение повестки дня в худе')
+--cvar.Register'disable_complicated_playertags':SetDefault(false):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Disable complicated player nametag code (повышает FPS)')
+
+local cvcb_notifytop = function( old, new )
+	if not rp.NotifyVoteParent then return end
+
+	local status = not (hook.Run('ShouldHideHUD') or not new);
+	rp.NotifyVoteParent:SetVisible( status );
+end
+
+local cv_notifylegacy = cvar.Register('enable_notify_legacy'):SetDefault(true):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Включить отображение нотификаций (справа)');
+local cv_notifytop = cvar.Register('enable_notify_top'):SetDefault(true):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Включить отображение нотификаций (сверху)'):AddCallback( cvcb_notifytop );
+
+local name = 'hidehud_' .. game.GetMap();
+cv_hidehud = cvar.Register(name):SetDefault(false):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Отключить интерфейс')
+
+local notify_cvars = {
+	["NotifyLegacy"] = cv_notifylegacy,
+	["NotifyTop"] = cv_notifytop,
+};
+
+hook.Add( "HUDShouldDraw", "rp.hud.DisableNotifies", function( n )
+	local cv_method = notify_cvars[n];
+	if not cv_method then return end
+
+	if not cv_method:GetValue() then
+		return false;
+	end
+end );
 
 local Talkers = {}
+
+hook('InitPostEntity', 'rp.hud.FindCvar', function()
+	cv_hidehud.SupressNotify = nil;
+	cv_hidehud:SetValue(false)
+	cv_hidehud:AddCallback(function(...) hook.Run('OnHideHUDChanged', ...) end)
+
+	if notification and notification.AddLegacy then
+		notification.__AddLegacy = notification.__AddLegacy or notification.AddLegacy
+		notification.AddLegacy = function(...)
+			if hook.Run('ShouldHideHUD') or (hook.Run('HUDShouldDraw', 'NotifyLegacy') == false) then return end
+			return notification.__AddLegacy(...)
+		end
+	end
+
+	GAMEMODE.__HUDPaint = GAMEMODE.__HUDPaint or GAMEMODE.HUDPaint;
+	GAMEMODE.HUDPaint = function(...)
+		if hook.Run('ShouldHideHUD') then return end
+		return GAMEMODE.__HUDPaint(...)
+	end
+
+	local ba_tellall = net.Receivers['ba.tellall']
+	if ba_tellall then
+		net.Receive('ba.TellAll', function(...)
+			if hook.Run('ShouldHideHUD') then return end
+			return ba_tellall(...)
+		end)
+	end
+
+	rp.NotifyVoteParent = rp.NotifyVoteParent or vgui.Create("DPanel");
+	rp.NotifyVoteParent:SetPaintBackground( false );
+
+	cvcb_notifytop( true, cv_notifytop:GetValue() );
+end)
+
+hook('OnHideHUDChanged', 'rp.hud.WatchCvar', function(old, new)
+	if not cv_hidehud then return end
+
+	if new and old ~= new then
+		if cv_hidehud.SupressNotify then
+			cv_hidehud.SupressNotify = nil
+		else
+			timer.Simple(0, function() cv_hidehud:SetValue(false) end)
+
+			local popup = vgui.Create("rpui.ScreenPopup")
+			popup:SetSize(ScrW(), ScrH())
+			popup:SetTitle(translates.Get("Отключение интерфейса"))
+			popup:SetDescription(translates.Get("Вы собираетесь отключить интерфейс. Это может привести к ухудшенным удобствам, процессу и удовольствию от игры на сервере.\nДанная настройка сбрасывается при каждом перезаходе на сервер."))
+			popup:SetAccentColor(rpui.UIColors.BackgroundGold)
+			popup.DoAccept = function() cv_hidehud.SupressNotify = true; cv_hidehud:SetValue(true); end
+			popup.DoReject = function() cv_hidehud.SupressNotify = nil; end
+			popup:Center()
+			popup:MakePopup()
+		end
+	end
+
+	local status = not new;
+	if rp.NotifyVoteParent then
+		if status then
+			status = hook.Run("HUDShouldDraw", "NotifyTop") ~= false;
+		end
+
+		rp.NotifyVoteParent:SetVisible( status );
+	end
+end)
+
+--if hook.Run('ShouldHideHUD') then return end
+hook('ShouldHideHUD', 'rp.hud.ShouldHideHUD', function()
+	if cv_hidehud and tobool(cv_hidehud:GetValue()) then
+		return true
+	end
+end)
 
 hook('PlayerStartVoice', 'rp.hud.PlayerStartVoice', function(pl)
 	Talkers[pl] = true
@@ -328,7 +429,7 @@ end
 local ban_txt = translates.Get('Вы забанены, ознакомиться с правилами можно нажав F1')
 local bantime_txt = translates.Get('Время до разбана:')
 
-local function BannedHUD()
+rp.BannedHUD = function()
 	right_x = sw - 4
 	draw_OutlinedBox(0, 0, sw, height, color_bg, color_outline)
 	surface_SetFont('HudFont')
@@ -345,16 +446,16 @@ function rp.DrawAgenda(h)
 		local w = (sw * .175)
 		local x = 2.5
 		h = h or 0
-		
+
 		if (nw_GetGlobal('Agenda;' .. LP:Team()) or no_agenda_txt) ~= saved1 then
 			saved1 		= nw_GetGlobal('Agenda;' .. LP:Team()) or no_agenda_txt
 			text1		= string_Wrap('HudFont', saved1, w - 6)
 		end
-		
+
 		--if not text1 then return end
-		
+
 		draw_OutlinedBox(0, h+5, w, (#text1 * 18) + 10, color_bg, color_outline)
-		
+
 		for k, v in ipairs(text1) do
 			draw_SimpleText(v, 'HudFont', x, h + (k * 18), varcol('Agenda', nw_GetGlobal('Agenda' .. LP:Team())), TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
 		end
@@ -366,14 +467,14 @@ local saved2, text2
 function rp.DrawLaws()
 	local w = (sw * .175)
 	local x = 2.5
-	
+
 	if (nw_GetGlobal('TheLaws') or rp.cfg.DefaultLaws) ~= saved2 then
 		saved2 		= nw_GetGlobal('TheLaws') or rp.cfg.DefaultLaws
 		text2 		= string_Wrap('HudFont', saved2, w - 6)
 	end
-	
+
 	if not text2 then return 25 end
-	
+
 	draw_OutlinedBox(x, 25, w, (#text2 * 18) + 5, color_bg, color_outline)
 
 	for k, v in ipairs(text2) do
@@ -461,7 +562,7 @@ local emoji
 local function get_player_nick_emoji(ply)
 	emoji = ply:GetNickEmoji()
 	emoji = CHATBOX and CHATBOX.Emoticons and CHATBOX.Emoticons[emoji]
-	
+
 	if emoji then
 		if (not ply.LoadedEmojiMaterial or ply.SavedEmoji != emoji.id) and not ply.LoadingEmoji then
 			if (emoji.url) then
@@ -470,7 +571,7 @@ local function get_player_nick_emoji(ply)
 					ply.LoadedEmojiMaterial = mat
 				else
 					ply.LoadingEmoji = true
-					
+
 					CHATBOX.DownloadImage(
 						emoji.url,
 						function(mat)
@@ -485,7 +586,7 @@ local function get_player_nick_emoji(ply)
 				ply.LoadedEmojiMaterial = Material(emoji.path)
 			end
 		end
-		
+
 		if ply.LoadedEmojiMaterial then
 			ply.SavedEmoji = emoji.id
 		end
@@ -494,50 +595,38 @@ end
 
 local div, stars
 local rept = string.rep
-local posw, posh, posw2, posh2
+local posw, posh, posw2, posh2, posw3, posh3, posw4, posh4 = 0, 0, 0, 0, 0, 0, 0, 0;
 
+local draw_TextTexture = draw.TextTexture
+
+--[[
 local function DrawPlayerInfo(pl, pos)
 	pos.y = pos.y - 10
 	div = 0
-	
+
+	pos.y = pos.y - 10;
+
 	if LP:GetTeamTable().medic or (LP:Team() == TEAM_ADMIN) then
-		div = -0.5
-		DrawCenteredTextOutlined(pl:Health() .. ' HP', 'PlayerInfo', pos.x, pos.y, color_red, div + 2, 1, color_black)
+		draw_SimpleTextOutlined( pl:Health() .. ' HP', 'PlayerInfo', pos.x, pos.y, color_red, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP, 1, color_black );
 	elseif LP:IsHitman() and pl:HasHit() then
-		DrawCenteredTextOutlined('HIT ' .. rp_FormatMoney(pl:GetHitPrice()), 'PlayerInfo', pos.x, pos.y, color_red, div + 2, 1, color_black)
+		DrawCenteredTextOutlined( 'HIT ' .. rp_FormatMoney(pl:GetHitPrice()), 'PlayerInfo', pos.x, pos.y, color_red, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP, 1, color_black );
 	end
-	
-	get_player_nick_emoji(pl)
-	
-	if pl:IsWanted() then
-		if pl.GetWantedStars then
-			DrawCenteredTextOutlined(pl:GetJobName(), 'PlayerInfo', pos.x, pos.y, color_white, div, 1, color_black)
-			
-			stars = pl:GetWantedStars() >= 5 and '' or (' ' .. rept('☆', 5 - pl:GetWantedStars(), ' '))
-			DrawCenteredTextOutlined(rept('★', pl:GetWantedStars(), ' ') .. stars, 'PlayerInfo', pos.x, pos.y - 23, CurTime() % 2 < 1 and color_red or color_blue, div, 1, color_black)
-		else
-			DrawCenteredTextOutlined(pl:GetWantedReason(), 'PlayerInfo', pos.x, pos.y, color_red, div, 1, color_black)
-		end
-		
-		posw, posh = DrawCenteredTextOutlined(pl:Name(), 'PlayerInfoBig', pos.x + (pl.LoadedEmojiMaterial and 16 or 0), pos.y, pl:GetJobColor(), div + 1, 1, color_black)
 
-		if Talkers[pl] then
-			surface_SetMaterial(material_mic)
-			surface_SetDrawColor(color_orange)
-			surface_DrawTexturedRect(pos.x - (posw * .5) - 26 - (pl.LoadedEmojiMaterial and 16 or 0), pos.y + 2 + div * 24, 22, 22)
-		end
-		
-		if pl.LoadedEmojiMaterial then
-			surface_SetDrawColor(color_white)
-			surface_SetMaterial(pl.LoadedEmojiMaterial)
-			surface_DrawTexturedRect(pos.x - (posw * .5) - 17, pos.y, 32, 32)
-		end
+	get_player_nick_emoji( pl );
+
+	if pl:GetJobTable().reversed or (pl:IsDisguised() and pl:GetDisguiseJobTable().reversed) then
+		posw, posh = renderTextFunc( pl:GetJobName(), 'PlayerInfoBig', pos.x, pos.y, pl:GetJobColor(), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black );
+		posw2, posh2 = draw_SimpleTextOutlined( pl:GetName(), 'PlayerInfo', pos.x + (pl.LoadedEmojiMaterial and 16 or 0), pos.y - posh, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black );
 	else
-
 		if pl:GetJobTable().reversed || (pl:IsDisguised() && pl:GetDisguiseJobTable().reversed) then
-			posw, posh = DrawCenteredTextOutlined(pl:Name(), 'PlayerInfo', pos.x + (pl.LoadedEmojiMaterial and 16 or 0), pos.y, color_white, div + 1, 1, color_black)
-			DrawCenteredTextOutlined(pl:GetJobName(), 'PlayerInfoBig', pos.x, pos.y, pl:GetJobColor(), div, 1, color_black)
-			
+			if cvar_Get('text_texture_render') then
+				posw, posh = draw_TextTexture(pl:GetJobName(), 'PlayerInfoBig', pos.x, pos.y, pl:GetJobColor(), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black)
+			else
+				posw, posh = draw_SimpleTextOutlined(pl:GetJobName(), 'PlayerInfoBig', pos.x, pos.y, pl:GetJobColor(), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black)
+			end
+
+			posw2, posh2 = DrawCenteredTextOutlined(pl:Name(), 'PlayerInfo', pos.x + (pl.LoadedEmojiMaterial and 16 or 0), pos.y, color_white, div + 1, 1, color_black)
+
 			if pl.LoadedEmojiMaterial then
 				surface_SetDrawColor(color_white)
 				surface_SetMaterial(pl.LoadedEmojiMaterial)
@@ -545,35 +634,121 @@ local function DrawPlayerInfo(pl, pos)
 				posw = posw + 24
 			end
 		else
-			posw, posh = DrawCenteredTextOutlined(pl:GetJobName(), 'PlayerInfo', pos.x, pos.y, color_white, div + 1, 1, color_black)
-			posw2, posh2 = DrawCenteredTextOutlined(pl:Name(), 'PlayerInfoBig', pos.x + (pl.LoadedEmojiMaterial and 16 or 0), pos.y, pl:GetJobColor(), div, 1, color_black)
-			
+			posw2, posh2 = DrawCenteredTextOutlined(pl:Name(), 'PlayerInfoBig', pos.x + (pl.LoadedEmojiMaterial and 16 or 0), pos.y, pl:GetJobColor(), div + 1, 1, color_black)
+
+			if cvar_Get('text_texture_render') then
+				posw, posh = draw_TextTexture(pl:GetJobName(), 'PlayerInfo', pos.x, pos.y, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black)
+			else
+				posw, posh = draw_SimpleTextOutlined(pl:GetJobName(), 'PlayerInfo', pos.x, pos.y, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black)
+			end
+
 			if pl.LoadedEmojiMaterial then
 				surface_SetDrawColor(color_white)
 				surface_SetMaterial(pl.LoadedEmojiMaterial)
 				surface_DrawTexturedRect(pos.x - (posw2 * .5) - 20, pos.y - 37, 32, 32)
 			end
 		end
-		local org = pl:GetOrg()
 
-		if (org ~= nil) then
-			DrawCenteredTextOutlined(org, 'PlayerInfo', pos.x, pos.y-15, pl:GetOrgColor(), div - 1, 1, color_black)
+		local org = pl:GetOrg()
+		if org then
+			if cvar_Get('text_texture_render') then
+				draw_TextTexture(org, 'PlayerInfo', pos.x, pos.y - posh, pl:GetOrgColor(), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black, 2592000)
+			else
+				draw_SimpleTextOutlined(org, 'PlayerInfo', pos.x, pos.y - posh, pl:GetOrgColor(), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black)
+			end
 		end
 
 		if Talkers[pl] then
 			surface_SetMaterial(material_mic)
 			surface_SetDrawColor(color_orange)
-			surface_DrawTexturedRect(pos.x - (posw * .5) - 26, pos.y + 2 + div * 24, 22, 22)
+			surface_DrawTexturedRect(pos.x - posw2 * 0.5 - 22 - 10, pos.y + posh2 * 0.5 - 11, 22, 22)
 		end
 
 		if pl:HasLicense() then
 			surface_SetMaterial(material_licence)
 			surface_SetDrawColor(color_green)
-			surface_DrawTexturedRect(pos.x + posw / 2 + 5, pos.y + 6 + div * 24, 16, 16)
+			surface_DrawTexturedRect(pos.x + posw2 * 0.5 + 10, pos.y + posh2 * 0.5 - 8, 16, 16)
 		end
 	end
-	
-	hook.Run('PlayerInfoAdditionalHUD', pl, pos)
+
+	hook.Run( "PlayerInfoAdditionalHUD", pl, pos );
+end
+]]--
+
+local function DrawPlayerInfo( pl, pos )
+	local renderTextFunc = cvar_Get('text_texture_render') and draw_TextTexture or draw_SimpleTextOutlined;
+
+	pos.y = pos.y - 10;
+
+	if LP:GetTeamTable().medic or (LP:Team() == TEAM_ADMIN) then
+		draw_SimpleTextOutlined( pl:Health() .. ' HP', 'PlayerInfo', pos.x, pos.y, color_red, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP, 1, color_black );
+	elseif LP:IsHitman() and pl:HasHit() then
+		draw_SimpleTextOutlined( rp_FormatMoney(pl:GetHitPrice()), 'PlayerInfo', pos.x, pos.y, color_red, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP, 1, color_black );
+	end
+
+	get_player_nick_emoji( pl );
+
+	if pl:GetJobTable().reversed or (pl:IsDisguised() and pl:GetDisguiseJobTable().reversed) then
+		posw, posh = renderTextFunc( pl:GetJobName(), 'PlayerInfoBig', pos.x, pos.y, pl:GetJobColor(), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black );
+
+		if (not posw) or (not posh) then
+			posw, posh = draw_SimpleTextOutlined( pl:GetJobName(), 'PlayerInfoBig', pos.x, pos.y, pl:GetJobColor(), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black );
+		end
+
+		posw2, posh2 = draw_SimpleTextOutlined( pl:GetName(), 'PlayerInfo', pos.x + (pl.LoadedEmojiMaterial and 16 or 0), pos.y - posh, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black );
+	else
+		posw, posh = draw_SimpleTextOutlined( pl:GetName(), 'PlayerInfoBig', pos.x, pos.y, pl:GetJobColor(), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black );
+		posw2, posh2 = renderTextFunc( pl:GetJobName(), 'PlayerInfo', pos.x + (pl.LoadedEmojiMaterial and 16 or 0), pos.y - posh, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black );
+
+		if (not posw2) or (not posh2) then
+			posw2, posh2 = draw_SimpleTextOutlined( pl:GetJobName(), 'PlayerInfo', pos.x + (pl.LoadedEmojiMaterial and 16 or 0), pos.y - posh, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black );
+		end
+	end
+
+	local offx, offy = pos.x - posw2 * 0.5, pos.y - posh - posh2 * 0.5;
+	if pl.LoadedEmojiMaterial then
+		offx = offx - 16;
+		surface_SetDrawColor( color_white );
+		surface_SetMaterial( pl.LoadedEmojiMaterial );
+		surface_DrawTexturedRect( offx, offy - 12, 24, 24 );
+	end
+
+	if Talkers[pl] then
+		surface_SetMaterial( material_mic );
+		surface_SetDrawColor( color_orange );
+		surface_DrawTexturedRect( offx - 22 - 8, offy - 11, 22, 22 );
+	end
+
+	if pl:HasLicense() then
+		surface_SetMaterial( material_licence );
+		surface_SetDrawColor( color_green );
+		surface_DrawTexturedRect( offx + posw2 + 8 + (pl.LoadedEmojiMaterial and 32 or 0), offy - 8, 16, 16 );
+	end
+
+	posw3, posh3 = 0, 0;
+	local org = pl:GetOrg();
+	if org then
+		posw3, posh3 = renderTextFunc( org, 'PlayerInfo', pos.x, pos.y - posh - posh2 - 4, pl:GetOrgColor(), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black, 2592000 );
+
+		if (not posw3) or (not posh3) then
+			posw3, posh3 = draw_SimpleTextOutlined( org, 'PlayerInfo', pos.x, pos.y - posh - posh2 - 4, pl:GetOrgColor(), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black );
+		end
+	end
+
+	if pl:IsWanted() then
+		if pl.GetWantedStars then
+			stars = pl:GetWantedStars() >= 5 and '' or (' ' .. rept('☆', 5 - pl:GetWantedStars(), ' '));
+			posw4, posh4 = draw_SimpleTextOutlined( rept('★', pl:GetWantedStars(), ' ') .. stars, 'PlayerInfo', pos.x, pos.y - posh - posh2 - (posh3 or 0) - 4, CurTime() % 2 < 1 and color_red or color_blue, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black );
+
+			if rp.cfg.ShowWantedReason then
+				renderTextFunc( pl:GetWantedReason(), 'PlayerInfo', pos.x, pos.y - posh - posh2 - (posh3 or 0) - posh4 - 4, color_red, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black );
+			end
+		else
+			renderTextFunc( pl:GetWantedReason(), 'PlayerInfo', pos.x, pos.y - posh - posh2 - (posh3 or 0) - 4, color_red, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, color_black );
+		end
+	end
+
+	hook.Run( "PlayerInfoAdditionalHUD", pl, pos );
 end
 
 local function BoxIntersects(l1, r1, t1, b1, l2, r2, t2, b2)
@@ -590,27 +765,24 @@ local l, r, t, b
 local function RebuildPositions(boxes)
 	for k, pos1 in pairs(boxes) do
 		bl, br, bt, bb = pos1.x + aabb.left, pos1.x + aabb.right, pos1.y + aabb.top, pos1.y + aabb.bottom
-		
+
 		if broke then
 			broke = nil
 			RebuildPositions(boxes)
 			break
 		end
-		
+
 		for kk, pos2 in pairs(boxes) do
 			if k == kk then continue end
 			l, r, t, b = pos2.x + aabb.left, pos2.x + aabb.right, pos2.y + aabb.top, pos2.y + aabb.bottom
 
 			if BoxIntersects(bl, br, bt, bb, l, r, t, b) then
-				--local deltay = (pos1.y > pos2.y and aabb.top or pos1.y < pos2.y and aabb.bottom or 0)
-				--pos1.y = pos1.y + deltay
-				
 				broke = true
-				
+
 				if k.FarDistance > kk.FarDistance then
 					boxes[k] = nil
 					break
-					
+
 				else
 					boxes[kk] = nil
 					break
@@ -621,53 +793,57 @@ local function RebuildPositions(boxes)
 end
 
 local PlayerVisibilityAlpha = {};
-function rp.DrawPlayerDisplay()
-	local i = 0;
+local aimed_pl, lppos, pa, pb, insight
 
-	local playeraabb_cache = {};
-	local playervis_cache  = {};
+local plys = {}
 
-	local eyevector, eyepos, lppos = EyeVector(), EyePos(), LP:GetPos();
+local playeraabb_cache = {};
+local playervis_cache  = {};
 
-	local plys = player.GetAll();
+timer.Create("HUD::SortPlayersAround", 0.5, 0, function()
+	if not IsValid(LP) then return end
+
+	lppos = LP:GetPos();
+	plys = player.GetAll();
+	playervis_cache  = {};
+
 	table.sort( plys, function( a, b )
-		local pa = a:GetPos():DistToSqr( lppos );
-		local pb = b:GetPos():DistToSqr( lppos );
+		pa = a:GetPos():DistToSqr( lppos );
+		pb = b:GetPos():DistToSqr( lppos );
 
 		a.FarDistance = pa
 		b.FarDistance = pb
-		
-		--local va = eyevector:Dot( (a:GetPos() - eyepos):GetNormalized() );
-		--local vb = eyevector:Dot( (b:GetPos() - eyepos):GetNormalized() );
 
-		return (pa > pb) --and (va > vb);
+		return pa < pb
 	end );
+
+	i = 0;
 
 	for _, pl in pairs(plys) do
 		if i > 5 		   then break end
 		if pl.ShouldNoDraw then continue end
 
-		if not IsValid(pl) 
+		if not IsValid(pl)
 			or pl == LP
 			or not pl:Alive()
 			or hook_Call( "HUDShouldDraw", GAMEMODE, "PlayerDisplay", pl ) == false
-		then 
-			continue 
+		then
+			continue
 		end
 
-		local isnodraw = not (ba and ba["ToggleShowInvisible"]) and pl:GetNoDraw()
-
-		local insight = not pl:IsDormant() and pl:InSight() and pl:InTrace() and not isnodraw
+		insight = not pl:IsDormant() and pl:InSight() and pl:InTrace() and (ba and ba["ToggleShowInvisible"] or not pl:GetNoDraw())
 		pl.IsCurrentlyVisible = insight;
 
-		if pl.IsCurrentlyVisible then
+		if insight then
 			playervis_cache[pl]       = true;
 			PlayerVisibilityAlpha[pl] = 1;
 
 			i = i + 1;
 		end
 	end
+end)
 
+timer.Create("HUD::AlphaPlayersAround", 0.065, 0, function()
 	for pl, v in pairs( PlayerVisibilityAlpha ) do
 		if not IsValid(pl) then
 			PlayerVisibilityAlpha[pl] = nil;
@@ -675,27 +851,45 @@ function rp.DrawPlayerDisplay()
 		end
 
 		PlayerVisibilityAlpha[pl] = math.Approach( v, playervis_cache[pl] and 1 or 0, 0.1 );
+	end
+end)
 
-		if v > 0 then
+local i, pos
+local surface_SetAlphaMultiplier = surface.SetAlphaMultiplier
+
+function rp.DrawPlayerDisplay()
+	i = 0
+
+	aimed_pl = LocalPlayer():GetEyeTrace().Entity
+	aimed_pl = IsValid(aimed_pl) and aimed_pl:IsPlayer() and aimed_pl
+
+	playeraabb_cache = {};
+
+	for _, pl in pairs( plys ) do
+		if not IsValid(pl) then continue end
+
+		if PlayerVisibilityAlpha[pl] and PlayerVisibilityAlpha[pl] > 0 then
 			playeraabb_cache[pl] = (getHeadPos(pl) or pl:EyePos()):ToScreen();
+
 		else
 			PlayerVisibilityAlpha[pl] = nil;
+			continue
 		end
 	end
 
 	RebuildPositions( playeraabb_cache );
-	i = 0
-	
-	--for pl, pos in pairs( playeraabb_cache ) do
+
 	for _, pl in pairs( plys ) do
-		if i > 5 then break end
-		local pos = playeraabb_cache[pl]
-		
-		if pos then
-			surface.SetAlphaMultiplier( PlayerVisibilityAlpha[pl] or 0 );
-				DrawPlayerInfo( pl, pos );
-			surface.SetAlphaMultiplier( 1 );
-			i = i + 1
+		if IsValid(pl) and (i <= 5 or pl == aimed_pl) then
+			pos = playeraabb_cache[pl]
+
+			if pos then
+				surface_SetAlphaMultiplier( PlayerVisibilityAlpha[pl] or 0 );
+					DrawPlayerInfo( pl, pos );
+				surface_SetAlphaMultiplier( 1 );
+
+				i = i + 1
+			end
 		end
 	end
 end
@@ -708,7 +902,7 @@ local function EntityDisplay()
 	elseif IsValid(ent) and ent:IsPlayer() and ent:IsHirable() and not LP:IsHirable() and (LP:GetPos():Distance(ent:GetPos()) < 115) then
 		draw_SimpleTextOutlined(translates.Get("Напишите /hire чтобы нанять %s за %s", ent:Name(), rp_FormatMoney(ent:GetHirePrice())), 'HudFont2', sw / 2, sh / 2 + 50, color_red, 1, 1, 1, color_black)
 	elseif ent:IsVehicle() then
-		
+
 	end
 end
 
@@ -744,9 +938,11 @@ end
 local lawsOffset = 25
 
 
-local showLaws = (rp.cfg.HudShowLaws == nil) or rp.cfg.HudShowLaws
+local showLaws = false --(rp.cfg.HudShowLaws == nil) or rp.cfg.HudShowLaws
 local showAgenda = (rp.cfg.HudShowAgenda == nil) or rp.cfg.HudShowAgenda
 local showLockdown = (rp.cfg.HudShowLockdown == nil) or rp.cfg.HudShowLockdown
+
+local DrawAgenda, DrawHits, DrawPlayerDisplay
 
 function GM:HUDPaint()
 	sw, sh = ScrW(), ScrH()
@@ -756,28 +952,43 @@ function GM:HUDPaint()
 	if (not LP:Alive()) then
 		DeathScreen()
 	elseif LP:IsBanned() then
-		BannedHUD()
+		if rp.BannedHUD then
+			rp.BannedHUD();
+		end
+
 		respawnTime = nil
 	else
 		respawnTime = nil
 		EntityDisplay()
-		rp.DrawPlayerDisplay()
 
+		if not DrawPlayerDisplay then
+			DrawPlayerDisplay = rp.DrawPlayerDisplay
+		end
+
+		DrawPlayerDisplay()
 
 		if showLaws and cvar_Get('enable_lawshud') && !isWhiteForest then
 			lawsOffset = rp.DrawLaws()
 		end
 
 		if showAgenda and cvar_Get('enable_agendahud') then
+			if not DrawAgenda then
+				DrawAgenda = rp.DrawAgenda
+			end
+
 			rp.DrawAgenda(lawsOffset or 25)
 		end
-		
+
+		if not DrawHits then
+			DrawHits = rp.DrawHits
+		end
+
 		rp.DrawHits(lawsOffset or 0)
-		
+
 		if showLockdown then
 			LockDown()
 		end
-		
+
 	//	Arrested()
 	//	InfoBar()
 	end

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\capture\\conjunctions\\conj_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ﻿PANEL = {}
 function PANEL:Init()
 	self:SetSize(0, 50)

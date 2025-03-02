@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\capture\\territories_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ﻿
 local function getOwnerName(location)
 	return location.isOrg and location.owner or rp.Capture.Alliances[location.owner] and rp.Capture.Alliances[location.owner].printName or 'Неизвестно'

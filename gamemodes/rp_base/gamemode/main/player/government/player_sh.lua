@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\player\\government\\player_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 function PLAYER:IsMayor()
 	return rp.teams[self:Team()] and rp.teams[self:Team()].mayor or false
 end
@@ -5,7 +7,7 @@ end
 
 if (SERVER) then
 	function PLAYER:IsArrested()
-		return (rp.ArrestedPlayers[self:SteamID64()] == true)
+		return (rp.ArrestedPlayers[self:SteamID64()] ~= nil) and (rp.ArrestedPlayers[self:SteamID64()] ~= false)
 	end
 else
 	function PLAYER:IsArrested()

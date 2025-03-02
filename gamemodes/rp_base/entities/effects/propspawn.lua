@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\effects\\propspawn.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 
 local cl_drawspawneffect = CreateConVar( "cl_drawspawneffect",	"1", { FCVAR_ARCHIVE } )

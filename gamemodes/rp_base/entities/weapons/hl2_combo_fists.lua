@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\hl2_combo_fists.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 -- Eventually, merge this with weapon_fists
 AddCSLuaFile()
 if SERVER then end

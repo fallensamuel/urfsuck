@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\npc_employer\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include( "shared.lua" );
 
 ENT.RenderGroup = RENDERGROUP_OPAQUE;
@@ -7,11 +9,12 @@ net.Receive( "rp.EmployerMenu", function()
 
 	local f       = ent:GetFaction();
 	local faction = rp.Factions[f];
-
-	if (rpui and rpui.EnableUIRedesign or rpui.DebugMode) and faction.teammates and not rp.cfg.ForceFaction then
-		rp.OpenEmployerMenu( {f, unpack(faction.teammates)}, f );
+	
+	if faction.teammates and not rp.cfg.ForceFaction then
+		rp.OpenEmployerMenu( {f, unpack(faction.teammates)}, f, true );
+		
 	else
-		rp.OpenEmployerMenu( f, nil, rp.cfg.ForceFaction );
+		rp.OpenEmployerMenu( f, nil, true );
 	end
 end );
 

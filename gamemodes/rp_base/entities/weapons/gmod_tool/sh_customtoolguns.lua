@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\sh_customtoolguns.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local GetSWEPClass = function(self)
   local str = self.Folder
   return str:match("^.*/(.*)") or str

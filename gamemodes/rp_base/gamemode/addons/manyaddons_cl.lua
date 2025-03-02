@@ -1,94 +1,151 @@
-
-surface.CreateFont("FPS_Font.Title", {
-    font     = "Montserrat",
-    extended = true,
-    weight   = 540,
-    size     = 22,
-});
-
-surface.CreateFont("FPS_Font.Text", {
-    font     = "Montserrat",
-    extended = true,
-    weight   = 500,
-    size     = 18,
-});
+-- "gamemodes\\rp_base\\gamemode\\addons\\manyaddons_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
+local cv_manyaddons = cvar.Register("enable_manyaddonsnotify"):SetDefault(true):AddMetadata("State", "RPMenu"):AddMetadata("Menu", "Включить нотификацию о большом количестве аддонов");
 
 local function ShowMessage()
-	menu = vgui.Create('urf.im/rpui/menus/blank')
-	menu:SetSize(500, 150)
-	menu:Center()
-	menu:MakePopup()
-	
-	menu.header.SetIcon(menu.header, 'cmenu/order.png')
-	menu.header.SetTitle(menu.header, translates and translates.Get("Кажется, у вас много аддонов") or 'Кажется, у вас много аддонов')
-	menu.header.SetFont(menu.header, "FPS_Font.Title")
-	menu.header.IcoSizeMult = 1.8
-	
-	local label = vgui.Create('DLabel', menu)
-	label:SetPos(10, 53)
-	label:SetText(translates and translates.Get("Советуем отписаться от всех аддонов для повышения FPS!") or 'Советуем отписаться от всех аддонов для повышения FPS!')
-	label:SetContentAlignment(5)
-	label:SetTextColor(Color(210, 210, 210, 255))
-	label:SetSize(480, 40)
-	label:SetFont('FPS_Font.Text')
-	
-	local ok = vgui.Create("urf.im/rpui/button", menu)
-	ok.SetSize(ok, 235, 40)
-	ok.SetPos(ok, 10, 100)
-	ok.SetText(ok, translates and translates.Get("Отписаться") or 'Отписаться')
-	ok.SetFont(ok, "FPS_Font.Text") 
-	ok.DoClick = function()
-		gui.OpenURL('https://steamcommunity.com/profiles/' .. LocalPlayer():SteamID64() .. '/myworkshopfiles/?appid=4000&browsefilter=mysubscriptions');
-		menu:Close()
-	end
+    local popup = rp.NotifyVoteClient( "", 0, 120 );
+    local title = translates.Get( "Кажется, у вас много аддонов" );
 
-	local cancel = vgui.Create("urf.im/rpui/button", menu)
-	cancel.SetSize(cancel, 235, 40)
-	cancel.SetPos(cancel, 255, 100)
-	cancel.SetText(cancel, translates and translates.Get("Нет, спасибо") or 'Нет, спасибо')
-	cancel.SetFont(cancel, "FPS_Font.Text")
-	cancel.DoClick = function()
-		if menu.Close then menu:Close() else menu:Remove() end
-	end
-	
-	/*
-	local fr = ui.Create('ui_frame', function(self)
-		self:SetSize(520, 90)
-		self:SetTitle()
-		self:MakePopup()
-		self:Center()
-		self:RequestFocus()
-	end)
+    popup.SetupButton = function( self, text, callback )
+        local button = vgui.Create( "DButton" );
 
-	ui.Create('DLabel', function(self, p) 
-		self:SetText()
-		self:SetFont('ba.ui.24')
-		self:SetTextColor(ui.col.Close)
-		self:SizeToContents()
-		self:SetPos((p:GetWide() - self:GetWide()) / 2, 32)
-	end, fr)
+        button:SetFont( "rpui.notifyvote.font" );
+        button:SetText( text or "Button" );
+        button:SizeToContentsY( (self.fl_Padding or 0) * 0.75 );
 
-	ui.Create('DButton', function(self, p)
-		self:SetText()
-		self:SetPos(5, 60)
-		self:SetSize(p:GetWide()/2 - 7.5, 25)
-		function self:DoClick()
-			
-			p:Close()
-		end
-	end, fr)
+        button.DoClick = function( this )
+            this:SetMouseInputEnabled( false );
 
-	ui.Create('DButton', function(self, p)
-		self:SetText()
-		self:SetPos(p:GetWide()/2 + 2.5, 60)
-		self:SetSize(p:GetWide()/2 - 7.5, 25)
-		function self:DoClick()
-			p:Close()
-		end
-	end, fr)
-	*/
+            if isfunction( callback ) then
+                callback( this );
+            end
+        end
+
+        button.Paint = function( this, w, h )
+            local baseColor, textColor = rpui.GetPaintStyle( this, STYLE_SOLID );
+            surface.SetDrawColor( baseColor );
+            surface.DrawRect( 0, 0, w, h );
+            draw.SimpleText( this:GetText(), this:GetFont(), w * 0.5, h * 0.5, textColor, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER );
+            return true;
+        end
+
+        return button;
+    end
+
+    popup.WrapText = function( text, font, w )
+        surface.SetFont( font );
+
+        local sw, sh = surface.GetTextSize( " " );
+        local ret = {};
+        local x, y = 0, 1;
+        local line = "";
+        local words = string.Explode( " ", text );
+
+        for k, word in ipairs( words ) do
+            local tw = surface.GetTextSize( word );
+            local nx = x + tw;
+
+            if nx > w then
+                ret[y] = string.SetChar( line, #line, "" );
+                x, y = tw + sw, y + 1;
+                line = word .. " ";
+                continue
+            end
+
+            line = line .. word .. " ";
+            x = nx + sw;
+        end
+
+        ret[y] = string.SetChar( line, #line, "" );
+
+        return ret, sh;
+    end
+
+    popup.Initialize = function( self )
+        local fontData = table.Copy( surface.RegistredFonts["rpui.notifyvote.font"] );
+        fontData.weight = 1000;
+        surface.CreateFont( "rpui.notifyvote.font-bold", fontData );
+
+        self.__OnPopupSizeTo = self.OnPopupSizeTo;
+        self.OnPopupSizeTo = function( this, w, h )
+            this:__OnPopupSizeTo( w, h );
+
+            local parent = this.popup;
+            for _, child in ipairs( parent:GetChildren() ) do
+                child:Remove();
+            end
+
+            local padding = this:GetWide() * 0.025;
+            this.fl_Padding = padding;
+
+            parent:DockPadding( padding, padding, padding, padding );
+
+            local actions = vgui.Create( "Panel", parent );
+            actions:Dock( BOTTOM );
+            actions:DockMargin( 0, padding, 0, 0 );
+
+            actions.PerformLayout = function( pnl, pnl_w, pnl_h )
+                pnl:SizeToChildren( false, true ); pnl_h = pnl:GetTall();
+
+                local childrens = pnl:GetChildren();
+                local count = #childrens;
+
+                local s = (pnl_w - (padding * (count - 1))) / count;
+
+                for k, child in ipairs( childrens ) do
+                    child:SetSize( s, pnl_h );
+                    child:Dock( LEFT );
+                    child:DockMargin( 0, 0, padding, 0 );
+                end
+            end
+
+            actions:Add( this:SetupButton(translates.Get("Отписаться"), function( btn )
+                this:Close();
+                gui.OpenURL( "https://steamcommunity.com/profiles/" .. LocalPlayer():SteamID64() .. "/myworkshopfiles/?appid=4000&browsefilter=mysubscriptions" );
+            end) );
+
+            actions:Add( this:SetupButton(translates.Get("Отказаться"), function( btn )
+                this:Close();
+            end) );
+
+            actions:Add( this:SetupButton(translates.Get("Спрятать"), function( btn )
+                this:Close();
+                cv_manyaddons:SetValue( false );
+            end) );
+
+            --
+            local content = vgui.Create( "DPanel", parent );
+            content:Dock( FILL );
+
+            content.Cache = {};
+            content.Paint = function( pnl, pnl_w, pnl_h )
+
+                if not pnl.Cache[pnl_w] then
+                    pnl.Cache[pnl_w] = { self.WrapText(translates.Get("Советуем отписаться от всех аддонов для повышения FPS!"), "rpui.notifyvote.font-bold", pnl_w) };
+                end
+
+                local block_h = (#pnl.Cache[pnl_w][1] * pnl.Cache[pnl_w][2]);
+
+                local x = pnl_w * 0.5;
+                local y = pnl_h * 0.5 - block_h * 0.5;
+
+                for k, line in ipairs( pnl.Cache[pnl_w][1] ) do
+                    draw.SimpleTextOutlined( line, "rpui.notifyvote.font", x, y, rpui.UIColors.White, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP, 2, rpui.UIColors.Shading );
+                    y = y + pnl.Cache[pnl_w][2];
+                end
+            end
+        end
+    end
+
+    popup.__Think = popup.Think;
+    popup.Think = function( self )
+        self:__Think();
+        self.Title = title;
+    end
+
+    popup:Initialize();
 end
 
-rp.RegisterLoginPopup(5, ShowMessage, function()
-   return #(engine.GetAddons() or {}) >= 50
-end)
+rp.RegisterLoginPopup( 5, ShowMessage, function()
+   return cv_manyaddons:GetValue() and #(engine.GetAddons() or {}) >= 200;
+end );

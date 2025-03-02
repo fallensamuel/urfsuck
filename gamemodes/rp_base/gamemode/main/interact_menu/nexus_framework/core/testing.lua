@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\interact_menu\\nexus_framework\\core\\testing.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local framework = Nexus:ClassManager("Framework")
 local testing = framework:Class("Testing")
 testing:Add("Tests", {})

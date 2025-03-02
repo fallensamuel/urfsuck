@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\urf_heists\\sh_heists.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 rp.Heists = rp.Heists or {
     IsHeistRunning   = false,
     HeistTimeLength  = rp.cfg.Heists and rp.cfg.Heists.HeistTimeLength or 600

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\interact_menu\\nexus_framework\\vgui\\modules\\draw_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local framework = Nexus:ClassManager("Framework")
 local _draw = draw
 local draw = framework:Class("Draw")

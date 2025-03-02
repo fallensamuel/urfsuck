@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\weapon_dogswep\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile("shared.lua")
 
 -- The swep was created for Paradox DarkRP server by request of one of it's respectable owners.

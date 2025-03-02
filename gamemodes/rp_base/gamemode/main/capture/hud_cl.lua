@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\capture\\hud_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 local smallLabelColor = Color(255, 255, 255)
 local bigLabelColor = Color(255, 255, 255)
@@ -124,8 +126,8 @@ local function drawCaptureState(capture)
 			ct2 = color1
 		end
 		
-		nm1 = rp.Capture.Alliances[nm1].printName
-		nm2 = rp.Capture.Alliances[nm2].printName
+		nm1 = (rp.Capture.Alliances and rp.Capture.Alliances[nm1]) and rp.Capture.Alliances[nm1].printName or '?1'
+		nm2 = (rp.Capture.Alliances and rp.Capture.Alliances[nm2]) and rp.Capture.Alliances[nm2].printName or '?2'
 	end
 	
 	
@@ -171,7 +173,8 @@ local function drawCaptureState(capture)
 			saved_pos 	= Vector(cur_x, cur_y)
 			
 			for i = 1, 1 + saved_prog do
-				tb_insert(temp, { x = cur_x + rect_poly[i].x, y = cur_y + rect_poly[i].y })
+				rect_poly[i] = rect_poly[i] or {};
+				tb_insert(temp, { x = cur_x + (rect_poly[i].x or 0), y = cur_y + (rect_poly[i].y or 0) })
 			end
 			
 			saved_table = temp

@@ -1,10 +1,12 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stools\\remover.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 TOOL.Category = "Construction"
 TOOL.Name = "#tool.remover.name"
 
 local function DoRemoveEntity( ent )
 
-	if ( !IsValid( ent ) || ent:IsPlayer() ) then return false end
+	if ( !IsValid( ent ) || ent:IsPlayer() || ent.isPillPhys ) then return false end
 
 	-- Nothing for the client to do here
 	if ( CLIENT ) then return true end

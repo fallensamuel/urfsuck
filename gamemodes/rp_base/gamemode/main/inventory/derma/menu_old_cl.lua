@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\derma\\menu_old_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 if not rp.cfg.DisableContextRedisign then return end
 

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\sandbox\\spawnmenu\\creationmenu\\content\\contenttypes\\npcs_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 hook.Add( "PopulateNPCs", "AddNPCContent", function( pnlContent, tree, node )
 

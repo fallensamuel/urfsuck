@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\npc_raid_controller.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 
 ENT.Type 		= "point"
@@ -253,10 +255,14 @@ function ENT:NPCKilled()
 end
 
 function ENT:AcceptInput(name, activator, called, data)
-	self.NpcAmount = (self.NpcAmount or 0) + 1
-	rp.npc.RegisterEntity(activator, function(npc)
-		self:NPCKilled()
-	end)
+	if IsValid(activator) and activator:IsNPC() then
+		print("RaidController::NewNPC", activator)
+		
+		self.NpcAmount = (self.NpcAmount or 0) + 1
+		rp.npc.RegisterEntity(activator, function(npc)
+			self:NPCKilled()
+		end)
+	end
 end
 
 hook.Add('InitPostEntity', 'RaidController::SpawnController', function()

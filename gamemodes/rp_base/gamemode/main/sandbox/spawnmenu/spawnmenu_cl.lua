@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\sandbox\\spawnmenu\\spawnmenu_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local spawnmenu_border = CreateConVar("spawnmenu_border", "0.1", {FCVAR_ARCHIVE})
 local PANEL = {}
 

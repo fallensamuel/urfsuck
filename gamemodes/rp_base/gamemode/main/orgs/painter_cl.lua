@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\orgs\\painter_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 rp.orgs = rp.orgs or {}
 local sdr = surface.DrawRect
 local ssdc = surface.SetDrawColor
@@ -31,7 +33,7 @@ local ava
 local function editorPrem()
 	fr = ui.Create('ui_frame', function(self)
 		self:SetSize(520, 155)
-		self:SetTitle('Изменить флаг организации')
+		self:SetTitle(translates.Get('Изменить флаг организации'))
 		self:MakePopup()
 		self:Center()
 
@@ -54,7 +56,7 @@ local function editorPrem()
 	end, fr)
 
 	ui.Create('DLabel', function(self, p)
-		self:SetText('Расширения .jpg и .png! За нецензуру бан.\nФормат ссылки: http://yourdomain.com/image.png')
+		self:SetText(translates.Get("Расширения .jpg и .png! За нецензуру бан.\nФормат ссылки: http://yourdomain.com/image.png"))
 		self:SetFont('rp.ui.24')
 		self:SetTextColor(rp.col.Close)
 		self:SizeToContents()
@@ -62,7 +64,7 @@ local function editorPrem()
 	end, fr)
 
 	set = ui.Create('DButton', function(self, p)
-		self:SetText('Изменить')
+		self:SetText(translates.Get('Изменить'))
 		self:SetPos(5, p:GetTall() - 32)
 		self:SetSize(p:GetWide() / 2 - 7.5, 25)
 
@@ -79,13 +81,13 @@ end
 local function editor()
 	fr = ui.Create('ui_frame', function(self)
 		self:SetSize(600, 400)
-		self:SetTitle('Выбрать флаг организации')
+		self:SetTitle(translates.Get('Выбрать флаг организации'))
 		self:MakePopup()
 		self:Center()
 	end)
 	
 	ui.Create('DLabel', function(self, p)
-		self:SetText('Купите \'Крутую Организацию\', чтобы устанавливать собственные уникальные баннеры!')
+		self:SetText(translates.Get("Купите \'Крутую Организацию\', чтобы устанавливать собственные уникальные баннеры!"))
 		self:SetFont('rp.ui.15')
 		self:SetTextColor(rp.col.Close)
 		self:SizeToContents()
@@ -115,7 +117,7 @@ local function editor()
 					W = 100,
 					H = 100
 				}, function(material)
-					if IsValid(fr) then
+					if (IsValid(fr) and IsValid(self)) then
 						self:SetMaterial(wmat.Get("rp.DefaultOrgBanner." .. k))
 					end
 				end, function() end)

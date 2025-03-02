@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\cn_npc\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 --[[
 	Chessnut's NPC System
 	Do not re-distribute without author's permission.

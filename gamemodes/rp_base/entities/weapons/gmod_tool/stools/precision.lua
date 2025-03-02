@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stools\\precision.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 TOOL.Category		= "Constraints"
 TOOL.Name			= "#Precision"
@@ -7,7 +9,7 @@ TOOL.ConfigName		= ""
 TOOL.ClientConVar[ "mode" ]	 			= "1"
 TOOL.ClientConVar[ "user" ] 			= "1"
 
-TOOL.ClientConVar[ "freeze" ]	 		= "1"
+--TOOL.ClientConVar[ "freeze" ]	 		= "1"
 TOOL.ClientConVar[ "nocollide" ]		= "1"
 TOOL.ClientConVar[ "nocollideall" ]		= "0"
 TOOL.ClientConVar[ "rotation" ] 		= "15"
@@ -220,7 +222,7 @@ function TOOL:DoConstraint(mode)
 	end
 	// Get client's CVars
 	local forcelimit 	= self:GetClientNumber( "forcelimit", 0 )
-	local freeze		= util.tobool( self:GetClientNumber( "freeze", 1 ) )
+	--local freeze		= util.tobool( self:GetClientNumber( "freeze", 1 ) )
 	local nocollide		= self:GetClientNumber( "nocollide", 0 )
 	local nocollideall	= util.tobool( self:GetClientNumber( "nocollideall", 0 ) )
 	local torquelimit	= self:GetClientNumber( "torquelimit", 0 )
@@ -366,7 +368,7 @@ function TOOL:DoConstraint(mode)
 							end
 						end
 						if ( mode <= 8 ) then
-							CurrentPhys:EnableMotion( !freeze )
+							CurrentPhys:EnableMotion( false )--!freeze )
 							CurrentPhys:Wake()
 						end
 					end
@@ -441,6 +443,9 @@ end
 function TOOL:StartRotate()
 	local Ent = self:GetEnt(1)
 	local Phys = self:GetPhys(1)
+	
+	if not IsValid(Phys) then return end
+	
 	local oldposu = Ent:GetPos()
 	local oldangles = Ent:GetAngles()
 
@@ -491,6 +496,9 @@ function TOOL:DoMove()
 		Norm2 = Ang2:Forward() * -1
 	end
 
+	if not IsValid(self:GetEnt(1)) then
+		return
+	end
 
 	local oldposu = self:GetEnt(1):GetPos()
 	local oldangles = self:GetEnt(1):GetAngles()
@@ -1019,6 +1027,11 @@ function TOOL:Nudge( trace, direction )
 				undo.AddFunction( NudgeUndo, trace.Entity, oldpos )
 			undo.Finish()
 		end
+		
+		if not IsValid(Phys1) then
+			return false
+		end
+		
 		local TargetPos = Phys1:GetPos() + trace.HitNormal * NewOffset * direction
 		Phys1:SetPos( TargetPos )
 		Phys1:Wake()
@@ -1094,37 +1107,37 @@ if CLIENT then
 			{
 				[0] = "precision_offset",
 				[1] = "precision_forcelimit",
-				[2] = "precision_freeze",
-				[3] = "precision_nocollide",
-				[4] = "precision_nocollideall",
-				[5] = "precision_rotation",
-				[6] = "precision_rotate",
-				[7] = "precision_torquelimit",
-				[8] = "precision_friction",
-				[9] = "precision_mode",
-				[10] = "precision_width",
-				[11] = "precision_offsetpercent",
-				[12] = "precision_removal",
-				[13] = "precision_move",
-				[14] = "precision_physdisable",
-				[15] = "precision_advballsocket",
-				[16] = "precision_XRotMin",
-				[17] = "precision_XRotMax",
-				[18] = "precision_YRotMin",
-				[19] = "precision_YRotMax",
-				[20] = "precision_ZRotMin",
-				[21] = "precision_ZRotMax",
-				[22] = "precision_XRotFric",
-				[23] = "precision_YRotFric",
-				[24] = "precision_ZRotFric",
-				[25] = "precision_FreeMov",
-				[26] = "precision_ShadowDisable",
-				[27] = "precision_allowphysgun",
-				[28] = "precision_autorotate",
-				[29] = "precision_massmode",
-				[30] = "precision_nudge",
-				[31] = "precision_nudgepercent",
-				[32] = "precision_disablesliderfix"
+				--[2] = "precision_freeze",
+				[2] = "precision_nocollide",
+				[3] = "precision_nocollideall",
+				[4] = "precision_rotation",
+				[5] = "precision_rotate",
+				[6] = "precision_torquelimit",
+				[7] = "precision_friction",
+				[8] = "precision_mode",
+				[9] = "precision_width",
+				[10] = "precision_offsetpercent",
+				[11] = "precision_removal",
+				[12] = "precision_move",
+				[13] = "precision_physdisable",
+				[14] = "precision_advballsocket",
+				[15] = "precision_XRotMin",
+				[16] = "precision_XRotMax",
+				[17] = "precision_YRotMin",
+				[18] = "precision_YRotMax",
+				[19] = "precision_ZRotMin",
+				[20] = "precision_ZRotMax",
+				[21] = "precision_XRotFric",
+				[22] = "precision_YRotFric",
+				[23] = "precision_ZRotFric",
+				[24] = "precision_FreeMov",
+				[25] = "precision_ShadowDisable",
+				[26] = "precision_allowphysgun",
+				[27] = "precision_autorotate",
+				[28] = "precision_massmode",
+				[29] = "precision_nudge",
+				[30] = "precision_nudgepercent",
+				[31] = "precision_disablesliderfix"
 			}
 		})
 
@@ -1252,7 +1265,7 @@ if CLIENT then
 					Description = "Rotation rotates by this amount at a time. No more guesswork. Min: 0.02 degrees "}	 ):SetDecimals( 4 )
 		end
 		if ( mode <= 8 ) then
-			Panel:AddControl( "Checkbox", { Label = translates.Get("Заморозить цель") or "Заморозить цель", Command = "precision_freeze", Description = "Freeze props when this tool is used" } )
+			--Panel:AddControl( "Checkbox", { Label = translates.Get("Заморозить цель") or "Заморозить цель", Command = "precision_freeze", Description = "Freeze props when this tool is used" } )
 
 			if ( mode >= 3 && mode <= 8 ) then
 				Panel:AddControl( "Checkbox", { Label = translates.Get("Отключить столкновение") or "Отключить столкновение", Command = "precision_nocollide", Description = "Nocollide pairs of props when this tool is used. Note: No current way to remove this constraint when used alone."  } )
@@ -1449,7 +1462,7 @@ if CLIENT then
 			params.Options[translates.Get(" 3   Экспериментальный") or " 3   Экспериментальный"] = { precision_setuser = "3" }
 		end
 
-		Panel:AddControl( translates.Get("Список") or "Список", params )
+		Panel:AddControl( "ListBox", params )
 
 			//Panel:AddControl( "Label", { Text = "General Tool Options:", Description	= "Note: These don't save with presets." }  )
 			Panel:AddControl( "Checkbox", { Label = translates.Get("Включить сообщения обратной связи") or "Включить сообщения обратной связи", Command = "precision_enablefeedback", Description = "Toggle for feedback messages incase they get annoying"  } )
@@ -1472,7 +1485,7 @@ if CLIENT then
 	local function precision_defaults()
 		local mode = LocalPlayer():GetInfoNum( "precision_mode", 3 )
 		if mode  == 1 then
-			RunConsoleCommand("precision_freeze", "1")
+			--RunConsoleCommand("precision_freeze", "1")
 			RunConsoleCommand("precision_autorotate", "1")
 			RunConsoleCommand("precision_ShadowDisable", "0")
 			RunConsoleCommand("precision_nocollideall", "0")
@@ -1481,14 +1494,14 @@ if CLIENT then
 			RunConsoleCommand("precision_entirecontrap", "0")
 		elseif mode == 2 then
 			RunConsoleCommand("precision_rotation", "15")
-			RunConsoleCommand("precision_freeze", "1")
+			--RunConsoleCommand("precision_freeze", "1")
 			RunConsoleCommand("precision_entirecontrap", "0")
 		elseif mode == 3 then
 			RunConsoleCommand("precision_rotate", "1")
 			RunConsoleCommand("precision_offset", "0")
 			RunConsoleCommand("precision_offsetpercent", "1")
 			RunConsoleCommand("precision_rotation", "15")
-			RunConsoleCommand("precision_freeze", "1")
+			--RunConsoleCommand("precision_freeze", "1")
 			RunConsoleCommand("precision_nocollide", "1")
 			RunConsoleCommand("precision_autorotate", "1")
 			RunConsoleCommand("precision_entirecontrap", "0")
@@ -1498,7 +1511,7 @@ if CLIENT then
 			RunConsoleCommand("precision_offset", "0")
 			RunConsoleCommand("precision_offsetpercent", "1")
 			RunConsoleCommand("precision_rotation", "15")
-			RunConsoleCommand("precision_freeze", "1")
+			--RunConsoleCommand("precision_freeze", "1")
 			RunConsoleCommand("precision_nocollide", "1")
 			RunConsoleCommand("precision_autorotate", "0")
 			RunConsoleCommand("precision_entirecontrap", "0")
@@ -1509,7 +1522,7 @@ if CLIENT then
 			RunConsoleCommand("precision_offset", "0")
 			RunConsoleCommand("precision_offsetpercent", "1")
 			RunConsoleCommand("precision_rotation", "15")
-			RunConsoleCommand("precision_freeze", "1")
+			--RunConsoleCommand("precision_freeze", "1")
 			RunConsoleCommand("precision_nocollide", "1")
 			RunConsoleCommand("precision_autorotate", "0")
 			RunConsoleCommand("precision_entirecontrap", "0")
@@ -1522,7 +1535,7 @@ if CLIENT then
 			RunConsoleCommand("precision_offset", "0")
 			RunConsoleCommand("precision_offsetpercent", "1")
 			RunConsoleCommand("precision_rotation", "15")
-			RunConsoleCommand("precision_freeze", "1")
+			--RunConsoleCommand("precision_freeze", "1")
 			RunConsoleCommand("precision_nocollide", "1")
 			RunConsoleCommand("precision_autorotate", "0")
 			RunConsoleCommand("precision_entirecontrap", "0")
@@ -1534,7 +1547,7 @@ if CLIENT then
 			RunConsoleCommand("precision_offset", "0")
 			RunConsoleCommand("precision_offsetpercent", "1")
 			RunConsoleCommand("precision_rotation", "15")
-			RunConsoleCommand("precision_freeze", "1")
+			--RunConsoleCommand("precision_freeze", "1")
 			RunConsoleCommand("precision_nocollide", "1")
 			RunConsoleCommand("precision_autorotate", "0")
 			RunConsoleCommand("precision_entirecontrap", "0")
@@ -1556,7 +1569,7 @@ if CLIENT then
 			RunConsoleCommand("precision_offset", "0")
 			RunConsoleCommand("precision_offsetpercent", "1")
 			RunConsoleCommand("precision_rotation", "15")
-			RunConsoleCommand("precision_freeze", "1")
+			--RunConsoleCommand("precision_freeze", "1")
 			RunConsoleCommand("precision_nocollide", "0")
 			RunConsoleCommand("precision_autorotate", "0")
 			RunConsoleCommand("precision_entirecontrap", "0")

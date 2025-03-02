@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\customtime\\customtime_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local GetKeys = table.GetKeys
 local ReadUInt = net.ReadUInt
 local WriteUInt = net.WriteUInt
@@ -13,13 +15,13 @@ rp.CustomPlayTime = rp.CustomPlayTime or {}
 */
 
 function rp.RegisterCustomPlayTime(Key)
-    rp.CustomPlayTime[CLIENT and (#rp.CustomPlayTime + 1) or Key] = CLIENT and Key or (#GetKeys(rp.CustomPlayTime) + 1)
+    rp.CustomPlayTime[CLIENT and (#rp.CustomPlayTime + 1) or Key] = CLIENT and Key or (table.Count(rp.CustomPlayTime) + 1)
 end
 
 // Кастомные функции чтения/записи для обхода WriteTable
 nw.Register 'CustomPlayTime'
 	:Write(function(DataTable)
-        WriteUInt(#DataTable, 8)
+        WriteUInt(table.Count(DataTable), 8)
         for Key, Value in pairs(DataTable) do
             WriteUInt(rp.CustomPlayTime[Value.id] or 0, 8)
             WriteUInt(Value.time, 32)

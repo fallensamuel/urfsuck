@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\gmod_light.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 DEFINE_BASECLASS("base_gmodentity")
 ENT.Spawnable = false

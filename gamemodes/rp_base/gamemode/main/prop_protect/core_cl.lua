@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\prop_protect\\core_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 rp.pp = rp.pp or {}
 
 --
@@ -18,6 +20,69 @@ end
 --
 -- Spawnlist
 --
+net.Receive( "rp.pp.Whitelist", function()
+	local l = net.ReadUInt( 16 );
+	local d = net.ReadData( l );
+
+	local props = util.JSONToTable( util.Decompress(d or "") ) or {};
+
+	if #props > 0 then
+		rp.pp.Whitelist = {};
+
+		for k, v in ipairs( props ) do
+			table.insert( rp.pp.Whitelist, {["Model"] = v} );
+		end
+
+		hook.Run( "ppWhitelistLoaded", rp.pp.Whitelist );
+		return
+	end
+
+	rp.pp.Whitelist = util.JSONToTable( rp.cfg.WhitelistedProps or "" ) or {};
+	hook.Run( "ppWhitelistLoaded", rp.pp.Whitelist );
+end );
+
+hook.Add( "StartCommand", "pp.GetWhitelist", function()
+	hook.Remove( "StartCommand", "pp.GetWhitelist" );
+
+	http.Fetch( rp.cfg.whitelistHandler, function( body )
+		rp.pp.Whitelist = util.JSONToTable( body or "" ) or {};
+
+		if #rp.pp.Whitelist == 0 then
+			net.Start( "rp.pp.Whitelist" ); net.SendToServer();
+			return
+		end
+
+		hook.Run( "ppWhitelistLoaded", rp.pp.Whitelist );
+	end, function()
+		net.Start( "rp.pp.Whitelist" ); net.SendToServer();
+	end );
+end );
+
+hook.Add( "ppWhitelistLoaded", "AddSpawnlistAllowedTab", function( props )
+	local spawnlist = {
+		name = translates.Get("Разрешённые пропы"),
+		id = math.random(1000, 9999),
+		icon = "icon16/cog.png",
+		parentid = 0,
+		version = 3,
+		contents = {}
+	};
+
+	hook.Run( "rp.spawnlist.whitelist", spawnlist );
+
+	for k, v in ipairs( props or {} ) do
+		table.insert( spawnlist.contents, {
+			type = "model",
+			model = v.Model
+		} );
+	end
+
+	if #spawnlist.contents > 0 then
+		spawnmenu.AddPropCategory( "allowed", spawnlist.name, spawnlist.contents, spawnlist.icon, spawnlist.id, 0 );
+	end
+end );
+
+--[[
 http.Fetch(rp.cfg.whitelistHandler, function(body)
 	local spawnlist = {}
 	spawnlist.name = translates.Get('Разрешённые пропы')
@@ -44,18 +109,17 @@ http.Fetch(rp.cfg.whitelistHandler, function(body)
 		end
 	end
 
-	--[[
-	for i=1, 2 do
-		table.insert(spawnlist.contents, {
-			type = "model",
-			model = "models/combinebanner/combinebanner.mdl",
-			skin = i
-		})
-	end
-	]]
+	-- for i=1, 2 do
+		-- table.insert(spawnlist.contents, {
+			-- type = "model",
+			-- model = "models/combinebanner/combinebanner.mdl",
+			-- skin = i
+		-- })
+	-- end
 
 	spawnmenu.AddPropCategory('allowed', spawnlist.name, spawnlist.contents, spawnlist.icon, spawnlist.id, 0)
 end)
+]]--
 
 --
 -- Menus
@@ -167,7 +231,7 @@ function rp.pp.SharePropMenu()
 		end
 
 		for k, v in pairs(LocalPlayer():GetNetVar('ShareProps') or {}) do
-			self:AddLine(k:Name())
+			self:AddLine(k and (k.Name and k:Name() or '?') or '?')
 		end
 	end, fr)
 

@@ -1,12 +1,140 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\makethings\\commands_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 -----------------------------------------------------------
 -- TOGGLE COMMANDS --
 -----------------------------------------------------------
 if CLIENT then
 	local net = net
-	function rp.ChangeTeam(team)
-		net.Start('rp.ChangeTeam')
-			net.WriteInt(team, 11)
-		net.SendToServer()
+	local CurDrawingEnt
+
+	local function draw_employer_npc(npc_data)
+		if CurDrawingEnt and CurDrawingEnt.IsClientside then
+			CurDrawingEnt:Remove()
+		end
+
+		CurDrawingEnt = nil
+
+		local pos = npc_data[1]
+		local ang = npc_data[2]
+		local model = npc_data[3]
+
+		CurDrawingEnt = ClientsideModel( model )
+		CurDrawingEnt.AutomaticFrameAdvance = true
+		CurDrawingEnt.IsClientside = true
+		CurDrawingEnt:SetPos( pos or Vector(0, 0, 0) )
+		CurDrawingEnt:SetAngles( ang or Angle(0, 0, 0) )
+		CurDrawingEnt:SetRenderMode( RENDERMODE_TRANSCOLOR )
+		CurDrawingEnt:SetColor( Color(0, 0, 0, 0) )
+		CurDrawingEnt.ParentEntIndex = ent_ind
+        CurDrawingEnt:ResetSequence( "idle_all_01" )
+		CurDrawingEnt:Spawn()
+
+		CurDrawingEnt.HaloColor = npc_data[4] or Color(255, 255, 255)
+		CurDrawingEnt.HaloMaterial = Material(npc_data[5] or "rpui/standart.png", "smooth noclamp")
+
+		rp.Notify(NOTIFY_GREEN, translates.Get("Ближайший NPC профессий был подсвечен"))
+	end
+
+	local halo_mat = Material("rpui/halo_guy.png", "smooth noclamp")
+
+	local cam_Start3D2D = cam.Start3D2D
+	local cam_End3D2D = cam.End3D2D
+	local surface_SetDrawColor = surface.SetDrawColor
+	local surface_SetMaterial = surface.SetMaterial
+	local surface_DrawTexturedRect = surface.DrawTexturedRect
+	local ColorAlpha = ColorAlpha
+	local Angle = Angle
+	local math_Clamp = math.Clamp
+
+	local dist, screenPos, size
+
+	hook.Add("HUDPaint", "Base::Employer::HaloRenderer", function()
+		if IsValid(CurDrawingEnt) then
+			dist = CurDrawingEnt:GetPos():Distance(LocalPlayer():GetPos())
+			screenPos = CurDrawingEnt:GetPos():ToScreen()
+			size = 100 * 505 / dist
+
+			surface_SetDrawColor(ColorAlpha(CurDrawingEnt.HaloColor, math_Clamp((dist - 200) * 0.05, 0, 236)))
+			surface_SetMaterial(halo_mat)
+			surface_DrawTexturedRect(screenPos.x - size * 0.5, screenPos.y - size * 0.9, size, size)
+
+			if dist < 250 then
+				if CurDrawingEnt.IsClientside then
+					CurDrawingEnt:Remove()
+				end
+
+				CurDrawingEnt = nil
+
+			else
+				if not CurDrawingEnt.offsetz then
+					CurDrawingEnt.offset_z = select( 2, CurDrawingEnt:GetModelRenderBounds() ).z;
+				end
+
+				rp.DrawInfoBubbleTexture(
+					100,
+					CurDrawingEnt.HaloMaterial,
+					nil,
+					nil,
+					CurDrawingEnt.HaloColor,
+					false,
+					nil,
+					nil,
+					CurDrawingEnt:LocalToWorld( CurDrawingEnt:GetUp() * CurDrawingEnt.offset_z ):ToScreen(),
+					nil,
+					nil,
+					false,
+					true
+				)
+			end
+		end
+	end)
+
+	function rp.ChangeTeam(team, only_show)
+		CurDrawingEnt = nil
+
+		if only_show and not rp.cfg.EnableF4Jobs then
+			local CTeam = rp.teams[team]
+
+			if not CTeam.faction then
+				net.Start('rp.ChangeTeam')
+					net.WriteInt(team, 11)
+				net.SendToServer()
+
+				return
+			end
+
+			local closest_nps
+			local closest_dist
+
+			local ply_pos = LocalPlayer():GetPos()
+			local cur_dist
+
+			local fact_npcs = rp.GetFactionNPCs(CTeam.faction) or {}
+
+			for k, v in pairs(fact_npcs) do
+				cur_dist = v[1]:DistToSqr(ply_pos)
+
+				if not closest_nps or cur_dist < closest_dist then
+					closest_nps = v
+					closest_dist = cur_dist
+				end
+			end
+
+			if not closest_nps then
+				net.Start('rp.ChangeTeam')
+					net.WriteInt(team, 11)
+				net.SendToServer()
+
+				return
+			end
+
+			draw_employer_npc(closest_nps)
+
+		else
+			net.Start('rp.ChangeTeam')
+				net.WriteInt(team, 11)
+			net.SendToServer()
+		end
 	end
 else
 	util.AddNetworkString('rp.ChangeTeam')
@@ -18,11 +146,22 @@ else
 		if !CTeam then return end
 		if not GAMEMODE:CustomObjFitsMap(CTeam) then return end
 
-		if CTeam.faction and not rp.IsValidFactionChange(ply, CTeam.faction) then 
-			ba.bans.Ban(ply, '[Anticheat] Team abuse', 600)
-			return 
+		if CTeam.faction and not rp.IsValidFactionChange(ply, CTeam.faction) then
+			--if not ply.UsedEmployer then
+				--ba.bans.Ban(ply, '[Anticheat] Team abuse', 600)
+
+			--else
+				rp.Notify(ply, NOTIFY_ERROR, rp.Term('CannotChangeJob'), translates.Get('дальней дистанции от NPC'))
+			--end
+
+			return
 		end
-		
+
+		timer.Simple(0, function()
+			if not ply:IsValid() then return end
+			ply.UsedEmployer = nil
+		end)
+
 		if CTeam.vote then
 			if (#player.GetAll() == 1) then
 				rp.Notify(ply, NOTIFY_GREEN, rp.Term('VoteAlone'))
@@ -49,13 +188,13 @@ else
 			if (ply:Team() == k) then
 				rp.Notify(ply, NOTIFY_GENERIC, rp.Term('AlreadyThisJob'))
 
-				return 
+				return
 			end
 
 			-- Max players reached
 			local max = CTeam.max
 
-			if (max ~= 0 and ((max % 1 == 0 and team.NumPlayers(k) >= max) or (max % 1 ~= 0 and (team.NumPlayers(k) + 1) / #player.GetAll() > max))) then
+			if (max ~= 0 and ((max % 1 == 0 and team.NumNonAfkPlayers(k) >= max) or (max % 1 ~= 0 and (team.NumNonAfkPlayers(k) + 1) / #player.GetAll() > max))) then
 				rp.Notify(ply, NOTIFY_ERROR, rp.Term('JobLimit'))
 
 				return
@@ -81,7 +220,7 @@ else
 					CTeam.CurVote.InProgress = true
 
 					rp.teamVote.Create(CTeam.name, 45, CTeam.CurVote.Players, function(winner, breakdown)
-						if (not winner or team.NumPlayers(k) >= max) then
+						if (not winner or team.NumNonAfkPlayers(k) >= max) then
 							rp.GlobalChat(CHAT_NONE, rp.col.White, 'No winner for the ', CTeam.color, CTeam.name, rp.col.White, ' vote!')
 						else
 							rp.GlobalChat(CHAT_NONE, CTeam.color, winner:Name(), rp.col.White, translates.Get(' has won the vote for %s!', CTeam.name))
@@ -135,7 +274,7 @@ function GM:AddEntityCommands(tblEnt)
 				else
 					rp.Notify(ply, NOTIFY_ERROR, tblEnt.customCheckFailMsg)
 				end
-			else 
+			else
 				rp.Notify(ply, NOTIFY_ERROR, rp.Term('CannotPurchaseItem'))
 			end
 
@@ -154,7 +293,7 @@ function GM:AddEntityCommands(tblEnt)
 
 			return ""
 		end
-		
+
 		local discounted_price;
 		discounted_price = ply.GetAttributeAmount and (ply:GetAttributeAmount('trader') and math.ceil(tblEnt.price * (1 - ply:GetAttributeAmount('trader') / 100)) or ply:GetAttributeAmount('italiane') and math.ceil(tblEnt.price * (1 - (0.25 * ply:GetAttributeAmount('italiane') / 100)))) or tblEnt.price
 
@@ -164,7 +303,7 @@ function GM:AddEntityCommands(tblEnt)
 			return ""
 		end
 
-		
+
 		ply:AddMoney(-discounted_price)
 		local trace = {}
 		trace.start = ply:EyePos()

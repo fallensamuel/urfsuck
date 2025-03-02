@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\capture\\captures\\capture_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 local function getCurCapture()
 	return LocalPlayer().current_capture

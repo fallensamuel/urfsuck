@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\server_restart\\cl_restart.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local time_to_min = {
     [5] = "минут",
     [4] = "минуты",
@@ -58,7 +60,7 @@ end)
 local NextReTry = false
 local IsCrashed = false
 local ReconnectTime = 0
-local Crash_Frame
+-- local Crash_Frame
 
 local color_red = Color(255,0,0)
 local color_black = Color(0,0,0)
@@ -125,7 +127,13 @@ end
 
 net.Receive('_AntiCrash', function()
     NextReTry = CurTime() + 10
+    
+    if IsCrashed then
+        hook.Run( "OnConnectionRestored" );
+    end
+
     IsCrashed = false
+    
     if IsValid(Crash_Frame) then
         Crash_Frame:Remove()
     end
@@ -142,6 +150,7 @@ hook.Add("HUDPaint", "AntiCrash.W8", function()
     hook.Add('Think', 'AntiCrash.Think', function()
         if NextReTry and (not IsCrashed) and (NextReTry < CurTime()) then
             IsCrashed = true
+            hook.Run( "OnConnectionLost" );
             StartAutoconect()
         elseif IsCrashed and (ReconnectTime <= CurTime()) then
             RunConsoleCommand('retry')

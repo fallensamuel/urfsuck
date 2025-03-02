@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\cosmetics\\appearance\\appearance_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 Appearance_mdlScaleDefaults = {
 	Hull = {
 		min = Vector( -16, -16,  0 ),

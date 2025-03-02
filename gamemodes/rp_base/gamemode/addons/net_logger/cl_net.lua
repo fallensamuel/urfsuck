@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\net_logger\\cl_net.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 NetLogger = NetLogger or {}
 local log_net = NetLogger.Log

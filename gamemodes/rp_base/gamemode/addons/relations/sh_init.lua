@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\relations\\sh_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local relations = {}
 
 RANK_LEADER = 3
@@ -40,6 +42,7 @@ function rp.AddRelationships(teams, rank, factions)
 end
 
 function rp.IsHigherRank(self, target)
+	if (not IsValid(self)) or (not IsValid(target)) then return false end
 	return relations[self:Team()] && relations[self:Team()].targets[target:Team()] && self:GetFactionRank() > target:GetFactionRank()
 end
 

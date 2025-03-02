@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\npcs\\init_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 --[[
 	Chessnut's NPC System
 	Do not re-distribute without author's permission.
@@ -152,11 +154,8 @@ hook.Add("InitPostEntity", "LoadNpcsCfgs", function()
 				end
 
 				function NPC:openTeleportMenu(text, point)
-					self:addLeave(text, function() rp.OpenTeleportMenu(point) end)
-				end
-
-				function NPC:openTeleportMenu(text, point)
-					self:addLeave(text, function() rp.OpenTeleportMenu(point) end)
+					--self:addLeave(text, function() rp.OpenTeleportMenu(point) end)
+					rp.OpenTeleportMenu(point)
 				end
 
 				function NPC:close()

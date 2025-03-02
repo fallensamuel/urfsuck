@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\credits\\donat_init_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local add
 local whitecolr, graycolr = Color(255, 255, 255), Color(123, 123, 123)
 local blur = Material("pp/blurscreen")

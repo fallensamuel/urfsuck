@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\weapon_bird\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 SWEP.PrintName = 'Птица'
 SWEP.WorldModel = ""
 SWEP.Instructions = "Пробел - лететь, ЛКМ - птичее пение, ПКМ - птичая тревога"
@@ -9,13 +11,13 @@ SWEP.IconLetter	= "V"
 
 SWEP.ViewModel = Model("models/weapons/v_hands.mdl")
 SWEP.Spawnable			= true
-SWEP.AdminOnly			= true
+SWEP.AdminOnly			= false
 
 SWEP.Primary.Clipsize = -1
 SWEP.Primary.DefaultClip = -1
 SWEP.Primary.Automatic = true
 SWEP.Primary.Ammo = "none"
-
+SWEP.AdminOnly 				= true
 SWEP.Secondary.Clipsize = -1
 SWEP.Secondary.DefaultClip = -1
 SWEP.Secondary.Automatic = false

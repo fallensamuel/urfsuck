@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\sh_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 PLAYER = FindMetaTable'Player'
 ENTITY = FindMetaTable'Entity'
 VECTOR = FindMetaTable'Vector'
@@ -60,7 +62,7 @@ if (SERVER) then
 else
 	require'cvar'
 	require'wmat'
-	wmat.SetHandler'http://urf.im/wmathandler.php?url='
+	wmat.SetHandler('http://api.urf.im/handler/util/wmat.php?url=')
 end
 
 require'nw'
@@ -76,8 +78,8 @@ rp.include_dir'util'
 
 rp.include_dir('main', false)
 
-rp.include_sh'terms.lua'
-rp.include_sh'cfg_default.lua'
+rp.include_sh'default_config/terms.lua'
+rp.include_sh'default_config/cfg.lua'
 
 rp.include_dir'main/sandbox'
 rp.include_dir('main/chat', false)
@@ -124,6 +126,11 @@ rp.include('main/capture/hud_cl.lua')
 ]]
 
 rp.LoadModules('addons') --Depricated
+
+rp.include_sh'default_config/events.lua'
+rp.include_sv'default_config/limits.lua'
+rp.include_cl'default_config/bubble_hints.lua'
+rp.include_cl'default_config/commands.lua'
 
 /*
 rp.include_sh'util/medialib/medialib.lua'

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\npc_control\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local sf_SetDrawColor 		= surface.SetDrawColor
 local sf_SetMat 			= surface.SetMaterial
 local sf_DrawTexturedRect	= surface.DrawTexturedRect
@@ -130,7 +132,7 @@ hook.Add("Inventory::OpenBag", "NpcController::CloseWarn", function()
 	end
 end)
 
-hook.Add('PostDrawTranslucentRenderables', 'rp.Destroyable.Interface', function()
+hook.Add('PostDrawTranslucentRenderables', 'rp.NpcController.Interface', function()
 	if not IsValid(LocalPlayer()) or not rp.cfg.Raids then return end
 	
 	lp = LocalPlayer():GetPos()

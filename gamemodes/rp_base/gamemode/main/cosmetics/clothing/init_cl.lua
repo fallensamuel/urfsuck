@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\cosmetics\\clothing\\init_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 function ENTITY:SetOutfit()
 	if (self.LastOutfitMaterialID and self.LastOutfitRevertionSubMaterial) then
 		self:SetSubMaterial(self.LastOutfitMaterialID, self.LastOutfitRevertionSubMaterial)

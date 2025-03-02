@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\sandbox\\spawnmenu\\creationmenu\\content\\contenttypes\\gameprops_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local function AddBrowseContent( ViewPanel, node, name, icon, path, pathid, pnlContent )
 
 	local models = node:AddFolder( name, path .. "models", pathid, false )

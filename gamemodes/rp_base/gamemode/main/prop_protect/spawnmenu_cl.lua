@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\prop_protect\\spawnmenu_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 if rp.cfg.DisableQEntities then return end
 
 local Insert = table.insert
@@ -464,8 +466,10 @@ http.Fetch(rp.cfg.whitelistHandler, function(Body)
     end
 end)
 
+--[[
 spawnmenu.AddCreationTab(GetLangString('Доступное'), function()
     local Control = vgui.Create('SpawnmenuContentPanel')
     Control:CallPopulateHook('PopulateFreeEntities')
     return Control
 end, 'icon16/brick.png', -20)
+]]--

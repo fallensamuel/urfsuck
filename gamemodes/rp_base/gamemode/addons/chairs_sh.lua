@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\chairs_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local ACT_GMOD_SIT_ROLLERCOASTER = ACT_GMOD_SIT_ROLLERCOASTER
 
 function rp.RegisterChair(class, t)

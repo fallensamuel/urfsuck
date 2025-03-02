@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stool.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 ToolObj = {}
 include('ghostentity.lua')
 include('object.lua')
@@ -84,7 +86,7 @@ function ToolObj:GetSWEP()
 end
 
 function ToolObj:GetOwner()
-	return self:GetSWEP().Owner or self.Owner
+	return IsValid(self:GetSWEP()) and self:GetSWEP().Owner or self.Owner
 end
 
 function ToolObj:GetWeapon()

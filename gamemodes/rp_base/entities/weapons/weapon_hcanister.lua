@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\weapon_hcanister.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 game.AddAmmoType( {
 	name = "ammo_hcanister"
@@ -8,7 +10,7 @@ SWEP.PrintName			= "Вызов хедкрабов"
 SWEP.Author			= "( zuknes )" 
 SWEP.Instructions		= "Вызывает контейнер с тремя обычными хедкрабами."
 SWEP.Spawnable = true
-SWEP.AdminOnly = true
+SWEP.AdminOnly			= true
 SWEP.Category 				= "Other"
 SWEP.Primary.ClipSize		= 10
 SWEP.Primary.DefaultClip	= 1

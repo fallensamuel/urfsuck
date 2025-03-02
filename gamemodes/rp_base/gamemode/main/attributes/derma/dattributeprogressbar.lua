@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\attributes\\derma\\dattributeprogressbar.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local PANEL = {
 	RawData 	 = {},
 	AmountValue  = 0,

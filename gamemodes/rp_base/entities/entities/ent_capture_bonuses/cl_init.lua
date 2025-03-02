@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\ent_capture_bonuses\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include 'shared.lua'
 
 local cam_Start3D2D 			= cam.Start3D2D

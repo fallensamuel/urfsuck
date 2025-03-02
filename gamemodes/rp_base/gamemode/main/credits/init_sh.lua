@@ -1,8 +1,12 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\credits\\init_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 rp.shop = rp.shop or {
 	Stored = {},
 	Weapons = {},
 	EmoteActs = {},
 	EmoteActsMap = {},
+	Emojis = {},
+	EmojisMap = {},
 	Mapping = {},
 	WeaponsMap = {},
 	ModelsMap = {}, 
@@ -167,6 +171,33 @@ function upgrade_mt:SetWeapon(wep)
 	return self
 end -- We don't need 20 PlayerLoadout hooks
 
+function upgrade_mt:SetEmojis(tbl_emojis)
+	rp.shop.Emojis[self:GetUID()] = tbl_emojis
+	
+	self.Emojis = tbl_emojis
+
+	local emojis = {};
+	for k, v in pairs(tbl_emojis) do
+		rp.shop.EmojisMap[v] = self:GetUID()
+		emojis[k] = "  - " .. v
+	end
+	emojis = table.concat( emojis, "\n" )
+
+	self:SetDesc(translates.Get("Данный набор включает в себя следующие emoji:") .. "\n" .. emojis)
+	self:SetStackable(false)
+	self:SetNetworked(true)
+	
+	timer.Simple(10, function()
+		if CHATBOX and CHATBOX.RegisterEmotesViaAPI then
+			CHATBOX:RegisterEmotesViaAPI("https://urf.im/content/emotes/" .. self:GetUID() .. "/", 48, 48, function(ply)
+				return ply:HasUpgrade(self:GetUID()) or false
+			end)
+		end
+	end)
+	
+	return self
+end
+
 function upgrade_mt:SetEmoteActs( tbl_acts )
 	rp.shop.EmoteActs[self:GetUID()] = tbl_acts
 	
@@ -266,6 +297,10 @@ function upgrade_mt:SetWhitelistedTeam(team)
 	return self
 end
 
+function upgrade_mt:SetOnRefund(cback)
+	self._OnRefund = cback
+end
+
 rp.shop.Spells = {}
 function upgrade_mt:SetSpell(spellName)
 	local spell = HpwRewrite:GetSpell(spellName)
@@ -273,12 +308,16 @@ function upgrade_mt:SetSpell(spellName)
 	self:SetDesc(translates.Get("Вы выучите заклинание") .. ' ' .. self:GetName() .. '.\n'..spell.Description)
 	self:SetStackable(false)
 
-	self:SetCanBuy(function(self, pl)
-		return pl:HasUpgrade('weapon_hpwr_stick'), translates.Get("Вам необходимо купить способность к изучению магии!")
-	end)
+	--self:SetCanBuy(function(self, pl)
+		--return pl:HasUpgrade('weapon_hpwr_stick'), translates.Get("Вам необходимо купить способность к изучению магии!")
+	--end)
 
 	self:SetOnBuy(function(self, pl)
 		rp.GiveSpell(pl, spellName)
+	end)
+	
+	self:SetOnRefund(function(id)
+		HpwRewrite:EraseSpellByID(id, spellName)
 	end)
 
 	self:SetIcon(HpwRewrite:GetSpellIcon(spellName):GetName())
@@ -307,6 +346,15 @@ function upgrade_mt:SetAttribute(attrib_id)
 		return true
 	end)
 	
+	return self
+end
+
+function upgrade_mt:SetAttributePoints( num )
+	self:SetDesc( translates.Get("Добавляет %s очков навыков на твой аккаунт.", num) );
+	self:SetOnBuy( function(upgrade, ply)
+		ply:AddAttributeSystemPoints( num );
+	end );
+
 	return self
 end
 
@@ -354,6 +402,13 @@ function upgrade_mt:CustomModel(List)
 
 	return self
 end
+
+function upgrade_mt:SetHPRegenAmount( amt )
+	self.HPRegenAmount = amt;
+
+	return self
+end
+
 
 -- Get
 function upgrade_mt:GetName()
@@ -414,6 +469,10 @@ function upgrade_mt:GetEmoteActs()
 	return self.EmoteActs
 end
 
+function upgrade_mt:GetEmojis()
+	return self.Emojis
+end
+
 function upgrade_mt:GetPrice(pl)
 	local discount = math.max(self.Discount, rp.GetDiscount(), pl:GetPersonalDiscount())
 
@@ -424,6 +483,11 @@ end
 function upgrade_mt:GetAltPrice()
 	return self.AltPrice
 end
+
+function upgrade_mt:GetHPRegenAmount()
+	return self.HPRegenAmount;
+end
+
 function upgrade_mt:IsIgnoreDisallow()
 	return (self.IgnoreDisallow == true)
 end

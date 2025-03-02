@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\inventory\\libs\\char_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local playerMeta = FindMetaTable("Player")
 
 function playerMeta:getID()
@@ -49,9 +51,15 @@ if SERVER then
 
 	function playerMeta:isCanInvUpgrade()
 		local inv = self:getInv()
+		
+		if not inv or not inv.h then 
+			return false 
+		end
+		
 		if (inv.h+1) > rp.cfg.MaxInvHeight then
 			return false
 		end
+		
 		return true
 	end
 end

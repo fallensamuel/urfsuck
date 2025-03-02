@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\object.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 nw.Register'ToolStage':Write(net.WriteUInt, 16):Read(net.ReadUInt, 16):Filter(function(self) return self.Owner end):SetNoSync()
 nw.Register'ToolOp':Write(net.WriteUInt, 16):Read(net.ReadUInt, 16):Filter(function(self) return self.Owner end):SetNoSync()
 
@@ -91,18 +93,23 @@ function ToolObj:GetBone(i)
 end
 
 function ToolObj:GetNormal(i)
-	if (self.Objects[i].Ent:EntIndex() == 0) then
+	if not self.Objects or not self.Objects[i] then 
+		return Vector(0, 0, 1)
+	end
+	
+	if IsValid(self.Objects[i].Ent) and (self.Objects[i].Ent:EntIndex() == 0) then
 		return self.Objects[i].Normal
+		
 	else
 		local norm
 
 		if (self.Objects[i].Phys ~= nil and self.Objects[i].Phys:IsValid()) then
 			norm = self.Objects[i].Phys:LocalToWorld(self.Objects[i].Normal)
-		else
+		elseif IsValid(self.Objects[i].Ent) then
 			norm = self.Objects[i].Ent:LocalToWorld(self.Objects[i].Normal)
 		end
 
-		return norm - self:GetPos(i)
+		return norm and (norm - self:GetPos(i)) or Vector(0, 0, 1)
 	end
 end
 
@@ -110,7 +117,13 @@ end
 	Returns the physics object for the numbered hit
 -----------------------------------------------------------]]
 function ToolObj:GetPhys(i)
-	if (self.Objects[i].Phys == nil) then return self:GetEnt(i):GetPhysicsObject() end
+	if not self.Objects or not self.Objects[i] then
+		return NULL
+	end
+	
+	if self.Objects[i].Phys == nil then 
+		return self:GetEnt(i):GetPhysicsObject() 
+	end
 
 	return self.Objects[i].Phys
 end

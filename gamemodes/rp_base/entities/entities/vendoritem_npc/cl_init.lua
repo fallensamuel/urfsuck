@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\vendoritem_npc\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include("shared.lua")
 
 local draw_SimpleText = draw.SimpleText
@@ -94,7 +96,7 @@ function rp.item.openItemVendorMenu(vendor_ent)
     if IsValid(sell_pnl) then sell_pnl:Remove() end
 
     local obj = vendor_ent:GetObject()
-    local price_itemtab = rp.item.list[obj.PriceItem] or rp.item.instances[obj.PriceItem]
+    --local price_itemtab = rp.item.list[obj.PriceItem] or rp.item.instances[obj.PriceItem]
 
     local W, H = ScrW(), ScrH()
     local scale = math.Clamp(H / 1080, 0.7, 1)
@@ -123,10 +125,14 @@ function rp.item.openItemVendorMenu(vendor_ent)
         if not IsValid(me.icon) then return end
 
         _CurItemCount = 0
-        local items = LocalPlayer():getInv():getItemsByUniqueID(obj.PriceItem)
-        for k, item in pairs(items) do
-            _CurItemCount = _CurItemCount + item:getCount() * (item.ammoAmount or 1)
-        end
+        if obj._GetAnyCount then
+            _CurItemCount = obj._GetAnyCount(LocalPlayer())
+        elseif obj.PriceItem then
+			local items = LocalPlayer():getInv():getItemsByUniqueID(obj.PriceItem)
+			for k, item in pairs(items) do
+				_CurItemCount = _CurItemCount + item:getCount() * (item.ammoAmount or 1)
+			end
+		end
 
         me.icon.SetContentText(me.icon, translates.Get("У вас имеется %s %s", _CurItemCount, obj.PriceName or ":SetPriceName"))
     end
@@ -217,9 +223,26 @@ function rp.item.openItemVendorMenu(vendor_ent)
     end
 
     for item, price in pairs(obj.Items) do
-        local itemtab = rp.item.list[item] or rp.item.instances[item]
+        local is_tab = istable(price)
+        local real_price = is_tab and price.price or price
+		
+        local itemtab = is_tab and price or rp.item.list[item] or rp.item.instances[item]
         if not itemtab then continue end
-        local pnl = buy_pnl.tabsshop:AddItem(category, item, (itemtab.name or "unknown"), price, (itemtab.model or "models/props_borealis/bluebarrel001.mdl"), 0, nil, false, itemtab.icon_override)
+        local pnl = buy_pnl.tabsshop:AddItem(category, item, (itemtab.name or "unknown"), real_price, (itemtab.model or "models/props_borealis/bluebarrel001.mdl"), 0, nil, false, itemtab.icon_override)
+
+        local tr = "за %s %s"
+        pnl.CustomText = translates.Get(tr, real_price, obj.PriceSmall or ":SetPriceSmall")
+        pnl.CustomTextHover = translates.Get(tr, real_price, obj.PriceName or ":SetPriceName")
+        pnl._ItemTable = itemtab
+        pnl.CustomRedCheck = function()
+            return _CurItemCount < real_price
+        end
+    end
+	
+    for case_id, price in pairs(obj.Cases) do
+        local itemtab = rp.lootbox.Map[case_id]
+        if not itemtab then continue end
+        local pnl = buy_pnl.tabsshop:AddItem(category, case_id, (itemtab.name or "unknown"), price, (itemtab.model or "models/props_borealis/bluebarrel001.mdl"), 0, nil, false, itemtab.icon_override)
 
         local tr = "за %s %s"
         pnl.CustomText = translates.Get(tr, price, obj.PriceSmall or ":SetPriceSmall")
@@ -231,10 +254,18 @@ function rp.item.openItemVendorMenu(vendor_ent)
     end
 
     hook.Add("VendorNPC_TradeHook", "_hi_", function(pnl, uid, amount, item_btn, dt)
-        net.Start("VendorItemNPC")
-            net.WriteInt(vendor_ent:EntIndex(), 32)
-            net.WriteString(uid)
-        net.SendToServer()
+		if rp.lootbox.Map[uid] then
+			net.Start("VendorCaseNPC")
+				net.WriteInt(vendor_ent:EntIndex(), 32)
+				net.WriteString(uid)
+			net.SendToServer()
+			
+		else
+			net.Start("VendorItemNPC")
+				net.WriteInt(vendor_ent:EntIndex(), 32)
+				net.WriteString(uid)
+			net.SendToServer()
+		end
     end)
 end
 

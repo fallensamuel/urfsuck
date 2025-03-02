@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\net_logger\\sh_net.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 NetLogger = NetLogger or {}
 NetLogger.ListType = "BlackList" -- "BlackList" or "WhiteList" -- for save in sql
 NetLogger.BlackList = {

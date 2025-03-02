@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\player\\premium\\premium_sh.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 
 local physguns = {
 	weapon_physgun = true,
@@ -43,3 +45,42 @@ hook.Add('PreDrawPlayerHands', 'test_phys', function(hands, vm, pl, wep)
 		end
 	end
 end)
+
+
+
+-- [[ Premium Discount ]] --
+nw.Register('prem_sale')
+	:Write(net.WriteString)
+	:Read(net.ReadString)
+	:SetGlobal()
+
+rp.AddTerm("PremSaleStart", "Скидка # на премиум активирована на #ч!")
+rp.AddTerm("PremSaleEnd", "Скидка на премиум закончена")
+
+ba.cmd.Create('Prem Sale Set', function(pl, args)
+	local discount 	= tonumber(args.discount)
+	local time 		= args.time
+	
+	if discount < 10 or discount > 70 then
+		rp.Notify(pl, NOTIFY_ERROR, rp.Term('ShopSaleCantCreate'))
+		return
+	end
+	
+	rp.PremiumDiscount(discount, time)
+	rp.NotifyAll(NOTIFY_GENERIC, rp.Term('PremSaleStart'), discount .. "%", math.floor(time / 3600))
+	
+	ba.logAction(pl, tostring(discount), 'premsale set', tostring(time))
+end)
+:AddParam('string', 'discount')
+:AddParam('time', 'time')
+:SetFlag('e')
+:SetHelp('Sets premium discount')
+
+ba.cmd.Create('Prem Sale Reset', function(pl, args)
+	rp.PremiumDiscount()
+	rp.NotifyAll(NOTIFY_GENERIC, rp.Term('PremSaleEnd'))
+	
+	ba.logAction(pl, '', 'premsale reset', '')
+end)
+:SetFlag('e')
+:SetHelp('Removes premium discount')

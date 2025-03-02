@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\simpleprinter_ammo\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AddCSLuaFile()
 
 ENT.Base = "base_simpleprinter"

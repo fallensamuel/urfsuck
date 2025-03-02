@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\attributes\\sh_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 AttributeSystem = AttributeSystem or {};
 
 AttributeSystem.Attributes   = AttributeSystem.Attributes	 or {};

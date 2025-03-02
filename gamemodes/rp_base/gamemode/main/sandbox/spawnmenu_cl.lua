@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\sandbox\\spawnmenu_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 --[[---------------------------------------------------------
 	If false is returned then the spawn menu is never created.
 	This saves load times if your mod doesn't actually use the

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\attributes\\cl_menu.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local playerUpgradeData = {};
 
 local function ShowСonfirmationWindow()

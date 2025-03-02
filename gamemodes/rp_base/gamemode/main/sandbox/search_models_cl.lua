@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\sandbox\\search_models_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local function GetAllFiles(tab, folder, extension, path)
 	local files, folders = file.Find(folder .. "/*", path)
 

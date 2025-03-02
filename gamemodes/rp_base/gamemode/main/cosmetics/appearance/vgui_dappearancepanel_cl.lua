@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\cosmetics\\appearance\\vgui_dappearancepanel_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 function InverseLerp( pos, p1, p2 )
 
 	local range = 0
@@ -540,7 +542,7 @@ function PANEL:Init()
 		net.Start( "net.appearance.BodygroupData" );
 			net.WriteUInt( self._appearance.selected, 6 );
 
-			if self.AppearanceData[self._appearance.selected].skins then
+			if self.AppearanceData[self._appearance.selected] and self.AppearanceData[self._appearance.selected].skins then
 				net.WriteUInt( self.AppearanceData[self._appearance.selected].skins[ self._appearance.skin ] or 0, 6 )
 			else
 				net.WriteUInt( self._appearance.skin, 6 );

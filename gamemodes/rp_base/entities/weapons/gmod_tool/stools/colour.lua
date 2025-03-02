@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\gmod_tool\\stools\\colour.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 TOOL.Category = "Render"
 TOOL.Name = "#tool.colour.name"
 
@@ -24,7 +26,7 @@ local function SetColour( Player, Entity, Data )
 	if ( SERVER ) then
 		duplicator.StoreEntityModifier( Entity, "colour", Data )
 	end
-	
+
 end
 duplicator.RegisterEntityModifier( "colour", SetColour )
 
@@ -36,7 +38,7 @@ function TOOL:LeftClick( trace )
 	if IsValid( ent ) then -- The entity is valid and isn't worldspawn
 
 		if ( CLIENT ) then return true end
-	
+
 		local r = self:GetClientNumber( "r", 0 )
 		local g = self:GetClientNumber( "g", 0 )
 		local b = self:GetClientNumber( "b", 0 )
@@ -45,7 +47,7 @@ function TOOL:LeftClick( trace )
 		SetColour( self:GetOwner(), ent, { Color = Color( r, g, b, a )})
 
 		return true
-		
+
 	end
 
 end
@@ -58,12 +60,12 @@ function TOOL:RightClick( trace )
 	if IsValid( ent ) then -- The entity is valid and isn't worldspawn
 
 		if ( CLIENT ) then return true end
-	
+
 		SetColour( self:GetOwner(), ent, { Color = Color( 255, 255, 255, 255 ), RenderMode = 0, RenderFX = 0 } )
 		return true
-	
+
 	end
-	
+
 end
 
 local ConVarsDefault = TOOL:BuildConVarList()
@@ -76,10 +78,11 @@ function TOOL.BuildCPanel( CPanel )
 	CPanel:AddControl( "Color", { Label = "#tool.colour.color", Red = "colour_r", Green = "colour_g", Blue = "colour_b", Alpha = "colour_a" } )
 end
 
-
+--[[
 concommand.Add('transparent',function(ply)
 	if ply:GetEyeTrace() then
 		ply:GetEyeTrace().Entity:SetColor( Color( 0, 255, 0, 0 ) )
 		ply:GetEyeTrace().Entity:SetRenderMode( RENDERMODE_TRANSALPHA )
 	end
 end)
+]]--

@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\permaprops\\cl_drawent.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 /*
    ____          _          _   ____          __  __       _ _                     
   / ___|___   __| | ___  __| | | __ ) _   _  |  \/  | __ _| | |__   ___  _ __ ___  

@@ -1,8 +1,10 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\menus\\f4\\commandslist_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local commands = {}
 
 function getcmds() return commands end
 
-function rp.AddMenuCommand(cat, name, cback, custom)
+function rp.AddMenuCommand(cat, name, cback, custom, icon_crc)
 	if (not commands[cat]) then
 		commands[cat] = {}
 	end
@@ -10,7 +12,8 @@ function rp.AddMenuCommand(cat, name, cback, custom)
 	table.insert(commands[cat], {
 		name = name,
 		cback = cback,
-		custom = custom or function() return true end
+		custom = custom or function() return true end,
+		icon = icon_crc
 	})
 end
 

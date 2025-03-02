@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\like_reactions\\cl_main.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local gsub = string.gsub
 local format = function(str, f)
     return gsub(str, "#", f)
@@ -62,7 +64,7 @@ end
 net.Receive("LikeReactSystem", function()
     --if CheckIsProcessing() == false then return end
 
-    rp.Notify(CurrentAction, format(Terms[CurrentAction], CurrentActionTargetName))
+    rp.Notify(CurrentAction, format(Terms[CurrentAction] or '', CurrentActionTargetName or ''))
     if IsValid(CurrentActionTarget) then
         CurrentActionTarget.LikeReacted = CurrentAction == ACTION_ADD
     end

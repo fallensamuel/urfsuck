@@ -1,8 +1,10 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\sandbox\\spawnmenu\\creationmenu\\content\\contenttypes\\addons_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local function AddRecursive( pnl, folder, path, wildcard )
 
 	local files, folders = file.Find( folder .. "*", path )
 
-	for k, v in pairs( files ) do
+	for k, v in pairs( files or {} ) do
 
 		if ( !string.EndsWith( v, ".mdl" ) ) then continue end
 
@@ -13,7 +15,7 @@ local function AddRecursive( pnl, folder, path, wildcard )
 
 	end
 
-	for k, v in pairs( folders ) do
+	for k, v in pairs( folders or {} ) do
 
 		AddRecursive( pnl, folder .. v .. "/", path, wildcard )
 

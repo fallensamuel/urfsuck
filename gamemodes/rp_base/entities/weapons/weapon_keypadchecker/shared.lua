@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\weapons\\weapon_keypadchecker\\shared.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 if SERVER then
 	AddCSLuaFile("shared.lua")
 	AddCSLuaFile("cl_init.lua")
@@ -181,6 +183,48 @@ local function getEntityKeypad(ent)
 			})
 		end
 	end
+	
+	for k, v in pairs(ents.FindByClass("urf_keypad_advanced")) do
+		local vOwner = v:CPPIGetOwner()
+		local entOwner = ent:CPPIGetOwner()
+
+		if vOwner == entOwner and table.HasValue(doorKeys, tonumber(v.KeypadData.KeyGranted) or 0) then
+			table.insert(targets, {
+				type = "Right password entered",
+				ent = v,
+				original = ent
+			})
+		end
+
+		if vOwner == entOwner and table.HasValue(doorKeys, tonumber(v.KeypadData.KeyDenied) or 0) then
+			table.insert(targets, {
+				type = "Wrong password entered",
+				ent = v,
+				original = ent
+			})
+		end
+	end
+	
+	for k, v in pairs(ents.FindByClass("keypad_advanced")) do
+		local vOwner = v:CPPIGetOwner()
+		local entOwner = ent:CPPIGetOwner()
+
+		if vOwner == entOwner and table.HasValue(doorKeys, tonumber(v.KeypadData.KeyGranted) or 0) then
+			table.insert(targets, {
+				type = "Right password entered",
+				ent = v,
+				original = ent
+			})
+		end
+
+		if vOwner == entOwner and table.HasValue(doorKeys, tonumber(v.KeypadData.KeyDenied) or 0) then
+			table.insert(targets, {
+				type = "Wrong password entered",
+				ent = v,
+				original = ent
+			})
+		end
+	end
 
 	return targets
 end
@@ -190,8 +234,12 @@ Send the info to the client
 ---------------------------------------------------------------------------]]
 function SWEP:PrimaryAttack()
 	local trace = self.Owner:GetEyeTrace()
-	local ent, class = trace.Entity, trace.Entity:GetClass()
+	local ent = trace.Entity
 	local data
+
+	if (!IsValid(ent)) then return false end
+
+	local class = trace.Entity:GetClass()
 
 	if class == "sent_keypad" then
 		data = get_sent_keypad_Info(ent)
@@ -200,6 +248,12 @@ function SWEP:PrimaryAttack()
 		data = get_keypad_Info(ent)
 		rp.Notify(self.Owner, NOTIFY_GENERIC, rp.Term('KeypadControlsX'), #data / 2)
 	elseif class == "urf_keypad" then
+		data = get_keypad_Info(ent)
+		rp.Notify(self.Owner, NOTIFY_GENERIC, rp.Term('KeypadControlsX'), #data / 2)
+	elseif class == "urf_keypad_advanced" then
+		data = get_keypad_Info(ent)
+		rp.Notify(self.Owner, NOTIFY_GENERIC, rp.Term('KeypadControlsX'), #data / 2)
+	elseif class == "keypad_advanced" then
 		data = get_keypad_Info(ent)
 		rp.Notify(self.Owner, NOTIFY_GENERIC, rp.Term('KeypadControlsX'), #data / 2)
 	else

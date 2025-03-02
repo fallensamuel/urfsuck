@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\abilities\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 --cvar.Register'enable_ability':SetDefault(false):AddMetadata('State', 'RPMenu'):AddMetadata('Menu', 'Включить уведомление о доступных бонусах при заходе')
 
 local PANEL = {}

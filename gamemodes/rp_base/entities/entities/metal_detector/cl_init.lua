@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\entities\\entities\\metal_detector\\cl_init.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 include'shared.lua'
 local colors = {rp.col.Black, rp.col.Green, rp.col.Red}
 

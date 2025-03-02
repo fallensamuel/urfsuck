@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\main\\sandbox\\spawnmenu\\controlpanel_cl.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 --
 --
 --	Note: This is only really here as a layer between the spawnmenu

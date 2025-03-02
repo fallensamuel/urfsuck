@@ -1,3 +1,5 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\pimpmyride\\cl_dialogue.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
 local function __interract(pl, key)
 	if key ~= IN_USE then return end
 	local tr = pl:GetEyeTrace()

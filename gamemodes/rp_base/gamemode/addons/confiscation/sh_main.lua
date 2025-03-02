@@ -1,8 +1,16 @@
+-- "gamemodes\\rp_base\\gamemode\\addons\\confiscation\\sh_main.lua"
+-- Retrieved by https://github.com/lewisclark/glua-steal
+local confiscation_blacklist = {}
+
 function PLAYER:CanConfiscateBy(ply)
 	if rp.cfg.DisableConfiscation then return false end
 	self.Confiscate = self.Confiscate or {}
 
-	return self:IsHandcuffed() and (self.Confiscate[ply:SteamID64()] or 0) < CurTime()
+	return self:IsHandcuffed() and (self.Confiscate[ply:SteamID64()] or 0) < CurTime() and not (confiscation_blacklist[ply:GetFaction() or -1] and confiscation_blacklist[ply:GetFaction() or -1][self:GetFaction() or -1])
+end
+
+function rp.SetConfiscateBlacklist(faction, blacklist)
+	confiscation_blacklist[faction] = blacklist
 end
 
 function rp.GetConfiscationTime(actor)

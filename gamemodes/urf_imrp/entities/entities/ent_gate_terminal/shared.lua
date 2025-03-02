@@ -1,0 +1,10 @@
+ENT.Type = "anim"
+ENT.Base = 'base_anim'
+ENT.PrintName = "Gate Terminal"
+ENT.Author = ""
+ENT.Contact = ""
+ENT.Purpose = ""
+ENT.Category = "Half-Life Alyx RP"
+ENT.Instructions = ""
+ENT.Spawnable = true
+ENT.AdminOnly	= true

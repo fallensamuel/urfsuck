@@ -1,0 +1,15 @@
+"urfim_rp"
+{
+	"base"		"sandbox"
+    "title"  "► URFIM RP"
+    "version"   "2.7.0"
+    "menusystem"	"1"
+
+    "author_name"   ""
+    "author_email"  ""
+    "author_url"    ""
+
+    "icon"  ""
+    "info"  ""
+    "hide"  "0"
+}

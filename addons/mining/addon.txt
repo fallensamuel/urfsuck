@@ -1,0 +1,10 @@
+"AddonInfo"
+{
+	"name"				"Enhanced ьштштп for DarkRP"
+	"version"			"1.0.2"
+	"up_date"			"2014"
+	"author_name"		"JamesBr"
+	"author_email"		"james.brody.pp@gmail.com"
+	"author_url"		"none"
+	"info"				"Adds a sawmill and chopping axe swep."
+}

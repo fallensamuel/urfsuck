@@ -1,0 +1,10 @@
+"AddonInfo"
+{
+	"name"				"Ration factory for URFIM"
+	"version"			"1.2"
+	"up_date"			"2018"
+	"author_name"		"Razor"
+	"author_email"		"pidrila.com"
+	"author_url"		"none"
+	"info"				""
+}

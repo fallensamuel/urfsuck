@@ -1,0 +1,6 @@
+"AddonInfo"
+{
+	"name" "Drugs"
+	"author_name" "KingofBeast"
+	"info" "I made it."
+}

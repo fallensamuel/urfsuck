@@ -1,0 +1,6 @@
+ENT.Type = "anim"
+ENT.PrintName = "Riot Shield"
+ENT.Author = ""
+ENT.Contact = ""
+ENT.Purpose = ""
+ENT.Instructions = ""

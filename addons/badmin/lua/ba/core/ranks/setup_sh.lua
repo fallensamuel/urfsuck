@@ -1,0 +1,206 @@
+-- Флаг p - Доступ к пермабану
+-- e - екзекьютив лидеры
+-- f - донат ранги
+
+ba.ranks.Create('Zero - DiamondContributor', 39)
+    :SetImmunity(7950)
+    :SetFlags('umasgdcf')
+    :SetGlobal(true)
+    :SetSuperAdmin(true)
+	
+ba.ranks.Create('Touka - DiamondContributor', 38)
+    :SetImmunity(7950)
+    :SetFlags('umasgdcf')
+    :SetGlobal(true)
+    :SetSuperAdmin(true)
+	
+ba.ranks.Create('Supreme - DiamondContributor', 37)
+    :SetImmunity(7950)
+    :SetFlags('umasgdcf')
+    :SetGlobal(true)
+    :SetSuperAdmin(true)
+	
+ba.ranks.Create('Noob - DiamondContributor', 36)
+    :SetImmunity(7950)
+    :SetFlags('umasgdcf')
+    :SetGlobal(true)
+    :SetSuperAdmin(true)
+	
+ba.ranks.Create('Chief Staff Leader', 35)
+    :SetImmunity(15200)
+    :SetRoot(true)
+	
+ba.ranks.Create('Staff Leader*', 34)
+    :SetImmunity(15100)
+    :SetRoot(true)
+	
+ba.ranks.Create('Chief Media Partner+', 33)
+	:SetImmunity(7500)
+    :SetFlags('umasgdcp')
+    :SetGlobal(true)
+    :SetSuperAdmin(true)
+	
+ba.ranks.Create('Chief Media Partner', 32)
+	:SetImmunity(7000)
+	:SetFlags('umas')
+	:SetAdmin(true)
+	:SetVIP(true)
+	
+ba.ranks.Create('Premium', 31)
+	:SetImmunity(0)
+	:SetFlags('uv')
+	:SetVIP(true)
+	
+ba.ranks.Create('Media Partner*', 30)
+	:SetImmunity(0)
+	:SetFlags('uv')
+	:SetVIP(true)
+	
+ba.ranks.Create('Media Partner+', 29)
+	:SetImmunity(0)
+	:SetFlags('uv')
+	:SetVIP(true)
+	
+ba.ranks.Create('Media Partner', 28)
+	:SetImmunity(0)
+	:SetFlags('uv')
+	:SetVIP(true)
+	
+ba.ranks.Create('Executive Leader', 27)
+    :SetImmunity(15000)
+    :SetFlags('umasihgdcpe')
+    :SetGlobal(true)
+    :SetSuperAdmin(true)
+
+ba.ranks.Create('Executive Specialist', 26)
+    :SetImmunity(15000)
+    :SetFlags('umasihgdcpe')
+    :SetGlobal(true)
+    :SetSuperAdmin(true)
+
+ba.ranks.Create('Platinum Contributor', 25)
+    :SetImmunity(7900)
+    :SetFlags('umasgdc')
+    :SetGlobal(true)
+    :SetSuperAdmin(true)
+
+ba.ranks.Create('Golden Contributor', 24)
+    :SetImmunity(7800)
+    :SetFlags('umasgdc')
+    :SetGlobal(true)
+    :SetSuperAdmin(true)
+
+ba.ranks.Create('Global Contributor', 23)
+    :SetImmunity(7600)
+    :SetFlags('umasgdc')
+    :SetGlobal(true)
+    :SetSuperAdmin(true)
+
+ba.ranks.Create('Deputy', 22)
+    :SetImmunity(9000)
+    :SetRoot(true)
+
+ba.ranks.Create('Staff Leader Plus', 21)
+    :SetFlags('p')
+    :SetImmunity(15000)
+    :SetRoot(true)
+
+ba.ranks.Create('Staff Leader', 20)
+    :SetFlags('p')
+    :SetImmunity(10000)
+    :SetRoot(true)
+
+ba.ranks.Create('Developer', 19)
+    :SetImmunity(1400)
+    :SetRoot(true)
+
+ba.ranks.Create('Global Admin*', 18)
+    :SetImmunity(8000)
+    :SetFlags('umasihgdcp')
+    :SetGlobal(true)
+    :SetSuperAdmin(true)
+
+ba.ranks.Create('Super Admin*', 17)
+    :SetImmunity(7400)
+    :SetImmunityGiveRank(6300)
+    :SetFlags('umasihgp')
+    :SetAdmin(true)
+    :SetVIP(true)
+
+ba.ranks.Create('Helper', 16)
+    :SetImmunity(7200)
+    :SetFlags('umasip')
+    :SetAdmin(true)
+    :SetVIP(true)
+
+ba.ranks.Create('Head Admin*', 15)
+    :SetImmunity(7100)
+    :SetFlags('umasp')
+    :SetAdmin(true)
+    :SetVIP(true)
+
+ba.ranks.Create('Admin Plus', 14)
+    :SetImmunity(6500)
+    :SetFlags('uma')
+    :SetAdmin(true)
+    :SetVIP(true)
+
+ba.ranks.Create('Admin*', 13)
+    :SetImmunity(6300)
+    :SetFlags('uma')
+    :SetAdmin(true)
+    :SetVIP(true)
+
+ba.ranks.Create('Moderator*', 12)
+	:SetImmunity(5300)
+	:SetFlags('um')
+	:SetAdmin(true)
+	:SetVIP(true)
+
+ba.ranks.Create('VIP+', 11)
+    :SetImmunity(7000)
+    :SetFlags('uv')
+    :SetVIP(true)
+
+ba.ranks.Create('Root', 10)
+	:SetImmunity(20000)
+	:SetRoot(true)
+    
+ba.ranks.Create('Global Admin', 8)
+	:SetImmunity(7500)
+    :SetFlags('umasgdc')
+    :SetGlobal(true)
+    :SetSuperAdmin(true)
+
+ba.ranks.Create('Super Admin', 6)
+	:SetImmunity(7300)
+	:SetFlags('umasg')
+	:SetAdmin(true)
+	:SetVIP(true)
+
+ba.ranks.Create('Head Admin', 5)
+	:SetImmunity(7000)
+	:SetFlags('umas')
+	:SetAdmin(true)
+	:SetVIP(true)
+
+ba.ranks.Create('Admin', 4)
+	:SetImmunity(6000)
+	:SetFlags('uma')
+	:SetAdmin(true)
+	:SetVIP(true)
+
+ba.ranks.Create('Moderator', 3)
+	:SetImmunity(5000)
+	:SetFlags('um')
+	:SetAdmin(true)
+	:SetVIP(true)
+
+ba.ranks.Create('VIP', 2)
+	:SetImmunity(0)
+	:SetFlags('uv')
+	:SetVIP(true)
+
+ba.ranks.Create('User', 1)
+	:SetImmunity(0)
+    :SetFlags('u')

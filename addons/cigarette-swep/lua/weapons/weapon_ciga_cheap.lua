@@ -1,0 +1,26 @@
+SWEP.PrintName = "Беломорканал"
+SWEP.ViewModel = "models/mordeciga/mordes/oldcigshib.mdl"
+SWEP.WorldModel = "models/mordeciga/mordes/oldcigshib.mdl"
+SWEP.cigaAccentColor = Vector(1,1,1.1)
+SWEP.Base = "weapon_ciga"
+
+SWEP.IconLetter	= ""
+SWEP.Category = "Сигареты"
+SWEP.Slot = 1
+SWEP.SlotPos = 0
+SWEP.ViewModelFOV = 62 --default
+SWEP.BounceWeaponIcon = false
+SWEP.Spawnable = false
+SWEP.AdminOnly = false
+SWEP.Primary.Clipsize = -1
+SWEP.Primary.DefaultClip = -1
+SWEP.Primary.Automatic = true
+SWEP.Primary.Ammo = "none"
+SWEP.Secondary.Clipsize = -1
+SWEP.Secondary.DefaultClip = -1
+SWEP.Secondary.Automatic = false
+SWEP.Secondary.Ammo = "none"
+SWEP.DrawAmmo = false
+SWEP.HoldType = "slam"
+SWEP.Mode = 1
+SWEP.Color = Color(220, 220, 220)

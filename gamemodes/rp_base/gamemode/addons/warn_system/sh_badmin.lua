@@ -1,0 +1,38 @@
+if SERVER then include("sv_core.lua") end
+
+ba.AddTerm("WarnSystem.Success", "Вы выдали предупреждение игроку с ником #!")
+ba.AddTerm("WarnSystem.NewCount", "Теперь у него # предупреждений!")
+ba.AddTerm("WarnSystem.CurCount", "У него # предупреждений!")
+ba.AddTerm("WarnSystem.ItsTime2Ban", "Время забанить проказника, у него 3 или более предупреждений!")
+ba.AddTerm("WarnSystem.New", "Вы получили предупреждение от #!")
+
+ba.cmd.Create("warn", function(ply, args)
+	args.target:AddWarn(ply)
+end)
+:SetFlag("M")
+:AddParam("player_entity", "target")
+:SetHelp( translates.Get("Выдаёт предупреждение указанному <player>") )
+
+ba.cmd.Create("unwarn", function(ply, args)
+	args.target:AddWarn(ply, true)
+end)
+:SetFlag("M")
+:AddParam("player_entity", "target")
+:SetHelp( translates.Get("Убирает предупреждение у указанного <player>") )
+
+ba.cmd.Create("getwarns", function(ply, args)
+	args.target:GetWarns(function(count)
+		ba.notify(ply, ba.Term("WarnSystem.CurCount"), count or 0)
+	end)
+end)
+:SetFlag("M")
+:AddParam("player_entity", "target")
+:SetHelp( translates.Get("Показывает текущее количество предупреждений указанного <player>") )
+
+ba.cmd.Create('warnban', HiddenWarnBanFunction)
+:AddParam('player_steamid', 'target')
+:AddParam('time', 'time')
+:AddParam('string', 'reason')
+:SetFlag('M')
+:SetHelp(translates.Get('Банит игрока на 1-24 часа если у него 3 или более предупреждений'))
+:SetIcon('icon16/door_open.png')

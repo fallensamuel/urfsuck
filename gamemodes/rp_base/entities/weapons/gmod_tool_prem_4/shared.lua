@@ -1,0 +1,2 @@
+rp.MakeCustomToolGun(SWEP, "Colt Туллган Python", "models/weapons/w_toolgun_4.mdl", "models/weapons/c_toolgun_4.mdl", 1000000, 			9999)
+							-- название 		-- Ворлд модель 			-- Вью модель 				-- Цена покупки 	-- Цена покупки за донат

@@ -1,0 +1,6 @@
+{
+"title" : "[urf.im] HL2 Models #1",
+"type" : "servercontent",
+"tags" : "realism",
+"ignore" : ["*.psd", "*.vcproj", "*.svn*"]
+}

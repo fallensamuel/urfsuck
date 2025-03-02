@@ -1,0 +1,13 @@
+"AddonInfo"
+{
+	"name" "Combine RT Screen(monitor) Model Pack"
+	"author_name" "Author Name"
+	"info" "{
+	"description": "Description",
+	"type": "model",
+	"tags": [
+		"fun",
+		"roleplay"
+	]
+}"
+}

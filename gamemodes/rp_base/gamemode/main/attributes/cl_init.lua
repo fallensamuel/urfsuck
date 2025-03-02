@@ -1,0 +1,1 @@
+AttributeSystem.Players.LocalPlayer = AttributeSystem.Players.LocalPlayer or {};

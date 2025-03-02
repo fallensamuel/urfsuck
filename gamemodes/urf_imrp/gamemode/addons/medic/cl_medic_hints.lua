@@ -1,0 +1,32 @@
+--local BlinkColors = {
+--    [true] = Color(255, 33, 33),
+--    [false] = Color(33, 175, 255)
+--}
+--
+--local blink_time = 1.5
+--
+--rp.AddBubble("entity", "player", {
+--    ico = Material("bubble_hints/medical.png", "smooth", "noclamp"),
+--    offset = Vector(0, 0, 15),
+--    scale = 0.5,
+--    ico_col = function(ply)
+--        local CT = CurTime()
+--        if not ply.MedicalColorBlinkT or ply.MedicalColorBlinkT < CT then
+--            ply.MedicalColorBlinkT = CT + blink_time
+--            ply.MedicalColorBlink = not ply.MedicalColorBlink
+--        end
+--
+--        return BlinkColors[ply.MedicalColorBlink or false]
+--    end,
+--    customCheck = function(ply)
+--        return ply:IsInDeathMechanics() and LocalPlayer():GetJobTable().IsMedic
+--    end,
+--    PreAdd = function(ply)
+--        return ply:IsInDeathMechanics() and LocalPlayer():GetJobTable().IsMedic
+--    end,
+--    ignoreZ = true,
+--    IgnoreDistanceLimit = function() return true end,
+--    ShouldMinusY = function() return true end,
+--})
+
+local info = "Перенесено в кфг баблов"

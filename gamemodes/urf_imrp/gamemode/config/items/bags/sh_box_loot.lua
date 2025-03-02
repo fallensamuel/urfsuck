@@ -1,0 +1,10 @@
+ITEM.name = "Ящик с вещами"
+ITEM.desc = "Ящик, ранее используемый для хранения вещей."
+ITEM.model = "models/props_junk/trashbin01a.mdl"
+ITEM.invWidth = 5
+ITEM.invHeight = 5
+ITEM.price = 8
+ITEM.category = "Storage"
+ITEM.permit = "misc"
+ITEM.noTake = true
+ITEM.notTransfered = true

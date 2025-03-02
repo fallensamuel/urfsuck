@@ -1,0 +1,13 @@
+"AddonInfo"
+{
+	"name" "URF.IM HL2RP MODELS"
+	"author_name" "Author Name"
+	"info" "{
+	"description": "Description",
+	"type": "servercontent",
+	"tags": [
+		"roleplay",
+		"realism"
+	]
+}"
+}

@@ -1,0 +1,25 @@
+SWEP.PrintName = 'Сигарета "Единый Альянс"'
+SWEP.ViewModel = "models/mordeciga/mordes/ciga.mdl"
+SWEP.WorldModel = "models/mordeciga/mordes/ciga.mdl"
+SWEP.Base = "weapon_ciga"
+
+SWEP.IconLetter	= ""
+SWEP.Category = "Сигареты"
+SWEP.Slot = 1
+SWEP.SlotPos = 0
+SWEP.ViewModelFOV = 62 --default
+SWEP.BounceWeaponIcon = false
+SWEP.Spawnable = true
+SWEP.AdminOnly = false
+SWEP.Primary.Clipsize = -1
+SWEP.Primary.DefaultClip = -1
+SWEP.Primary.Automatic = true
+SWEP.Primary.Ammo = "none"
+SWEP.Secondary.Clipsize = -1
+SWEP.Secondary.DefaultClip = -1
+SWEP.Secondary.Automatic = false
+SWEP.Secondary.Ammo = "none"
+SWEP.DrawAmmo = false
+SWEP.HoldType = "slam"
+SWEP.Mode = 1
+SWEP.Color = Color(220, 220, 220)
